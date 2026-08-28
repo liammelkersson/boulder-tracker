@@ -115,6 +115,18 @@ struct StatsAggregatorTests {
         #expect(abs((rates[.crimp] ?? 0) - 1.0) < 0.001)
     }
 
+    @Test func proudestSendBreaksFullTieByLatestSessionDate() {
+        let referenceDate = Date.now
+        let earlierSession = makeSession(daysAgo: 10, referenceDate: referenceDate)
+        let laterSession = makeSession(daysAgo: 1, referenceDate: referenceDate)
+        addAttempt(earlierSession, grade: .black, attempts: 3, result: .send)
+        addAttempt(laterSession, grade: .black, attempts: 3, result: .send)
+
+        let proudest = StatsAggregator.proudestSend(of: [earlierSession, laterSession])
+
+        #expect(proudest?.session === laterSession)
+    }
+
     @Test func weeklyStreakCountsConsecutiveWeeks() {
         let referenceDate = Date.now
         let thisWeek = makeSession(daysAgo: 0, referenceDate: referenceDate)

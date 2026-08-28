@@ -73,7 +73,10 @@ enum StatsAggregator {
             .filter { $0.result.countsAsSend }
             .max { lhs, rhs in
                 if lhs.colorGrade != rhs.colorGrade { return lhs.colorGrade < rhs.colorGrade }
-                return lhs.attemptCount < rhs.attemptCount
+                if lhs.attemptCount != rhs.attemptCount { return lhs.attemptCount < rhs.attemptCount }
+                let lhsDate = lhs.session?.startTime ?? .distantPast
+                let rhsDate = rhs.session?.startTime ?? .distantPast
+                return lhsDate < rhsDate
             }
     }
 
