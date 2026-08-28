@@ -20,12 +20,12 @@ enum AchievementEngine {
     }
 
     static var definitions: [AchievementDefinition] {
-        firstDefinitions + volumeDefinitions + streakDefinitions
+        firstDefinitions + firstSendDefinitions + volumeDefinitions + streakDefinitions
             + skillDefinitions + funDefinitions
     }
 
     private static var firstDefinitions: [AchievementDefinition] {
-        var items = [
+        [
             AchievementDefinition(
                 id: "first-session", title: "Off the Ground",
                 detail: "Log your first session", symbolName: "figure.climbing"
@@ -49,17 +49,19 @@ enum AchievementEngine {
                 sessions.contains { !$0.partners.isEmpty }
             },
         ]
-        for grade in ColorGrade.allCases {
-            items.append(AchievementDefinition(
+    }
+
+    private static var firstSendDefinitions: [AchievementDefinition] {
+        ColorGrade.allCases.map { grade in
+            AchievementDefinition(
                 id: "first-send-\(grade.displayName.lowercased())",
                 title: "\(grade.displayName) Breaker",
                 detail: "Send your first \(grade.displayName.lowercased()) problem",
                 symbolName: "checkmark.seal.fill"
             ) { sessions in
                 allAttempts(sessions).contains { $0.colorGrade == grade && $0.result.countsAsSend }
-            })
+            }
         }
-        return items
     }
 
     private static var volumeDefinitions: [AchievementDefinition] {
