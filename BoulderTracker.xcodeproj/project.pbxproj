@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01165853430EE5DE9141301A /* AppTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B520B542390E42DD8D07575 /* AppTab.swift */; };
 		258C743A189C6A412E34A9A3 /* SmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497717384B7A5CCBD97747D7 /* SmokeTests.swift */; };
 		6274B8E34DD41B73467F5A2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21360B8DF59856908D8D6401 /* Assets.xcassets */; };
 		920793DED37DCD28C994E59B /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C0D743A0331CB6D142FEFE /* RootTabView.swift */; };
@@ -30,6 +31,7 @@
 		21360B8DF59856908D8D6401 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4745F2D40EDEC6B48CEBD3F4 /* BoulderTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BoulderTracker.entitlements; sourceTree = "<group>"; };
 		497717384B7A5CCBD97747D7 /* SmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeTests.swift; sourceTree = "<group>"; };
+		4B520B542390E42DD8D07575 /* AppTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTab.swift; sourceTree = "<group>"; };
 		52B3345460DD06FDC9EEC9BD /* BoulderTrackerTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = BoulderTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F98D93960086286608D189D /* BoulderTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoulderTrackerApp.swift; sourceTree = "<group>"; };
 		DD1C069C0CDE40F8EB3985C6 /* BoulderTracker.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BoulderTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +60,7 @@
 		21DC1F76FF6117B861E01935 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				4B520B542390E42DD8D07575 /* AppTab.swift */,
 				8F98D93960086286608D189D /* BoulderTrackerApp.swift */,
 				16C0D743A0331CB6D142FEFE /* RootTabView.swift */,
 			);
@@ -169,6 +172,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01165853430EE5DE9141301A /* AppTab.swift in Sources */,
 				D8B196AD7D9BB39D524F226F /* BoulderTrackerApp.swift in Sources */,
 				920793DED37DCD28C994E59B /* RootTabView.swift in Sources */,
 			);

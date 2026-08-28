@@ -1,9 +1,5 @@
 import SwiftUI
 
-enum AppTab: Hashable {
-    case home, calendar, stats, roadmap, profile
-}
-
 struct RootTabView: View {
     @State private var selectedTab: AppTab = .home
 
