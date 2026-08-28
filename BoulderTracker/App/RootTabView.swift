@@ -6,7 +6,7 @@ struct RootTabView: View {
     var body: some View {
         TabView(selection: $selectedTab) {
             Tab("Home", systemImage: "figure.climbing", value: .home) {
-                Text("Home")
+                HomeView()
             }
             Tab("Calendar", systemImage: "calendar", value: .calendar) {
                 Text("Calendar")
