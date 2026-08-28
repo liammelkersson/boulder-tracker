@@ -8,8 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		01165853430EE5DE9141301A /* AppTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B520B542390E42DD8D07575 /* AppTab.swift */; };
+		1522ABE9E22E486CCB219F3E /* RouteStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606AD0C36FD64CA6F5839DC3 /* RouteStyle.swift */; };
 		258C743A189C6A412E34A9A3 /* SmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497717384B7A5CCBD97747D7 /* SmokeTests.swift */; };
+		49A0211A723BBF89A9C861A2 /* AttemptResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F670871538D0E7952A85B5 /* AttemptResult.swift */; };
 		6274B8E34DD41B73467F5A2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21360B8DF59856908D8D6401 /* Assets.xcassets */; };
+		75F53F1FD8EF41C9EE2A79FC /* ColorGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 111FFE1519F515D7B178D856 /* ColorGrade.swift */; };
+		76BD41BC9ABF92E9B8B2CEEA /* AttemptResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B4F1FB239B32F1AEDBAB1C /* AttemptResultTests.swift */; };
+		7E0903944FEA7BA55A3A2419 /* ColorGradeDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A295AA61CC4837DAFFE974 /* ColorGradeDisplay.swift */; };
+		8028DB6B9B23C3C0F967644D /* ColorGradeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566ECD974130DAB642022B71 /* ColorGradeTests.swift */; };
 		920793DED37DCD28C994E59B /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C0D743A0331CB6D142FEFE /* RootTabView.swift */; };
 		D7083B98189C7528CC37736B /* BoulderTracker.icon in Resources */ = {isa = PBXBuildFile; fileRef = 001BB8EBAC47BEE852B97434 /* BoulderTracker.icon */; };
 		D8B196AD7D9BB39D524F226F /* BoulderTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F98D93960086286608D189D /* BoulderTrackerApp.swift */; };
@@ -27,12 +33,18 @@
 
 /* Begin PBXFileReference section */
 		001BB8EBAC47BEE852B97434 /* BoulderTracker.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; name = BoulderTracker.icon; path = BoulderTracker/BoulderTracker.icon; sourceTree = SOURCE_ROOT; };
+		00B4F1FB239B32F1AEDBAB1C /* AttemptResultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttemptResultTests.swift; sourceTree = "<group>"; };
+		111FFE1519F515D7B178D856 /* ColorGrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGrade.swift; sourceTree = "<group>"; };
+		11A295AA61CC4837DAFFE974 /* ColorGradeDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGradeDisplay.swift; sourceTree = "<group>"; };
 		16C0D743A0331CB6D142FEFE /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
 		21360B8DF59856908D8D6401 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4745F2D40EDEC6B48CEBD3F4 /* BoulderTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BoulderTracker.entitlements; sourceTree = "<group>"; };
 		497717384B7A5CCBD97747D7 /* SmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeTests.swift; sourceTree = "<group>"; };
+		49F670871538D0E7952A85B5 /* AttemptResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttemptResult.swift; sourceTree = "<group>"; };
 		4B520B542390E42DD8D07575 /* AppTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTab.swift; sourceTree = "<group>"; };
 		52B3345460DD06FDC9EEC9BD /* BoulderTrackerTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = BoulderTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		566ECD974130DAB642022B71 /* ColorGradeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGradeTests.swift; sourceTree = "<group>"; };
+		606AD0C36FD64CA6F5839DC3 /* RouteStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStyle.swift; sourceTree = "<group>"; };
 		8F98D93960086286608D189D /* BoulderTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoulderTrackerApp.swift; sourceTree = "<group>"; };
 		DD1C069C0CDE40F8EB3985C6 /* BoulderTracker.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BoulderTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -53,6 +65,7 @@
 				21360B8DF59856908D8D6401 /* Assets.xcassets */,
 				4745F2D40EDEC6B48CEBD3F4 /* BoulderTracker.entitlements */,
 				21DC1F76FF6117B861E01935 /* App */,
+				5A714847869775FEAEFFB9B5 /* Models */,
 			);
 			path = BoulderTracker;
 			sourceTree = "<group>";
@@ -62,6 +75,7 @@
 			children = (
 				4B520B542390E42DD8D07575 /* AppTab.swift */,
 				8F98D93960086286608D189D /* BoulderTrackerApp.swift */,
+				11A295AA61CC4837DAFFE974 /* ColorGradeDisplay.swift */,
 				16C0D743A0331CB6D142FEFE /* RootTabView.swift */,
 			);
 			path = App;
@@ -70,9 +84,21 @@
 		3D49F7D43B825D6720C22896 /* BoulderTrackerTests */ = {
 			isa = PBXGroup;
 			children = (
+				00B4F1FB239B32F1AEDBAB1C /* AttemptResultTests.swift */,
+				566ECD974130DAB642022B71 /* ColorGradeTests.swift */,
 				497717384B7A5CCBD97747D7 /* SmokeTests.swift */,
 			);
 			path = BoulderTrackerTests;
+			sourceTree = "<group>";
+		};
+		5A714847869775FEAEFFB9B5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				49F670871538D0E7952A85B5 /* AttemptResult.swift */,
+				111FFE1519F515D7B178D856 /* ColorGrade.swift */,
+				606AD0C36FD64CA6F5839DC3 /* RouteStyle.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		A8BAC1B794FB2A36718B6F94 = {
@@ -173,8 +199,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				01165853430EE5DE9141301A /* AppTab.swift in Sources */,
+				49A0211A723BBF89A9C861A2 /* AttemptResult.swift in Sources */,
 				D8B196AD7D9BB39D524F226F /* BoulderTrackerApp.swift in Sources */,
+				75F53F1FD8EF41C9EE2A79FC /* ColorGrade.swift in Sources */,
+				7E0903944FEA7BA55A3A2419 /* ColorGradeDisplay.swift in Sources */,
 				920793DED37DCD28C994E59B /* RootTabView.swift in Sources */,
+				1522ABE9E22E486CCB219F3E /* RouteStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +212,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76BD41BC9ABF92E9B8B2CEEA /* AttemptResultTests.swift in Sources */,
+				8028DB6B9B23C3C0F967644D /* ColorGradeTests.swift in Sources */,
 				258C743A189C6A412E34A9A3 /* SmokeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
