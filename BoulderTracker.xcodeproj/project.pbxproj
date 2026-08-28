@@ -34,6 +34,7 @@
 		AEE9AE18693236418552EB4D /* PhotoStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D287E844A2853EACE12280D5 /* PhotoStoreTests.swift */; };
 		B0464F56722D076BCB0A528F /* AchievementEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B73A64F6A52FE45E78E22A /* AchievementEngineTests.swift */; };
 		B758658FA92278448C6A612F /* StatsPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44AEB6C3C0E7CA06725D32B /* StatsPeriod.swift */; };
+		C66A44C2D6867D812D1E1FF3 /* SessionCompletionOutcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717D0E6C482A99E504FF9711 /* SessionCompletionOutcome.swift */; };
 		CCDC20398D732F4B61A352D8 /* ModelRoundTripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F62563AF39F829E404C1E6 /* ModelRoundTripTests.swift */; };
 		CD1D1A14DFAF90547893F5DE /* Partner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B09640D0FA580EA358CD9 /* Partner.swift */; };
 		D7083B98189C7528CC37736B /* BoulderTracker.icon in Resources */ = {isa = PBXBuildFile; fileRef = 001BB8EBAC47BEE852B97434 /* BoulderTracker.icon */; };
@@ -76,6 +77,7 @@
 		60C75C484DB145D3574725BA /* StatsSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsSummary.swift; sourceTree = "<group>"; };
 		6C71E5E5AD9C9BCE4A10838B /* DefaultGymSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultGymSeeder.swift; sourceTree = "<group>"; };
 		6EEACE9B023CB7A7074E0E6B /* SessionCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCompletion.swift; sourceTree = "<group>"; };
+		717D0E6C482A99E504FF9711 /* SessionCompletionOutcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCompletionOutcome.swift; sourceTree = "<group>"; };
 		755C6E6C165C3CEB58EBD3D8 /* StatsAggregator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsAggregator.swift; sourceTree = "<group>"; };
 		7E3C58F6B8FDFFE7AF23B43B /* Gym.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gym.swift; sourceTree = "<group>"; };
 		7F14A251EE96332C7B8FB225 /* HealthKitWorkoutWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitWorkoutWriter.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				7F14A251EE96332C7B8FB225 /* HealthKitWorkoutWriter.swift */,
 				EA9720EF636B8867B5B65677 /* PhotoStore.swift */,
 				6EEACE9B023CB7A7074E0E6B /* SessionCompletion.swift */,
+				717D0E6C482A99E504FF9711 /* SessionCompletionOutcome.swift */,
 				AC6B4B5C62C1A7FB8F82329C /* WorkoutWriting.swift */,
 			);
 			path = Services;
@@ -299,6 +302,7 @@
 				1522ABE9E22E486CCB219F3E /* RouteStyle.swift in Sources */,
 				7FCBC26D392ED8541DAA2084 /* Session.swift in Sources */,
 				639548E7DDD07657FB623906 /* SessionCompletion.swift in Sources */,
+				C66A44C2D6867D812D1E1FF3 /* SessionCompletionOutcome.swift in Sources */,
 				E60BE443A1E1C56D7DE15182 /* StatsAggregator.swift in Sources */,
 				B758658FA92278448C6A612F /* StatsPeriod.swift in Sources */,
 				4A41929544CC59552EE4C8D2 /* StatsSummary.swift in Sources */,
