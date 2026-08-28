@@ -15,7 +15,7 @@ struct RootTabView: View {
             Tab("Calendar", systemImage: "calendar", value: .calendar) {
                 Text("Calendar")
             }
-            Tab("Stats", systemImage: "chart.bar.xaxis", value: .stats) {
+            Tab("Stats", systemImage: "chart.xyaxis.line", value: .stats) {
                 Text("Stats")
             }
             Tab("Roadmap", systemImage: "map", value: .roadmap) {
