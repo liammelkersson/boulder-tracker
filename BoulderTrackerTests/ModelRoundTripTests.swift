@@ -1,4 +1,5 @@
 import Testing
+import Foundation
 import SwiftData
 @testable import BoulderTracker
 
@@ -6,7 +7,7 @@ import SwiftData
 func makeInMemoryContainer() throws -> ModelContainer {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     return try ModelContainer(
-        for: Session.self, ProblemAttempt.self, Gym.self, Partner.self,
+        for: Session.self, SessionProblem.self, Gym.self, Partner.self,
         RoadmapProgress.self, Achievement.self,
         configurations: config
     )
@@ -14,34 +15,36 @@ func makeInMemoryContainer() throws -> ModelContainer {
 
 @MainActor
 struct ModelRoundTripTests {
-    @Test func sessionRoundTripsWithAttempts() throws {
+    @Test func sessionRoundTripsWithProblems() throws {
         let container = try makeInMemoryContainer()
         let context = container.mainContext
 
         let gym = Gym(name: "Klättervigören Jönköping", isDefault: true)
-        let session = Session(startTime: .now, gym: gym, partners: [])
-        let attempt = ProblemAttempt(
-            colorGrade: .red, styles: [.overhang, .sloper],
-            attemptCount: 3, result: .send
+        let session = Session(startTime: .now, gym: gym, partners: [], climbType: .topRope)
+        let problem = SessionProblem(
+            name: "The Roof", colorGrade: .red, styles: [.overhang, .sloper],
+            flashCount: 0, sendCount: 1, fallCount: 3
         )
-        session.attempts.append(attempt)
+        session.problems.append(problem)
         context.insert(session)
         try context.save()
 
         let fetched = try context.fetch(FetchDescriptor<Session>())
         #expect(fetched.count == 1)
-        #expect(fetched.first?.attempts.count == 1)
-        #expect(fetched.first?.attempts.first?.styles == [.overhang, .sloper])
+        #expect(fetched.first?.problems.count == 1)
+        #expect(fetched.first?.problems.first?.styles == [.overhang, .sloper])
+        #expect(fetched.first?.problems.first?.name == "The Roof")
+        #expect(fetched.first?.climbType == .topRope)
         #expect(fetched.first?.gym?.name == "Klättervigören Jönköping")
     }
 
-    @Test func deletingSessionCascadesToAttempts() throws {
+    @Test func deletingSessionCascadesToProblems() throws {
         let container = try makeInMemoryContainer()
         let context = container.mainContext
 
         let session = Session(startTime: .now, gym: nil, partners: [])
-        session.attempts.append(ProblemAttempt(
-            colorGrade: .green, styles: [], attemptCount: 1, result: .flash
+        session.problems.append(SessionProblem(
+            name: "Warm Up", colorGrade: .green, styles: [], flashCount: 1
         ))
         context.insert(session)
         try context.save()
@@ -49,8 +52,8 @@ struct ModelRoundTripTests {
         context.delete(session)
         try context.save()
 
-        let attempts = try context.fetch(FetchDescriptor<ProblemAttempt>())
-        #expect(attempts.isEmpty)
+        let problems = try context.fetch(FetchDescriptor<SessionProblem>())
+        #expect(problems.isEmpty)
     }
 
     @Test func seederInsertsDefaultGymOnce() throws {
@@ -63,6 +66,38 @@ struct ModelRoundTripTests {
         let gyms = try context.fetch(FetchDescriptor<Gym>())
         #expect(gyms.count == 1)
         #expect(gyms.first?.isDefault == true)
+    }
+
+    @Test func newSessionsAndProblemsGetSyncIdentities() throws {
+        let session = Session(startTime: .now, gym: nil, partners: [])
+        let problem = SessionProblem(name: "", colorGrade: .blue, styles: [])
+
+        #expect(session.syncID != nil)
+        #expect(problem.syncID != nil)
+        #expect(session.syncID != problem.syncID)
+        #expect(!session.isWatchTracked)
+        #expect(session.appliedEventIDs.isEmpty)
+    }
+
+    @Test func heartRateSummaryRoundTrips() throws {
+        let container = try makeInMemoryContainer()
+        let context = container.mainContext
+
+        let session = Session(startTime: .now, gym: nil, partners: [])
+        session.avgHeartRate = 138
+        session.maxHeartRate = 176
+        session.activeCalories = 512
+        session.isWatchTracked = true
+        session.appliedEventIDs = [UUID()]
+        context.insert(session)
+        try context.save()
+
+        let fetched = try context.fetch(FetchDescriptor<Session>()).first
+        #expect(fetched?.avgHeartRate == 138)
+        #expect(fetched?.maxHeartRate == 176)
+        #expect(fetched?.activeCalories == 512)
+        #expect(fetched?.isWatchTracked == true)
+        #expect(fetched?.appliedEventIDs.count == 1)
     }
 
     @Test func liveSessionHasNilEndTime() throws {

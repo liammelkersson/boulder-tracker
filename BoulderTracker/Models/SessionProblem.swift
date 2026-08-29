@@ -12,6 +12,8 @@ final class SessionProblem {
     var notes: String?
     var photoFilename: String?
     var isProject: Bool = false
+    /// Stable identity across devices; see the note on `Session.syncID`.
+    var syncID: UUID?
     var session: Session?
 
     init(name: String, colorGrade: ColorGrade, styles: [RouteStyle],
@@ -24,6 +26,7 @@ final class SessionProblem {
         self.sendCount = sendCount
         self.fallCount = fallCount
         self.isProject = isProject
+        self.syncID = UUID()
     }
 
     /// Quick-logged problems have no name; show a generic label.
