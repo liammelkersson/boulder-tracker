@@ -34,6 +34,7 @@ struct SessionCompletion {
 
     @MainActor
     private func saveWorkout(for session: Session) async -> WorkoutSaveResult {
+        guard !session.isWatchTracked else { return .recordedByWatch }
         guard let workoutWriter else { return .syncDisabled }
         guard let end = session.endTime else { return .failed }
         do {

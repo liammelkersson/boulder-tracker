@@ -65,6 +65,12 @@ struct SessionSummaryScreen: View {
                 valueText: summary.flashRate.formatted(.percent.precision(.fractionLength(0))),
                 label: "Flash rate"
             )
+            if let avgHeartRate = session.avgHeartRate {
+                StatTile(valueText: "\(Int(avgHeartRate.rounded()))", label: "Avg BPM")
+            }
+            if let maxHeartRate = session.maxHeartRate {
+                StatTile(valueText: "\(Int(maxHeartRate.rounded()))", label: "Max BPM")
+            }
         }
     }
 
