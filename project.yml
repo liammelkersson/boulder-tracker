@@ -3,6 +3,7 @@ options:
   bundleIdPrefix: com.liammelkersson
   deploymentTarget:
     iOS: "26.0"
+    watchOS: "26.0"
   # XcodeGen 2.46.0 doesn't know the Xcode 26 Icon Composer ".icon" bundle
   # extension, so it writes the BoulderTracker.icon file reference with the
   # generic `lastKnownFileType = folder`. Xcode's actool only compiles it as
@@ -22,11 +23,15 @@ targets:
           - "BoulderTracker.icon/**"
       - path: BoulderTracker/BoulderTracker.icon
         type: folder
+      - path: Shared
     settings:
       base:
         SWIFT_VERSION: "6.0"
+        DEVELOPMENT_TEAM: 6KKKY36H7B
+        CODE_SIGN_STYLE: Automatic
         TARGETED_DEVICE_FAMILY: "1"
         GENERATE_INFOPLIST_FILE: true
+        INFOPLIST_KEY_UILaunchScreen_Generation: true
         INFOPLIST_KEY_NSCameraUsageDescription: "Photograph boulder problems you log."
         INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription: "Save route photos you take."
         INFOPLIST_KEY_NSHealthUpdateUsageDescription: "Save climbing sessions as workouts in Apple Health."
@@ -34,6 +39,32 @@ targets:
         CODE_SIGN_ENTITLEMENTS: BoulderTracker/BoulderTracker.entitlements
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         ASSETCATALOG_COMPILER_APPICON_NAME: BoulderTracker
+    dependencies:
+      - target: BoulderTrackerWatch
+        embed: true
+        copy:
+          destination: productsDirectory
+          subpath: "$(CONTENTS_FOLDER_PATH)/Watch"
+  BoulderTrackerWatch:
+    type: application
+    platform: watchOS
+    sources:
+      - path: BoulderTrackerWatch
+      - path: Shared
+    settings:
+      base:
+        SWIFT_VERSION: "6.0"
+        DEVELOPMENT_TEAM: 6KKKY36H7B
+        CODE_SIGN_STYLE: Automatic
+        TARGETED_DEVICE_FAMILY: "4"
+        PRODUCT_BUNDLE_IDENTIFIER: com.liammelkersson.BoulderTracker.watchkitapp
+        GENERATE_INFOPLIST_FILE: true
+        INFOPLIST_KEY_WKApplication: true
+        INFOPLIST_KEY_WKCompanionAppBundleIdentifier: com.liammelkersson.BoulderTracker
+        INFOPLIST_KEY_WKBackgroundModes: workout-processing
+        INFOPLIST_KEY_NSHealthUpdateUsageDescription: "Save climbing sessions as workouts in Apple Health."
+        INFOPLIST_KEY_NSHealthShareUsageDescription: "Read heart rate and active energy during a climbing session."
+        CODE_SIGN_ENTITLEMENTS: BoulderTrackerWatch/BoulderTrackerWatch.entitlements
   BoulderTrackerTests:
     type: bundle.unit-test
     platform: iOS
@@ -50,3 +81,7 @@ schemes:
         BoulderTracker: all
     test:
       targets: [BoulderTrackerTests]
+  BoulderTrackerWatch:
+    build:
+      targets:
+        BoulderTrackerWatch: all

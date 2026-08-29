@@ -10,11 +10,11 @@ enum StatsAggregator {
         var summary = StatsSummary()
         summary.sessionCount = sessions.count
         summary.totalDuration = sessions.reduce(0) { $0 + $1.duration }
-        let attempts = allAttempts(in: sessions)
-        summary.problemCount = attempts.count
-        summary.sendCount = attempts.filter { $0.result.countsAsSend }.count
-        summary.flashCount = attempts.filter { $0.result == .flash }.count
-        summary.attemptCount = attempts.reduce(0) { $0 + $1.attemptCount }
+        let problems = allProblems(in: sessions)
+        summary.problemCount = problems.count
+        summary.sendCount = problems.reduce(0) { $0 + $1.sendCount + $1.flashCount }
+        summary.flashCount = problems.reduce(0) { $0 + $1.flashCount }
+        summary.attemptCount = problems.reduce(0) { $0 + $1.totalLogs }
         return summary
     }
 
@@ -23,17 +23,20 @@ enum StatsAggregator {
     }
 
     static func sendCountPerGrade(of sessions: [Session]) -> [ColorGrade: Int] {
-        let sends = allAttempts(in: sessions).filter { $0.result.countsAsSend }
-        return Dictionary(grouping: sends, by: \.colorGrade).mapValues(\.count)
+        var counts: [ColorGrade: Int] = [:]
+        for problem in allProblems(in: sessions) where problem.wasSent {
+            counts[problem.colorGrade, default: 0] += problem.sendCount + problem.flashCount
+        }
+        return counts
     }
 
     static func sendRatePerStyle(of sessions: [Session]) -> [RouteStyle: Double] {
         var totals: [RouteStyle: Int] = [:]
         var sends: [RouteStyle: Int] = [:]
-        for attempt in allAttempts(in: sessions) {
-            for style in attempt.styles {
+        for problem in allProblems(in: sessions) {
+            for style in problem.styles {
                 totals[style, default: 0] += 1
-                if attempt.result.countsAsSend {
+                if problem.wasSent {
                     sends[style, default: 0] += 1
                 }
             }
@@ -43,15 +46,15 @@ enum StatsAggregator {
         }
     }
 
-    static func hardestSend(of sessions: [Session]) -> ProblemAttempt? {
-        allAttempts(in: sessions)
-            .filter { $0.result.countsAsSend }
+    static func hardestSend(of sessions: [Session]) -> SessionProblem? {
+        allProblems(in: sessions)
+            .filter(\.wasSent)
             .max { $0.colorGrade < $1.colorGrade }
     }
 
-    static func hardestFlash(of sessions: [Session]) -> ProblemAttempt? {
-        allAttempts(in: sessions)
-            .filter { $0.result == .flash }
+    static func hardestFlash(of sessions: [Session]) -> SessionProblem? {
+        allProblems(in: sessions)
+            .filter(\.wasFlashed)
             .max { $0.colorGrade < $1.colorGrade }
     }
 
@@ -68,19 +71,19 @@ enum StatsAggregator {
         return streak
     }
 
-    static func proudestSend(of sessions: [Session]) -> ProblemAttempt? {
-        allAttempts(in: sessions)
-            .filter { $0.result.countsAsSend }
+    static func proudestSend(of sessions: [Session]) -> SessionProblem? {
+        allProblems(in: sessions)
+            .filter(\.wasSent)
             .max { lhs, rhs in
                 if lhs.colorGrade != rhs.colorGrade { return lhs.colorGrade < rhs.colorGrade }
-                if lhs.attemptCount != rhs.attemptCount { return lhs.attemptCount < rhs.attemptCount }
+                if lhs.totalLogs != rhs.totalLogs { return lhs.totalLogs < rhs.totalLogs }
                 let lhsDate = lhs.session?.startTime ?? .distantPast
                 let rhsDate = rhs.session?.startTime ?? .distantPast
                 return lhsDate < rhsDate
             }
     }
 
-    private static func allAttempts(in sessions: [Session]) -> [ProblemAttempt] {
-        sessions.flatMap(\.attempts)
+    private static func allProblems(in sessions: [Session]) -> [SessionProblem] {
+        sessions.flatMap(\.problems)
     }
 }

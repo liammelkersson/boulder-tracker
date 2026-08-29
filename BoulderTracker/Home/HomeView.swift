@@ -3,61 +3,43 @@ import SwiftData
 
 struct HomeView: View {
     @Query(sort: \Session.startTime, order: .reverse) private var sessions: [Session]
-    @State private var showingStartSheet = false
-    @State private var showingRetroForm = false
+    @State private var summarySession: Session?
+    @State private var showingGymPicker = false
 
     private var liveSession: Session? { sessions.first { $0.isLive } }
     private var finishedSessions: [Session] { sessions.filter { !$0.isLive } }
-    private var overviewSessions: [Session] {
-        let interval = StatsPeriod.threeMonths.interval(endingAt: .now, calendar: .current)
-        return StatsAggregator.sessions(finishedSessions, in: interval)
-    }
 
     var body: some View {
-        NavigationStack {
-            Group {
-                if let liveSession {
-                    LiveSessionView(session: liveSession)
-                } else {
-                    overviewContent
+        Group {
+            if let summarySession {
+                SessionSummaryScreen(session: summarySession) {
+                    self.summarySession = nil
                 }
-            }
-            .navigationTitle("Boulder Tracker")
-            .navigationDestination(for: PersistentIdentifier.self) { sessionID in
-                SessionDetailView(sessionID: sessionID)
+            } else if let liveSession {
+                LiveSessionView(session: liveSession) { ended in
+                    summarySession = ended
+                }
+            } else {
+                idleContent
             }
         }
     }
 
-    private var overviewContent: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                OverviewSection(sessions: overviewSessions)
-                HighlightCard(sessions: overviewSessions)
-                startButtons
-                RecentSessionsList(sessions: finishedSessions)
-            }
-            .padding()
-        }
-        .sheet(isPresented: $showingStartSheet) { StartSessionSheet() }
-        .sheet(isPresented: $showingRetroForm) { RetroSessionForm() }
+    private var idleContent: some View {
+        HomeIdleView(sessions: finishedSessions)
+            .overlay(alignment: .bottom) { startSessionButton }
+            .sheet(isPresented: $showingGymPicker) { GymPickerSheet() }
     }
 
-    private var startButtons: some View {
-        VStack(spacing: 12) {
-            Button {
-                showingStartSheet = true
-            } label: {
-                Label("Start Session", systemImage: "play.fill")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 8)
-            }
-            .buttonStyle(.glassProminent)
-            .tint(.accentColor)
-
-            Button("Add Past Session") { showingRetroForm = true }
-                .buttonStyle(.glass)
+    private var startSessionButton: some View {
+        Button {
+            showingGymPicker = true
+        } label: {
+            AccentButtonLabel(title: "Start Session")
+                .shadow(color: .black.opacity(0.35), radius: 12, y: 8)
         }
+        .buttonStyle(.plain)
+        .padding(.horizontal, 16)
+        .padding(.bottom, 8)
     }
 }

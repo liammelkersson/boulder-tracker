@@ -2,7 +2,8 @@ import Foundation
 
 enum AchievementEngine {
     private static let nightOwlHour = 21
-    private static let marathonDuration: TimeInterval = 2 * 3600
+    private static let nightOwlTarget = 5
+    private static let marathonDuration: TimeInterval = 3 * 3600
     private static let sendMilestones = [10, 50, 100, 500]
     private static let sessionMilestones = [10, 50, 100]
     private static let weeklyStreakTarget = 5
@@ -11,11 +12,12 @@ enum AchievementEngine {
     private static let styleVarietyTarget = 5
     private static let projectAttemptTarget = 100
     private static let globetrotterGymTarget = 3
+    private static let firstSendGrades: [ColorGrade] = [.green, .blue, .red, .black, .white]
 
     static func newlyUnlocked(sessions: [Session],
                               alreadyUnlocked: Set<String>) -> [AchievementDefinition] {
         definitions.filter { definition in
-            !alreadyUnlocked.contains(definition.id) && definition.isSatisfied(sessions)
+            !alreadyUnlocked.contains(definition.id) && definition.isSatisfied(by: sessions)
         }
     }
 
@@ -28,38 +30,38 @@ enum AchievementEngine {
         [
             AchievementDefinition(
                 id: "first-session", title: "Off the Ground",
-                detail: "Log your first session", symbolName: "figure.climbing"
-            ) { !$0.isEmpty },
+                detail: "Log your first session", symbolName: "figure.climbing", target: 1
+            ) { $0.count },
             AchievementDefinition(
                 id: "first-flash", title: "First Flash",
-                detail: "Top a problem first try", symbolName: "bolt.fill"
+                detail: "Top a problem first try", symbolName: "bolt.fill", target: 1
             ) { sessions in
-                allAttempts(sessions).contains { $0.result == .flash }
+                allProblems(sessions).count(where: \.wasFlashed)
             },
             AchievementDefinition(
                 id: "first-photo", title: "Beta Archive",
-                detail: "Add a photo to a problem", symbolName: "camera.fill"
+                detail: "Add a photo to a problem", symbolName: "camera.fill", target: 1
             ) { sessions in
-                allAttempts(sessions).contains { $0.photoFilename != nil }
+                allProblems(sessions).count { $0.photoFilename != nil }
             },
             AchievementDefinition(
                 id: "first-partner-session", title: "Belay Buddies",
-                detail: "Climb with a partner", symbolName: "person.2.fill"
+                detail: "Climb with a partner", symbolName: "person.2.fill", target: 1
             ) { sessions in
-                sessions.contains { !$0.partners.isEmpty }
+                sessions.count { !$0.partners.isEmpty }
             },
         ]
     }
 
     private static var firstSendDefinitions: [AchievementDefinition] {
-        ColorGrade.allCases.map { grade in
+        firstSendGrades.map { grade in
             AchievementDefinition(
                 id: "first-send-\(grade.displayName.lowercased())",
-                title: "\(grade.displayName) Breaker",
+                title: "First \(grade.displayName)",
                 detail: "Send your first \(grade.displayName.lowercased()) problem",
-                symbolName: "checkmark.seal.fill"
+                symbolName: "checkmark.seal.fill", target: 1
             ) { sessions in
-                allAttempts(sessions).contains { $0.colorGrade == grade && $0.result.countsAsSend }
+                allProblems(sessions).count { $0.colorGrade == grade && $0.wasSent }
             }
         }
     }
@@ -68,17 +70,18 @@ enum AchievementEngine {
         let sendItems = sendMilestones.map { milestone in
             AchievementDefinition(
                 id: "sends-\(milestone)", title: "\(milestone) Sends",
-                detail: "Send \(milestone) problems", symbolName: "flame.fill"
+                detail: "Send \(milestone) problems", symbolName: "flame.fill", target: milestone
             ) { sessions in
-                allAttempts(sessions).filter { $0.result.countsAsSend }.count >= milestone
+                allProblems(sessions).count(where: \.wasSent)
             }
         }
         let sessionItems = sessionMilestones.map { milestone in
             AchievementDefinition(
                 id: "sessions-\(milestone)", title: "\(milestone) Sessions",
-                detail: "Log \(milestone) sessions", symbolName: "calendar.badge.checkmark"
+                detail: "Log \(milestone) sessions", symbolName: "calendar.badge.checkmark",
+                target: milestone
             ) { sessions in
-                sessions.count >= milestone
+                sessions.count
             }
         }
         return sendItems + sessionItems
@@ -88,17 +91,17 @@ enum AchievementEngine {
         [
             AchievementDefinition(
                 id: "weekly-streak-5", title: "Regular",
-                detail: "Climb every week for 5 weeks", symbolName: "repeat"
+                detail: "Climb every week for \(weeklyStreakTarget) weeks", symbolName: "repeat",
+                target: weeklyStreakTarget
             ) { sessions in
-                StatsAggregator.weeklyStreak(
-                    of: sessions, calendar: .current, referenceDate: .now
-                ) >= weeklyStreakTarget
+                StatsAggregator.weeklyStreak(of: sessions, calendar: .current, referenceDate: .now)
             },
             AchievementDefinition(
                 id: "three-per-week-4-weeks", title: "Dedicated",
-                detail: "3 sessions a week, 4 weeks running", symbolName: "chart.line.uptrend.xyaxis"
+                detail: "3 sessions a week, \(threePerWeekWeeks) weeks running",
+                symbolName: "chart.line.uptrend.xyaxis", target: threePerWeekWeeks
             ) { sessions in
-                hasConsecutiveWeeks(sessions, weeks: threePerWeekWeeks, sessionsPerWeek: 3)
+                longestConsecutiveWeekRun(sessions, sessionsPerWeek: 3)
             },
         ]
     }
@@ -107,28 +110,25 @@ enum AchievementEngine {
         [
             AchievementDefinition(
                 id: "flash-10-blues", title: "Blue Lightning",
-                detail: "Flash \(blueFlashTarget) blue problems", symbolName: "bolt.badge.checkmark"
+                detail: "Flash \(blueFlashTarget) blue problems", symbolName: "bolt.badge.checkmark",
+                target: blueFlashTarget
             ) { sessions in
-                allAttempts(sessions)
-                    .filter { $0.colorGrade == .blue && $0.result == .flash }
-                    .count >= blueFlashTarget
+                allProblems(sessions).count { $0.colorGrade == .blue && $0.wasFlashed }
             },
             AchievementDefinition(
                 id: "five-styles", title: "All-Rounder",
-                detail: "Send problems in \(styleVarietyTarget)+ styles", symbolName: "square.grid.3x3.fill"
+                detail: "Send problems in \(styleVarietyTarget)+ styles",
+                symbolName: "square.grid.3x3.fill", target: styleVarietyTarget
             ) { sessions in
-                let sentStyles = allAttempts(sessions)
-                    .filter { $0.result.countsAsSend }
-                    .flatMap(\.styles)
-                return Set(sentStyles).count >= styleVarietyTarget
+                let sentStyles = allProblems(sessions).filter(\.wasSent).flatMap(\.styles)
+                return Set(sentStyles).count
             },
             AchievementDefinition(
                 id: "project-attempts-100", title: "Siege Tactics",
-                detail: "\(projectAttemptTarget) attempts on projects", symbolName: "hammer.fill"
+                detail: "\(projectAttemptTarget) falls logged on projects", symbolName: "hammer.fill",
+                target: projectAttemptTarget
             ) { sessions in
-                allAttempts(sessions)
-                    .filter { $0.result == .project }
-                    .reduce(0) { $0 + $1.attemptCount } >= projectAttemptTarget
+                allProblems(sessions).reduce(0) { $0 + $1.fallCount }
             },
         ]
     }
@@ -137,45 +137,49 @@ enum AchievementEngine {
         [
             AchievementDefinition(
                 id: "night-owl", title: "Night Owl",
-                detail: "Finish a session after 21:00", symbolName: "moon.stars.fill"
+                detail: "Finish \(nightOwlTarget) sessions after \(nightOwlHour):00",
+                symbolName: "moon.stars.fill", target: nightOwlTarget
             ) { sessions in
-                sessions.contains { session in
+                sessions.count { session in
                     guard let end = session.endTime else { return false }
                     return Calendar.current.component(.hour, from: end) >= nightOwlHour
                 }
             },
             AchievementDefinition(
                 id: "marathon", title: "Marathon",
-                detail: "A session over 2 hours", symbolName: "stopwatch.fill"
+                detail: "A session over 3 hours", symbolName: "stopwatch.fill", target: 1
             ) { sessions in
-                sessions.contains { $0.duration >= marathonDuration }
+                sessions.count { $0.duration >= marathonDuration }
             },
             AchievementDefinition(
                 id: "globetrotter", title: "Globetrotter",
-                detail: "Climb at \(globetrotterGymTarget) different gyms", symbolName: "globe.europe.africa.fill"
+                detail: "Climb at \(globetrotterGymTarget) different gyms",
+                symbolName: "globe.europe.africa.fill", target: globetrotterGymTarget
             ) { sessions in
-                Set(sessions.compactMap { $0.gym?.name }).count >= globetrotterGymTarget
+                Set(sessions.compactMap { $0.gym?.name }).count
             },
         ]
     }
 
-    private static func allAttempts(_ sessions: [Session]) -> [ProblemAttempt] {
-        sessions.flatMap(\.attempts)
+    private static func allProblems(_ sessions: [Session]) -> [SessionProblem] {
+        sessions.flatMap(\.problems)
     }
 
-    private static func hasConsecutiveWeeks(_ sessions: [Session], weeks: Int,
-                                            sessionsPerWeek: Int) -> Bool {
+    private static func longestConsecutiveWeekRun(_ sessions: [Session],
+                                                  sessionsPerWeek: Int) -> Int {
         let calendar = Calendar.current
         let byWeek = Dictionary(grouping: sessions) { session in
             calendar.dateInterval(of: .weekOfYear, for: session.startTime)?.start ?? .distantPast
         }
         let qualifyingWeeks = byWeek.filter { $0.value.count >= sessionsPerWeek }.keys.sorted()
+        guard !qualifyingWeeks.isEmpty else { return 0 }
+        var longest = 1
         var consecutive = 1
         for (previous, current) in zip(qualifyingWeeks, qualifyingWeeks.dropFirst()) {
             let gap = calendar.dateComponents([.weekOfYear], from: previous, to: current).weekOfYear ?? 0
             consecutive = gap == 1 ? consecutive + 1 : 1
-            if consecutive >= weeks { return true }
+            longest = max(longest, consecutive)
         }
-        return qualifyingWeeks.count >= weeks && consecutive >= weeks
+        return longest
     }
 }

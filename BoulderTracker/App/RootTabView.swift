@@ -1,24 +1,35 @@
 import SwiftUI
 
 struct RootTabView: View {
-    @State private var selectedTab: AppTab = .home
+    @AppStorage(AppPreferences.darkModeKey) private var darkModeEnabled = true
+    @State private var selectedTab: AppTab = .climb
+
+    private var palette: ThemePalette { darkModeEnabled ? .dark : .light }
 
     var body: some View {
         TabView(selection: $selectedTab) {
-            Tab("Home", systemImage: "figure.climbing", value: .home) {
-                HomeView()
+            ForEach(AppTab.allCases, id: \.self) { tab in
+                Tab(tab.label, systemImage: tab.symbolName, value: tab) {
+                    screen(for: tab)
+                }
             }
-            Tab("Calendar", systemImage: "calendar", value: .calendar) {
-                Text("Calendar")
-            }
-            Tab("Stats", systemImage: "chart.xyaxis.line", value: .stats) {
-                Text("Stats")
-            }
-            Tab("Roadmap", systemImage: "map", value: .roadmap) {
-                Text("Roadmap")
-            }
-            Tab("Profile", systemImage: "person.crop.circle", value: .profile) {
-                Text("Profile")
+        }
+        .tabBarMinimizeBehavior(.onScrollDown)
+        .environment(\.palette, palette)
+        .preferredColorScheme(darkModeEnabled ? .dark : .light)
+        .tint(palette.accentText)
+    }
+
+    @ViewBuilder
+    private func screen(for tab: AppTab) -> some View {
+        ZStack {
+            palette.background.ignoresSafeArea()
+            WallTexture().ignoresSafeArea()
+            switch tab {
+            case .climb: HomeView()
+            case .activities: ActivitiesView()
+            case .stats: StatsView()
+            case .profile: ProfileView()
             }
         }
     }
