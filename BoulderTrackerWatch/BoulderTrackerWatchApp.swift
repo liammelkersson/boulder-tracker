@@ -4,7 +4,7 @@ import SwiftUI
 struct BoulderTrackerWatchApp: App {
     var body: some Scene {
         WindowGroup {
-            Text("Boulder Tracker")
+            WatchRootView()
         }
     }
 }
