@@ -80,6 +80,7 @@
 		9B52844355C6568241524E3E /* SessionSummaryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAA3430657EDEE943FE253E /* SessionSummaryScreen.swift */; };
 		A0BDA36B1EE7CFFFDBF35FD4 /* FakeSyncLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1542C63A58F3E058E1895E /* FakeSyncLink.swift */; };
 		A31912701BB0382CD6B27CB9 /* ThemedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFB3EA8A8479714B9B4D162 /* ThemedCard.swift */; };
+		A3B56EF9A7FAB666499E9167 /* WorkoutMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1D729299ED77B95B237569 /* WorkoutMetrics.swift */; };
 		A434F557874DA131AED4B0DD /* CurrentProjectCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E71D6A19DF52AF162E10B07 /* CurrentProjectCard.swift */; };
 		A56D8529A545EEBF6FF5CF5D /* SessionSyncEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8970B14FC314C74DC0148C8C /* SessionSyncEvent.swift */; };
 		A682F5DE47445988DA9CAA2E /* AccentButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A64287092BC5AF5641F78B /* AccentButtons.swift */; };
@@ -118,6 +119,7 @@
 		DFAF1C7300E29D522880BD4E /* SessionSyncInboxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAABA3BB83BBEF62632A8232 /* SessionSyncInboxTests.swift */; };
 		E0346799B7CF11915CD070EF /* Gym.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3C58F6B8FDFFE7AF23B43B /* Gym.swift */; };
 		E074CC9402720B1A1301C113 /* ProjectsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CA928332D9F1572CAB6EC3 /* ProjectsSheet.swift */; };
+		E1ECBCC4C76A8578C254D676 /* LiveWorkoutSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2680B5600126CA916566B4 /* LiveWorkoutSession.swift */; };
 		E28487E8D08D56160AC8CC89 /* DefaultGymSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C71E5E5AD9C9BCE4A10838B /* DefaultGymSeeder.swift */; };
 		E397CEB4CEF66A9BD4114AD5 /* SessionSyncOutboxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B070312D993A61120736DFEE /* SessionSyncOutboxTests.swift */; };
 		E399CE8504DC792F1D213131 /* SessionSyncOutbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDFB9042326AD35AEBA48EF /* SessionSyncOutbox.swift */; };
@@ -172,10 +174,12 @@
 		16C0D743A0331CB6D142FEFE /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
 		1CA62DE8D059648E169E5FC6 /* AchievementEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementEngine.swift; sourceTree = "<group>"; };
 		1CAA3430657EDEE943FE253E /* SessionSummaryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSummaryScreen.swift; sourceTree = "<group>"; };
+		1E2680B5600126CA916566B4 /* LiveWorkoutSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveWorkoutSession.swift; sourceTree = "<group>"; };
 		21360B8DF59856908D8D6401 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22EA8CE50F2E1075BD92211A /* StyleRadialChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleRadialChart.swift; sourceTree = "<group>"; };
 		28281AD77D6392E05E3B4CBB /* ProblemTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemTile.swift; sourceTree = "<group>"; };
 		2BDFB9042326AD35AEBA48EF /* SessionSyncOutbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSyncOutbox.swift; sourceTree = "<group>"; };
+		2C1D729299ED77B95B237569 /* WorkoutMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutMetrics.swift; sourceTree = "<group>"; };
 		2D73DB2B5869C9C3D5580E0F /* ColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHex.swift; sourceTree = "<group>"; };
 		2DA0494CD42B4C436DEA59E3 /* ColorGrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGrade.swift; sourceTree = "<group>"; };
 		2E3D9B35FA526E21D013DBF7 /* ActivitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesView.swift; sourceTree = "<group>"; };
@@ -309,6 +313,8 @@
 			children = (
 				5D51A59C2A2F956C8B3C154F /* BoulderTrackerWatch.entitlements */,
 				FDA5F8BBAF1A411A59FE20C7 /* BoulderTrackerWatchApp.swift */,
+				1E2680B5600126CA916566B4 /* LiveWorkoutSession.swift */,
+				2C1D729299ED77B95B237569 /* WorkoutMetrics.swift */,
 			);
 			path = BoulderTrackerWatch;
 			sourceTree = "<group>";
@@ -743,6 +749,7 @@
 				2F4BB9DCFFA7CE916F57752E /* BoulderTrackerWatchApp.swift in Sources */,
 				93B808B17AA5F679BBEE279F /* ClimbType.swift in Sources */,
 				ECC55B7941BCED3A464DB0AB /* ColorGrade.swift in Sources */,
+				E1ECBCC4C76A8578C254D676 /* LiveWorkoutSession.swift in Sources */,
 				996367A9A191B8D4BD22E4BA /* PendingEventQueue.swift in Sources */,
 				DEA81D76FC6708369B767EEB /* RouteStyle.swift in Sources */,
 				C01BCA68B2C4B987309B5E0F /* SessionSyncCoding.swift in Sources */,
@@ -752,6 +759,7 @@
 				211E573FCE66345AC93537F2 /* SyncLinking.swift in Sources */,
 				66E7C6167CAE3E6850DA8856 /* WatchConnectivityLink.swift in Sources */,
 				78453615E4297DA542323C12 /* WatchLiveSession.swift in Sources */,
+				A3B56EF9A7FAB666499E9167 /* WorkoutMetrics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
