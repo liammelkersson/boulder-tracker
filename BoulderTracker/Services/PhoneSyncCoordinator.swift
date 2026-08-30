@@ -80,9 +80,11 @@ final class PhoneSyncCoordinator {
         let gyms = (try? context.fetch(FetchDescriptor<Gym>())) ?? []
         let healthKitSyncEnabled = UserDefaults.standard
             .object(forKey: AppPreferences.healthKitSyncKey) as? Bool ?? true
+        let storedSystem = UserDefaults.standard.string(forKey: AppPreferences.gradeSystemKey)
         outbox.send(.phoneCatalog(PhoneCatalogPayload(
             gyms: gyms.map { GymSnapshot(name: $0.name, isDefault: $0.isDefault) },
-            healthKitSyncEnabled: healthKitSyncEnabled
+            healthKitSyncEnabled: healthKitSyncEnabled,
+            gradeSystem: storedSystem.flatMap(GradeSystem.init(rawValue:)) ?? .color
         )))
     }
 }

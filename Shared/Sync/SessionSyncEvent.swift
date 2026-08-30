@@ -59,6 +59,8 @@ struct GymSnapshot: Codable, Sendable, Equatable {
 struct PhoneCatalogPayload: Codable, Sendable, Equatable {
     let gyms: [GymSnapshot]
     let healthKitSyncEnabled: Bool
+    /// Optional so an envelope queued by an older build still decodes.
+    let gradeSystem: GradeSystem?
 }
 
 /// Every mutation crosses the wire as an additive event. Increments commute, so a

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct PersonalBestsSection: View {
     @Environment(\.palette) private var palette
+    @Environment(\.gradeSystem) private var gradeSystem
     let sessions: [Session]
 
     private var bests: [(label: String, value: String)] {
@@ -22,7 +23,7 @@ struct PersonalBestsSection: View {
     }
 
     private func gradeLabel(_ grade: ColorGrade) -> String {
-        "\(grade.displayName) · \(grade.frenchRange)"
+        grade.detailLabel(in: gradeSystem)
     }
 
     var body: some View {

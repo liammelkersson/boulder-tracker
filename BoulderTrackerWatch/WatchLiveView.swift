@@ -4,6 +4,7 @@ struct WatchLiveView: View {
     let snapshot: LiveSessionSnapshot
     let tally: [(grade: ColorGrade, count: Int)]
     let heartRate: Double?
+    let gradeSystem: GradeSystem
     let onLog: (ColorGrade, AttemptResult) -> Void
     let onEnd: () -> Void
 
@@ -20,7 +21,7 @@ struct WatchLiveView: View {
                 Section("Logged") {
                     ForEach(tally, id: \.grade) { entry in
                         HStack {
-                            Text(entry.grade.displayName)
+                            Text(entry.grade.shortLabel(in: gradeSystem))
                             Spacer()
                             Text("\(entry.count)").monospacedDigit()
                         }
@@ -35,7 +36,7 @@ struct WatchLiveView: View {
         .navigationTitle(snapshot.gymName ?? "Session")
         .sheet(isPresented: $isLogging) {
             NavigationStack {
-                WatchLogSheet { grade, result in
+                WatchLogSheet(gradeSystem: gradeSystem) { grade, result in
                     onLog(grade, result)
                     isLogging = false
                 }

@@ -10,6 +10,7 @@ final class WatchSyncCoordinator {
     let workout = LiveWorkoutSession()
 
     private(set) var gyms: [GymSnapshot] = []
+    private(set) var gradeSystem: GradeSystem = .color
     private(set) var lastMetrics: WorkoutMetrics?
     private(set) var finishedDuration: TimeInterval?
 
@@ -67,6 +68,7 @@ final class WatchSyncCoordinator {
         if case .phoneCatalog(let payload) = envelope.event {
             gyms = payload.gyms
             healthKitSyncEnabled = payload.healthKitSyncEnabled
+            gradeSystem = payload.gradeSystem ?? .color
             return
         }
         liveSession.apply(envelope.event)

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct HeroTimeCard: View {
     @Environment(\.palette) private var palette
+    @Environment(\.gradeSystem) private var gradeSystem
     let sessions: [Session]
 
     private var summary: StatsSummary { StatsAggregator.summary(of: sessions) }
@@ -40,7 +41,7 @@ struct HeroTimeCard: View {
             HStack(spacing: 4) {
                 Text("Currently climbing")
                     .foregroundStyle(palette.textDim)
-                Text("\(currentGrade.displayName) · \(currentGrade.frenchRange)")
+                Text(currentGrade.detailLabel(in: gradeSystem))
                     .fontWeight(.semibold)
                     .foregroundStyle(palette.text)
             }

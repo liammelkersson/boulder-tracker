@@ -3,6 +3,7 @@ import SwiftData
 
 struct ProblemTile: View {
     @Environment(\.palette) private var palette
+    @Environment(\.gradeSystem) private var gradeSystem
     @Environment(\.modelContext) private var modelContext
     @Environment(PhoneSyncCoordinator.self) private var syncCoordinator
     let problem: SessionProblem
@@ -58,7 +59,7 @@ struct ProblemTile: View {
 
     private var gradeAndGymLabel: String {
         let grade = problem.colorGrade
-        var label = "\(grade.displayName) · \(grade.frenchRange)"
+        var label = grade.detailLabel(in: gradeSystem)
         if let gymName = problem.session?.gym?.name {
             label += " · \(gymName)"
         }

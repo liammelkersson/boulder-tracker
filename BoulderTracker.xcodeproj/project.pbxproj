@@ -27,7 +27,9 @@
 		255678687B8663FC6159CF0E /* SessionSyncOutbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDFB9042326AD35AEBA48EF /* SessionSyncOutbox.swift */; };
 		258C743A189C6A412E34A9A3 /* SmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497717384B7A5CCBD97747D7 /* SmokeTests.swift */; };
 		27710A57DE51014953D2DE9F /* GymListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BDFE8748BC3D981AA5AA4D /* GymListSection.swift */; };
+		28056C5492FF471CC679243F /* AchievementIdentityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DCA83599B9ADBA15E5882C /* AchievementIdentityTests.swift */; };
 		28CC1FE0CA2EC54EC4444599 /* PartnerListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FAE104553C434628BEE681 /* PartnerListSection.swift */; };
+		2B656D2F1E947FBD694F6884 /* GradeSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85CCEB1F6DABDB1E13AC0C7 /* GradeSystem.swift */; };
 		2B725C3434CC92E36465EAA7 /* LiveSessionSnapshotReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2575C570F5D92C5A89AEDB /* LiveSessionSnapshotReader.swift */; };
 		2D3FF2569AA778FA7972D6E7 /* PhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9720EF636B8867B5B65677 /* PhotoStore.swift */; };
 		2D8901E9CFC3F9BF5DEE689E /* SessionRowCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E508219F5B9235B9A71097 /* SessionRowCard.swift */; };
@@ -42,6 +44,7 @@
 		48A1D4841D76E320E8C1831F /* SessionDurationFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6609FDD69031DC2053A105 /* SessionDurationFormatTests.swift */; };
 		49794A228933CEAF3A06D87A /* EditProfileSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD02A29757F74D62FD5F02B /* EditProfileSheet.swift */; };
 		4A41929544CC59552EE4C8D2 /* StatsSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C75C484DB145D3574725BA /* StatsSummary.swift */; };
+		4D76FE5F584FFAD4E1783043 /* GradeSystemEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7DA70CCA04996A414CFA21 /* GradeSystemEnvironment.swift */; };
 		55F8CD4D1234F94A2C76DCDA /* ActivitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3D9B35FA526E21D013DBF7 /* ActivitiesView.swift */; };
 		586E5882BB84A72691217344 /* SuggestedProblemsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CB7B0A7FFC9EC49B91066D /* SuggestedProblemsRow.swift */; };
 		5CF956B7287CEFA77C45CDF7 /* SessionDataExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E58180D832B7890BC041328 /* SessionDataExport.swift */; };
@@ -53,6 +56,7 @@
 		668685FC357A067D0C8E9C3D /* GymPickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4587B5D69AAB6EEFF318F /* GymPickerSheet.swift */; };
 		66E7C6167CAE3E6850DA8856 /* WatchConnectivityLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279D37D6B8E65AD6FF68F2C /* WatchConnectivityLink.swift */; };
 		6807DBD1120B4F3F97E6FD8F /* WatchConnectivityLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279D37D6B8E65AD6FF68F2C /* WatchConnectivityLink.swift */; };
+		68E2AA3ECA2DA09D69B7E61D /* GradeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE0685502F778A36121795E /* GradeLabel.swift */; };
 		6A8E36132E7052890B1C3E36 /* GradeDistributionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED63873B7195C1470E2E1C2B /* GradeDistributionCard.swift */; };
 		6CE4E35638431ED81A87C9E8 /* FakeWorkoutWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC7B2C5F1B96951864FB8D7 /* FakeWorkoutWriter.swift */; };
 		6D233D4F2623AC39C053C427 /* WatchLiveSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB04E7578019D9D03B7B0BE /* WatchLiveSessionTests.swift */; };
@@ -103,6 +107,7 @@
 		B6DD97BFD976B48F4C84514F /* GradeDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA59ECA983557C4012E265A /* GradeDot.swift */; };
 		B70E79ED32B15D44BF3BFF1A /* SyncLinking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B1C8783CFE8C373B25899 /* SyncLinking.swift */; };
 		B758658FA92278448C6A612F /* StatsPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44AEB6C3C0E7CA06725D32B /* StatsPeriod.swift */; };
+		B879E8A1B2406DAEDC1D4C6A /* GradeLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03DFB2F41C46612906CA9C1 /* GradeLabelTests.swift */; };
 		BBC77501044DAA171392BEB2 /* HeroTimeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6D61B1F7C5919B8CA54F6D /* HeroTimeCard.swift */; };
 		BC1D7AEAA3D445D57B0B6184 /* SyncEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7332E27D5E782EFEB3BFEC90 /* SyncEnvelope.swift */; };
 		BC52E7ADD20A5F1EB5DE6EF6 /* PendingEventQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094902CCE96FE34ADBD1C12 /* PendingEventQueue.swift */; };
@@ -112,6 +117,7 @@
 		C4B66BF59C956939CE59322E /* SessionSyncCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD98120C088455DB39DCD2 /* SessionSyncCoding.swift */; };
 		C66A44C2D6867D812D1E1FF3 /* SessionCompletionOutcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717D0E6C482A99E504FF9711 /* SessionCompletionOutcome.swift */; };
 		C7A0D6B75F8C70888C854A5E /* StatTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D170B0F89A44AA88F76D40C /* StatTile.swift */; };
+		C7D228D2B14E994C198867B5 /* GradeSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85CCEB1F6DABDB1E13AC0C7 /* GradeSystem.swift */; };
 		CB39D7E86D545E3D62355CFC /* HomeIdleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F823EA7826C18CE2392424 /* HomeIdleView.swift */; };
 		CCDC20398D732F4B61A352D8 /* ModelRoundTripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F62563AF39F829E404C1E6 /* ModelRoundTripTests.swift */; };
 		CD1D1A14DFAF90547893F5DE /* Partner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B09640D0FA580EA358CD9 /* Partner.swift */; };
@@ -134,6 +140,7 @@
 		ECC55B7941BCED3A464DB0AB /* ColorGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA0494CD42B4C436DEA59E3 /* ColorGrade.swift */; };
 		ED84D740682BB2BCF0B31499 /* SessionPhotoThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C043EA16DEFFD7A50DD9F6 /* SessionPhotoThumbnail.swift */; };
 		F6666B8955AE8C11E3DDD5C4 /* QuickAddProblemSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427EA41606057FE2C094908B /* QuickAddProblemSheet.swift */; };
+		F7A82AC0C1C5CFB192079727 /* GradeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE0685502F778A36121795E /* GradeLabel.swift */; };
 		F9C34241FAF5180B3B77FF08 /* PendingEventQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68CBE61488C4DC44FD9D9A5 /* PendingEventQueueTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -175,6 +182,7 @@
 		02F3361DAA17F8D15C48AC86 /* SessionSyncCodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSyncCodingTests.swift; sourceTree = "<group>"; };
 		09F823EA7826C18CE2392424 /* HomeIdleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeIdleView.swift; sourceTree = "<group>"; };
 		0C1542C63A58F3E058E1895E /* FakeSyncLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSyncLink.swift; sourceTree = "<group>"; };
+		0DE0685502F778A36121795E /* GradeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeLabel.swift; sourceTree = "<group>"; };
 		0F5B09640D0FA580EA358CD9 /* Partner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Partner.swift; sourceTree = "<group>"; };
 		11A295AA61CC4837DAFFE974 /* ColorGradeDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGradeDisplay.swift; sourceTree = "<group>"; };
 		1279D37D6B8E65AD6FF68F2C /* WatchConnectivityLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityLink.swift; sourceTree = "<group>"; };
@@ -210,6 +218,7 @@
 		538DDB353BD9CC14703811B5 /* AchievementDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementDefinition.swift; sourceTree = "<group>"; };
 		559BBDEC93D038B22C5D1D94 /* SessionSyncInbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSyncInbox.swift; sourceTree = "<group>"; };
 		566ECD974130DAB642022B71 /* ColorGradeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGradeTests.swift; sourceTree = "<group>"; };
+		5A7DA70CCA04996A414CFA21 /* GradeSystemEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeSystemEnvironment.swift; sourceTree = "<group>"; };
 		5AE81A0F277E2B6ABC8CFE8D /* SectionHeading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeading.swift; sourceTree = "<group>"; };
 		5CC94E761844AB02B2003A33 /* MonthCalendarGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCalendarGrid.swift; sourceTree = "<group>"; };
 		5D51A59C2A2F956C8B3C154F /* BoulderTrackerWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BoulderTrackerWatch.entitlements; sourceTree = "<group>"; };
@@ -255,6 +264,7 @@
 		B070312D993A61120736DFEE /* SessionSyncOutboxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSyncOutboxTests.swift; sourceTree = "<group>"; };
 		B3C043EA16DEFFD7A50DD9F6 /* SessionPhotoThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionPhotoThumbnail.swift; sourceTree = "<group>"; };
 		B67025D3E0D6CE36434E29D4 /* LiveSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSessionView.swift; sourceTree = "<group>"; };
+		B9DCA83599B9ADBA15E5882C /* AchievementIdentityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementIdentityTests.swift; sourceTree = "<group>"; };
 		BA1C397AD23F64B56B11408A /* ProjectAggregator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectAggregator.swift; sourceTree = "<group>"; };
 		BBD02A29757F74D62FD5F02B /* EditProfileSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileSheet.swift; sourceTree = "<group>"; };
 		BF32B6E832449D49CC10E1FD /* ThemePalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePalette.swift; sourceTree = "<group>"; };
@@ -266,10 +276,12 @@
 		CC2575C570F5D92C5A89AEDB /* LiveSessionSnapshotReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSessionSnapshotReader.swift; sourceTree = "<group>"; };
 		CC97D594653F1DFF04DB5E99 /* SessionDetailSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailSheet.swift; sourceTree = "<group>"; };
 		CF1ACC91664CFA09C71876F8 /* GradesSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesSheet.swift; sourceTree = "<group>"; };
+		D03DFB2F41C46612906CA9C1 /* GradeLabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeLabelTests.swift; sourceTree = "<group>"; };
 		D287E844A2853EACE12280D5 /* PhotoStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStoreTests.swift; sourceTree = "<group>"; };
 		D57016D08C534EC76E7876C4 /* RouteStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStyle.swift; sourceTree = "<group>"; };
 		D68CBE61488C4DC44FD9D9A5 /* PendingEventQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingEventQueueTests.swift; sourceTree = "<group>"; };
 		D81CF5C93705822AE6A875D2 /* GradeBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeBadge.swift; sourceTree = "<group>"; };
+		D85CCEB1F6DABDB1E13AC0C7 /* GradeSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeSystem.swift; sourceTree = "<group>"; };
 		DB3114771B3243C5F78F083A /* WallTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallTexture.swift; sourceTree = "<group>"; };
 		DD1C069C0CDE40F8EB3985C6 /* BoulderTracker.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BoulderTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E232F698B7E6AA885651D127 /* QuickLogRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLogRow.swift; sourceTree = "<group>"; };
@@ -378,6 +390,7 @@
 				794B6890351EF2B4D6D45964 /* ClimbTypeDisplay.swift */,
 				11A295AA61CC4837DAFFE974 /* ColorGradeDisplay.swift */,
 				2D73DB2B5869C9C3D5580E0F /* ColorHex.swift */,
+				5A7DA70CCA04996A414CFA21 /* GradeSystemEnvironment.swift */,
 				987777D699DF2E2744777308 /* HoldBlobShape.swift */,
 				16C0D743A0331CB6D142FEFE /* RootTabView.swift */,
 				BF32B6E832449D49CC10E1FD /* ThemePalette.swift */,
@@ -389,10 +402,12 @@
 			isa = PBXGroup;
 			children = (
 				44B73A64F6A52FE45E78E22A /* AchievementEngineTests.swift */,
+				B9DCA83599B9ADBA15E5882C /* AchievementIdentityTests.swift */,
 				00B4F1FB239B32F1AEDBAB1C /* AttemptResultTests.swift */,
 				566ECD974130DAB642022B71 /* ColorGradeTests.swift */,
 				0C1542C63A58F3E058E1895E /* FakeSyncLink.swift */,
 				ACC7B2C5F1B96951864FB8D7 /* FakeWorkoutWriter.swift */,
+				D03DFB2F41C46612906CA9C1 /* GradeLabelTests.swift */,
 				ECC8267A58E91D1CF1886259 /* LiveSessionSnapshotReaderTests.swift */,
 				F3F62563AF39F829E404C1E6 /* ModelRoundTripTests.swift */,
 				D68CBE61488C4DC44FD9D9A5 /* PendingEventQueueTests.swift */,
@@ -509,6 +524,8 @@
 				EF999BAFC8EA39365D0D9714 /* AttemptResult.swift */,
 				C8D9B4FF8FCAE0C8695F58AF /* ClimbType.swift */,
 				2DA0494CD42B4C436DEA59E3 /* ColorGrade.swift */,
+				0DE0685502F778A36121795E /* GradeLabel.swift */,
+				D85CCEB1F6DABDB1E13AC0C7 /* GradeSystem.swift */,
 				D57016D08C534EC76E7876C4 /* RouteStyle.swift */,
 				8855E3A4E3C6BE6573D60DCA /* Sync */,
 			);
@@ -667,6 +684,9 @@
 				2352435CCBD83ED07CC63DA4 /* GradeBadge.swift in Sources */,
 				6A8E36132E7052890B1C3E36 /* GradeDistributionCard.swift in Sources */,
 				B6DD97BFD976B48F4C84514F /* GradeDot.swift in Sources */,
+				68E2AA3ECA2DA09D69B7E61D /* GradeLabel.swift in Sources */,
+				2B656D2F1E947FBD694F6884 /* GradeSystem.swift in Sources */,
+				4D76FE5F584FFAD4E1783043 /* GradeSystemEnvironment.swift in Sources */,
 				90BC722DE0025DC83A04799A /* GradesSheet.swift in Sources */,
 				E0346799B7CF11915CD070EF /* Gym.swift in Sources */,
 				27710A57DE51014953D2DE9F /* GymListSection.swift in Sources */,
@@ -740,10 +760,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0464F56722D076BCB0A528F /* AchievementEngineTests.swift in Sources */,
+				28056C5492FF471CC679243F /* AchievementIdentityTests.swift in Sources */,
 				76BD41BC9ABF92E9B8B2CEEA /* AttemptResultTests.swift in Sources */,
 				8028DB6B9B23C3C0F967644D /* ColorGradeTests.swift in Sources */,
 				A0BDA36B1EE7CFFFDBF35FD4 /* FakeSyncLink.swift in Sources */,
 				6CE4E35638431ED81A87C9E8 /* FakeWorkoutWriter.swift in Sources */,
+				B879E8A1B2406DAEDC1D4C6A /* GradeLabelTests.swift in Sources */,
 				AEEB59A885E7146266C4398D /* LiveSessionSnapshotReaderTests.swift in Sources */,
 				CCDC20398D732F4B61A352D8 /* ModelRoundTripTests.swift in Sources */,
 				F9C34241FAF5180B3B77FF08 /* PendingEventQueueTests.swift in Sources */,
@@ -767,6 +789,8 @@
 				2F4BB9DCFFA7CE916F57752E /* BoulderTrackerWatchApp.swift in Sources */,
 				93B808B17AA5F679BBEE279F /* ClimbType.swift in Sources */,
 				ECC55B7941BCED3A464DB0AB /* ColorGrade.swift in Sources */,
+				F7A82AC0C1C5CFB192079727 /* GradeLabel.swift in Sources */,
+				C7D228D2B14E994C198867B5 /* GradeSystem.swift in Sources */,
 				E1ECBCC4C76A8578C254D676 /* LiveWorkoutSession.swift in Sources */,
 				996367A9A191B8D4BD22E4BA /* PendingEventQueue.swift in Sources */,
 				DEA81D76FC6708369B767EEB /* RouteStyle.swift in Sources */,

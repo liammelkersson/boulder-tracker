@@ -3,6 +3,7 @@ import SwiftUI
 /// All projects — marked problems plus recurring unsent ones.
 struct ProjectsSheet: View {
     @Environment(\.palette) private var palette
+    @Environment(\.gradeSystem) private var gradeSystem
     @AppStorage(AppPreferences.currentProjectNameKey) private var currentProjectName = ""
     let sessions: [Session]
 
@@ -56,7 +57,7 @@ struct ProjectsSheet: View {
 
     private func projectSubtitle(_ project: ProjectGroup) -> String {
         let sessionsLabel = project.sessionCount == 1 ? "1 session" : "\(project.sessionCount) sessions"
-        return "\(project.grade.displayName) · \(project.gymName ?? "Unknown gym") · \(sessionsLabel)"
+        return "\(project.grade.shortLabel(in: gradeSystem)) · \(project.gymName ?? "Unknown gym") · \(sessionsLabel)"
     }
 
     @ViewBuilder

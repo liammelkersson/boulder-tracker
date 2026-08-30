@@ -2,6 +2,7 @@ import SwiftUI
 
 struct RootTabView: View {
     @AppStorage(AppPreferences.darkModeKey) private var darkModeEnabled = true
+    @AppStorage(AppPreferences.gradeSystemKey) private var gradeSystem = GradeSystem.color
     @State private var selectedTab: AppTab = .climb
 
     private var palette: ThemePalette { darkModeEnabled ? .dark : .light }
@@ -16,6 +17,7 @@ struct RootTabView: View {
         }
         .tabBarMinimizeBehavior(.onScrollDown)
         .environment(\.palette, palette)
+        .environment(\.gradeSystem, gradeSystem)
         .preferredColorScheme(darkModeEnabled ? .dark : .light)
         .tint(palette.accentText)
     }

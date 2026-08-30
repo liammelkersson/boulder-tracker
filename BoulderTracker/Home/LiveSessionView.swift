@@ -104,6 +104,7 @@ struct LiveSessionView: View {
 
 struct LiveGradeTally: View {
     @Environment(\.palette) private var palette
+    @Environment(\.gradeSystem) private var gradeSystem
     let problems: [SessionProblem]
 
     private var tally: [(grade: ColorGrade, count: Int)] {
@@ -121,7 +122,7 @@ struct LiveGradeTally: View {
                 ForEach(tally, id: \.grade) { entry in
                     HStack(spacing: 7) {
                         GradeDot(grade: entry.grade)
-                        Text(entry.grade.displayName)
+                        Text(entry.grade.shortLabel(in: gradeSystem))
                             .font(.system(size: 13, weight: .medium))
                             .foregroundStyle(palette.text)
                         Text("\(entry.count)")

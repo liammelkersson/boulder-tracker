@@ -20,6 +20,7 @@ struct WatchRootView: View {
                 snapshot: snapshot,
                 tally: coordinator.liveSession.tally,
                 heartRate: coordinator.workout.currentHeartRate,
+                gradeSystem: coordinator.gradeSystem,
                 onLog: { grade, result in coordinator.log(grade: grade, result: result) },
                 onEnd: { coordinator.finishSession() }
             )

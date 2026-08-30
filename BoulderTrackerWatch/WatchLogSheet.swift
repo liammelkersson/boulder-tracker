@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct WatchLogSheet: View {
+    let gradeSystem: GradeSystem
     let onLog: (ColorGrade, AttemptResult) -> Void
 
     @State private var grade: ColorGrade?
@@ -18,7 +19,7 @@ struct WatchLogSheet: View {
             Button {
                 grade = option
             } label: {
-                Text(option.displayName)
+                Text(option.shortLabel(in: gradeSystem))
             }
         }
         .navigationTitle("Grade")
@@ -28,6 +29,6 @@ struct WatchLogSheet: View {
         List(AttemptResult.allCases) { result in
             Button(result.displayName) { onLog(grade, result) }
         }
-        .navigationTitle(grade.displayName)
+        .navigationTitle(grade.shortLabel(in: gradeSystem))
     }
 }

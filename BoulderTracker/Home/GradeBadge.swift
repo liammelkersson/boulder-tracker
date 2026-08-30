@@ -2,6 +2,7 @@ import SwiftUI
 
 /// Shield-shaped badge showing the grade currently being climbed.
 struct GradeBadge: View {
+    @Environment(\.gradeSystem) private var gradeSystem
     let grade: ColorGrade
 
     private static let badgeSize = CGSize(width: 56, height: 66)
@@ -25,7 +26,7 @@ struct GradeBadge: View {
                     .scaledToFit()
                     .frame(width: 20, height: 17)
                     .foregroundStyle(.black.opacity(0.72))
-                Text(grade.vGradeShort)
+                Text(grade.shortLabel(in: gradeSystem))
                     .font(.system(size: 14, weight: .heavy))
                     .foregroundStyle(.black.opacity(0.78))
             }

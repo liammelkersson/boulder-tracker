@@ -54,6 +54,19 @@ enum ColorGrade: Int, Codable, CaseIterable, Comparable, Identifiable {
         }
     }
 
+    /// Single representative value for compact UI, where a range does not fit.
+    var frenchShort: String {
+        switch self {
+        case .yellow: "<4"
+        case .green: "4"
+        case .blue: "5+"
+        case .red: "6B"
+        case .black: "7A"
+        case .white: "7C+"
+        case .unknown: "?"
+        }
+    }
+
     var vGradeShort: String {
         switch self {
         case .yellow: "WU"

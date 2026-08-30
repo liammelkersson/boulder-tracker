@@ -2,6 +2,7 @@ import SwiftUI
 
 struct GradeDistributionCard: View {
     @Environment(\.palette) private var palette
+    @Environment(\.gradeSystem) private var gradeSystem
     let sessions: [Session]
 
     private var sendCounts: [(grade: ColorGrade, count: Int)] {
@@ -68,7 +69,7 @@ struct GradeDistributionCard: View {
                 .fill(grade.displayColor)
                 .frame(width: 3, height: 30)
             VStack(alignment: .leading, spacing: 1) {
-                Text(grade.displayName)
+                Text(grade.shortLabel(in: gradeSystem))
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundStyle(palette.text)
                 Text(count == 1 ? "1 send" : "\(count) sends")

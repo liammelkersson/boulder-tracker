@@ -4,6 +4,7 @@ import PhotosUI
 
 struct QuickAddProblemSheet: View {
     @Environment(\.palette) private var palette
+    @Environment(\.gradeSystem) private var gradeSystem
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     let session: Session
@@ -75,7 +76,7 @@ struct QuickAddProblemSheet: View {
         } label: {
             HStack(spacing: 7) {
                 GradeDot(grade: grade, size: 11)
-                Text(grade.displayName)
+                Text(grade.shortLabel(in: gradeSystem))
                     .font(.system(size: 13, weight: .semibold))
                     .foregroundStyle(isSelected ? palette.text : palette.textDim)
             }
@@ -90,7 +91,7 @@ struct QuickAddProblemSheet: View {
             }
         }
         .buttonStyle(.plain)
-        .accessibilityLabel(grade.displayName)
+        .accessibilityLabel(grade.shortLabel(in: gradeSystem))
     }
 
     private var styleChips: some View {

@@ -59,7 +59,8 @@ struct SessionSyncCodingTests {
     @Test func phoneCatalogRoundTrips() throws {
         let event = SessionSyncEvent.phoneCatalog(PhoneCatalogPayload(
             gyms: [GymSnapshot(name: "Klättervigören Jönköping", isDefault: true)],
-            healthKitSyncEnabled: false
+            healthKitSyncEnabled: false,
+            gradeSystem: .vScale
         ))
         #expect(try roundTrip(event) == event)
     }

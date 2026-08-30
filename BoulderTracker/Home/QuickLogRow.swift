@@ -5,6 +5,7 @@ import SwiftData
 /// Logs accumulate on one unnamed problem per grade in the session.
 struct QuickLogRow: View {
     @Environment(\.palette) private var palette
+    @Environment(\.gradeSystem) private var gradeSystem
     @Environment(\.modelContext) private var modelContext
     @Environment(PhoneSyncCoordinator.self) private var syncCoordinator
     let session: Session
@@ -22,7 +23,7 @@ struct QuickLogRow: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .confirmationDialog(
-            "Log \(pendingGrade?.displayName ?? "") problem",
+            "Log \(pendingGrade?.shortLabel(in: gradeSystem) ?? "") problem",
             isPresented: pendingGradeBinding,
             titleVisibility: .visible,
             presenting: pendingGrade
@@ -39,7 +40,7 @@ struct QuickLogRow: View {
         } label: {
             HStack(spacing: 7) {
                 GradeDot(grade: grade, size: 11)
-                Text("+ \(grade.displayName)")
+                Text("+ \(grade.shortLabel(in: gradeSystem))")
                     .font(.system(size: 13, weight: .medium))
                     .foregroundStyle(palette.textDim)
             }

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct CurrentProjectCard: View {
     @Environment(\.palette) private var palette
+    @Environment(\.gradeSystem) private var gradeSystem
     @AppStorage(AppPreferences.currentProjectNameKey) private var currentProjectName = ""
     let sessions: [Session]
 
@@ -55,7 +56,7 @@ struct CurrentProjectCard: View {
             ? "1 session on this problem"
             : "\(project.sessionCount) sessions on this problem"
         return VStack(alignment: .leading, spacing: 2) {
-            Text("\(project.grade.displayName) · \(project.grade.frenchRange) · \u{201C}\(project.name)\u{201D}")
+            Text("\(project.grade.detailLabel(in: gradeSystem)) · \u{201C}\(project.name)\u{201D}")
                 .font(.system(size: 16, weight: .semibold))
                 .foregroundStyle(palette.text)
             Text("\(project.gymName ?? "Unknown gym") · \(sessionsLabel)")
