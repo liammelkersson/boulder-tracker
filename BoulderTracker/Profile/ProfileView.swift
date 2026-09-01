@@ -128,8 +128,12 @@ struct ProfileView: View {
         .buttonStyle(.plain)
     }
 
+    private var appVersion: String {
+        Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "—"
+    }
+
     private var versionFooter: some View {
-        Text("Boulder Tracker v1.0.0")
+        Text("Boulder Tracker v\(appVersion)")
             .scaledFont(size: 12)
             .foregroundStyle(palette.textFaint)
             .frame(maxWidth: .infinity)

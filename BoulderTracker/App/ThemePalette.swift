@@ -20,6 +20,8 @@ struct ThemePalette {
     static let accent = Color(hex: 0xC5F669)
     static let onAccent = Color(hex: 0x0A0B0D)
     static let danger = Color(hex: 0xE5473B)
+    /// Positive-state green (flash highlights, unlocked badges).
+    static let success = Color(hex: 0x14A876)
 
     /// Accent adjusted for legible text on the theme background.
     var accentText: Color {

@@ -30,7 +30,7 @@ struct QuickAddProblemSheet: View {
                 field(label: "Grade") { gradePills }
                 field(label: "Style") { styleChips }
                 field(label: "Notes") {
-                    ThemedTextField(placeholder: "Optional notes", text: $notes)
+                    ThemedNotesField(placeholder: "Optional notes", text: $notes)
                 }
                 Toggle("Mark as project", isOn: $isProject)
                     .scaledFont(size: 15)

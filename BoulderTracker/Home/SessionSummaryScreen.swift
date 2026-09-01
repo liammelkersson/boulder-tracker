@@ -19,6 +19,7 @@ struct SessionSummaryScreen: View {
     @State private var notes = ""
     @State private var unlockedTitles: [String]?
     @State private var isSaving = false
+    @State private var confirmingDiscard = false
 
     var body: some View {
         // Discard deletes the session; the final body evaluation after that
@@ -169,7 +170,7 @@ struct SessionSummaryScreen: View {
     private var notesField: some View {
         VStack(alignment: .leading, spacing: 8) {
             SectionHeading(title: "Notes")
-            ThemedTextField(placeholder: "Optional notes about the session", text: $notes)
+            ThemedNotesField(placeholder: "Optional notes about the session", text: $notes)
         }
     }
 
@@ -187,11 +188,20 @@ struct SessionSummaryScreen: View {
             }
             .buttonStyle(.plain)
             .disabled(isSaving)
-            Button(action: discardSession) {
+            Button {
+                confirmingDiscard = true
+            } label: {
                 SecondaryButtonLabel(title: "Discard")
             }
             .buttonStyle(.plain)
             .disabled(isSaving)
+        }
+        .confirmationDialog(
+            "Discard this session?", isPresented: $confirmingDiscard, titleVisibility: .visible
+        ) {
+            Button("Discard Session", role: .destructive, action: discardSession)
+        } message: {
+            Text("Removes the session and everything logged in it. Cannot be undone.")
         }
     }
 

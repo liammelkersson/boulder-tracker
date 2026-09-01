@@ -146,7 +146,7 @@ struct ProblemTile: View {
             .overlay {
                 if result == .flash && problem.totalLogs == 0 {
                     RoundedRectangle(cornerRadius: 12)
-                        .strokeBorder(Color(hex: 0x14A876), lineWidth: 2)
+                        .strokeBorder(ThemePalette.success, lineWidth: 2)
                 }
             }
         }
@@ -157,7 +157,7 @@ struct ProblemTile: View {
 
     private func titleColor(for result: AttemptResult) -> Color {
         switch result {
-        case .flash: Color(hex: 0x14A876)
+        case .flash: ThemePalette.success
         case .send: ThemePalette.accent
         case .fall: palette.textDim
         }

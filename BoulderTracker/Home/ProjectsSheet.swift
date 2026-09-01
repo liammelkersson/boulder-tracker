@@ -63,7 +63,7 @@ struct ProjectsSheet: View {
     @ViewBuilder
     private func trailingControl(_ project: ProjectGroup, isCurrent: Bool) -> some View {
         if project.wasSent {
-            statusChip(text: "Sent", color: Color(hex: 0x14A876))
+            statusChip(text: "Sent", color: ThemePalette.success)
         } else if isCurrent {
             statusChip(text: "Current", color: palette.accentText)
         } else {

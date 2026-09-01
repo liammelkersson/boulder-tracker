@@ -340,9 +340,18 @@ struct PartnerChip: View {
         Color(hex: 0xE7B23C), Color(hex: 0x7C97F0), Color(hex: 0x3FCB9B), Color(hex: 0xE5473B),
     ]
 
+    // FNV-1a instead of `hashValue`: Swift seeds `hashValue` per process, so
+    // chip colors would change on every launch.
+    private static let fnvOffsetBasis: UInt64 = 0xcbf2_9ce4_8422_2325
+    private static let fnvPrime: UInt64 = 0x0000_0100_0000_01b3
+
     private var chipColor: Color {
-        let paletteIndex = abs(name.hashValue) % Self.chipColors.count
-        return Self.chipColors[paletteIndex]
+        var hash = Self.fnvOffsetBasis
+        for byte in name.utf8 {
+            hash ^= UInt64(byte)
+            hash = hash &* Self.fnvPrime
+        }
+        return Self.chipColors[Int(hash % UInt64(Self.chipColors.count))]
     }
 
     var body: some View {

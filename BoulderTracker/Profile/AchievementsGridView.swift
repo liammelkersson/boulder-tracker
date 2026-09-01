@@ -101,10 +101,10 @@ struct AchievementsGridView: View {
         if isUnlocked {
             Text("Unlocked")
                 .scaledFont(size: 12, weight: .semibold)
-                .foregroundStyle(Color(hex: 0x14A876))
+                .foregroundStyle(ThemePalette.success)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 4)
-                .background(Color(hex: 0x14A876).opacity(0.16))
+                .background(ThemePalette.success.opacity(0.16))
                 .clipShape(.capsule)
         } else {
             let percent = Int((definition.progressFraction(in: finishedSessions) * 100).rounded())

@@ -11,8 +11,8 @@ struct PreferencesSection: View {
         VStack(alignment: .leading, spacing: 10) {
             SectionHeading(title: "Preferences")
             VStack(spacing: 0) {
-                preferenceRow(title: "Dark mode", isOn: $darkModeEnabled, isLast: false)
-                preferenceRow(title: "HealthKit sync", isOn: $healthKitSyncEnabled, isLast: false)
+                preferenceRow(title: "Dark mode", isOn: $darkModeEnabled)
+                preferenceRow(title: "HealthKit sync", isOn: $healthKitSyncEnabled)
                 gradeSystemRow
             }
             .themedCard()
@@ -40,7 +40,9 @@ struct PreferencesSection: View {
         .padding(.vertical, 14)
     }
 
-    private func preferenceRow(title: String, isOn: Binding<Bool>, isLast: Bool) -> some View {
+    /// The grade-system row always closes the card, so every toggle row
+    /// draws a trailing divider.
+    private func preferenceRow(title: String, isOn: Binding<Bool>) -> some View {
         Toggle(title, isOn: isOn)
             .scaledFont(size: 15)
             .foregroundStyle(palette.text)
@@ -48,9 +50,7 @@ struct PreferencesSection: View {
             .padding(.horizontal, 16)
             .padding(.vertical, 14)
             .overlay(alignment: .bottom) {
-                if !isLast {
-                    Rectangle().fill(palette.border.opacity(0.08)).frame(height: 0.5)
-                }
+                Rectangle().fill(palette.border.opacity(0.08)).frame(height: 0.5)
             }
     }
 }

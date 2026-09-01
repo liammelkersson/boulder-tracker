@@ -145,7 +145,7 @@ struct RetroSessionForm: View {
     private var notesField: some View {
         VStack(alignment: .leading, spacing: 8) {
             SectionHeading(title: "Notes")
-            ThemedTextField(placeholder: "Optional notes", text: $notes)
+            ThemedNotesField(placeholder: "Optional notes", text: $notes)
         }
     }
 

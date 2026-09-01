@@ -36,16 +36,18 @@ achievements, and a technique roadmap.
 
 ## 3. Grade system
 
-Fixed enum `ColorGrade`, ordered easiest → hardest. Klättervigören Jönköping scale:
+Fixed enum `ColorGrade`, ordered easiest → hardest. Klättervigören Jönköping scale
+(as shipped in `Shared/ColorGrade.swift`; yellow is the warm-up tier below green,
+and `unknown` covers unlabelled problems):
 
 | Color | French | V-grade |
 |-------|--------|---------|
-| 🟢 Green | 4–5b | V0–V1 |
-| 🔵 Blue | 5b–6a | V1–V3 |
-| 🔴 Red | 6a–6c | V3–V5 |
-| ⚫ Black | 6c–7a | V5–V7 |
-| ⚪ White | 7b–7c | V8–V10 |
-| 🟡 Yellow | 8a+ | V11+ |
+| 🟡 Yellow | <4 | – (warm-up) |
+| 🟢 Green | 4–5 | V0–V2 |
+| 🔵 Blue | 5+–6A | V3–V4 |
+| 🔴 Red | 6B–6C | V5–V6 |
+| ⚫ Black | 7A–7B | V7–V8 |
+| ⚪ White | 7C+ | V9+ |
 
 French/V-grade ranges are display metadata on the enum. All logic compares enum
 order, never raw strings.
