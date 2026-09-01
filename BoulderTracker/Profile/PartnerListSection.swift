@@ -71,6 +71,7 @@ struct PartnerEditorSheet: View {
     let partner: Partner?
 
     @State private var name = ""
+    @State private var confirmingDelete = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
@@ -85,13 +86,39 @@ struct PartnerEditorSheet: View {
             }
             .buttonStyle(.plain)
             .disabled(name.isEmpty)
+            if partner != nil {
+                Button {
+                    confirmingDelete = true
+                } label: {
+                    Text("Delete Partner")
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundStyle(ThemePalette.danger)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                }
+                .buttonStyle(.plain)
+            }
             Spacer()
         }
         .padding(.horizontal, 20)
         .padding(.top, 26)
         .presentationDetents([.medium])
         .presentationDragIndicator(.visible)
+        .confirmationDialog(
+            "Delete this partner?", isPresented: $confirmingDelete, titleVisibility: .visible
+        ) {
+            Button("Delete Partner", role: .destructive, action: deletePartner)
+        } message: {
+            Text("Sessions keep their history but lose the partner link.")
+        }
         .onAppear { name = partner?.name ?? "" }
+    }
+
+    private func deletePartner() {
+        guard let partner else { return }
+        modelContext.delete(partner)
+        modelContext.saveReportingFailure(operation: "partner delete")
+        dismiss()
     }
 
     private func savePartner() {

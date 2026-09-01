@@ -79,6 +79,7 @@ struct GymEditorSheet: View {
 
     @State private var name = ""
     @State private var isDefault = false
+    @State private var confirmingDelete = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
@@ -97,16 +98,43 @@ struct GymEditorSheet: View {
             }
             .buttonStyle(.plain)
             .disabled(name.isEmpty)
+            if gym != nil {
+                Button {
+                    confirmingDelete = true
+                } label: {
+                    Text("Delete Gym")
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundStyle(ThemePalette.danger)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                }
+                .buttonStyle(.plain)
+            }
             Spacer()
         }
         .padding(.horizontal, 20)
         .padding(.top, 26)
         .presentationDetents([.medium])
         .presentationDragIndicator(.visible)
+        .confirmationDialog(
+            "Delete this gym?", isPresented: $confirmingDelete, titleVisibility: .visible
+        ) {
+            Button("Delete Gym", role: .destructive, action: deleteGym)
+        } message: {
+            Text("Sessions keep their history but lose the gym link.")
+        }
         .onAppear {
             name = gym?.name ?? ""
             isDefault = gym?.isDefault ?? false
         }
+    }
+
+    private func deleteGym() {
+        guard let gym else { return }
+        modelContext.delete(gym)
+        modelContext.saveReportingFailure(operation: "gym delete")
+        syncCoordinator.publishCatalog()
+        dismiss()
     }
 
     private func saveGym() {

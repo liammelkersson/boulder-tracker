@@ -8,7 +8,19 @@ struct ProblemTile: View {
     @Environment(PhoneSyncCoordinator.self) private var syncCoordinator
     let problem: SessionProblem
 
+    @State private var confirmingDelete = false
+
     var body: some View {
+        // Delete Problem removes this row's model; the final body evaluation
+        // after that must not touch persisted properties.
+        if problem.isInvalidated {
+            Color.clear
+        } else {
+            tileContent
+        }
+    }
+
+    private var tileContent: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(spacing: 12) {
                 HoldIcon(grade: problem.colorGrade, size: 34)
@@ -30,7 +42,27 @@ struct ProblemTile: View {
                     systemImage: problem.isProject ? "flag.slash" : "flag"
                 )
             }
+            Button(role: .destructive) {
+                confirmingDelete = true
+            } label: {
+                Label("Delete Problem", systemImage: "trash")
+            }
         }
+        .confirmationDialog(
+            "Delete this problem?", isPresented: $confirmingDelete, titleVisibility: .visible
+        ) {
+            Button("Delete Problem", role: .destructive, action: deleteProblem)
+        } message: {
+            Text("Removes the problem, its logs, and its photo. Cannot be undone.")
+        }
+    }
+
+    private func deleteProblem() {
+        if let filename = problem.photoFilename {
+            try? PhotoStore.makeDefault().deletePhoto(named: filename)
+        }
+        modelContext.delete(problem)
+        modelContext.saveReportingFailure(operation: "problem delete")
     }
 
     private var problemInfo: some View {
