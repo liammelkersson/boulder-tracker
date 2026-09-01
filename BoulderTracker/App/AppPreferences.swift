@@ -8,6 +8,10 @@ enum AppPreferences {
     static let climbingSinceYearKey = "pref.climbingSinceYear"
     static let currentProjectNameKey = "pref.currentProjectName"
     static let avatarFilenameKey = "pref.avatarFilename"
+    static let onboardingCompleteKey = "pref.onboardingComplete"
+
+    /// Set by XCUITest launch arguments to force a first-launch wizard.
+    static let uiTestingResetOnboardingKey = "uiTestingResetOnboarding"
 
     static let defaultProfileName = "Liam"
     static let defaultClimbingSinceYear = "2023"

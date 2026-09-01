@@ -20,7 +20,15 @@ struct BoulderTrackerApp: App {
             Logger.persistence.error("Default gym seeding failed: \(error)")
         }
         AchievementCleanup.removeUnearnedOnce(context: container.mainContext, defaults: .standard)
+        Self.resetOnboardingForUITestingIfRequested(defaults: .standard)
         syncCoordinator = PhoneSyncCoordinator(context: container.mainContext)
+    }
+
+    /// XCUITest launches pass `-uiTestingResetOnboarding YES`, which lands in
+    /// the argument domain, so every UI run starts at the wizard.
+    private static func resetOnboardingForUITestingIfRequested(defaults: UserDefaults) {
+        guard defaults.bool(forKey: AppPreferences.uiTestingResetOnboardingKey) else { return }
+        defaults.set(false, forKey: AppPreferences.onboardingCompleteKey)
     }
 
     /// CloudKit first for cross-device backup; falls back to a device-local
@@ -46,7 +54,7 @@ struct BoulderTrackerApp: App {
 
     var body: some Scene {
         WindowGroup {
-            RootTabView()
+            AppRootView()
                 .environment(syncCoordinator)
                 .task { syncCoordinator.start() }
         }
