@@ -63,7 +63,7 @@ struct QuickLogRow: View {
         let problem = session.problems.first { $0.name.isEmpty && $0.colorGrade == grade }
             ?? createQuickLogProblem(grade: grade)
         problem.recordResult(result)
-        try? modelContext.save()
+        modelContext.saveReportingFailure(operation: "quick log")
         syncCoordinator.announceAttempt(on: problem, in: session, result: result)
     }
 

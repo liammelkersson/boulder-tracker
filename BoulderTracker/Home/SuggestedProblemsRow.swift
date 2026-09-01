@@ -73,7 +73,7 @@ struct SuggestedProblemsRow: View {
             name: suggestion.name, colorGrade: suggestion.grade, styles: suggestion.styles
         )
         session.problems.append(problem)
-        try? modelContext.save()
+        modelContext.saveReportingFailure(operation: "suggested problem add")
     }
 }
 

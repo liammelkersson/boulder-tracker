@@ -1,5 +1,6 @@
 import Foundation
 import Observation
+import OSLog
 
 /// The watch's view of the session in progress, persisted so a crash or relaunch
 /// mid-session loses nothing. Quick logs collapse onto one problem per grade,
@@ -118,8 +119,12 @@ final class WatchLiveSession {
             try? FileManager.default.removeItem(at: fileURL)
             return
         }
-        guard let data = try? JSONEncoder().encode(snapshot) else { return }
-        try? data.write(to: fileURL, options: .atomic)
+        do {
+            let data = try JSONEncoder().encode(snapshot)
+            try data.write(to: fileURL, options: .atomic)
+        } catch {
+            Logger.sync.error("Live session snapshot write failed: \(error)")
+        }
     }
 
     private static func storedSnapshot(at fileURL: URL) -> LiveSessionSnapshot? {

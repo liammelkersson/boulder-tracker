@@ -16,6 +16,7 @@
 		0569C982A88EBA94E9637E08 /* StatsAggregatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50DF977C9A487D046B2A41A /* StatsAggregatorTests.swift */; };
 		056B171629457ECF0004DB05 /* SessionDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC97D594653F1DFF04DB5E99 /* SessionDetailSheet.swift */; };
 		05FBE2CF018A672BDEB4A5D7 /* RetroSessionForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC3A8A796F90CEA6BDCD97C /* RetroSessionForm.swift */; };
+		07204B5187B526F7A14A1B13 /* ModelContextSaveReporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F07A31CEE8B29094FE0D1D /* ModelContextSaveReporting.swift */; };
 		0BC57F864F630A3FDFC0C38A /* WeeklyVolume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080E9A30E5A8040A889AFDB9 /* WeeklyVolume.swift */; };
 		13E260131F0A0E45E2A3B61D /* RoadmapProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4766DD77F157342BE3D11558 /* RoadmapProgress.swift */; };
 		15E0A449C6EDA65C20B680BE /* WatchSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89BFB5A9BB5923A5E4268C8 /* WatchSummaryView.swift */; };
@@ -40,6 +41,7 @@
 		2F4BB9DCFFA7CE916F57752E /* BoulderTrackerWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA5F8BBAF1A411A59FE20C7 /* BoulderTrackerWatchApp.swift */; };
 		30B4CEE16553F5BDFED5056E /* AchievementDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538DDB353BD9CC14703811B5 /* AchievementDefinition.swift */; };
 		3228B2FE16266A873D6CC884 /* SessionProblem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41558BBC79FF5803DAC986B /* SessionProblem.swift */; };
+		3530C35864CC2F7542A37A7D /* AppLoggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091850DBF3F67E1C04DB611B /* AppLoggers.swift */; };
 		36CDF85CD68DDA01A48EF0CA /* BoulderTrackerWatch.app in Embed Dependencies */ = {isa = PBXBuildFile; fileRef = 33C7A0D436006D5F3EF1D95C /* BoulderTrackerWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		392B6FB50C642FB52046707D /* WatchRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F92BEBAFBA5F9E171A799 /* WatchRootView.swift */; };
 		39D2032F3C59BB7D93AC6B68 /* SessionFeeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E8762A7199C3A909DF2365 /* SessionFeeling.swift */; };
@@ -54,6 +56,7 @@
 		55F8CD4D1234F94A2C76DCDA /* ActivitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3D9B35FA526E21D013DBF7 /* ActivitiesView.swift */; };
 		586E5882BB84A72691217344 /* SuggestedProblemsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CB7B0A7FFC9EC49B91066D /* SuggestedProblemsRow.swift */; };
 		5C2080BF3089501A997EDF37 /* ShoeListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92DE567DF02DC6CF92267F1 /* ShoeListSection.swift */; };
+		5CDA8578297401E5663868CD /* AppLoggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091850DBF3F67E1C04DB611B /* AppLoggers.swift */; };
 		5CF956B7287CEFA77C45CDF7 /* SessionDataExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E58180D832B7890BC041328 /* SessionDataExport.swift */; };
 		5F4E23262A8798821213E209 /* ColorGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA0494CD42B4C436DEA59E3 /* ColorGrade.swift */; };
 		6223C8C73C334C9D82F2C3AA /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C449A2840B580D48AFC0CEB /* ColorHex.swift */; };
@@ -199,6 +202,7 @@
 		00B4F1FB239B32F1AEDBAB1C /* AttemptResultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttemptResultTests.swift; sourceTree = "<group>"; };
 		02F3361DAA17F8D15C48AC86 /* SessionSyncCodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSyncCodingTests.swift; sourceTree = "<group>"; };
 		080E9A30E5A8040A889AFDB9 /* WeeklyVolume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyVolume.swift; sourceTree = "<group>"; };
+		091850DBF3F67E1C04DB611B /* AppLoggers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLoggers.swift; sourceTree = "<group>"; };
 		09F823EA7826C18CE2392424 /* HomeIdleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeIdleView.swift; sourceTree = "<group>"; };
 		0C1542C63A58F3E058E1895E /* FakeSyncLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeSyncLink.swift; sourceTree = "<group>"; };
 		0DE0685502F778A36121795E /* GradeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeLabel.swift; sourceTree = "<group>"; };
@@ -245,6 +249,7 @@
 		5D51A59C2A2F956C8B3C154F /* BoulderTrackerWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BoulderTrackerWatch.entitlements; sourceTree = "<group>"; };
 		5DC98480400E0FDCF98E889D /* ActivitySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitySection.swift; sourceTree = "<group>"; };
 		60C75C484DB145D3574725BA /* StatsSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsSummary.swift; sourceTree = "<group>"; };
+		60F07A31CEE8B29094FE0D1D /* ModelContextSaveReporting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContextSaveReporting.swift; sourceTree = "<group>"; };
 		66FD98120C088455DB39DCD2 /* SessionSyncCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSyncCoding.swift; sourceTree = "<group>"; };
 		676F3F95EE72F71F08BEC68A /* HomeMetricsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMetricsRow.swift; sourceTree = "<group>"; };
 		68CB7B0A7FFC9EC49B91066D /* SuggestedProblemsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedProblemsRow.swift; sourceTree = "<group>"; };
@@ -469,6 +474,7 @@
 			children = (
 				9F2A74A5E6F90EA1705ECB2C /* Achievement.swift */,
 				7E3C58F6B8FDFFE7AF23B43B /* Gym.swift */,
+				60F07A31CEE8B29094FE0D1D /* ModelContextSaveReporting.swift */,
 				0F5B09640D0FA580EA358CD9 /* Partner.swift */,
 				A2DC0FAF677478A47DF24914 /* PersistentModelInvalidation.swift */,
 				4766DD77F157342BE3D11558 /* RoadmapProgress.swift */,
@@ -569,6 +575,7 @@
 		E98F23996A7935531A6FD6DD /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				091850DBF3F67E1C04DB611B /* AppLoggers.swift */,
 				EF999BAFC8EA39365D0D9714 /* AttemptResult.swift */,
 				C8D9B4FF8FCAE0C8695F58AF /* ClimbType.swift */,
 				2DA0494CD42B4C436DEA59E3 /* ColorGrade.swift */,
@@ -719,6 +726,7 @@
 				7FEE90B6BBD23F3029F07E2B /* AchievementsGridView.swift in Sources */,
 				55F8CD4D1234F94A2C76DCDA /* ActivitiesView.swift in Sources */,
 				86321775652B679C9EEE10DB /* ActivitySection.swift in Sources */,
+				5CDA8578297401E5663868CD /* AppLoggers.swift in Sources */,
 				9180214DC76C15AB4CB79060 /* AppPreferences.swift in Sources */,
 				01165853430EE5DE9141301A /* AppTab.swift in Sources */,
 				8D6202736A3576679C9E46DD /* AttemptResult.swift in Sources */,
@@ -753,6 +761,7 @@
 				04E39D99848CD52CBE32C099 /* HomeView.swift in Sources */,
 				2B725C3434CC92E36465EAA7 /* LiveSessionSnapshotReader.swift in Sources */,
 				252BE2397440B829DF7FDEF1 /* LiveSessionView.swift in Sources */,
+				07204B5187B526F7A14A1B13 /* ModelContextSaveReporting.swift in Sources */,
 				04B0C6D6BAD2B91D526765C7 /* MonthCalendarGrid.swift in Sources */,
 				CD1D1A14DFAF90547893F5DE /* Partner.swift in Sources */,
 				28CC1FE0CA2EC54EC4444599 /* PartnerListSection.swift in Sources */,
@@ -850,6 +859,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3530C35864CC2F7542A37A7D /* AppLoggers.swift in Sources */,
 				207D0EAFF1BACAB63A8FE7CE /* AttemptResult.swift in Sources */,
 				2F4BB9DCFFA7CE916F57752E /* BoulderTrackerWatchApp.swift in Sources */,
 				93B808B17AA5F679BBEE279F /* ClimbType.swift in Sources */,

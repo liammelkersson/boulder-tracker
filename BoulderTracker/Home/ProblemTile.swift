@@ -23,7 +23,7 @@ struct ProblemTile: View {
         .contextMenu {
             Button {
                 problem.isProject.toggle()
-                try? modelContext.save()
+                modelContext.saveReportingFailure(operation: "project mark toggle")
             } label: {
                 Label(
                     problem.isProject ? "Remove project mark" : "Mark as project",
@@ -97,7 +97,7 @@ struct ProblemTile: View {
             if let session = problem.session {
                 syncCoordinator.announceAttempt(on: problem, in: session, result: result)
             }
-            try? modelContext.save()
+            modelContext.saveReportingFailure(operation: "attempt log")
         } label: {
             HStack(spacing: 6) {
                 Text(result.displayName)

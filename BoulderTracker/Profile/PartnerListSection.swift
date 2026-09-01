@@ -100,7 +100,7 @@ struct PartnerEditorSheet: View {
         } else {
             modelContext.insert(Partner(name: name))
         }
-        try? modelContext.save()
+        modelContext.saveReportingFailure(operation: "partner save")
         dismiss()
     }
 }

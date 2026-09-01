@@ -43,6 +43,6 @@ struct SessionPhotoPickerRow: View {
             try? photoStore.deletePhoto(named: oldFilename)
         }
         session.photoFilename = try? photoStore.savePhoto(data)
-        try? modelContext.save()
+        modelContext.saveReportingFailure(operation: "session photo update")
     }
 }

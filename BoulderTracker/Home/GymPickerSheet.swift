@@ -70,7 +70,7 @@ struct GymPickerSheet: View {
     private func startSession(at gym: Gym) {
         let session = Session(startTime: .now, gym: gym, partners: [], climbType: selectedClimbType)
         modelContext.insert(session)
-        try? modelContext.save()
+        modelContext.saveReportingFailure(operation: "session start")
         syncCoordinator.announceStart(of: session)
         dismiss()
     }

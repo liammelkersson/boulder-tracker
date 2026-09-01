@@ -1,4 +1,5 @@
 import Foundation
+import OSLog
 import WatchConnectivity
 
 /// Wraps `WCSession`. Every envelope goes out on both channels: `sendMessage` for
@@ -23,16 +24,25 @@ final class WatchConnectivityLink: NSObject, SyncLinking {
     }
 
     func sendImmediately(_ envelope: SyncEnvelope) {
-        guard let payload = try? SessionSyncCoding.messagePayload(for: envelope) else { return }
+        guard let payload = encodedPayload(for: envelope) else { return }
         session.sendMessage(payload, replyHandler: nil) { _ in
             // Guaranteed channel still carries this envelope; nothing to recover.
         }
     }
 
     func transferGuaranteed(_ envelope: SyncEnvelope) {
-        guard let payload = try? SessionSyncCoding.messagePayload(for: envelope) else { return }
+        guard let payload = encodedPayload(for: envelope) else { return }
         let transfer = session.transferUserInfo(payload)
         envelopeIDsByTransfer[ObjectIdentifier(transfer)] = envelope.id
+    }
+
+    private func encodedPayload(for envelope: SyncEnvelope) -> [String: Any]? {
+        do {
+            return try SessionSyncCoding.messagePayload(for: envelope)
+        } catch {
+            Logger.sync.error("Dropping envelope \(envelope.id): encoding failed: \(error)")
+            return nil
+        }
     }
 
     fileprivate func receive(_ envelope: SyncEnvelope) {
@@ -51,7 +61,11 @@ extension WatchConnectivityLink: @preconcurrency WCSessionDelegate {
     nonisolated func session(
         _ session: WCSession, activationDidCompleteWith state: WCSessionActivationState,
         error: Error?
-    ) {}
+    ) {
+        if let error {
+            Logger.sync.error("WCSession activation failed: \(error)")
+        }
+    }
 
     nonisolated func session(_ session: WCSession, didReceiveUserInfo userInfo: [String: Any]) {
         deliverToMainActor(userInfo)
@@ -73,8 +87,14 @@ extension WatchConnectivityLink: @preconcurrency WCSessionDelegate {
 
     /// Decodes on the calling thread so only the Sendable envelope crosses actors.
     private nonisolated func deliverToMainActor(_ payload: [String: Any]) {
-        guard let envelope = try? SessionSyncCoding.envelope(from: payload) else { return }
-        Task { @MainActor in self.receive(envelope) }
+        do {
+            let envelope = try SessionSyncCoding.envelope(from: payload)
+            Task { @MainActor in self.receive(envelope) }
+        } catch {
+            // The sender already got delivery confirmation, so this payload is
+            // lost for good — the log is the only trace.
+            Logger.sync.error("Dropping undecodable inbound payload: \(error)")
+        }
     }
 
     #if os(iOS)

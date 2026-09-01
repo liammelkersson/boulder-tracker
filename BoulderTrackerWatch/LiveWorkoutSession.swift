@@ -1,6 +1,7 @@
 import Foundation
 import HealthKit
 import Observation
+import OSLog
 
 enum LiveWorkoutFailure: Error {
     case healthDataUnavailable
@@ -88,6 +89,14 @@ final class LiveWorkoutSession: NSObject {
         )
     }
 
+    /// A failed `HKWorkoutSession` never recovers; drop it so `end(at:)` reports
+    /// `builderMissing` instead of hanging on a dead builder.
+    fileprivate func abandonFailedWorkout() {
+        session = nil
+        builder = nil
+        currentHeartRate = nil
+    }
+
     fileprivate func refreshHeartRate(from statistics: HKStatistics?) {
         let beatsPerMinute = HKUnit.count().unitDivided(by: .minute())
         currentHeartRate = statistics?.mostRecentQuantity()?.doubleValue(for: beatsPerMinute)
@@ -110,9 +119,16 @@ extension LiveWorkoutSession: @preconcurrency HKWorkoutSessionDelegate {
     nonisolated func workoutSession(
         _ workoutSession: HKWorkoutSession, didChangeTo toState: HKWorkoutSessionState,
         from fromState: HKWorkoutSessionState, date: Date
-    ) {}
+    ) {
+        Logger.health.debug(
+            "Workout state \(fromState.rawValue) -> \(toState.rawValue)"
+        )
+    }
 
     nonisolated func workoutSession(
         _ workoutSession: HKWorkoutSession, didFailWithError error: Error
-    ) {}
+    ) {
+        Logger.health.error("Workout session failed: \(error)")
+        Task { @MainActor in self.abandonFailedWorkout() }
+    }
 }

@@ -96,7 +96,7 @@ struct LiveSessionView: View {
 
     private func endSession() {
         session.endTime = .now
-        try? modelContext.save()
+        modelContext.saveReportingFailure(operation: "session end")
         syncCoordinator.announceEnd(of: session)
         onEnded(session)
     }

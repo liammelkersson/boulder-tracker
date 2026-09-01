@@ -173,7 +173,7 @@ struct RetroSessionForm: View {
         session.shoe = selectedShoe
         if !notes.isEmpty { session.notes = notes }
         modelContext.insert(session)
-        try? modelContext.save()
+        modelContext.saveReportingFailure(operation: "retro session save")
         dismiss()
     }
 }

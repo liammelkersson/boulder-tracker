@@ -1,3 +1,4 @@
+import OSLog
 import SwiftUI
 import SwiftData
 
@@ -38,12 +39,20 @@ struct SampleDataToggleRow: View {
     }
 
     private func insertSampleData() {
-        try? SampleDataGenerator.insertSampleData(into: modelContext, referenceDate: .now)
+        do {
+            try SampleDataGenerator.insertSampleData(into: modelContext, referenceDate: .now)
+        } catch {
+            Logger.persistence.error("Sample data insert failed: \(error)")
+        }
         isShowingSampleData = SampleDataGenerator.sampleDataExists(in: modelContext)
     }
 
     private func removeSampleData() {
-        try? SampleDataGenerator.removeSampleData(from: modelContext)
+        do {
+            try SampleDataGenerator.removeSampleData(from: modelContext)
+        } catch {
+            Logger.persistence.error("Sample data removal failed: \(error)")
+        }
         isShowingSampleData = SampleDataGenerator.sampleDataExists(in: modelContext)
     }
 }

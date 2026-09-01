@@ -1,4 +1,5 @@
 import Foundation
+import OSLog
 
 /// Outbound envelopes held on disk until the peer confirms delivery, so a session
 /// logged with the phone out of range survives the app being terminated.
@@ -24,13 +25,22 @@ final class PendingEventQueue {
     }
 
     private func persist() {
-        guard let data = try? JSONEncoder().encode(envelopes) else { return }
-        try? data.write(to: fileURL, options: .atomic)
+        do {
+            let data = try JSONEncoder().encode(envelopes)
+            try data.write(to: fileURL, options: .atomic)
+        } catch {
+            Logger.sync.error("Pending event queue write failed: \(error)")
+        }
     }
 
     private static func storedEnvelopes(at fileURL: URL) -> [SyncEnvelope] {
         guard let data = try? Data(contentsOf: fileURL) else { return [] }
-        return (try? JSONDecoder().decode([SyncEnvelope].self, from: data)) ?? []
+        do {
+            return try JSONDecoder().decode([SyncEnvelope].self, from: data)
+        } catch {
+            Logger.sync.error("Pending event queue unreadable, starting empty: \(error)")
+            return []
+        }
     }
 }
 

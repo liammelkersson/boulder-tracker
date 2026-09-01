@@ -162,7 +162,7 @@ struct QuickAddProblemSheet: View {
             problem.photoFilename = try? photoStore.savePhoto(photoData)
         }
         session.problems.append(problem)
-        try? modelContext.save()
+        modelContext.saveReportingFailure(operation: "problem add")
         dismiss()
     }
 }

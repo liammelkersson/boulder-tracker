@@ -121,7 +121,7 @@ struct GymEditorSheet: View {
             }
         }
         target.isDefault = isDefault
-        try? modelContext.save()
+        modelContext.saveReportingFailure(operation: "gym save")
         dismiss()
     }
 }

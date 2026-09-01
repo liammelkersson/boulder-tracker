@@ -1,3 +1,4 @@
+import OSLog
 import SwiftUI
 import SwiftData
 
@@ -12,9 +13,14 @@ struct BoulderTrackerApp: App {
                 for: Session.self, SessionProblem.self, Gym.self, Partner.self,
                 RoadmapProgress.self, Achievement.self, Shoe.self
             )
-            try DefaultGymSeeder.seedIfNeeded(context: container.mainContext)
         } catch {
             fatalError("Failed to initialize model container: \(error)")
+        }
+        do {
+            try DefaultGymSeeder.seedIfNeeded(context: container.mainContext)
+        } catch {
+            // The app works without a seeded gym; the user can add one manually.
+            Logger.persistence.error("Default gym seeding failed: \(error)")
         }
         syncCoordinator = PhoneSyncCoordinator(context: container.mainContext)
     }

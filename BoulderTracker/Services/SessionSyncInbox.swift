@@ -27,7 +27,7 @@ final class SessionSyncInbox {
             // Answered by PhoneSyncCoordinator or consumed only on the watch.
             break
         }
-        try? context.save()
+        context.saveReportingFailure(operation: "sync inbox apply")
     }
 
     private func adoptSession(_ payload: SessionStartPayload) {

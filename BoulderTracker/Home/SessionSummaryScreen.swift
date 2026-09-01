@@ -188,7 +188,7 @@ struct SessionSummaryScreen: View {
         for achievement in outcome.newAchievements {
             modelContext.insert(Achievement(achievementID: achievement.id))
         }
-        try? modelContext.save()
+        modelContext.saveReportingFailure(operation: "session completion")
         if outcome.newAchievements.isEmpty {
             onFinished()
         } else {
@@ -213,7 +213,7 @@ struct SessionSummaryScreen: View {
 
     private func discardSession() {
         modelContext.delete(session)
-        try? modelContext.save()
+        modelContext.saveReportingFailure(operation: "session discard")
         onFinished()
     }
 }

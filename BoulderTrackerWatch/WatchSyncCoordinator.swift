@@ -1,5 +1,6 @@
 import Foundation
 import Observation
+import OSLog
 
 /// Owns the watch side: link, outbox, live session state, and the workout. UI calls
 /// the four intent methods; everything else is event plumbing.
@@ -89,6 +90,7 @@ final class WatchSyncCoordinator {
                 try await workout.begin(at: .now)
             } catch {
                 // Logging continues without heart rate; the session itself is unaffected.
+                Logger.health.error("Workout start failed, disabling HealthKit sync: \(error)")
                 healthKitSyncEnabled = false
             }
         }
@@ -100,6 +102,8 @@ final class WatchSyncCoordinator {
             do {
                 try await workout.end(at: endTime)
             } catch {
+                // The session-end event is already sent; only the summary is lost.
+                Logger.health.error("Workout end failed: \(error)")
                 return
             }
             guard let metrics = workout.metrics else { return }

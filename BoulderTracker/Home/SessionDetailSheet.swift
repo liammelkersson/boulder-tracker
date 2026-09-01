@@ -169,7 +169,7 @@ struct SessionDetailSheet: View {
         Task { @MainActor in
             await completion.deleteWorkoutIfPresent(for: doomedSession)
             modelContext.delete(doomedSession)
-            try? modelContext.save()
+            modelContext.saveReportingFailure(operation: "session delete")
         }
     }
 
@@ -313,7 +313,7 @@ struct SessionDetailSheet: View {
         session.gym = draftGym
         session.shoe = draftShoe
         session.endTime = session.startTime.addingTimeInterval(TimeInterval(draftDurationMinutes * 60))
-        try? modelContext.save()
+        modelContext.saveReportingFailure(operation: "session edit")
         isEditing = false
     }
 }

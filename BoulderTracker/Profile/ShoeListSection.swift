@@ -120,7 +120,7 @@ struct ShoeEditorSheet: View {
         }()
         target.name = name
         target.isRetired = isRetired
-        try? modelContext.save()
+        modelContext.saveReportingFailure(operation: "shoe save")
         dismiss()
     }
 }
