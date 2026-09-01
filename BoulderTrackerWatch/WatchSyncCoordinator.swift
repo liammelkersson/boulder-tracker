@@ -14,14 +14,21 @@ final class WatchSyncCoordinator {
     private(set) var lastMetrics: WorkoutMetrics?
     private(set) var finishedDuration: TimeInterval?
 
-    @ObservationIgnored private let link = WatchConnectivityLink()
+    @ObservationIgnored private let link: any SyncLinking
     @ObservationIgnored private let outbox: SessionSyncOutbox
     @ObservationIgnored private var healthKitSyncEnabled = true
 
-    init() {
-        liveSession = WatchLiveSession(fileURL: Self.liveSessionFileURL())
-        outbox = SessionSyncOutbox(
-            queue: .inApplicationSupport(named: "watch-sync-queue.json"), link: link
+    init(link: any SyncLinking, queue: PendingEventQueue, liveSessionFileURL: URL) {
+        liveSession = WatchLiveSession(fileURL: liveSessionFileURL)
+        self.link = link
+        outbox = SessionSyncOutbox(queue: queue, link: link)
+    }
+
+    convenience init() {
+        self.init(
+            link: WatchConnectivityLink(),
+            queue: .inApplicationSupport(named: "watch-sync-queue.json"),
+            liveSessionFileURL: Self.liveSessionFileURL()
         )
     }
 

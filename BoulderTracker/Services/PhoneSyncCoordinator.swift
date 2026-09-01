@@ -10,14 +10,20 @@ final class PhoneSyncCoordinator {
     private let context: ModelContext
     private let inbox: SessionSyncInbox
     private let outbox: SessionSyncOutbox
-    private let link: WatchConnectivityLink
+    private let link: any SyncLinking
 
-    init(context: ModelContext) {
+    init(context: ModelContext, link: any SyncLinking, queue: PendingEventQueue) {
         self.context = context
         self.inbox = SessionSyncInbox(context: context)
-        self.link = WatchConnectivityLink()
-        self.outbox = SessionSyncOutbox(
-            queue: .inApplicationSupport(named: "phone-sync-queue.json"), link: link
+        self.link = link
+        self.outbox = SessionSyncOutbox(queue: queue, link: link)
+    }
+
+    convenience init(context: ModelContext) {
+        self.init(
+            context: context,
+            link: WatchConnectivityLink(),
+            queue: .inApplicationSupport(named: "phone-sync-queue.json")
         )
     }
 

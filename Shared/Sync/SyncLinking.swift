@@ -11,6 +11,7 @@ protocol SyncLinking: AnyObject {
     /// Called for every envelope arriving from the peer, duplicates included.
     var onReceive: ((SyncEnvelope) -> Void)? { get set }
 
+    func activate()
     func sendImmediately(_ envelope: SyncEnvelope)
     func transferGuaranteed(_ envelope: SyncEnvelope)
 }
