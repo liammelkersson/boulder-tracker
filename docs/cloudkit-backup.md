@@ -31,6 +31,21 @@ device-local store as before.
   `cloudKitDatabase: .none` explicitly, because the test host now carries
   iCloud entitlements and would otherwise try CloudKit.
 
+## Current status: blocked on the free developer team
+
+Discovered 2026-09-01 while installing to a device: team `6KKKY36H7B` is a
+personal (free) team, and **free teams cannot sign the iCloud capability**
+("Personal development teams … do not support the iCloud capability").
+The iCloud keys are therefore commented out of
+`BoulderTracker/BoulderTracker.entitlements`; the app runs on the local
+store via the built-in fallback. All CloudKit-compatible model changes stay
+in place, so re-enabling is entitlements-only:
+
+1. Enroll in the paid Apple Developer Program.
+2. Restore the two iCloud keys in the entitlements file (values are in the
+   comment there).
+3. Follow the verification steps below.
+
 ## Manual steps before it syncs for real
 
 1. In the Apple Developer portal (team `6KKKY36H7B`), make sure the iCloud

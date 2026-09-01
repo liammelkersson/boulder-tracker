@@ -4,13 +4,14 @@
 <dict>
     <key>com.apple.developer.healthkit</key>
     <true/>
-    <key>com.apple.developer.icloud-container-identifiers</key>
-    <array>
-        <string>iCloud.com.liammelkersson.BoulderTracker</string>
-    </array>
-    <key>com.apple.developer.icloud-services</key>
-    <array>
-        <string>CloudKit</string>
-    </array>
+    <!-- iCloud/CloudKit entitlements removed: personal (free) development
+         teams cannot sign the iCloud capability, so device builds fail with
+         them present. The app detects the missing capability at launch and
+         runs on the local store. To re-enable after joining the paid
+         Developer Program, restore:
+         com.apple.developer.icloud-services = [CloudKit]
+         com.apple.developer.icloud-container-identifiers =
+             [iCloud.com.liammelkersson.BoulderTracker]
+         (see docs/cloudkit-backup.md) -->
 </dict>
 </plist>
