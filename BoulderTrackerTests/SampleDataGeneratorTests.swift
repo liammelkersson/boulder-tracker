@@ -88,3 +88,31 @@ struct SampleDataGeneratorTests {
         #expect(!SampleDataGenerator.sampleDataExists(in: context))
     }
 }
+
+@MainActor
+struct SampleDataPollutionTests {
+    @Test func sampleFilterDropsFlaggedSessions() {
+        let real = Session(startTime: .now, gym: nil, partners: [])
+        let demo = Session(startTime: .now, gym: nil, partners: [])
+        demo.isSampleData = true
+
+        let filtered = [real, demo].withoutSampleData
+
+        #expect(filtered.count == 1)
+        #expect(filtered.first === real)
+    }
+
+    @Test func sampleSessionsCannotUnlockAchievements() throws {
+        let container = try makeInMemoryContainer()
+        let context = container.mainContext
+        try SampleDataGenerator.insertSampleData(into: context, referenceDate: .now)
+        let allSessions = try context.fetch(FetchDescriptor<Session>())
+        #expect(!allSessions.isEmpty)
+
+        let unlocked = AchievementEngine.newlyUnlocked(
+            sessions: allSessions.withoutSampleData, alreadyUnlocked: []
+        )
+
+        #expect(unlocked.isEmpty)
+    }
+}

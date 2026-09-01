@@ -99,6 +99,7 @@
 		90BC722DE0025DC83A04799A /* GradesSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1ACC91664CFA09C71876F8 /* GradesSheet.swift */; };
 		914929FCD44F64FC735C4C57 /* HomeMetricsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676F3F95EE72F71F08BEC68A /* HomeMetricsRow.swift */; };
 		9180214DC76C15AB4CB79060 /* AppPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8118E16DED92BBAFCD0255 /* AppPreferences.swift */; };
+		91F3C419257A850EF0E92ABA /* SessionSampleFiltering.swift in Sources */ = {isa = PBXBuildFile; fileRef = B430BDFEDDBF68981A195580 /* SessionSampleFiltering.swift */; };
 		920793DED37DCD28C994E59B /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C0D743A0331CB6D142FEFE /* RootTabView.swift */; };
 		93647BCC055FC8C2EBD63181 /* ColorGradeTint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6194B2AED5F6C64A901EF /* ColorGradeTint.swift */; };
 		93B808B17AA5F679BBEE279F /* ClimbType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D9B4FF8FCAE0C8695F58AF /* ClimbType.swift */; };
@@ -322,6 +323,7 @@
 		AFC3A8A796F90CEA6BDCD97C /* RetroSessionForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetroSessionForm.swift; sourceTree = "<group>"; };
 		B070312D993A61120736DFEE /* SessionSyncOutboxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSyncOutboxTests.swift; sourceTree = "<group>"; };
 		B3C043EA16DEFFD7A50DD9F6 /* SessionPhotoThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionPhotoThumbnail.swift; sourceTree = "<group>"; };
+		B430BDFEDDBF68981A195580 /* SessionSampleFiltering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSampleFiltering.swift; sourceTree = "<group>"; };
 		B67025D3E0D6CE36434E29D4 /* LiveSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSessionView.swift; sourceTree = "<group>"; };
 		B8144D8D53F246205075577C /* WeeklyHardestSend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyHardestSend.swift; sourceTree = "<group>"; };
 		B92DE567DF02DC6CF92267F1 /* ShoeListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeListSection.swift; sourceTree = "<group>"; };
@@ -512,6 +514,7 @@
 				AE14E05FDA0C9443207F8A2B /* Session.swift */,
 				93E8762A7199C3A909DF2365 /* SessionFeeling.swift */,
 				E41558BBC79FF5803DAC986B /* SessionProblem.swift */,
+				B430BDFEDDBF68981A195580 /* SessionSampleFiltering.swift */,
 				73D1E25D7AF4FB0B107FA22E /* Shoe.swift */,
 				476BDB0ED7DD1448BB2DD072 /* ShoePickList.swift */,
 			);
@@ -862,6 +865,7 @@
 				ED84D740682BB2BCF0B31499 /* SessionPhotoThumbnail.swift in Sources */,
 				3228B2FE16266A873D6CC884 /* SessionProblem.swift in Sources */,
 				2D8901E9CFC3F9BF5DEE689E /* SessionRowCard.swift in Sources */,
+				91F3C419257A850EF0E92ABA /* SessionSampleFiltering.swift in Sources */,
 				9B52844355C6568241524E3E /* SessionSummaryScreen.swift in Sources */,
 				C4B66BF59C956939CE59322E /* SessionSyncCoding.swift in Sources */,
 				85A8EEAA9B37E4C2E2182FF2 /* SessionSyncEvent.swift in Sources */,

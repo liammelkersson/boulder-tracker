@@ -35,7 +35,10 @@ struct LiveSessionView: View {
                     .padding(.top, 24)
                 problemsSection
                     .padding(.top, 26)
-                SuggestedProblemsRow(session: session, allSessions: allSessions.persisted)
+                SuggestedProblemsRow(
+                    session: session,
+                    allSessions: allSessions.persisted.withoutSampleData
+                )
                     .padding(.top, 22)
                 actionButtons
                     .padding(.top, 28)

@@ -7,7 +7,9 @@ struct HomeView: View {
     @State private var showingGymPicker = false
 
     private var liveSession: Session? { sessions.first { $0.isLive } }
-    private var finishedSessions: [Session] { sessions.filter { !$0.isLive } }
+    private var finishedSessions: [Session] {
+        sessions.withoutSampleData.filter { !$0.isLive }
+    }
 
     var body: some View {
         Group {

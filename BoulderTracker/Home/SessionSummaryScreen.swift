@@ -227,7 +227,7 @@ struct SessionSummaryScreen: View {
         let completion = SessionCompletion(workoutWriter: writer)
         let outcome = await completion.finish(
             session, endTime: session.endTime ?? .now,
-            allSessions: allSessions.persisted,
+            allSessions: allSessions.persisted.withoutSampleData,
             unlockedIDs: Set(unlockedAchievements.map(\.achievementID))
         )
         for achievement in outcome.newAchievements {

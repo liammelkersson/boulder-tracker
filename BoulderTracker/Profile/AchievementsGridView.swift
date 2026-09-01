@@ -13,7 +13,9 @@ struct AchievementsGridView: View {
     ]
     private static let shapeGrades: [ColorGrade] = [.green, .blue, .red, .black, .white, .yellow]
 
-    private var finishedSessions: [Session] { sessions.persisted.filter { !$0.isLive } }
+    private var finishedSessions: [Session] {
+        sessions.persisted.withoutSampleData.filter { !$0.isLive }
+    }
     private var unlockedIDs: Set<String> { Set(unlockedRecords.map(\.achievementID)) }
 
     var body: some View {
