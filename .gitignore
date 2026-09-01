@@ -3,5 +3,6 @@ xcuserdata/
 *.xcodeproj/project.xcworkspace/xcuserdata/
 build/
 DerivedData/
+.worktrees/
 Icon?
 /boulder-tracker-iOS-Default-*.png
