@@ -46,6 +46,7 @@
 		3228B2FE16266A873D6CC884 /* SessionProblem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41558BBC79FF5803DAC986B /* SessionProblem.swift */; };
 		3530C35864CC2F7542A37A7D /* AppLoggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091850DBF3F67E1C04DB611B /* AppLoggers.swift */; };
 		36CDF85CD68DDA01A48EF0CA /* BoulderTrackerWatch.app in Embed Dependencies */ = {isa = PBXBuildFile; fileRef = 33C7A0D436006D5F3EF1D95C /* BoulderTrackerWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		383181D375CA6151CD46CA21 /* OnboardingSaverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1B7BE6E289ACE28525EFA3 /* OnboardingSaverTests.swift */; };
 		392B6FB50C642FB52046707D /* WatchRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F92BEBAFBA5F9E171A799 /* WatchRootView.swift */; };
 		39D2032F3C59BB7D93AC6B68 /* SessionFeeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E8762A7199C3A909DF2365 /* SessionFeeling.swift */; };
 		43F2007E8DBC3A9AB419231E /* HealthKitWorkoutWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F14A251EE96332C7B8FB225 /* HealthKitWorkoutWriter.swift */; };
@@ -104,6 +105,7 @@
 		9180214DC76C15AB4CB79060 /* AppPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8118E16DED92BBAFCD0255 /* AppPreferences.swift */; };
 		91F3C419257A850EF0E92ABA /* SessionSampleFiltering.swift in Sources */ = {isa = PBXBuildFile; fileRef = B430BDFEDDBF68981A195580 /* SessionSampleFiltering.swift */; };
 		920793DED37DCD28C994E59B /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C0D743A0331CB6D142FEFE /* RootTabView.swift */; };
+		9359B87A5DA0C9BE563E7A4E /* OnboardingSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F00BC0772C1D9AA39396F6 /* OnboardingSaver.swift */; };
 		93647BCC055FC8C2EBD63181 /* ColorGradeTint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6194B2AED5F6C64A901EF /* ColorGradeTint.swift */; };
 		93B808B17AA5F679BBEE279F /* ClimbType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D9B4FF8FCAE0C8695F58AF /* ClimbType.swift */; };
 		943490F10161BB840A8E0937 /* SessionPhotoPickerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB08646B37DFA11E44ACD384 /* SessionPhotoPickerRow.swift */; };
@@ -260,6 +262,7 @@
 		42FAE104553C434628BEE681 /* PartnerListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerListSection.swift; sourceTree = "<group>"; };
 		43A64287092BC5AF5641F78B /* AccentButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentButtons.swift; sourceTree = "<group>"; };
 		44B73A64F6A52FE45E78E22A /* AchievementEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementEngineTests.swift; sourceTree = "<group>"; };
+		46F00BC0772C1D9AA39396F6 /* OnboardingSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSaver.swift; sourceTree = "<group>"; };
 		4745F2D40EDEC6B48CEBD3F4 /* BoulderTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BoulderTracker.entitlements; sourceTree = "<group>"; };
 		4766DD77F157342BE3D11558 /* RoadmapProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapProgress.swift; sourceTree = "<group>"; };
 		476BDB0ED7DD1448BB2DD072 /* ShoePickList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoePickList.swift; sourceTree = "<group>"; };
@@ -280,6 +283,7 @@
 		5CC94E761844AB02B2003A33 /* MonthCalendarGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCalendarGrid.swift; sourceTree = "<group>"; };
 		5D51A59C2A2F956C8B3C154F /* BoulderTrackerWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BoulderTrackerWatch.entitlements; sourceTree = "<group>"; };
 		5DC98480400E0FDCF98E889D /* ActivitySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitySection.swift; sourceTree = "<group>"; };
+		5F1B7BE6E289ACE28525EFA3 /* OnboardingSaverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSaverTests.swift; sourceTree = "<group>"; };
 		60C75C484DB145D3574725BA /* StatsSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsSummary.swift; sourceTree = "<group>"; };
 		60F07A31CEE8B29094FE0D1D /* ModelContextSaveReporting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContextSaveReporting.swift; sourceTree = "<group>"; };
 		622988343F7300983B1A254A /* ThemedNotesField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedNotesField.swift; sourceTree = "<group>"; };
@@ -502,6 +506,7 @@
 				ECC8267A58E91D1CF1886259 /* LiveSessionSnapshotReaderTests.swift */,
 				F3F62563AF39F829E404C1E6 /* ModelRoundTripTests.swift */,
 				C41D483864F32290B2797F32 /* OnboardingDraftTests.swift */,
+				5F1B7BE6E289ACE28525EFA3 /* OnboardingSaverTests.swift */,
 				D68CBE61488C4DC44FD9D9A5 /* PendingEventQueueTests.swift */,
 				957C9D7DFD7D67AE2338ED86 /* PhoneSyncCoordinatorTests.swift */,
 				A5D81CE89D8307909A0EAA29 /* PhoneWatchSyncIntegrationTests.swift */,
@@ -544,6 +549,7 @@
 			isa = PBXGroup;
 			children = (
 				ABD7AF49D5D6E1178AB1331E /* OnboardingDraft.swift */,
+				46F00BC0772C1D9AA39396F6 /* OnboardingSaver.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -863,6 +869,7 @@
 				07204B5187B526F7A14A1B13 /* ModelContextSaveReporting.swift in Sources */,
 				04B0C6D6BAD2B91D526765C7 /* MonthCalendarGrid.swift in Sources */,
 				03C89E46E265299B9FB53E2C /* OnboardingDraft.swift in Sources */,
+				9359B87A5DA0C9BE563E7A4E /* OnboardingSaver.swift in Sources */,
 				CD1D1A14DFAF90547893F5DE /* Partner.swift in Sources */,
 				28CC1FE0CA2EC54EC4444599 /* PartnerListSection.swift in Sources */,
 				BC52E7ADD20A5F1EB5DE6EF6 /* PendingEventQueue.swift in Sources */,
@@ -948,6 +955,7 @@
 				AEEB59A885E7146266C4398D /* LiveSessionSnapshotReaderTests.swift in Sources */,
 				CCDC20398D732F4B61A352D8 /* ModelRoundTripTests.swift in Sources */,
 				7EFFCBE6341B159607FFED21 /* OnboardingDraftTests.swift in Sources */,
+				383181D375CA6151CD46CA21 /* OnboardingSaverTests.swift in Sources */,
 				F9C34241FAF5180B3B77FF08 /* PendingEventQueueTests.swift in Sources */,
 				9EF988840F672DD84534A0D9 /* PhoneSyncCoordinatorTests.swift in Sources */,
 				BD7B44E63787B2B51F5FA69B /* PhoneWatchSyncIntegrationTests.swift in Sources */,
