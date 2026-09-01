@@ -5,6 +5,7 @@ struct SessionDetailSheet: View {
     @Environment(\.palette) private var palette
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
+    @Environment(PhoneSyncCoordinator.self) private var syncCoordinator
     let session: Session
 
     @State private var isEditing = false
@@ -175,6 +176,7 @@ struct SessionDetailSheet: View {
         }
         let completion = SessionCompletion(workoutWriter: HealthKitWorkoutWriter())
         let doomedSession = session
+        syncCoordinator.announceDeletion(of: doomedSession)
         dismiss()
         Task { @MainActor in
             await completion.deleteWorkoutIfPresent(for: doomedSession)
@@ -324,6 +326,7 @@ struct SessionDetailSheet: View {
         session.shoe = draftShoe
         session.endTime = session.startTime.addingTimeInterval(TimeInterval(draftDurationMinutes * 60))
         modelContext.saveReportingFailure(operation: "session edit")
+        syncCoordinator.announceEnd(of: session)
         isEditing = false
     }
 }

@@ -64,6 +64,9 @@ final class WatchLiveSession {
         case .sessionEnded(let payload):
             guard payload.sessionSyncID == snapshot?.sessionSyncID else { return }
             snapshot = nil
+        case .sessionDeleted(let payload):
+            guard payload.sessionSyncID == snapshot?.sessionSyncID else { return }
+            snapshot = nil
         case .sessionSnapshot(let payload):
             guard snapshot == nil else { return }
             snapshot = payload.liveSession

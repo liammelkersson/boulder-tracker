@@ -23,8 +23,9 @@ final class SessionSyncInbox {
             closeSession(payload)
         case .workoutRecorded(let payload):
             attachWorkout(payload)
-        case .liveSessionRequest, .sessionSnapshot, .phoneCatalog:
-            // Answered by PhoneSyncCoordinator or consumed only on the watch.
+        case .liveSessionRequest, .sessionSnapshot, .phoneCatalog, .sessionDeleted:
+            // Answered by PhoneSyncCoordinator or consumed only on the watch;
+            // the watch has no delete UI, so inbound deletes carry nothing.
             break
         }
         context.saveReportingFailure(operation: "sync inbox apply")

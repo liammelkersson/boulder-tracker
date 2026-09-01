@@ -164,6 +164,28 @@ struct WatchLiveSessionTests {
         #expect(live.snapshot?.sessionSyncID == newerID)
     }
 
+    @Test func deletionOfTheCurrentSessionClearsTheSnapshot() {
+        let live = WatchLiveSession(fileURL: temporaryFileURL())
+        started(live)
+        guard let sessionSyncID = live.snapshot?.sessionSyncID else {
+            Issue.record("no live session")
+            return
+        }
+
+        live.apply(.sessionDeleted(SessionDeletePayload(sessionSyncID: sessionSyncID)))
+
+        #expect(live.snapshot == nil)
+    }
+
+    @Test func deletionOfAnotherSessionKeepsTheSnapshot() {
+        let live = WatchLiveSession(fileURL: temporaryFileURL())
+        started(live)
+
+        live.apply(.sessionDeleted(SessionDeletePayload(sessionSyncID: UUID())))
+
+        #expect(live.snapshot != nil)
+    }
+
     @Test func liveSessionSurvivesRelaunch() {
         let fileURL = temporaryFileURL()
         let live = WatchLiveSession(fileURL: fileURL)

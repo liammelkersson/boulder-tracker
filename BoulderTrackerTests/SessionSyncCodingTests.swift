@@ -28,6 +28,13 @@ struct SessionSyncCodingTests {
         #expect(try roundTrip(event) == event)
     }
 
+    @Test func sessionDeletedRoundTrips() throws {
+        let event = SessionSyncEvent.sessionDeleted(
+            SessionDeletePayload(sessionSyncID: UUID())
+        )
+        #expect(try roundTrip(event) == event)
+    }
+
     @Test func workoutRecordedRoundTrips() throws {
         let event = SessionSyncEvent.workoutRecorded(WorkoutSummaryPayload(
             sessionSyncID: UUID(), workoutID: UUID(),

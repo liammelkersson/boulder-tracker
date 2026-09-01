@@ -2,6 +2,7 @@ import SwiftUI
 
 struct PreferencesSection: View {
     @Environment(\.palette) private var palette
+    @Environment(PhoneSyncCoordinator.self) private var syncCoordinator
     @AppStorage(AppPreferences.darkModeKey) private var darkModeEnabled = true
     @AppStorage(AppPreferences.healthKitSyncKey) private var healthKitSyncEnabled = true
     @AppStorage(AppPreferences.gradeSystemKey) private var gradeSystem = GradeSystem.default
@@ -16,6 +17,9 @@ struct PreferencesSection: View {
             }
             .themedCard()
         }
+        // The watch only asks for the catalog at cold start; push changes.
+        .onChange(of: gradeSystem) { syncCoordinator.publishCatalog() }
+        .onChange(of: healthKitSyncEnabled) { syncCoordinator.publishCatalog() }
     }
 
     private var gradeSystemRow: some View {

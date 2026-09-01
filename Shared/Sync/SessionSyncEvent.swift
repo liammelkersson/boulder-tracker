@@ -22,6 +22,10 @@ struct SessionEndPayload: Codable, Sendable, Equatable {
     let endTime: Date
 }
 
+struct SessionDeletePayload: Codable, Sendable, Equatable {
+    let sessionSyncID: UUID
+}
+
 struct WorkoutSummaryPayload: Codable, Sendable, Equatable {
     let sessionSyncID: UUID
     let workoutID: UUID
@@ -69,6 +73,7 @@ enum SessionSyncEvent: Codable, Sendable, Equatable {
     case sessionStarted(SessionStartPayload)
     case attemptLogged(AttemptLogPayload)
     case sessionEnded(SessionEndPayload)
+    case sessionDeleted(SessionDeletePayload)
     case workoutRecorded(WorkoutSummaryPayload)
     case liveSessionRequest
     case sessionSnapshot(SessionSnapshotPayload)

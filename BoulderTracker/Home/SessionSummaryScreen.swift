@@ -4,6 +4,7 @@ import SwiftData
 struct SessionSummaryScreen: View {
     @Environment(\.palette) private var palette
     @Environment(\.modelContext) private var modelContext
+    @Environment(PhoneSyncCoordinator.self) private var syncCoordinator
     @Query(sort: \Session.startTime) private var allSessions: [Session]
     @Query private var unlockedAchievements: [Achievement]
     @Query(sort: \Partner.name) private var knownPartners: [Partner]
@@ -222,6 +223,7 @@ struct SessionSummaryScreen: View {
     }
 
     private func discardSession() {
+        syncCoordinator.announceDeletion(of: session)
         modelContext.delete(session)
         modelContext.saveReportingFailure(operation: "session discard")
         onFinished()

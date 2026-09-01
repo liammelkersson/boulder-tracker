@@ -72,6 +72,7 @@ struct GymEditorSheet: View {
     @Environment(\.palette) private var palette
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
+    @Environment(PhoneSyncCoordinator.self) private var syncCoordinator
     @Query private var allGyms: [Gym]
     /// `nil` creates a new gym.
     let gym: Gym?
@@ -122,6 +123,7 @@ struct GymEditorSheet: View {
         }
         target.isDefault = isDefault
         modelContext.saveReportingFailure(operation: "gym save")
+        syncCoordinator.publishCatalog()
         dismiss()
     }
 }

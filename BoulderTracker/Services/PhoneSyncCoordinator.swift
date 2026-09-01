@@ -66,6 +66,19 @@ final class PhoneSyncCoordinator {
         )))
     }
 
+    /// Must be called before the session row is deleted, while `syncID` is
+    /// still readable.
+    func announceDeletion(of session: Session) {
+        guard let sessionSyncID = session.syncID else { return }
+        outbox.send(.sessionDeleted(SessionDeletePayload(sessionSyncID: sessionSyncID)))
+    }
+
+    /// Pushes gyms and preferences to the watch. Call after anything in the
+    /// catalog changes; the watch only asks on its own at cold start.
+    func publishCatalog() {
+        sendCatalog()
+    }
+
     private func route(_ envelope: SyncEnvelope) {
         if case .liveSessionRequest = envelope.event {
             answerLiveSessionRequest()
