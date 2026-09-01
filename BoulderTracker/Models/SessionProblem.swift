@@ -1,14 +1,15 @@
 import Foundation
 import SwiftData
 
+// Defaults on every attribute keep the model CloudKit-compatible.
 @Model
 final class SessionProblem {
-    var name: String
-    var colorGrade: ColorGrade
-    var styles: [RouteStyle]
-    var flashCount: Int
-    var sendCount: Int
-    var fallCount: Int
+    var name: String = ""
+    var colorGrade: ColorGrade = ColorGrade.unknown
+    var styles: [RouteStyle] = []
+    var flashCount: Int = 0
+    var sendCount: Int = 0
+    var fallCount: Int = 0
     var notes: String?
     var photoFilename: String?
     var isProject: Bool = false

@@ -1,12 +1,14 @@
 import Foundation
 import SwiftData
 
+// Every attribute carries a default and every relationship is optional or
+// defaulted: CloudKit-backed SwiftData stores require both.
 @Model
 final class Session {
-    var date: Date
-    var startTime: Date
+    var date: Date = Date.now
+    var startTime: Date = Date.now
     var endTime: Date?
-    var climbType: ClimbType
+    var climbType: ClimbType = ClimbType.bouldering
     var feeling: SessionFeeling?
     var notes: String?
     var photoFilename: String?
@@ -28,9 +30,23 @@ final class Session {
     var isSampleData: Bool = false
     var gym: Gym?
     var shoe: Shoe?
-    var partners: [Partner]
-    @Relationship(deleteRule: .cascade, inverse: \SessionProblem.session)
-    var problems: [SessionProblem]
+    // CloudKit-backed stores require optional to-many relationships;
+    // `originalName` keeps the on-disk schema of the shipped non-optionals.
+    @Relationship(originalName: "partners", inverse: \Partner.sessions)
+    private var storedPartners: [Partner]? = []
+    @Relationship(deleteRule: .cascade, originalName: "problems",
+                  inverse: \SessionProblem.session)
+    private var storedProblems: [SessionProblem]? = []
+
+    var partners: [Partner] {
+        get { storedPartners ?? [] }
+        set { storedPartners = newValue }
+    }
+
+    var problems: [SessionProblem] {
+        get { storedProblems ?? [] }
+        set { storedProblems = newValue }
+    }
 
     init(startTime: Date, gym: Gym?, partners: [Partner], climbType: ClimbType = .bouldering) {
         self.date = startTime
@@ -38,8 +54,8 @@ final class Session {
         self.endTime = nil
         self.climbType = climbType
         self.gym = gym
-        self.partners = partners
-        self.problems = []
+        self.storedPartners = partners
+        self.storedProblems = []
         self.syncID = UUID()
     }
 

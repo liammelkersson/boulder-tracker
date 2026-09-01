@@ -5,12 +5,16 @@ import SwiftData
 
 @MainActor
 func makeInMemoryContainer() throws -> ModelContainer {
-    let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    return try ModelContainer(
-        for: Session.self, SessionProblem.self, Gym.self, Partner.self,
+    // The test host carries iCloud entitlements, so `.automatic` would try
+    // CloudKit; tests must stay on a plain in-memory store.
+    let schema = Schema([
+        Session.self, SessionProblem.self, Gym.self, Partner.self,
         RoadmapProgress.self, Achievement.self, Shoe.self,
-        configurations: config
+    ])
+    let config = ModelConfiguration(
+        schema: schema, isStoredInMemoryOnly: true, cloudKitDatabase: .none
     )
+    return try ModelContainer(for: schema, configurations: config)
 }
 
 @MainActor
