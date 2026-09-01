@@ -84,13 +84,22 @@ targets:
         GENERATE_INFOPLIST_FILE: true
     dependencies:
       - target: BoulderTrackerWatch
+  BoulderTrackerUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [BoulderTrackerUITests]
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: true
+    dependencies:
+      - target: BoulderTracker
 schemes:
   BoulderTracker:
     build:
       targets:
         BoulderTracker: all
     test:
-      targets: [BoulderTrackerTests]
+      targets: [BoulderTrackerTests, BoulderTrackerUITests]
   BoulderTrackerWatch:
     build:
       targets:
