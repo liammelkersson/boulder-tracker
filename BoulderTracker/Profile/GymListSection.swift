@@ -29,19 +29,19 @@ struct GymListSection: View {
     private func gymRow(_ gym: Gym) -> some View {
         HStack(spacing: 10) {
             Text(gym.name)
-                .font(.system(size: 15))
+                .scaledFont(size: 15)
                 .foregroundStyle(palette.text)
             Spacer()
             if gym.isDefault {
                 Text("Default")
-                    .font(.system(size: 12))
+                    .scaledFont(size: 12)
                     .foregroundStyle(palette.textFaint)
             }
             Button {
                 editingGym = gym
             } label: {
                 Text("Edit")
-                    .font(.system(size: 13, weight: .medium))
+                    .scaledFont(size: 13, weight: .medium)
                     .foregroundStyle(palette.textDim)
             }
             .buttonStyle(.plain)
@@ -58,7 +58,7 @@ struct GymListSection: View {
             isAddingGym = true
         } label: {
             Text("+ Add Gym")
-                .font(.system(size: 15))
+                .scaledFont(size: 15)
                 .foregroundStyle(palette.accentText)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 16)
@@ -84,11 +84,11 @@ struct GymEditorSheet: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
             Text(gym == nil ? "Add Gym" : "Edit Gym")
-                .font(.system(size: 18, weight: .bold))
+                .scaledFont(size: 18, weight: .bold)
                 .foregroundStyle(palette.text)
             ThemedTextField(placeholder: "Gym name", text: $name)
             Toggle("Default gym", isOn: $isDefault)
-                .font(.system(size: 15))
+                .scaledFont(size: 15)
                 .foregroundStyle(palette.text)
                 .tint(ThemePalette.accent)
             Button {
@@ -103,7 +103,7 @@ struct GymEditorSheet: View {
                     confirmingDelete = true
                 } label: {
                     Text("Delete Gym")
-                        .font(.system(size: 14, weight: .semibold))
+                        .scaledFont(size: 14, weight: .semibold)
                         .foregroundStyle(ThemePalette.danger)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)

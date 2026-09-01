@@ -34,19 +34,19 @@ struct ShoeListSection: View {
     private func shoeRow(_ shoe: Shoe) -> some View {
         HStack(spacing: 10) {
             Text(shoe.name)
-                .font(.system(size: 15))
+                .scaledFont(size: 15)
                 .foregroundStyle(shoe.isRetired ? palette.textFaint : palette.text)
             Spacer()
             if shoe.isRetired {
                 Text("Retired")
-                    .font(.system(size: 12))
+                    .scaledFont(size: 12)
                     .foregroundStyle(palette.textFaint)
             }
             Button {
                 editingShoe = shoe
             } label: {
                 Text("Edit")
-                    .font(.system(size: 13, weight: .medium))
+                    .scaledFont(size: 13, weight: .medium)
                     .foregroundStyle(palette.textDim)
             }
             .buttonStyle(.plain)
@@ -63,7 +63,7 @@ struct ShoeListSection: View {
             isAddingShoe = true
         } label: {
             Text("+ Add Shoes")
-                .font(.system(size: 15))
+                .scaledFont(size: 15)
                 .foregroundStyle(palette.accentText)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 16)
@@ -87,11 +87,11 @@ struct ShoeEditorSheet: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
             Text(shoe == nil ? "Add Shoes" : "Edit Shoes")
-                .font(.system(size: 18, weight: .bold))
+                .scaledFont(size: 18, weight: .bold)
                 .foregroundStyle(palette.text)
             ThemedTextField(placeholder: "e.g. La Sportiva Solution", text: $name)
             Toggle("Retired", isOn: $isRetired)
-                .font(.system(size: 15))
+                .scaledFont(size: 15)
                 .foregroundStyle(palette.text)
                 .tint(ThemePalette.accent)
             Button {
@@ -106,7 +106,7 @@ struct ShoeEditorSheet: View {
                     confirmingDelete = true
                 } label: {
                     Text("Delete Shoes")
-                        .font(.system(size: 14, weight: .semibold))
+                        .scaledFont(size: 14, weight: .semibold)
                         .foregroundStyle(ThemePalette.danger)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)

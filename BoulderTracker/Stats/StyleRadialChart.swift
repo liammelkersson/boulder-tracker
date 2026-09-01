@@ -51,6 +51,12 @@ struct StyleRadialChart: View {
                 wheel(petals)
                     .frame(width: Self.chartSize, height: Self.chartSize)
                     .frame(maxWidth: .infinity)
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityLabel("Style breakdown")
+                    .accessibilityValue(
+                        petals.map { "\($0.label) \($0.percent) percent sent" }
+                            .joined(separator: ", ")
+                    )
             }
         }
     }
@@ -91,11 +97,11 @@ struct StyleRadialChart: View {
         let textRadius = Self.outerRadius - Self.labelBandDepth / 2 - 3
         return VStack(spacing: 0) {
             Text("\(petal.percent)%")
-                .font(.system(size: 16, weight: .bold))
+                .scaledFont(size: 16, weight: .bold)
                 .monospacedDigit()
                 .foregroundStyle(palette.text)
             Text(petal.label)
-                .font(.system(size: 10))
+                .scaledFont(size: 10)
                 .foregroundStyle(palette.textDim)
         }
         .position(polarPoint(radius: textRadius, angle: petal.angle))

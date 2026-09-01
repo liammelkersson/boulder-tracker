@@ -69,20 +69,20 @@ struct ProblemTile: View {
         VStack(alignment: .leading, spacing: 1) {
             HStack(spacing: 6) {
                 Text(problem.displayName)
-                    .font(.system(size: 15, weight: .semibold))
+                    .scaledFont(size: 15, weight: .semibold)
                     .foregroundStyle(palette.text)
                 if problem.isProject {
                     Image(systemName: "flag.fill")
-                        .font(.system(size: 10))
+                        .scaledFont(size: 10)
                         .foregroundStyle(palette.accentText)
                 }
             }
             Text(gradeAndGymLabel)
-                .font(.system(size: 13))
+                .scaledFont(size: 13)
                 .foregroundStyle(palette.textFaint)
             if !problem.styles.isEmpty {
                 Text(problem.styles.map(\.displayName).joined(separator: ", "))
-                    .font(.system(size: 12))
+                    .scaledFont(size: 12)
                     .foregroundStyle(palette.textFaint)
                     .padding(.top, 2)
             }
@@ -102,7 +102,7 @@ struct ProblemTile: View {
     private var notesFootnote: some View {
         if let notes = problem.notes, !notes.isEmpty {
             Text(notes)
-                .font(.system(size: 12))
+                .scaledFont(size: 12)
                 .foregroundStyle(palette.textDim)
                 .padding(.top, 8)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -133,10 +133,10 @@ struct ProblemTile: View {
         } label: {
             HStack(spacing: 6) {
                 Text(result.displayName)
-                    .font(.system(size: 13, weight: .semibold))
+                    .scaledFont(size: 13, weight: .semibold)
                     .foregroundStyle(titleColor(for: result))
                 Text("\(problem.logCount(for: result))")
-                    .font(.system(size: 13, weight: .semibold))
+                    .scaledFont(size: 13, weight: .semibold)
                     .foregroundStyle(palette.textFaint)
             }
             .frame(maxWidth: .infinity)
@@ -151,6 +151,8 @@ struct ProblemTile: View {
             }
         }
         .buttonStyle(.plain)
+        .accessibilityLabel("Log \(result.displayName)")
+        .accessibilityValue("\(problem.logCount(for: result)) logged")
     }
 
     private func titleColor(for result: AttemptResult) -> Color {

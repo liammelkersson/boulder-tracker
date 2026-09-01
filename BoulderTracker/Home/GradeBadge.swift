@@ -27,7 +27,7 @@ struct GradeBadge: View {
                     .frame(width: 20, height: 17)
                     .foregroundStyle(.black.opacity(0.72))
                 Text(grade.shortLabel(in: gradeSystem))
-                    .font(.system(size: 14, weight: .heavy))
+                    .scaledFont(size: 14, weight: .heavy)
                     .foregroundStyle(.black.opacity(0.78))
             }
             .padding(.bottom, 16)

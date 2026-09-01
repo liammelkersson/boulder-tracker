@@ -14,10 +14,10 @@ struct HeroTimeCard: View {
         HStack(spacing: 14) {
             VStack(alignment: .leading, spacing: 0) {
                 Text("Time on the wall · 3 months")
-                    .font(.system(size: 14, weight: .semibold))
+                    .scaledFont(size: 14, weight: .semibold)
                     .foregroundStyle(palette.textDim)
                 Text(SessionDurationFormat.compactString(from: summary.totalDuration))
-                    .font(.system(size: 44, weight: .bold))
+                    .scaledFont(size: 44, weight: .bold)
                     .foregroundStyle(palette.text)
                     .padding(.top, 8)
                 currentGradeRow
@@ -47,7 +47,7 @@ struct HeroTimeCard: View {
                     .fontWeight(.semibold)
                     .foregroundStyle(palette.text)
             }
-            .font(.system(size: 13))
+            .scaledFont(size: 13)
             .padding(.top, 6)
             .frame(maxWidth: .infinity, alignment: .leading)
             .overlay(alignment: .top) {

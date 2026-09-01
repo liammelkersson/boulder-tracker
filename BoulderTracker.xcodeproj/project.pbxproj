@@ -168,6 +168,7 @@
 		ECC55B7941BCED3A464DB0AB /* ColorGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA0494CD42B4C436DEA59E3 /* ColorGrade.swift */; };
 		ED84D740682BB2BCF0B31499 /* SessionPhotoThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C043EA16DEFFD7A50DD9F6 /* SessionPhotoThumbnail.swift */; };
 		F6666B8955AE8C11E3DDD5C4 /* QuickAddProblemSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427EA41606057FE2C094908B /* QuickAddProblemSheet.swift */; };
+		F766FC3F33449E8032845F6B /* ScaledFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF10452FF7A2FE74E4B6BEB /* ScaledFont.swift */; };
 		F7A82AC0C1C5CFB192079727 /* GradeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE0685502F778A36121795E /* GradeLabel.swift */; };
 		F9C34241FAF5180B3B77FF08 /* PendingEventQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68CBE61488C4DC44FD9D9A5 /* PendingEventQueueTests.swift */; };
 		FEF0427E435C410135C4FEF4 /* Shoe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D1E25D7AF4FB0B107FA22E /* Shoe.swift */; };
@@ -327,6 +328,7 @@
 		BBD02A29757F74D62FD5F02B /* EditProfileSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileSheet.swift; sourceTree = "<group>"; };
 		BF32B6E832449D49CC10E1FD /* ThemePalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePalette.swift; sourceTree = "<group>"; };
 		BFB04E7578019D9D03B7B0BE /* WatchLiveSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchLiveSessionTests.swift; sourceTree = "<group>"; };
+		BFF10452FF7A2FE74E4B6BEB /* ScaledFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaledFont.swift; sourceTree = "<group>"; };
 		C2E508219F5B9235B9A71097 /* SessionRowCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRowCard.swift; sourceTree = "<group>"; };
 		C8D9B4FF8FCAE0C8695F58AF /* ClimbType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbType.swift; sourceTree = "<group>"; };
 		CAFB3EA8A8479714B9B4D162 /* ThemedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedCard.swift; sourceTree = "<group>"; };
@@ -634,6 +636,7 @@
 				43A64287092BC5AF5641F78B /* AccentButtons.swift */,
 				7CA59ECA983557C4012E265A /* GradeDot.swift */,
 				FFD902D73B7EFAA3AE30656D /* HoldIcon.swift */,
+				BFF10452FF7A2FE74E4B6BEB /* ScaledFont.swift */,
 				5AE81A0F277E2B6ABC8CFE8D /* SectionHeading.swift */,
 				7D170B0F89A44AA88F76D40C /* StatTile.swift */,
 				CAFB3EA8A8479714B9B4D162 /* ThemedCard.swift */,
@@ -843,6 +846,7 @@
 				B677F75EE8E77731016B61C6 /* RouteStyle.swift in Sources */,
 				542397830B381807178AD979 /* SampleDataGenerator.swift in Sources */,
 				682135509599CA790C87AE1A /* SampleDataToggleRow.swift in Sources */,
+				F766FC3F33449E8032845F6B /* ScaledFont.swift in Sources */,
 				6665B8C1C520E8C5548071C0 /* SectionHeading.swift in Sources */,
 				7FCBC26D392ED8541DAA2084 /* Session.swift in Sources */,
 				639548E7DDD07657FB623906 /* SessionCompletion.swift in Sources */,

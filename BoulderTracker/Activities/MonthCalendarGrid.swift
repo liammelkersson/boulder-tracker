@@ -37,7 +37,7 @@ struct MonthCalendarGrid: View {
                   spacing: 10) {
             ForEach(weekdaySymbols.indices, id: \.self) { index in
                 Text(weekdaySymbols[index])
-                    .font(.system(size: 12, weight: .semibold))
+                    .scaledFont(size: 12, weight: .semibold)
                     .foregroundStyle(palette.textFaint)
             }
             ForEach(0..<leadingBlanks, id: \.self) { _ in
@@ -70,7 +70,7 @@ struct MonthCalendarGrid: View {
                         .foregroundStyle(ThemePalette.onAccent)
                 } else {
                     Text("\(calendar.component(.day, from: day))")
-                        .font(.system(size: 15))
+                        .scaledFont(size: 15)
                         .foregroundStyle(palette.text)
                 }
             }

@@ -57,7 +57,7 @@ struct SuggestedProblemsRow: View {
             HStack(spacing: 7) {
                 GradeDot(grade: suggestion.grade, size: 9)
                 Text(suggestion.name)
-                    .font(.system(size: 13, weight: .medium))
+                    .scaledFont(size: 13, weight: .medium)
                     .foregroundStyle(palette.text)
             }
             .padding(.horizontal, 14)

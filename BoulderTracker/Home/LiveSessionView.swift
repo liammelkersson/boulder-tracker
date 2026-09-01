@@ -54,12 +54,12 @@ struct LiveSessionView: View {
             Text(SessionDurationFormat.timerString(
                 from: currentDate.timeIntervalSince(session.startTime)
             ))
-            .font(.system(size: 56, weight: .bold))
+            .scaledFont(size: 56, weight: .bold)
             .monospacedDigit()
             .foregroundStyle(palette.text)
             .padding(.top, 8)
             Text(sessionContextLabel)
-                .font(.system(size: 14))
+                .scaledFont(size: 14)
                 .foregroundStyle(palette.textDim)
                 .padding(.top, 6)
         }
@@ -77,7 +77,7 @@ struct LiveSessionView: View {
             SectionHeading(title: "Problems")
             if session.problems.isEmpty {
                 Text("No problems added yet")
-                    .font(.system(size: 14))
+                    .scaledFont(size: 14)
                     .foregroundStyle(palette.textFaint)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 20)
@@ -133,10 +133,10 @@ struct LiveGradeTally: View {
                     HStack(spacing: 7) {
                         GradeDot(grade: entry.grade)
                         Text(entry.grade.shortLabel(in: gradeSystem))
-                            .font(.system(size: 13, weight: .medium))
+                            .scaledFont(size: 13, weight: .medium)
                             .foregroundStyle(palette.text)
                         Text("\(entry.count)")
-                            .font(.system(size: 13, weight: .semibold))
+                            .scaledFont(size: 13, weight: .semibold)
                             .foregroundStyle(palette.textFaint)
                     }
                     .padding(.horizontal, 12)

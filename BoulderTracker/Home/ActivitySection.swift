@@ -31,14 +31,14 @@ struct ActivitySection: View {
     private var header: some View {
         HStack {
             Text("Activity")
-                .font(.system(size: 16, weight: .semibold))
+                .scaledFont(size: 16, weight: .semibold)
                 .foregroundStyle(palette.text)
             Spacer()
             Button {
                 showingRetroForm = true
             } label: {
                 Text("+ Add Past Session")
-                    .font(.system(size: 13, weight: .medium))
+                    .scaledFont(size: 13, weight: .medium)
                     .foregroundStyle(palette.textDim)
                     .padding(.horizontal, 12)
                     .padding(.vertical, 6)

@@ -25,7 +25,7 @@ struct RetroSessionForm: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
                 Text("Add Past Session")
-                    .font(.system(size: 18, weight: .bold))
+                    .scaledFont(size: 18, weight: .bold)
                     .foregroundStyle(palette.text)
                 dateAndDuration
                 gymField
@@ -52,7 +52,7 @@ struct RetroSessionForm: View {
         VStack(alignment: .leading, spacing: 8) {
             SectionHeading(title: "When")
             DatePicker("Start", selection: $startDate, in: ...Date.now)
-                .font(.system(size: 14))
+                .scaledFont(size: 14)
                 .foregroundStyle(palette.text)
                 .padding(.horizontal, 14)
                 .padding(.vertical, 8)
@@ -62,7 +62,7 @@ struct RetroSessionForm: View {
                 "Duration: \(SessionDurationFormat.compactString(from: TimeInterval(durationMinutes * 60)))",
                 value: $durationMinutes, in: 5...600, step: 5
             )
-            .font(.system(size: 14))
+            .scaledFont(size: 14)
             .foregroundStyle(palette.text)
             .padding(.horizontal, 14)
             .padding(.vertical, 8)
@@ -105,7 +105,7 @@ struct RetroSessionForm: View {
             SectionHeading(title: "Partners")
             if allPartners.isEmpty {
                 Text("No partners yet — add them in Profile")
-                    .font(.system(size: 13))
+                    .scaledFont(size: 13)
                     .foregroundStyle(palette.textFaint)
             }
             FlowLayout(spacing: 8) {
@@ -129,7 +129,7 @@ struct RetroSessionForm: View {
             SectionHeading(title: "Shoes")
             if activeShoes.isEmpty {
                 Text("No shoes yet — add them in Profile")
-                    .font(.system(size: 13))
+                    .scaledFont(size: 13)
                     .foregroundStyle(palette.textFaint)
             }
             FlowLayout(spacing: 8) {

@@ -11,11 +11,11 @@ struct SampleDataToggleRow: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             Toggle("Show sample data", isOn: sampleDataBinding)
-                .font(.system(size: 15))
+                .scaledFont(size: 15)
                 .foregroundStyle(palette.text)
                 .tint(ThemePalette.accent)
             Text("Adds demo sessions so you can preview the charts. Turning this off removes them again.")
-                .font(.system(size: 12))
+                .scaledFont(size: 12)
                 .foregroundStyle(palette.textFaint)
         }
         .padding(16)

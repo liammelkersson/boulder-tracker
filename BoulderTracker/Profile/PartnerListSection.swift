@@ -29,14 +29,14 @@ struct PartnerListSection: View {
     private func partnerRow(_ partner: Partner) -> some View {
         HStack {
             Text(partner.name)
-                .font(.system(size: 15))
+                .scaledFont(size: 15)
                 .foregroundStyle(palette.text)
             Spacer()
             Button {
                 editingPartner = partner
             } label: {
                 Text("Edit")
-                    .font(.system(size: 13, weight: .medium))
+                    .scaledFont(size: 13, weight: .medium)
                     .foregroundStyle(palette.textDim)
             }
             .buttonStyle(.plain)
@@ -53,7 +53,7 @@ struct PartnerListSection: View {
             isAddingPartner = true
         } label: {
             Text("+ Add Partner")
-                .font(.system(size: 15))
+                .scaledFont(size: 15)
                 .foregroundStyle(palette.accentText)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 16)
@@ -76,7 +76,7 @@ struct PartnerEditorSheet: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
             Text(partner == nil ? "Add Partner" : "Edit Partner")
-                .font(.system(size: 18, weight: .bold))
+                .scaledFont(size: 18, weight: .bold)
                 .foregroundStyle(palette.text)
             ThemedTextField(placeholder: "Partner name", text: $name)
             Button {
@@ -91,7 +91,7 @@ struct PartnerEditorSheet: View {
                     confirmingDelete = true
                 } label: {
                     Text("Delete Partner")
-                        .font(.system(size: 14, weight: .semibold))
+                        .scaledFont(size: 14, weight: .semibold)
                         .foregroundStyle(ThemePalette.danger)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)

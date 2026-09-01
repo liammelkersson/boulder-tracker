@@ -36,14 +36,14 @@ struct PersonalBestsSection: View {
                     ForEach(bests, id: \.label) { best in
                         HStack {
                             Text(best.label)
-                                .font(.system(size: 14))
+                                .scaledFont(size: 14)
                                 .foregroundStyle(palette.textDim)
                             Spacer()
                             if let grade = best.grade {
                                 GradeDot(grade: grade, size: 10)
                             }
                             Text(best.value)
-                                .font(.system(size: 14, weight: .semibold))
+                                .scaledFont(size: 14, weight: .semibold)
                                 .foregroundStyle(palette.text)
                         }
                         .padding(.vertical, 11)

@@ -52,10 +52,10 @@ struct ProfileView: View {
             avatar
             VStack(alignment: .leading, spacing: 2) {
                 Text(profileName)
-                    .font(.system(size: 20, weight: .bold))
+                    .scaledFont(size: 20, weight: .bold)
                     .foregroundStyle(palette.text)
                 Text("Climbing since \(climbingSinceYear)")
-                    .font(.system(size: 13))
+                    .scaledFont(size: 13)
                     .foregroundStyle(palette.textDim)
             }
             Spacer()
@@ -64,9 +64,9 @@ struct ProfileView: View {
             } label: {
                 HStack(spacing: 2) {
                     Text("Edit")
-                    Image(systemName: "chevron.right").font(.system(size: 11, weight: .semibold))
+                    Image(systemName: "chevron.right").scaledFont(size: 11, weight: .semibold)
                 }
-                .font(.system(size: 14, weight: .medium))
+                .scaledFont(size: 14, weight: .medium)
                 .foregroundStyle(palette.textDim)
             }
             .buttonStyle(.plain)
@@ -81,7 +81,7 @@ struct ProfileView: View {
                     .scaledToFill()
             } else {
                 Text(profileName.prefix(1).uppercased())
-                    .font(.system(size: 26, weight: .bold))
+                    .scaledFont(size: 26, weight: .bold)
                     .foregroundStyle(ThemePalette.onAccent)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(ThemePalette.accent)
@@ -116,9 +116,9 @@ struct ProfileView: View {
         Button(action: onTap) {
             VStack(spacing: 7) {
                 Image(systemName: systemName)
-                    .font(.system(size: 17, weight: .semibold))
+                    .scaledFont(size: 17, weight: .semibold)
                 Text(title)
-                    .font(.system(size: 12, weight: .semibold))
+                    .scaledFont(size: 12, weight: .semibold)
             }
             .foregroundStyle(palette.text)
             .frame(maxWidth: .infinity)
@@ -130,7 +130,7 @@ struct ProfileView: View {
 
     private var versionFooter: some View {
         Text("Boulder Tracker v1.0.0")
-            .font(.system(size: 12))
+            .scaledFont(size: 12)
             .foregroundStyle(palette.textFaint)
             .frame(maxWidth: .infinity)
             .padding(.top, 8)

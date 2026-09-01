@@ -22,20 +22,20 @@ struct SessionRowCard: View {
                 HStack(spacing: 6) {
                     ClimbTypeChip(climbType: session.climbType)
                     Text(partnerLabel)
-                        .font(.system(size: 11))
+                        .scaledFont(size: 11)
                         .foregroundStyle(palette.textFaint)
                 }
                 Text(summaryLabel)
-                    .font(.system(size: 14, weight: .semibold))
+                    .scaledFont(size: 14, weight: .semibold)
                     .foregroundStyle(palette.text)
                     .lineLimit(1)
             }
             Spacer(minLength: 0)
             VStack(alignment: .trailing, spacing: 2) {
                 Text(session.startTime, format: .dateTime.month(.abbreviated).day())
-                    .font(.system(size: 12))
+                    .scaledFont(size: 12)
                 Text(SessionDurationFormat.compactString(from: session.duration))
-                    .font(.system(size: 11))
+                    .scaledFont(size: 11)
             }
             .foregroundStyle(palette.textFaint)
         }
@@ -70,7 +70,7 @@ struct ClimbTypeChip: View {
 
     var body: some View {
         Text(climbType.displayName)
-            .font(.system(size: 10, weight: .semibold))
+            .scaledFont(size: 10, weight: .semibold)
             .foregroundStyle(climbType.chipColor)
             .padding(.horizontal, 7)
             .padding(.vertical, 2)

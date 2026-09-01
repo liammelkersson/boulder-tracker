@@ -22,11 +22,11 @@ struct CurrentProjectCard: View {
             VStack(alignment: .leading, spacing: 10) {
                 HStack {
                     Text("Current Project")
-                        .font(.system(size: 14, weight: .semibold))
+                        .scaledFont(size: 14, weight: .semibold)
                         .foregroundStyle(palette.textFaint)
                     Spacer()
                     Image(systemName: "chevron.right")
-                        .font(.system(size: 12, weight: .semibold))
+                        .scaledFont(size: 12, weight: .semibold)
                         .foregroundStyle(palette.textFaint)
                 }
                 if let project {
@@ -36,7 +36,7 @@ struct CurrentProjectCard: View {
                     }
                 } else {
                     Text("No active project — long-press a problem to mark one")
-                        .font(.system(size: 13))
+                        .scaledFont(size: 13)
                         .foregroundStyle(palette.textDim)
                 }
             }
@@ -57,10 +57,10 @@ struct CurrentProjectCard: View {
             : "\(project.sessionCount) sessions on this problem"
         return VStack(alignment: .leading, spacing: 2) {
             Text("\(project.grade.detailLabel(in: gradeSystem)) · \u{201C}\(project.name)\u{201D}")
-                .font(.system(size: 16, weight: .semibold))
+                .scaledFont(size: 16, weight: .semibold)
                 .foregroundStyle(palette.text)
             Text("\(project.gymName ?? "Unknown gym") · \(sessionsLabel)")
-                .font(.system(size: 13))
+                .scaledFont(size: 13)
                 .foregroundStyle(palette.textDim)
         }
     }

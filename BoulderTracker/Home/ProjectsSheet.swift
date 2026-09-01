@@ -15,11 +15,11 @@ struct ProjectsSheet: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 14) {
                 Text("Projects")
-                    .font(.system(size: 18, weight: .bold))
+                    .scaledFont(size: 18, weight: .bold)
                     .foregroundStyle(palette.text)
                 if projects.isEmpty {
                     Text("No projects yet. Mark a problem as a project when adding it, or long-press a problem tile during a session.")
-                        .font(.system(size: 14))
+                        .scaledFont(size: 14)
                         .foregroundStyle(palette.textDim)
                         .padding(.top, 8)
                 }
@@ -41,10 +41,10 @@ struct ProjectsSheet: View {
             HoldIcon(grade: project.grade, size: 40)
             VStack(alignment: .leading, spacing: 2) {
                 Text(project.name)
-                    .font(.system(size: 15, weight: .semibold))
+                    .scaledFont(size: 15, weight: .semibold)
                     .foregroundStyle(palette.text)
                 Text(projectSubtitle(project))
-                    .font(.system(size: 12))
+                    .scaledFont(size: 12)
                     .foregroundStyle(palette.textFaint)
             }
             Spacer()
@@ -71,7 +71,7 @@ struct ProjectsSheet: View {
                 currentProjectName = project.name
             } label: {
                 Text("Set current")
-                    .font(.system(size: 12, weight: .semibold))
+                    .scaledFont(size: 12, weight: .semibold)
                     .foregroundStyle(palette.textDim)
                     .padding(.horizontal, 10)
                     .padding(.vertical, 5)
@@ -84,7 +84,7 @@ struct ProjectsSheet: View {
 
     private func statusChip(text: String, color: Color) -> some View {
         Text(text)
-            .font(.system(size: 12, weight: .semibold))
+            .scaledFont(size: 12, weight: .semibold)
             .foregroundStyle(color)
             .padding(.horizontal, 10)
             .padding(.vertical, 5)

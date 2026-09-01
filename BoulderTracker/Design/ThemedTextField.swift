@@ -7,7 +7,7 @@ struct ThemedTextField: View {
 
     var body: some View {
         TextField("", text: $text, prompt: Text(placeholder).foregroundStyle(palette.textFaint))
-            .font(.system(size: 14))
+            .scaledFont(size: 14)
             .foregroundStyle(palette.text)
             .padding(.horizontal, 14)
             .padding(.vertical, 12)

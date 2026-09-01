@@ -34,7 +34,7 @@ struct GradeProgressionChart: View {
 
     private var emptyState: some View {
         Text("No sends in this period yet")
-            .font(.system(size: 14))
+            .scaledFont(size: 14)
             .foregroundStyle(palette.textFaint)
             .frame(maxWidth: .infinity)
             .padding(.vertical, 12)
@@ -74,7 +74,7 @@ struct GradeProgressionChart: View {
                 if let gradeValue = value.as(Int.self),
                    let grade = ColorGrade(rawValue: gradeValue) {
                     Text(grade.shortLabel(in: gradeSystem))
-                        .font(.system(size: 10, weight: .semibold))
+                        .scaledFont(size: 10, weight: .semibold)
                         .foregroundStyle(palette.textDim)
                 }
             }

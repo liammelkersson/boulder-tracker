@@ -16,7 +16,7 @@ struct StatsView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 28) {
                 Text("Stats")
-                    .font(.system(size: 30, weight: .bold))
+                    .scaledFont(size: 30, weight: .bold)
                     .foregroundStyle(palette.text)
                 periodSelector
                 summaryGrid
@@ -48,7 +48,7 @@ struct StatsView: View {
             period = option
         } label: {
             Text(option.displayName)
-                .font(.system(size: 13, weight: .semibold))
+                .scaledFont(size: 13, weight: .semibold)
                 .foregroundStyle(isSelected ? ThemePalette.onAccent : palette.textDim)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 8)

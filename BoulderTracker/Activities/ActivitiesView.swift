@@ -50,16 +50,16 @@ struct ActivitiesView: View {
         HStack(alignment: .top) {
             VStack(alignment: .leading, spacing: 0) {
                 Text(displayedMonth, format: .dateTime.month(.wide).year())
-                    .font(.system(size: 30, weight: .bold))
+                    .scaledFont(size: 30, weight: .bold)
                     .foregroundStyle(palette.text)
                 Text("Hours on Wall")
-                    .font(.system(size: 14))
+                    .scaledFont(size: 14)
                     .foregroundStyle(palette.textDim)
                     .padding(.top, 14)
                 Text(SessionDurationFormat.compactString(
                     from: monthSessions.reduce(0) { $0 + $1.duration }
                 ))
-                .font(.system(size: 22, weight: .bold))
+                .scaledFont(size: 22, weight: .bold)
                 .foregroundStyle(palette.text)
                 .padding(.top, 2)
             }
@@ -79,23 +79,24 @@ struct ActivitiesView: View {
             }
         } label: {
             Image(systemName: systemName)
-                .font(.system(size: 14, weight: .semibold))
+                .scaledFont(size: 14, weight: .semibold)
                 .foregroundStyle(palette.textDim)
                 .frame(width: 32, height: 32)
                 .background(palette.surface)
                 .clipShape(.circle)
         }
         .buttonStyle(.plain)
+        .accessibilityLabel(monthDelta < 0 ? "Previous month" : "Next month")
     }
 
     private var sessionList: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(selectedDay == nil ? "All Sessions" : "Sessions that day")
-                .font(.system(size: 16, weight: .semibold))
+                .scaledFont(size: 16, weight: .semibold)
                 .foregroundStyle(palette.text)
             if listedSessions.isEmpty {
                 Text("No sessions logged")
-                    .font(.system(size: 14))
+                    .scaledFont(size: 14)
                     .foregroundStyle(palette.textFaint)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 20)

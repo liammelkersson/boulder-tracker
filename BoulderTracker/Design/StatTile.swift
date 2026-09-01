@@ -8,16 +8,18 @@ struct StatTile: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
             Text(valueText)
-                .font(.system(size: 22, weight: .bold))
+                .scaledFont(size: 22, weight: .bold)
                 .monospacedDigit()
                 .foregroundStyle(palette.text)
             Text(label)
-                .font(.system(size: 12))
+                .scaledFont(size: 12)
                 .foregroundStyle(palette.textFaint)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 14)
         .padding(.vertical, 16)
         .themedCard()
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(label): \(valueText)")
     }
 }

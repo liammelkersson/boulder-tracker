@@ -37,15 +37,16 @@ struct AchievementsGridView: View {
         HStack(spacing: 12) {
             Button(action: onClose) {
                 Image(systemName: "chevron.left")
-                    .font(.system(size: 15, weight: .semibold))
+                    .scaledFont(size: 15, weight: .semibold)
                     .foregroundStyle(palette.text)
                     .frame(width: 32, height: 32)
                     .background(palette.surface)
                     .clipShape(.circle)
             }
             .buttonStyle(.plain)
+            .accessibilityLabel("Back")
             Text("Achievements")
-                .font(.system(size: 20, weight: .bold))
+                .scaledFont(size: 20, weight: .bold)
                 .foregroundStyle(palette.text)
         }
     }
@@ -60,12 +61,12 @@ struct AchievementsGridView: View {
                 definition, isUnlocked: isUnlocked, holdColor: holdColor, shapeGrade: shapeGrade
             )
             Text(definition.title)
-                .font(.system(size: 15, weight: .bold))
+                .scaledFont(size: 15, weight: .bold)
                 .foregroundStyle(palette.text)
                 .multilineTextAlignment(.center)
                 .padding(.top, 2)
             Text(definition.detail)
-                .font(.system(size: 13))
+                .scaledFont(size: 13)
                 .foregroundStyle(palette.textFaint)
                 .multilineTextAlignment(.center)
             statusChip(definition, isUnlocked: isUnlocked)
@@ -86,7 +87,7 @@ struct AchievementsGridView: View {
         .opacity(isUnlocked ? 1 : 0.4)
         .overlay(alignment: .bottomTrailing) {
             Text("\(definition.target)")
-                .font(.system(size: 12, weight: .heavy))
+                .scaledFont(size: 12, weight: .heavy)
                 .foregroundStyle(isUnlocked ? holdColor : palette.textFaint)
                 .frame(width: 24, height: 24)
                 .background(.white)
@@ -99,7 +100,7 @@ struct AchievementsGridView: View {
     private func statusChip(_ definition: AchievementDefinition, isUnlocked: Bool) -> some View {
         if isUnlocked {
             Text("Unlocked")
-                .font(.system(size: 12, weight: .semibold))
+                .scaledFont(size: 12, weight: .semibold)
                 .foregroundStyle(Color(hex: 0x14A876))
                 .padding(.horizontal, 12)
                 .padding(.vertical, 4)
@@ -108,7 +109,7 @@ struct AchievementsGridView: View {
         } else {
             let percent = Int((definition.progressFraction(in: finishedSessions) * 100).rounded())
             Text("\(percent)%")
-                .font(.system(size: 12, weight: .semibold))
+                .scaledFont(size: 12, weight: .semibold)
                 .foregroundStyle(palette.textFaint)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 4)

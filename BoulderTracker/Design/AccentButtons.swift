@@ -5,7 +5,7 @@ struct AccentButtonLabel: View {
 
     var body: some View {
         Text(title)
-            .font(.system(size: 17, weight: .semibold))
+            .scaledFont(size: 17, weight: .semibold)
             .foregroundStyle(ThemePalette.onAccent)
             .frame(maxWidth: .infinity)
             .padding(.vertical, 16)
@@ -21,7 +21,7 @@ struct SecondaryButtonLabel: View {
 
     var body: some View {
         Text(title)
-            .font(.system(size: 15, weight: .semibold))
+            .scaledFont(size: 15, weight: .semibold)
             .foregroundStyle(titleColor ?? palette.textDim)
             .frame(maxWidth: .infinity)
             .padding(.vertical, 14)

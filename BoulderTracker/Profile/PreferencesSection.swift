@@ -25,7 +25,7 @@ struct PreferencesSection: View {
     private var gradeSystemRow: some View {
         VStack(alignment: .leading, spacing: 9) {
             Text("Grade system")
-                .font(.system(size: 15))
+                .scaledFont(size: 15)
                 .foregroundStyle(palette.text)
             Picker("Grade system", selection: $gradeSystem) {
                 ForEach(GradeSystem.allCases) { system in
@@ -42,7 +42,7 @@ struct PreferencesSection: View {
 
     private func preferenceRow(title: String, isOn: Binding<Bool>, isLast: Bool) -> some View {
         Toggle(title, isOn: isOn)
-            .font(.system(size: 15))
+            .scaledFont(size: 15)
             .foregroundStyle(palette.text)
             .tint(ThemePalette.accent)
             .padding(.horizontal, 16)

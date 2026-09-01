@@ -19,7 +19,7 @@ struct EditProfileSheet: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
             Text("Edit Profile")
-                .font(.system(size: 18, weight: .bold))
+                .scaledFont(size: 18, weight: .bold)
                 .foregroundStyle(palette.text)
             avatarPicker
             VStack(alignment: .leading, spacing: 8) {
@@ -57,7 +57,7 @@ struct EditProfileSheet: View {
             HStack(spacing: 12) {
                 avatarPreview
                 Text(hasAvatar ? "Tap to change photo" : "Add a profile photo")
-                    .font(.system(size: 14, weight: .semibold))
+                    .scaledFont(size: 14, weight: .semibold)
                     .foregroundStyle(palette.textDim)
             }
         }
@@ -79,7 +79,7 @@ struct EditProfileSheet: View {
                     .clipShape(.circle)
             } else {
                 Image(systemName: "person.crop.circle")
-                    .font(.system(size: 26))
+                    .scaledFont(size: 26)
                     .foregroundStyle(palette.textFaint)
             }
         }

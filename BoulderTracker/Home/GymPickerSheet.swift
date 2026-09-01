@@ -14,10 +14,10 @@ struct GymPickerSheet: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text("Where are you climbing?")
-                .font(.system(size: 18, weight: .bold))
+                .scaledFont(size: 18, weight: .bold)
                 .foregroundStyle(palette.text)
             Text("We'll suggest problems you've logged there before.")
-                .font(.system(size: 13))
+                .scaledFont(size: 13)
                 .foregroundStyle(palette.textFaint)
                 .padding(.top, 4)
             climbTypeRow
@@ -73,7 +73,7 @@ struct GymPickerSheet: View {
                         startSession(at: gym)
                     } label: {
                         Text(gym.name)
-                            .font(.system(size: 15, weight: .medium))
+                            .scaledFont(size: 15, weight: .medium)
                             .foregroundStyle(palette.text)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.horizontal, 16)
@@ -106,7 +106,7 @@ struct SelectablePill: View {
     var body: some View {
         Button(action: onTap) {
             Text(title)
-                .font(.system(size: 13, weight: .medium))
+                .scaledFont(size: 13, weight: .medium)
                 .foregroundStyle(isSelected ? ThemePalette.onAccent : palette.textDim)
                 .padding(.horizontal, 14)
                 .padding(.vertical, 8)

@@ -62,7 +62,7 @@ struct SessionSummaryScreen: View {
             SectionHeading(title: "Session Complete")
                 .kerning(1)
             Text("Nice work")
-                .font(.system(size: 24, weight: .bold))
+                .scaledFont(size: 24, weight: .bold)
                 .foregroundStyle(palette.text)
         }
         .frame(maxWidth: .infinity)
@@ -100,11 +100,11 @@ struct SessionSummaryScreen: View {
                     HStack(spacing: 10) {
                         GradeDot(grade: problem.colorGrade)
                         Text(problem.displayName)
-                            .font(.system(size: 14, weight: .semibold))
+                            .scaledFont(size: 14, weight: .semibold)
                             .foregroundStyle(palette.text)
                         Spacer()
                         Text("\(problem.flashCount)F · \(problem.sendCount)S · \(problem.fallCount)X")
-                            .font(.system(size: 12))
+                            .scaledFont(size: 12)
                             .foregroundStyle(palette.textFaint)
                     }
                     .padding(.horizontal, 14)
@@ -156,7 +156,7 @@ struct SessionSummaryScreen: View {
             feeling = option
         } label: {
             Text(option.displayName)
-                .font(.system(size: 14, weight: .semibold))
+                .scaledFont(size: 14, weight: .semibold)
                 .foregroundStyle(isSelected ? palette.onAccentText : palette.textDim)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 10)

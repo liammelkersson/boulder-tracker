@@ -6,7 +6,7 @@ struct GradesSheet: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             Text("Grades")
-                .font(.system(size: 18, weight: .bold))
+                .scaledFont(size: 18, weight: .bold)
                 .foregroundStyle(palette.text)
             VStack(spacing: 0) {
                 ForEach(ColorGrade.displayOrder) { grade in
@@ -26,15 +26,15 @@ struct GradesSheet: View {
         HStack(spacing: 10) {
             GradeDot(grade: grade, size: 14)
             Text(grade.displayName)
-                .font(.system(size: 14, weight: .semibold))
+                .scaledFont(size: 14, weight: .semibold)
                 .foregroundStyle(palette.text)
                 .frame(width: 64, alignment: .leading)
             Text("V-scale \(grade.vGradeRange)")
-                .font(.system(size: 13))
+                .scaledFont(size: 13)
                 .foregroundStyle(palette.textDim)
                 .frame(maxWidth: .infinity, alignment: .leading)
             Text("Font \(grade.frenchRange)")
-                .font(.system(size: 13))
+                .scaledFont(size: 13)
                 .foregroundStyle(palette.textDim)
         }
         .padding(.horizontal, 16)

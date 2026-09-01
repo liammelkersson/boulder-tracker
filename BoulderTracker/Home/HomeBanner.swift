@@ -50,13 +50,13 @@ struct HomeBanner: View {
     private var greetingText: some View {
         VStack(alignment: .leading, spacing: 2) {
             Text(TimeOfDayGreeting.current())
-                .font(.system(size: 15, weight: .medium))
+                .scaledFont(size: 15, weight: .medium)
                 .foregroundStyle(.white.opacity(0.75))
             Text(profileName)
-                .font(.system(size: 30, weight: .bold))
+                .scaledFont(size: 30, weight: .bold)
                 .foregroundStyle(.white)
             Text("\(climbingDays) climbing \(climbingDays == 1 ? "day" : "days") in the last 3 months")
-                .font(.system(size: 14))
+                .scaledFont(size: 14)
                 .foregroundStyle(.white.opacity(0.75))
                 .padding(.top, 2)
         }

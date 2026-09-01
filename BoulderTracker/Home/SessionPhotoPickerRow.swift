@@ -25,7 +25,7 @@ struct SessionPhotoPickerRow: View {
                             )
                     }
                 Text(hasPhoto ? "Photo added — tap to change" : "Add a session photo")
-                    .font(.system(size: 14, weight: .semibold))
+                    .scaledFont(size: 14, weight: .semibold)
                     .foregroundStyle(hasPhoto ? palette.text : palette.textDim)
             }
         }

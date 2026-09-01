@@ -21,7 +21,7 @@ struct GradeDistributionCard: View {
             VStack(alignment: .leading, spacing: 16) {
                 if sendCounts.isEmpty {
                     Text("No sends in this period yet")
-                        .font(.system(size: 14))
+                        .scaledFont(size: 14)
                         .foregroundStyle(palette.textFaint)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
@@ -70,15 +70,15 @@ struct GradeDistributionCard: View {
                 .frame(width: 3, height: 30)
             VStack(alignment: .leading, spacing: 1) {
                 Text(grade.shortLabel(in: gradeSystem))
-                    .font(.system(size: 14, weight: .semibold))
+                    .scaledFont(size: 14, weight: .semibold)
                     .foregroundStyle(palette.text)
                 Text(count == 1 ? "1 send" : "\(count) sends")
-                    .font(.system(size: 12))
+                    .scaledFont(size: 12)
                     .foregroundStyle(palette.textFaint)
             }
             Spacer()
             Text("\(pct)%")
-                .font(.system(size: 12, weight: .semibold))
+                .scaledFont(size: 12, weight: .semibold)
                 .foregroundStyle(palette.textDim)
                 .padding(.horizontal, 10)
                 .padding(.vertical, 5)

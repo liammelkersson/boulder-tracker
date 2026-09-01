@@ -22,7 +22,7 @@ struct QuickAddProblemSheet: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
                 Text("New Problem")
-                    .font(.system(size: 18, weight: .bold))
+                    .scaledFont(size: 18, weight: .bold)
                     .foregroundStyle(palette.text)
                 field(label: "Name") {
                     ThemedTextField(placeholder: "e.g. Elektra", text: $name)
@@ -33,7 +33,7 @@ struct QuickAddProblemSheet: View {
                     ThemedTextField(placeholder: "Optional notes", text: $notes)
                 }
                 Toggle("Mark as project", isOn: $isProject)
-                    .font(.system(size: 15))
+                    .scaledFont(size: 15)
                     .foregroundStyle(palette.text)
                     .tint(ThemePalette.accent)
                 field(label: "Photo") { photoPickerRow }
@@ -56,7 +56,7 @@ struct QuickAddProblemSheet: View {
     private func field(label: String, @ViewBuilder content: () -> some View) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             SectionHeading(title: label)
-                .font(.system(size: 12, weight: .semibold))
+                .scaledFont(size: 12, weight: .semibold)
             content()
         }
     }
@@ -77,7 +77,7 @@ struct QuickAddProblemSheet: View {
             HStack(spacing: 7) {
                 GradeDot(grade: grade, size: 11)
                 Text(grade.shortLabel(in: gradeSystem))
-                    .font(.system(size: 13, weight: .semibold))
+                    .scaledFont(size: 13, weight: .semibold)
                     .foregroundStyle(isSelected ? palette.text : palette.textDim)
             }
             .padding(.horizontal, 14)
@@ -120,7 +120,7 @@ struct QuickAddProblemSheet: View {
             HStack(spacing: 12) {
                 photoThumbnail
                 Text(photoData == nil ? "Tap to add a photo" : "Photo added — tap to change")
-                    .font(.system(size: 14, weight: .semibold))
+                    .scaledFont(size: 14, weight: .semibold)
                     .foregroundStyle(photoData == nil ? palette.textDim : palette.text)
             }
         }

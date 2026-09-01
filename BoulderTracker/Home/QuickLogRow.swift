@@ -41,7 +41,7 @@ struct QuickLogRow: View {
             HStack(spacing: 7) {
                 GradeDot(grade: grade, size: 11)
                 Text("+ \(grade.shortLabel(in: gradeSystem))")
-                    .font(.system(size: 13, weight: .medium))
+                    .scaledFont(size: 13, weight: .medium)
                     .foregroundStyle(palette.textDim)
             }
             .padding(.horizontal, 12)

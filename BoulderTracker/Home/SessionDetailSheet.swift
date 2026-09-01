@@ -61,20 +61,21 @@ struct SessionDetailSheet: View {
     private var titleRow: some View {
         HStack {
             Text(session.startTime, format: .dateTime.month(.abbreviated).day())
-                .font(.system(size: 18, weight: .bold))
+                .scaledFont(size: 18, weight: .bold)
                 .foregroundStyle(palette.text)
             Spacer()
             Button {
                 dismiss()
             } label: {
                 Image(systemName: "xmark")
-                    .font(.system(size: 13, weight: .semibold))
+                    .scaledFont(size: 13, weight: .semibold)
                     .foregroundStyle(palette.textDim)
                     .frame(width: 30, height: 30)
                     .background(palette.pill)
                     .clipShape(.circle)
             }
             .buttonStyle(.plain)
+            .accessibilityLabel("Close")
         }
     }
 
@@ -93,7 +94,7 @@ struct SessionDetailSheet: View {
             }
             if let feeling = session.feeling {
                 Text(feeling.displayName)
-                    .font(.system(size: 12))
+                    .scaledFont(size: 12)
                     .foregroundStyle(palette.textFaint)
             }
         }
@@ -114,10 +115,10 @@ struct SessionDetailSheet: View {
     private func detailStat(value: String, label: String) -> some View {
         VStack(spacing: 2) {
             Text(value)
-                .font(.system(size: 18, weight: .bold))
+                .scaledFont(size: 18, weight: .bold)
                 .foregroundStyle(palette.text)
             Text(label)
-                .font(.system(size: 11))
+                .scaledFont(size: 11)
                 .foregroundStyle(palette.textFaint)
         }
         .frame(maxWidth: .infinity)
@@ -141,7 +142,7 @@ struct SessionDetailSheet: View {
                 startEditing()
             } label: {
                 Text("Edit Session")
-                    .font(.system(size: 15, weight: .semibold))
+                    .scaledFont(size: 15, weight: .semibold)
                     .foregroundStyle(palette.text)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 14)
@@ -154,7 +155,7 @@ struct SessionDetailSheet: View {
                 confirmingDelete = true
             } label: {
                 Text("Delete Session")
-                    .font(.system(size: 14, weight: .semibold))
+                    .scaledFont(size: 14, weight: .semibold)
                     .foregroundStyle(ThemePalette.danger)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 12)
@@ -188,7 +189,7 @@ struct SessionDetailSheet: View {
     private var problemsSection: some View {
         VStack(alignment: .leading, spacing: 10) {
             Text("Problems worked on")
-                .font(.system(size: 14, weight: .semibold))
+                .scaledFont(size: 14, weight: .semibold)
                 .foregroundStyle(palette.text)
             ForEach(session.problems) { problem in
                 ProblemTile(problem: problem)
@@ -199,7 +200,7 @@ struct SessionDetailSheet: View {
                 showingAddProblem = true
             } label: {
                 Text("+ Add Problem")
-                    .font(.system(size: 14, weight: .semibold))
+                    .scaledFont(size: 14, weight: .semibold)
                     .foregroundStyle(palette.accentText)
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 12)
@@ -214,11 +215,11 @@ struct SessionDetailSheet: View {
     private func infoRow(label: String, value: String) -> some View {
         HStack {
             Text(label)
-                .font(.system(size: 14))
+                .scaledFont(size: 14)
                 .foregroundStyle(palette.textFaint)
             Spacer()
             Text(value)
-                .font(.system(size: 14, weight: .semibold))
+                .scaledFont(size: 14, weight: .semibold)
                 .foregroundStyle(palette.text)
                 .multilineTextAlignment(.trailing)
         }
@@ -231,12 +232,12 @@ struct SessionDetailSheet: View {
     private var partnersRow: some View {
         HStack(spacing: 6) {
             Text("With")
-                .font(.system(size: 14))
+                .scaledFont(size: 14)
                 .foregroundStyle(palette.textFaint)
             Spacer()
             if session.partners.isEmpty {
                 Text("Solo")
-                    .font(.system(size: 14, weight: .semibold))
+                    .scaledFont(size: 14, weight: .semibold)
                     .foregroundStyle(palette.text)
             }
             ForEach(session.partners) { partner in
@@ -292,7 +293,7 @@ struct SessionDetailSheet: View {
                     "\(SessionDurationFormat.compactString(from: TimeInterval(draftDurationMinutes * 60)))",
                     value: $draftDurationMinutes, in: 5...600, step: 5
                 )
-                .font(.system(size: 14))
+                .scaledFont(size: 14)
                 .foregroundStyle(palette.text)
                 .padding(.horizontal, 14)
                 .padding(.vertical, 8)
@@ -347,13 +348,13 @@ struct PartnerChip: View {
     var body: some View {
         HStack(spacing: 5) {
             Text(name.prefix(1).uppercased())
-                .font(.system(size: 9, weight: .bold))
+                .scaledFont(size: 9, weight: .bold)
                 .foregroundStyle(ThemePalette.onAccent)
                 .frame(width: 17, height: 17)
                 .background(chipColor)
                 .clipShape(.circle)
             Text(name)
-                .font(.system(size: 11))
+                .scaledFont(size: 11)
                 .foregroundStyle(palette.textDim)
         }
         .padding(.trailing, 10)
