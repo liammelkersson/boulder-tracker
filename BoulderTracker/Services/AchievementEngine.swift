@@ -12,6 +12,7 @@ enum AchievementEngine {
     private static let styleVarietyTarget = 5
     private static let projectAttemptTarget = 100
     private static let globetrotterGymTarget = 3
+    private static let outdoorSessionTarget = 5
     private static let firstSendGrades: [ColorGrade] = [.green, .blue, .red, .black, .white]
 
     static func newlyUnlocked(sessions: [Session],
@@ -23,7 +24,7 @@ enum AchievementEngine {
 
     static var definitions: [AchievementDefinition] {
         firstDefinitions + firstSendDefinitions + volumeDefinitions + streakDefinitions
-            + skillDefinitions + funDefinitions
+            + skillDefinitions + funDefinitions + outdoorDefinitions
     }
 
     private static var firstDefinitions: [AchievementDefinition] {
@@ -159,6 +160,27 @@ enum AchievementEngine {
                 Set(sessions.compactMap { $0.gym?.name }).count
             },
         ]
+    }
+
+    private static var outdoorDefinitions: [AchievementDefinition] {
+        [
+            AchievementDefinition(
+                id: "outdoor-first", title: "Rock On",
+                detail: "Log your first outdoor session", symbolName: "mountain.2.fill",
+                target: 1, iconStyle: .outdoorRock, currentCount: outdoorSessionCount
+            ),
+            AchievementDefinition(
+                id: "outdoor-\(outdoorSessionTarget)", title: "Weathered",
+                detail: "Log \(outdoorSessionTarget) outdoor sessions",
+                symbolName: "mountain.2.fill",
+                target: outdoorSessionTarget, iconStyle: .outdoorRock,
+                currentCount: outdoorSessionCount
+            ),
+        ]
+    }
+
+    private static func outdoorSessionCount(in sessions: [Session]) -> Int {
+        sessions.count { $0.climbType == .boulderingOutdoor }
     }
 
     private static func allProblems(_ sessions: [Session]) -> [SessionProblem] {

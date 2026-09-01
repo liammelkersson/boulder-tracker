@@ -6,6 +6,7 @@ struct AchievementDefinition: Identifiable {
     let detail: String
     let symbolName: String
     let target: Int
+    var iconStyle: AchievementIconStyle = .plasticHold
     let currentCount: ([Session]) -> Int
 
     func isSatisfied(by sessions: [Session]) -> Bool {

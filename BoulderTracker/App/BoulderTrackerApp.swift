@@ -19,6 +19,7 @@ struct BoulderTrackerApp: App {
             // The app works without a seeded gym; the user can add one manually.
             Logger.persistence.error("Default gym seeding failed: \(error)")
         }
+        AchievementCleanup.removeUnearnedOnce(context: container.mainContext, defaults: .standard)
         syncCoordinator = PhoneSyncCoordinator(context: container.mainContext)
     }
 

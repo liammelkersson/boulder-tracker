@@ -82,9 +82,9 @@ struct AchievementsGridView: View {
 
     private func achievementHold(_ definition: AchievementDefinition, isUnlocked: Bool,
                                  holdColor: Color, shapeGrade: ColorGrade) -> some View {
-        HoldIcon(
-            grade: shapeGrade, size: 52,
-            baseColorOverride: isUnlocked ? holdColor : palette.trackOff
+        holdArtwork(
+            definition, shapeGrade: shapeGrade,
+            baseColor: isUnlocked ? holdColor : palette.trackOff
         )
         .opacity(isUnlocked ? 1 : 0.4)
         .overlay(alignment: .bottomTrailing) {
@@ -95,6 +95,20 @@ struct AchievementsGridView: View {
                 .background(.white)
                 .clipShape(.circle)
                 .offset(x: 5, y: 5)
+        }
+    }
+
+    private static let holdIconSize: CGFloat = 52
+
+    @ViewBuilder
+    private func holdArtwork(
+        _ definition: AchievementDefinition, shapeGrade: ColorGrade, baseColor: Color
+    ) -> some View {
+        switch definition.iconStyle {
+        case .plasticHold:
+            HoldIcon(grade: shapeGrade, size: Self.holdIconSize, baseColorOverride: baseColor)
+        case .outdoorRock:
+            RockIcon(size: Self.holdIconSize, baseColorOverride: baseColor)
         }
     }
 
