@@ -17,19 +17,27 @@ final class WatchSyncCoordinator {
 
     @ObservationIgnored private let link: any SyncLinking
     @ObservationIgnored private let outbox: SessionSyncOutbox
+    @ObservationIgnored private let appliedEnvelopes: AppliedEnvelopeRegistry
     @ObservationIgnored private var healthKitSyncEnabled = true
 
-    init(link: any SyncLinking, queue: PendingEventQueue, liveSessionFileURL: URL) {
+    init(
+        link: any SyncLinking, queue: PendingEventQueue,
+        liveSessionFileURL: URL, appliedEnvelopesFileURL: URL
+    ) {
         liveSession = WatchLiveSession(fileURL: liveSessionFileURL)
         self.link = link
         outbox = SessionSyncOutbox(queue: queue, link: link)
+        appliedEnvelopes = AppliedEnvelopeRegistry(fileURL: appliedEnvelopesFileURL)
     }
 
     convenience init() {
         self.init(
             link: WatchConnectivityLink(),
             queue: .inApplicationSupport(named: "watch-sync-queue.json"),
-            liveSessionFileURL: Self.liveSessionFileURL()
+            liveSessionFileURL: Self.applicationSupportURL(filename: "watch-live-session.json"),
+            appliedEnvelopesFileURL: Self.applicationSupportURL(
+                filename: "watch-applied-envelopes.json"
+            )
         )
     }
 
@@ -73,6 +81,10 @@ final class WatchSyncCoordinator {
     }
 
     private func route(_ envelope: SyncEnvelope) {
+        // Both transport channels deliver every envelope; a replay must not
+        // double-count attempts.
+        guard !appliedEnvelopes.contains(envelope.id) else { return }
+        appliedEnvelopes.record(envelope.id)
         if case .phoneCatalog(let payload) = envelope.event {
             gyms = payload.gyms
             healthKitSyncEnabled = payload.healthKitSyncEnabled
@@ -118,13 +130,13 @@ final class WatchSyncCoordinator {
         }
     }
 
-    private static func liveSessionFileURL() -> URL {
+    private static func applicationSupportURL(filename: String) -> URL {
         let directory = FileManager.default.urls(
             for: .applicationSupportDirectory, in: .userDomainMask
         )[0]
         try? FileManager.default.createDirectory(
             at: directory, withIntermediateDirectories: true
         )
-        return directory.appendingPathComponent("watch-live-session.json")
+        return directory.appendingPathComponent(filename)
     }
 }

@@ -54,6 +54,7 @@ final class WatchLiveSession {
     func apply(_ event: SessionSyncEvent) {
         switch event {
         case .sessionStarted(let payload):
+            guard shouldAdoptStartedSession(payload) else { return }
             snapshot = LiveSessionSnapshot(
                 sessionSyncID: payload.sessionSyncID, startTime: payload.startTime,
                 gymName: payload.gymName, climbType: payload.climbType, problems: []
@@ -71,6 +72,14 @@ final class WatchLiveSession {
             return
         }
         persist()
+    }
+
+    private func shouldAdoptStartedSession(_ payload: SessionStartPayload) -> Bool {
+        guard let current = snapshot else { return true }
+        // Re-delivery of the current session must not wipe logged problems.
+        guard payload.sessionSyncID != current.sessionSyncID else { return false }
+        // Two devices raced to start a session; the latest start wins on both.
+        return payload.startTime >= current.startTime
     }
 
     private func countAttempt(_ payload: AttemptLogPayload) {

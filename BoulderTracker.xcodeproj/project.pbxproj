@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		006C0F611E0042B2A639EAE3 /* AppliedEnvelopeRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4965E79EF0481D17DBBC55 /* AppliedEnvelopeRegistry.swift */; };
 		01165853430EE5DE9141301A /* AppTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B520B542390E42DD8D07575 /* AppTab.swift */; };
 		01785976126F61ADF0AE6385 /* WatchSyncCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E4A95DEE8430BECD767778 /* WatchSyncCoordinator.swift */; };
 		018E190907BB9E244498369A /* WatchGradeDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCF5F057E7C8547B62B1505 /* WatchGradeDot.swift */; };
@@ -17,6 +18,7 @@
 		056B171629457ECF0004DB05 /* SessionDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC97D594653F1DFF04DB5E99 /* SessionDetailSheet.swift */; };
 		05FBE2CF018A672BDEB4A5D7 /* RetroSessionForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC3A8A796F90CEA6BDCD97C /* RetroSessionForm.swift */; };
 		07204B5187B526F7A14A1B13 /* ModelContextSaveReporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F07A31CEE8B29094FE0D1D /* ModelContextSaveReporting.swift */; };
+		0A17F11119D1E5C3DCF4435C /* AppliedEnvelopeRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4965E79EF0481D17DBBC55 /* AppliedEnvelopeRegistry.swift */; };
 		0BC57F864F630A3FDFC0C38A /* WeeklyVolume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080E9A30E5A8040A889AFDB9 /* WeeklyVolume.swift */; };
 		13E260131F0A0E45E2A3B61D /* RoadmapProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4766DD77F157342BE3D11558 /* RoadmapProgress.swift */; };
 		15E0A449C6EDA65C20B680BE /* WatchSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89BFB5A9BB5923A5E4268C8 /* WatchSummaryView.swift */; };
@@ -146,6 +148,7 @@
 		D7083B98189C7528CC37736B /* BoulderTracker.icon in Resources */ = {isa = PBXBuildFile; fileRef = 001BB8EBAC47BEE852B97434 /* BoulderTracker.icon */; };
 		D8B196AD7D9BB39D524F226F /* BoulderTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F98D93960086286608D189D /* BoulderTrackerApp.swift */; };
 		D8D0205CE41E1AC688BC1C89 /* StyleRadialChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EA8CE50F2E1075BD92211A /* StyleRadialChart.swift */; };
+		DCECE4CB59729AE6FD2A2AD5 /* AppliedEnvelopeRegistryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148EDEF3B21B23EE863BEF49 /* AppliedEnvelopeRegistryTests.swift */; };
 		DEA81D76FC6708369B767EEB /* RouteStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57016D08C534EC76E7876C4 /* RouteStyle.swift */; };
 		DFAF1C7300E29D522880BD4E /* SessionSyncInboxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAABA3BB83BBEF62632A8232 /* SessionSyncInboxTests.swift */; };
 		E0346799B7CF11915CD070EF /* Gym.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3C58F6B8FDFFE7AF23B43B /* Gym.swift */; };
@@ -209,6 +212,7 @@
 		0F5B09640D0FA580EA358CD9 /* Partner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Partner.swift; sourceTree = "<group>"; };
 		11A295AA61CC4837DAFFE974 /* ColorGradeDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGradeDisplay.swift; sourceTree = "<group>"; };
 		1279D37D6B8E65AD6FF68F2C /* WatchConnectivityLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityLink.swift; sourceTree = "<group>"; };
+		148EDEF3B21B23EE863BEF49 /* AppliedEnvelopeRegistryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliedEnvelopeRegistryTests.swift; sourceTree = "<group>"; };
 		16C0D743A0331CB6D142FEFE /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
 		1CA62DE8D059648E169E5FC6 /* AchievementEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementEngine.swift; sourceTree = "<group>"; };
 		1CAA3430657EDEE943FE253E /* SessionSummaryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSummaryScreen.swift; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 		497717384B7A5CCBD97747D7 /* SmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeTests.swift; sourceTree = "<group>"; };
 		4B0EFADF985A2379432C8C7D /* PetalWedgeShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetalWedgeShape.swift; sourceTree = "<group>"; };
 		4B520B542390E42DD8D07575 /* AppTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTab.swift; sourceTree = "<group>"; };
+		4E4965E79EF0481D17DBBC55 /* AppliedEnvelopeRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliedEnvelopeRegistry.swift; sourceTree = "<group>"; };
 		4E8118E16DED92BBAFCD0255 /* AppPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreferences.swift; sourceTree = "<group>"; };
 		4EFD3F1D3E32F9EF3A1EBDE8 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		52B3345460DD06FDC9EEC9BD /* BoulderTrackerTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = BoulderTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -444,6 +449,7 @@
 			children = (
 				44B73A64F6A52FE45E78E22A /* AchievementEngineTests.swift */,
 				B9DCA83599B9ADBA15E5882C /* AchievementIdentityTests.swift */,
+				148EDEF3B21B23EE863BEF49 /* AppliedEnvelopeRegistryTests.swift */,
 				00B4F1FB239B32F1AEDBAB1C /* AttemptResultTests.swift */,
 				566ECD974130DAB642022B71 /* ColorGradeTests.swift */,
 				0C1542C63A58F3E058E1895E /* FakeSyncLink.swift */,
@@ -489,6 +495,7 @@
 		8855E3A4E3C6BE6573D60DCA /* Sync */ = {
 			isa = PBXGroup;
 			children = (
+				4E4965E79EF0481D17DBBC55 /* AppliedEnvelopeRegistry.swift */,
 				4094902CCE96FE34ADBD1C12 /* PendingEventQueue.swift */,
 				66FD98120C088455DB39DCD2 /* SessionSyncCoding.swift */,
 				8970B14FC314C74DC0148C8C /* SessionSyncEvent.swift */,
@@ -729,6 +736,7 @@
 				5CDA8578297401E5663868CD /* AppLoggers.swift in Sources */,
 				9180214DC76C15AB4CB79060 /* AppPreferences.swift in Sources */,
 				01165853430EE5DE9141301A /* AppTab.swift in Sources */,
+				0A17F11119D1E5C3DCF4435C /* AppliedEnvelopeRegistry.swift in Sources */,
 				8D6202736A3576679C9E46DD /* AttemptResult.swift in Sources */,
 				D8B196AD7D9BB39D524F226F /* BoulderTrackerApp.swift in Sources */,
 				236F49E3A8F4D1C5027C0767 /* ClimbType.swift in Sources */,
@@ -831,6 +839,7 @@
 			files = (
 				B0464F56722D076BCB0A528F /* AchievementEngineTests.swift in Sources */,
 				28056C5492FF471CC679243F /* AchievementIdentityTests.swift in Sources */,
+				DCECE4CB59729AE6FD2A2AD5 /* AppliedEnvelopeRegistryTests.swift in Sources */,
 				76BD41BC9ABF92E9B8B2CEEA /* AttemptResultTests.swift in Sources */,
 				8028DB6B9B23C3C0F967644D /* ColorGradeTests.swift in Sources */,
 				A0BDA36B1EE7CFFFDBF35FD4 /* FakeSyncLink.swift in Sources */,
@@ -860,6 +869,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3530C35864CC2F7542A37A7D /* AppLoggers.swift in Sources */,
+				006C0F611E0042B2A639EAE3 /* AppliedEnvelopeRegistry.swift in Sources */,
 				207D0EAFF1BACAB63A8FE7CE /* AttemptResult.swift in Sources */,
 				2F4BB9DCFFA7CE916F57752E /* BoulderTrackerWatchApp.swift in Sources */,
 				93B808B17AA5F679BBEE279F /* ClimbType.swift in Sources */,

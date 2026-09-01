@@ -155,6 +155,43 @@ struct SessionSyncInboxTests {
         #expect(stored?.activeCalories == 505)
     }
 
+    @Test func adoptingNewerLiveSessionClosesTheExistingOne() throws {
+        let container = try makeInMemoryContainer()
+        let context = container.mainContext
+        let phoneSession = Session(
+            startTime: Date(timeIntervalSince1970: 500), gym: nil, partners: []
+        )
+        context.insert(phoneSession)
+        try context.save()
+        let inbox = SessionSyncInbox(context: context)
+
+        inbox.apply(SyncEnvelope(event: startEvent()))
+
+        let stored = try sessions(in: context)
+        #expect(stored.filter(\.isLive).count == 1)
+        #expect(stored.first { $0.isLive }?.syncID == sessionSyncID)
+        #expect(phoneSession.endTime == Date(timeIntervalSince1970: 1000))
+    }
+
+    @Test func adoptingOlderLiveSessionClosesItInsteadOfTheCurrentOne() throws {
+        let container = try makeInMemoryContainer()
+        let context = container.mainContext
+        let phoneSession = Session(
+            startTime: Date(timeIntervalSince1970: 5000), gym: nil, partners: []
+        )
+        context.insert(phoneSession)
+        try context.save()
+        let inbox = SessionSyncInbox(context: context)
+
+        inbox.apply(SyncEnvelope(event: startEvent()))
+
+        let stored = try sessions(in: context)
+        #expect(stored.filter(\.isLive).count == 1)
+        #expect(phoneSession.isLive)
+        let adopted = stored.first { $0.syncID == sessionSyncID }
+        #expect(adopted?.endTime == Date(timeIntervalSince1970: 5000))
+    }
+
     @Test func unknownSessionEndIsIgnored() throws {
         let container = try makeInMemoryContainer()
         let context = container.mainContext

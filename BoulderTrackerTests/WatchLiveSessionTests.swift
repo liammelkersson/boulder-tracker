@@ -121,6 +121,49 @@ struct WatchLiveSessionTests {
         #expect(live.snapshot?.sessionSyncID == ownID)
     }
 
+    @Test func redeliveredSessionStartKeepsLoggedProblems() {
+        let live = WatchLiveSession(fileURL: temporaryFileURL())
+        started(live)
+        guard let current = live.snapshot else {
+            Issue.record("no live session")
+            return
+        }
+        live.apply(live.attemptEvent(grade: .red, result: .send, loggedAt: .now))
+
+        live.apply(.sessionStarted(SessionStartPayload(
+            sessionSyncID: current.sessionSyncID, startTime: current.startTime,
+            gymName: current.gymName, climbType: current.climbType
+        )))
+
+        #expect(live.snapshot?.problems.count == 1)
+    }
+
+    @Test func olderRemoteSessionStartIsIgnored() {
+        let live = WatchLiveSession(fileURL: temporaryFileURL())
+        started(live)
+        let ownID = live.snapshot?.sessionSyncID
+
+        live.apply(.sessionStarted(SessionStartPayload(
+            sessionSyncID: UUID(), startTime: Date(timeIntervalSince1970: 50),
+            gymName: "Elsewhere", climbType: .lead
+        )))
+
+        #expect(live.snapshot?.sessionSyncID == ownID)
+    }
+
+    @Test func newerRemoteSessionStartReplacesTheCurrentOne() {
+        let live = WatchLiveSession(fileURL: temporaryFileURL())
+        started(live)
+        let newerID = UUID()
+
+        live.apply(.sessionStarted(SessionStartPayload(
+            sessionSyncID: newerID, startTime: Date(timeIntervalSince1970: 900),
+            gymName: "Elsewhere", climbType: .lead
+        )))
+
+        #expect(live.snapshot?.sessionSyncID == newerID)
+    }
+
     @Test func liveSessionSurvivesRelaunch() {
         let fileURL = temporaryFileURL()
         let live = WatchLiveSession(fileURL: fileURL)

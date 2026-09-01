@@ -41,7 +41,21 @@ final class SessionSyncInbox {
         session.syncID = payload.sessionSyncID
         session.isWatchTracked = true
         context.insert(session)
+        closeAllButLatestLiveSession()
         replayOrphans(of: payload.sessionSyncID)
+    }
+
+    /// Two devices can each start a session before either hears about the
+    /// other. Only the latest-starting session stays live; earlier ones are
+    /// closed at the moment the newer one began.
+    private func closeAllButLatestLiveSession() {
+        let descriptor = FetchDescriptor<Session>(predicate: #Predicate { $0.endTime == nil })
+        let liveSessions = ((try? context.fetch(descriptor)) ?? [])
+            .sorted { $0.startTime < $1.startTime }
+        guard let newest = liveSessions.last else { return }
+        for stale in liveSessions.dropLast() {
+            stale.endTime = max(stale.startTime, newest.startTime)
+        }
     }
 
     private func recordAttempt(_ payload: AttemptLogPayload, from envelope: SyncEnvelope) {
