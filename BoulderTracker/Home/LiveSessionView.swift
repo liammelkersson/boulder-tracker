@@ -16,6 +16,16 @@ struct LiveSessionView: View {
     private let clockTick = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
+        // A sync race can delete the session mid-presentation; the final body
+        // evaluation after that must not touch persisted properties.
+        if session.isInvalidated {
+            Color.clear
+        } else {
+            liveContent
+        }
+    }
+
+    private var liveContent: some View {
         ScrollView {
             VStack(spacing: 0) {
                 timerHeader
@@ -25,7 +35,7 @@ struct LiveSessionView: View {
                     .padding(.top, 24)
                 problemsSection
                     .padding(.top, 26)
-                SuggestedProblemsRow(session: session, allSessions: allSessions)
+                SuggestedProblemsRow(session: session, allSessions: allSessions.persisted)
                     .padding(.top, 22)
                 actionButtons
                     .padding(.top, 28)

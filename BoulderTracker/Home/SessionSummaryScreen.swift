@@ -18,6 +18,16 @@ struct SessionSummaryScreen: View {
     @State private var isSaving = false
 
     var body: some View {
+        // Discard deletes the session; the final body evaluation after that
+        // must not touch persisted properties.
+        if session.isInvalidated {
+            Color.clear
+        } else {
+            summaryContent
+        }
+    }
+
+    private var summaryContent: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 28) {
                 header
@@ -182,7 +192,7 @@ struct SessionSummaryScreen: View {
         let completion = SessionCompletion(workoutWriter: writer)
         let outcome = await completion.finish(
             session, endTime: session.endTime ?? .now,
-            allSessions: allSessions,
+            allSessions: allSessions.persisted,
             unlockedIDs: Set(unlockedAchievements.map(\.achievementID))
         )
         for achievement in outcome.newAchievements {

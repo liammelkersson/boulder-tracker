@@ -9,7 +9,7 @@ struct ActivitiesView: View {
     @State private var selectedDay: Date?
     @State private var detailSession: Session?
 
-    private var finishedSessions: [Session] { sessions.filter { !$0.isLive } }
+    private var finishedSessions: [Session] { sessions.persisted.filter { !$0.isLive } }
 
     private var listedSessions: [Session] {
         guard let selectedDay else { return finishedSessions }

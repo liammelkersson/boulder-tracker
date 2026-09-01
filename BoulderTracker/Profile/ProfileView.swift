@@ -137,7 +137,7 @@ struct ProfileView: View {
     }
 
     private func exportSessions() {
-        let finished = sessions.filter { !$0.isLive && !$0.isSampleData }
+        let finished = sessions.persisted.filter { !$0.isLive && !$0.isSampleData }
         guard let url = try? SessionDataExport.writeJSONFile(for: finished) else { return }
         exportFile = ExportFile(url: url)
     }

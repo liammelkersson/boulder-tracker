@@ -17,6 +17,16 @@ struct SessionDetailSheet: View {
     @Query private var allShoes: [Shoe]
 
     var body: some View {
+        // Delete removes the session while the sheet is still up; the final
+        // body evaluation after that must not touch persisted properties.
+        if session.isInvalidated {
+            Color.clear
+        } else {
+            detailContent
+        }
+    }
+
+    private var detailContent: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 titleRow
