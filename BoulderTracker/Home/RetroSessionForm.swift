@@ -121,12 +121,7 @@ struct RetroSessionForm: View {
         }
     }
 
-    /// Natural order so "Drago 2" sorts before "Drago 10".
-    private var activeShoes: [Shoe] {
-        allShoes
-            .filter { !$0.isRetired }
-            .sorted { $0.name.localizedStandardCompare($1.name) == .orderedAscending }
-    }
+    private var activeShoes: [Shoe] { allShoes.pickableInNaturalOrder }
 
     private var shoeField: some View {
         let activeShoes = self.activeShoes

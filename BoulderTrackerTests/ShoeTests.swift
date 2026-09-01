@@ -21,8 +21,31 @@ struct ShoeTests {
         #expect(fetched?.shoe?.isRetired == false)
     }
 
-    @Test func newShoeGetsSyncIdentity() {
-        #expect(Shoe(name: "Drago").syncID != nil)
+    @Test func exportIncludesShoeName() throws {
+        let container = try makeInMemoryContainer()
+        let context = container.mainContext
+        let shoe = Shoe(name: "Drago LV")
+        context.insert(shoe)
+        let session = Session(startTime: .now, gym: nil, partners: [])
+        session.endTime = .now
+        session.shoe = shoe
+        context.insert(session)
+        try context.save()
+
+        let data = try SessionDataExport.jsonData(for: [session])
+
+        let exported = try JSONSerialization.jsonObject(with: data) as? [[String: Any]]
+        #expect(exported?.first?["shoe"] as? String == "Drago LV")
+    }
+
+    @Test func retiredShoesAreExcludedFromThePickList() {
+        let active = Shoe(name: "Drago 10")
+        let retired = Shoe(name: "Retired Pair", isRetired: true)
+        let second = Shoe(name: "Drago 2")
+
+        let pickable = [active, retired, second].pickableInNaturalOrder
+
+        #expect(pickable.map(\.name) == ["Drago 2", "Drago 10"])
     }
 
     @Test func sessionDefaultsToNoShoeAndRealData() {

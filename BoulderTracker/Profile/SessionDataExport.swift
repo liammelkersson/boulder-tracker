@@ -16,6 +16,7 @@ enum SessionDataExport {
         let startTime: Date
         let endTime: Date?
         let gym: String?
+        let shoe: String?
         let climbType: String
         let feeling: String?
         let notes: String?
@@ -29,6 +30,7 @@ enum SessionDataExport {
                 startTime: session.startTime,
                 endTime: session.endTime,
                 gym: session.gym?.name,
+                shoe: session.shoe?.name,
                 climbType: session.climbType.rawValue,
                 feeling: session.feeling?.rawValue,
                 notes: session.notes,

@@ -82,6 +82,7 @@ struct ShoeEditorSheet: View {
 
     @State private var name = ""
     @State private var isRetired = false
+    @State private var confirmingDelete = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 18) {
@@ -100,16 +101,42 @@ struct ShoeEditorSheet: View {
             }
             .buttonStyle(.plain)
             .disabled(name.isEmpty)
+            if shoe != nil {
+                Button {
+                    confirmingDelete = true
+                } label: {
+                    Text("Delete Shoes")
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundStyle(ThemePalette.danger)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                }
+                .buttonStyle(.plain)
+            }
             Spacer()
         }
         .padding(.horizontal, 20)
         .padding(.top, 26)
         .presentationDetents([.medium])
         .presentationDragIndicator(.visible)
+        .confirmationDialog(
+            "Delete these shoes?", isPresented: $confirmingDelete, titleVisibility: .visible
+        ) {
+            Button("Delete Shoes", role: .destructive, action: deleteShoe)
+        } message: {
+            Text("Sessions keep their history but lose the shoe link.")
+        }
         .onAppear {
             name = shoe?.name ?? ""
             isRetired = shoe?.isRetired ?? false
         }
+    }
+
+    private func deleteShoe() {
+        guard let shoe else { return }
+        modelContext.delete(shoe)
+        modelContext.saveReportingFailure(operation: "shoe delete")
+        dismiss()
     }
 
     private func saveShoe() {

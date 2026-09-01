@@ -8,11 +8,13 @@ struct SessionSummaryScreen: View {
     @Query(sort: \Session.startTime) private var allSessions: [Session]
     @Query private var unlockedAchievements: [Achievement]
     @Query(sort: \Partner.name) private var knownPartners: [Partner]
+    @Query private var allShoes: [Shoe]
     @AppStorage(AppPreferences.healthKitSyncKey) private var healthKitSyncEnabled = true
     let session: Session
     let onFinished: () -> Void
 
     @State private var partnerNames = ""
+    @State private var selectedShoe: Shoe?
     @State private var feeling: SessionFeeling = .good
     @State private var notes = ""
     @State private var unlockedTitles: [String]?
@@ -35,6 +37,7 @@ struct SessionSummaryScreen: View {
                 statsGrid
                 problemList
                 partnerField
+                shoeField
                 feelingRow
                 notesField
                 photoField
@@ -43,7 +46,10 @@ struct SessionSummaryScreen: View {
             .padding(.horizontal, 20)
             .padding(.bottom, 24)
         }
-        .onAppear { partnerNames = session.partners.map(\.name).joined(separator: ", ") }
+        .onAppear {
+            partnerNames = session.partners.map(\.name).joined(separator: ", ")
+            selectedShoe = session.shoe
+        }
         .alert("Achievements unlocked", isPresented: achievementAlertBinding) {
             Button("Nice") { onFinished() }
         } message: {
@@ -116,6 +122,23 @@ struct SessionSummaryScreen: View {
         }
     }
 
+    @ViewBuilder
+    private var shoeField: some View {
+        let shoes = allShoes.pickableInNaturalOrder
+        if !shoes.isEmpty {
+            VStack(alignment: .leading, spacing: 8) {
+                SectionHeading(title: "Shoes")
+                FlowLayout(spacing: 8) {
+                    ForEach(shoes) { shoe in
+                        SelectablePill(title: shoe.name, isSelected: selectedShoe == shoe) {
+                            selectedShoe = selectedShoe == shoe ? nil : shoe
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     private var feelingRow: some View {
         VStack(alignment: .leading, spacing: 8) {
             SectionHeading(title: "How did it feel?")
@@ -184,6 +207,7 @@ struct SessionSummaryScreen: View {
         session.feeling = feeling
         if !notes.isEmpty { session.notes = notes }
         session.partners = resolvedPartners()
+        session.shoe = selectedShoe
         Task { await completeSession() }
     }
 

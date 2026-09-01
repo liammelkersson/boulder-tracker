@@ -117,6 +117,7 @@
 		A71568EE6903A1FB1568D41C /* SessionCompletionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E0A981AF092D33D2D0F06 /* SessionCompletionTests.swift */; };
 		A8212AFE24C3390494219890 /* WatchSyncCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1739CD84A9422CED9643F574 /* WatchSyncCoordinatorTests.swift */; };
 		AC7943847CC733EEDC6A7B9E /* WatchLiveSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4F022189F5329D87C93124 /* WatchLiveSession.swift */; };
+		AC7FAEFC9CEE0F14A7F3CB2C /* ShoePickList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476BDB0ED7DD1448BB2DD072 /* ShoePickList.swift */; };
 		AE08D8FB93BF0E04F41DC42C /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2A74A5E6F90EA1705ECB2C /* Achievement.swift */; };
 		AEE9AE18693236418552EB4D /* PhotoStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D287E844A2853EACE12280D5 /* PhotoStoreTests.swift */; };
 		AEEB59A885E7146266C4398D /* LiveSessionSnapshotReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC8267A58E91D1CF1886259 /* LiveSessionSnapshotReaderTests.swift */; };
@@ -250,6 +251,7 @@
 		44B73A64F6A52FE45E78E22A /* AchievementEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementEngineTests.swift; sourceTree = "<group>"; };
 		4745F2D40EDEC6B48CEBD3F4 /* BoulderTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BoulderTracker.entitlements; sourceTree = "<group>"; };
 		4766DD77F157342BE3D11558 /* RoadmapProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapProgress.swift; sourceTree = "<group>"; };
+		476BDB0ED7DD1448BB2DD072 /* ShoePickList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoePickList.swift; sourceTree = "<group>"; };
 		497717384B7A5CCBD97747D7 /* SmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeTests.swift; sourceTree = "<group>"; };
 		4B0EFADF985A2379432C8C7D /* PetalWedgeShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetalWedgeShape.swift; sourceTree = "<group>"; };
 		4B520B542390E42DD8D07575 /* AppTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTab.swift; sourceTree = "<group>"; };
@@ -507,6 +509,7 @@
 				93E8762A7199C3A909DF2365 /* SessionFeeling.swift */,
 				E41558BBC79FF5803DAC986B /* SessionProblem.swift */,
 				73D1E25D7AF4FB0B107FA22E /* Shoe.swift */,
+				476BDB0ED7DD1448BB2DD072 /* ShoePickList.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -859,6 +862,7 @@
 				255678687B8663FC6159CF0E /* SessionSyncOutbox.swift in Sources */,
 				FEF0427E435C410135C4FEF4 /* Shoe.swift in Sources */,
 				5C2080BF3089501A997EDF37 /* ShoeListSection.swift in Sources */,
+				AC7FAEFC9CEE0F14A7F3CB2C /* ShoePickList.swift in Sources */,
 				C7A0D6B75F8C70888C854A5E /* StatTile.swift in Sources */,
 				E60BE443A1E1C56D7DE15182 /* StatsAggregator.swift in Sources */,
 				B758658FA92278448C6A612F /* StatsPeriod.swift in Sources */,

@@ -7,7 +7,9 @@ struct GymPickerSheet: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(PhoneSyncCoordinator.self) private var syncCoordinator
     @Query(sort: \Gym.name) private var gyms: [Gym]
+    @Query private var allShoes: [Shoe]
     @State private var selectedClimbType: ClimbType = .bouldering
+    @State private var selectedShoe: Shoe?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -20,6 +22,8 @@ struct GymPickerSheet: View {
                 .padding(.top, 4)
             climbTypeRow
                 .padding(.top, 16)
+            shoeRow
+                .padding(.top, 10)
             gymList
                 .padding(.top, 12)
         }
@@ -39,6 +43,22 @@ struct GymPickerSheet: View {
                         isSelected: selectedClimbType == climbType
                     ) {
                         selectedClimbType = climbType
+                    }
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var shoeRow: some View {
+        let shoes = allShoes.pickableInNaturalOrder
+        if !shoes.isEmpty {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 8) {
+                    ForEach(shoes) { shoe in
+                        SelectablePill(title: shoe.name, isSelected: selectedShoe == shoe) {
+                            selectedShoe = selectedShoe == shoe ? nil : shoe
+                        }
                     }
                 }
             }
@@ -69,6 +89,7 @@ struct GymPickerSheet: View {
 
     private func startSession(at gym: Gym) {
         let session = Session(startTime: .now, gym: gym, partners: [], climbType: selectedClimbType)
+        session.shoe = selectedShoe
         modelContext.insert(session)
         modelContext.saveReportingFailure(operation: "session start")
         syncCoordinator.announceStart(of: session)
