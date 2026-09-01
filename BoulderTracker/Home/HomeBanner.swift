@@ -10,7 +10,7 @@ struct HomeBanner: View {
     private static let bannerHeight = height
 
     private var climbingDays: Int {
-        StatsAggregator.climbingDayCount(of: sessions, calendar: .current)
+        StatsAggregator.climbingDayCount(of: sessions.persisted, calendar: .current)
     }
 
     var body: some View {

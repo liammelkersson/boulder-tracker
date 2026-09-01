@@ -6,7 +6,7 @@ struct GradeDistributionCard: View {
     let sessions: [Session]
 
     private var sendCounts: [(grade: ColorGrade, count: Int)] {
-        let counts = StatsAggregator.sendCountPerGrade(of: sessions)
+        let counts = StatsAggregator.sendCountPerGrade(of: sessions.persisted)
         return ColorGrade.displayOrder.compactMap { grade in
             guard let count = counts[grade], count > 0 else { return nil }
             return (grade, count)

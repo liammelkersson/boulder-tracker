@@ -11,8 +11,10 @@ struct SessionDetailSheet: View {
     @State private var showingAddProblem = false
     @State private var confirmingDelete = false
     @State private var draftGym: Gym?
+    @State private var draftShoe: Shoe?
     @State private var draftDurationMinutes = 0
     @Query(sort: \Gym.name) private var gyms: [Gym]
+    @Query private var allShoes: [Shoe]
 
     var body: some View {
         ScrollView {
@@ -117,6 +119,9 @@ struct SessionDetailSheet: View {
         VStack(alignment: .leading, spacing: 0) {
             problemsSection
             infoRow(label: "Gym", value: session.gym?.name ?? "Unknown gym")
+            if let shoe = session.shoe {
+                infoRow(label: "Shoes", value: shoe.name)
+            }
             partnersRow
             if let notes = session.notes, !notes.isEmpty {
                 infoRow(label: "Notes", value: notes)
@@ -254,6 +259,22 @@ struct SessionDetailSheet: View {
                 .clipShape(.rect(cornerRadius: 12))
             }
             VStack(alignment: .leading, spacing: 8) {
+                SectionHeading(title: "Shoes")
+                Picker("Shoes", selection: $draftShoe) {
+                    Text("None").tag(Shoe?.none)
+                    ForEach(selectableShoes) { shoe in
+                        Text(shoe.name).tag(Optional(shoe))
+                    }
+                }
+                .pickerStyle(.menu)
+                .tint(palette.text)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 6)
+                .background(palette.pill)
+                .clipShape(.rect(cornerRadius: 12))
+            }
+            VStack(alignment: .leading, spacing: 8) {
                 SectionHeading(title: "Duration")
                 Stepper(
                     "\(SessionDurationFormat.compactString(from: TimeInterval(draftDurationMinutes * 60)))",
@@ -274,14 +295,23 @@ struct SessionDetailSheet: View {
         .padding(.top, 8)
     }
 
+    /// Retired shoes stay pickable only while this session already wears them.
+    private var selectableShoes: [Shoe] {
+        allShoes
+            .filter { !$0.isRetired || $0 == session.shoe }
+            .sorted { $0.name.localizedStandardCompare($1.name) == .orderedAscending }
+    }
+
     private func startEditing() {
         draftGym = session.gym
+        draftShoe = session.shoe
         draftDurationMinutes = max(5, Int(session.duration) / 60)
         isEditing = true
     }
 
     private func saveEdits() {
         session.gym = draftGym
+        session.shoe = draftShoe
         session.endTime = session.startTime.addingTimeInterval(TimeInterval(draftDurationMinutes * 60))
         try? modelContext.save()
         isEditing = false

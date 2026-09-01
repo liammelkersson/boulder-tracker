@@ -7,7 +7,7 @@ struct StatsView: View {
     @State private var period: StatsPeriod = .threeMonths
 
     private var periodSessions: [Session] {
-        let finished = sessions.filter { !$0.isLive }
+        let finished = sessions.persisted.filter { !$0.isLive }
         let interval = period.interval(endingAt: .now, calendar: .current)
         return StatsAggregator.sessions(finished, in: interval)
     }
@@ -20,9 +20,12 @@ struct StatsView: View {
                     .foregroundStyle(palette.text)
                 periodSelector
                 summaryGrid
+                GradeProgressionChart(sessions: periodSessions)
+                VolumeTrendChart(sessions: periodSessions)
                 GradeDistributionCard(sessions: periodSessions)
                 StyleRadialChart(sessions: periodSessions)
                 PersonalBestsSection(sessions: periodSessions)
+                SampleDataToggleRow()
             }
             .padding(.horizontal, 20)
             .padding(.top, 40)

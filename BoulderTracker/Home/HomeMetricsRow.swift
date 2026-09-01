@@ -3,7 +3,7 @@ import SwiftUI
 struct HomeMetricsRow: View {
     let sessions: [Session]
 
-    private var summary: StatsSummary { StatsAggregator.summary(of: sessions) }
+    private var summary: StatsSummary { StatsAggregator.summary(of: sessions.persisted) }
 
     var body: some View {
         HStack(spacing: 8) {

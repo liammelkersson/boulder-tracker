@@ -20,7 +20,8 @@ struct WatchLiveView: View {
             if !tally.isEmpty {
                 Section("Logged") {
                     ForEach(tally, id: \.grade) { entry in
-                        HStack {
+                        HStack(spacing: 7) {
+                            WatchGradeDot(grade: entry.grade)
                             Text(entry.grade.shortLabel(in: gradeSystem))
                             Spacer()
                             Text("\(entry.count)").monospacedDigit()

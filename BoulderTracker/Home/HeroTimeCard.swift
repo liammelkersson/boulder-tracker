@@ -5,8 +5,10 @@ struct HeroTimeCard: View {
     @Environment(\.gradeSystem) private var gradeSystem
     let sessions: [Session]
 
-    private var summary: StatsSummary { StatsAggregator.summary(of: sessions) }
-    private var currentGrade: ColorGrade? { StatsAggregator.hardestSend(of: sessions)?.colorGrade }
+    private var summary: StatsSummary { StatsAggregator.summary(of: sessions.persisted) }
+    private var currentGrade: ColorGrade? {
+        StatsAggregator.hardestSend(of: sessions.persisted)?.colorGrade
+    }
 
     var body: some View {
         HStack(spacing: 14) {

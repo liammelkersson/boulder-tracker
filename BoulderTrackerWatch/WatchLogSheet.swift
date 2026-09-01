@@ -19,7 +19,10 @@ struct WatchLogSheet: View {
             Button {
                 grade = option
             } label: {
-                Text(option.shortLabel(in: gradeSystem))
+                HStack(spacing: 7) {
+                    WatchGradeDot(grade: option)
+                    Text(option.shortLabel(in: gradeSystem))
+                }
             }
         }
         .navigationTitle("Grade")

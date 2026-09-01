@@ -8,6 +8,7 @@ struct RetroSessionForm: View {
     @Environment(\.dismiss) private var dismiss
     @Query(sort: \Gym.name) private var gyms: [Gym]
     @Query(sort: \Partner.name) private var allPartners: [Partner]
+    @Query private var allShoes: [Shoe]
 
     private static let defaultDurationMinutes = 90
 
@@ -17,6 +18,7 @@ struct RetroSessionForm: View {
     @State private var selectedClimbType: ClimbType = .bouldering
     @State private var selectedPartnerIDs: Set<PersistentIdentifier> = []
     @State private var feeling: SessionFeeling = .good
+    @State private var selectedShoe: Shoe?
     @State private var notes = ""
 
     var body: some View {
@@ -29,6 +31,7 @@ struct RetroSessionForm: View {
                 gymField
                 typeField
                 partnerField
+                shoeField
                 notesField
                 Button(action: saveSession) {
                     AccentButtonLabel(title: "Save Session")
@@ -118,6 +121,32 @@ struct RetroSessionForm: View {
         }
     }
 
+    /// Natural order so "Drago 2" sorts before "Drago 10".
+    private var activeShoes: [Shoe] {
+        allShoes
+            .filter { !$0.isRetired }
+            .sorted { $0.name.localizedStandardCompare($1.name) == .orderedAscending }
+    }
+
+    private var shoeField: some View {
+        let activeShoes = self.activeShoes
+        return VStack(alignment: .leading, spacing: 8) {
+            SectionHeading(title: "Shoes")
+            if activeShoes.isEmpty {
+                Text("No shoes yet — add them in Profile")
+                    .font(.system(size: 13))
+                    .foregroundStyle(palette.textFaint)
+            }
+            FlowLayout(spacing: 8) {
+                ForEach(activeShoes) { shoe in
+                    SelectablePill(title: shoe.name, isSelected: selectedShoe == shoe) {
+                        selectedShoe = selectedShoe == shoe ? nil : shoe
+                    }
+                }
+            }
+        }
+    }
+
     private var notesField: some View {
         VStack(alignment: .leading, spacing: 8) {
             SectionHeading(title: "Notes")
@@ -141,6 +170,7 @@ struct RetroSessionForm: View {
         )
         session.endTime = startDate.addingTimeInterval(TimeInterval(durationMinutes * 60))
         session.feeling = feeling
+        session.shoe = selectedShoe
         if !notes.isEmpty { session.notes = notes }
         modelContext.insert(session)
         try? modelContext.save()

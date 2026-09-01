@@ -5,7 +5,6 @@ extension ColorGrade {
     /// would overflow the layout.
     func shortLabel(in system: GradeSystem) -> String {
         switch system {
-        case .color: displayName
         case .french: frenchShort
         case .vScale: vGradeShort
         }
@@ -15,7 +14,6 @@ extension ColorGrade {
     /// a single colour covers.
     func detailLabel(in system: GradeSystem) -> String {
         switch system {
-        case .color: "\(displayName) · \(frenchRange)"
         case .french: frenchRange
         case .vScale: vGradeRange
         }

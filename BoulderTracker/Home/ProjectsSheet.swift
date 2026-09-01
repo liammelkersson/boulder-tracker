@@ -8,7 +8,7 @@ struct ProjectsSheet: View {
     let sessions: [Session]
 
     private var projects: [ProjectGroup] {
-        ProjectAggregator.groups(in: sessions)
+        ProjectAggregator.groups(in: sessions.persisted)
     }
 
     var body: some View {

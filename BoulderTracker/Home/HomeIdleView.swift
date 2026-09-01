@@ -8,7 +8,7 @@ struct HomeIdleView: View {
 
     private var recentPeriodSessions: [Session] {
         let interval = StatsPeriod.threeMonths.interval(endingAt: .now, calendar: .current)
-        return StatsAggregator.sessions(sessions, in: interval)
+        return StatsAggregator.sessions(sessions.persisted, in: interval)
     }
 
     var body: some View {

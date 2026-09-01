@@ -1,7 +1,7 @@
 import SwiftUI
 
 private struct GradeSystemKey: EnvironmentKey {
-    static let defaultValue = GradeSystem.color
+    static let defaultValue = GradeSystem.default
 }
 
 extension EnvironmentValues {

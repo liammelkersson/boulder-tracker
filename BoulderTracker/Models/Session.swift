@@ -23,7 +23,11 @@ final class Session {
     var isWatchTracked: Bool = false
     /// Envelope ids already applied, making replayed deliveries no-ops.
     var appliedEventIDs: [UUID] = []
+    /// Demo rows inserted by `SampleDataGenerator`; removed together when the
+    /// sample-data toggle turns off.
+    var isSampleData: Bool = false
     var gym: Gym?
+    var shoe: Shoe?
     var partners: [Partner]
     @Relationship(deleteRule: .cascade, inverse: \SessionProblem.session)
     var problems: [SessionProblem]

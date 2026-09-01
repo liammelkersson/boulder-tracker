@@ -2,7 +2,7 @@ import SwiftUI
 
 struct RootTabView: View {
     @AppStorage(AppPreferences.darkModeKey) private var darkModeEnabled = true
-    @AppStorage(AppPreferences.gradeSystemKey) private var gradeSystem = GradeSystem.color
+    @AppStorage(AppPreferences.gradeSystemKey) private var gradeSystem = GradeSystem.default
     @State private var selectedTab: AppTab = .climb
 
     private var palette: ThemePalette { darkModeEnabled ? .dark : .light }

@@ -2,11 +2,6 @@ import Testing
 @testable import BoulderTracker
 
 struct GradeLabelTests {
-    @Test func colorSystemKeepsTodaysStrings() {
-        #expect(ColorGrade.red.shortLabel(in: .color) == "Red")
-        #expect(ColorGrade.red.detailLabel(in: .color) == "Red · 6B–6C")
-    }
-
     @Test func frenchSystemUsesFontGrades() {
         #expect(ColorGrade.red.shortLabel(in: .french) == "6B")
         #expect(ColorGrade.red.detailLabel(in: .french) == "6B–6C")
@@ -36,6 +31,5 @@ struct GradeLabelTests {
     @Test func unknownGradeStaysLegible() {
         #expect(ColorGrade.unknown.shortLabel(in: .vScale) == "?")
         #expect(ColorGrade.unknown.shortLabel(in: .french) == "?")
-        #expect(ColorGrade.unknown.shortLabel(in: .color) == "Unknown")
     }
 }

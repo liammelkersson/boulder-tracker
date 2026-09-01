@@ -1,15 +1,19 @@
 import SwiftUI
 
-/// Radial "petal" chart of send rate per style, like the mockup's style breakdown.
+/// Segmented-wheel breakdown of send rate per style: the top styles form a
+/// full circle of muted wedges, and an accent wedge grows outward from the
+/// hub inside each slice as the send rate rises.
 struct StyleRadialChart: View {
     @Environment(\.palette) private var palette
     let sessions: [Session]
 
-    private static let chartSize: CGFloat = 280
+    private static let chartSize: CGFloat = 320
     private static let holeRadius: CGFloat = 22
-    private static let minPetalLength: CGFloat = 56
-    private static let maxPetalLength: CGFloat = 118
-    private static let petalWidth: CGFloat = 58
+    private static let outerRadius: CGFloat = 152
+    /// Value wedges stop short of the label band so text always sits on the muted base.
+    private static let labelBandDepth: CGFloat = 46
+    private static let minValueDepth: CGFloat = 12
+    private static let valueInset: CGFloat = 5
     private static let maxPetals = 6
 
     private struct Petal: Identifiable {
@@ -20,6 +24,7 @@ struct StyleRadialChart: View {
     }
 
     private var petals: [Petal] {
+        let sessions = self.sessions.persisted
         let rates = StatsAggregator.sendRatePerStyle(of: sessions)
         let styleFrequency = Dictionary(
             grouping: sessions.flatMap(\.problems).flatMap(\.styles), by: \.self
@@ -43,46 +48,54 @@ struct StyleRadialChart: View {
         if !petals.isEmpty {
             VStack(alignment: .leading, spacing: 12) {
                 SectionHeading(title: "Style breakdown")
-                ZStack {
-                    ForEach(petals) { petal in
-                        petalShape(petal)
-                        petalLabel(petal)
-                    }
-                }
-                .frame(width: Self.chartSize, height: Self.chartSize)
-                .frame(maxWidth: .infinity)
+                wheel(petals)
+                    .frame(width: Self.chartSize, height: Self.chartSize)
+                    .frame(maxWidth: .infinity)
             }
         }
     }
 
-    private func petalLength(for percent: Int) -> CGFloat {
-        Self.minPetalLength
-            + CGFloat(percent) / 100 * (Self.maxPetalLength - Self.minPetalLength)
+    private func wheel(_ petals: [Petal]) -> some View {
+        let sliceAngle = Angle.degrees(360 / Double(petals.count))
+        return ZStack {
+            ForEach(petals) { petal in
+                PetalWedgeShape(
+                    centerAngle: petal.angle, sliceAngle: sliceAngle,
+                    innerRadius: Self.holeRadius, outerRadius: Self.outerRadius,
+                    cornerRadius: 16
+                )
+                .fill(palette.surfaceSunken)
+            }
+            ForEach(petals) { petal in
+                PetalWedgeShape(
+                    centerAngle: petal.angle, sliceAngle: sliceAngle,
+                    innerRadius: Self.holeRadius + Self.valueInset,
+                    outerRadius: valueRadius(for: petal.percent),
+                    gapAngle: .degrees(6), cornerRadius: 12
+                )
+                .fill(ThemePalette.accent.opacity(0.35 + Double(petal.percent) / 100 * 0.65))
+            }
+            ForEach(petals) { petal in
+                petalLabel(petal)
+            }
+        }
     }
 
-    private func petalShape(_ petal: Petal) -> some View {
-        let length = petalLength(for: petal.percent)
-        let midRadius = Self.holeRadius + length / 2
-        let fillStrength = 0.25 + Double(petal.percent) / 100 * 0.75
-        return UnevenRoundedRectangle(
-            topLeadingRadius: Self.petalWidth / 2, bottomLeadingRadius: 10,
-            bottomTrailingRadius: 10, topTrailingRadius: Self.petalWidth / 2
-        )
-        .fill(palette.surfaceSunken.mix(with: ThemePalette.accent, by: fillStrength))
-        .frame(width: Self.petalWidth, height: length)
-        .rotationEffect(petal.angle + .degrees(90))
-        .position(polarPoint(radius: midRadius, angle: petal.angle))
+    private func valueRadius(for percent: Int) -> CGFloat {
+        let floorRadius = Self.holeRadius + Self.valueInset + Self.minValueDepth
+        let ceilingRadius = Self.outerRadius - Self.labelBandDepth
+        return floorRadius + CGFloat(percent) / 100 * (ceilingRadius - floorRadius)
     }
 
     private func petalLabel(_ petal: Petal) -> some View {
-        let length = petalLength(for: petal.percent)
-        let textRadius = Self.holeRadius + length - 26
-        return VStack(spacing: 1) {
+        let textRadius = Self.outerRadius - Self.labelBandDepth / 2 - 3
+        return VStack(spacing: 0) {
             Text("\(petal.percent)%")
-                .font(.system(size: 20, weight: .bold))
+                .font(.system(size: 16, weight: .bold))
+                .monospacedDigit()
                 .foregroundStyle(palette.text)
             Text(petal.label)
-                .font(.system(size: 11))
+                .font(.system(size: 10))
                 .foregroundStyle(palette.textDim)
         }
         .position(polarPoint(radius: textRadius, angle: petal.angle))

@@ -6,6 +6,16 @@ struct SessionRowCard: View {
     var showsGymInSummary = false
 
     var body: some View {
+        // Observation gives this row one last render after its session is
+        // deleted; touching persisted properties then traps in SwiftData.
+        if session.isInvalidated {
+            EmptyView()
+        } else {
+            rowContent
+        }
+    }
+
+    private var rowContent: some View {
         HStack(spacing: 10) {
             SessionPhotoThumbnail(session: session, size: 40)
             VStack(alignment: .leading, spacing: 4) {

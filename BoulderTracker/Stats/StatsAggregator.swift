@@ -83,6 +83,37 @@ enum StatsAggregator {
             }
     }
 
+    static func weeklyVolume(of sessions: [Session], calendar: Calendar) -> [WeeklyVolume] {
+        sessionsByWeekStart(sessions, calendar: calendar)
+            .map { weekStart, weekSessions in
+                let problems = allProblems(in: weekSessions)
+                return WeeklyVolume(
+                    weekStart: weekStart,
+                    problemCount: problems.count,
+                    sendCount: problems.reduce(0) { $0 + $1.sendCount + $1.flashCount }
+                )
+            }
+            .sorted { $0.weekStart < $1.weekStart }
+    }
+
+    static func hardestSendPerWeek(of sessions: [Session], calendar: Calendar) -> [WeeklyHardestSend] {
+        sessionsByWeekStart(sessions, calendar: calendar)
+            .compactMap { weekStart, weekSessions -> WeeklyHardestSend? in
+                guard let hardest = hardestSend(of: weekSessions) else { return nil }
+                return WeeklyHardestSend(weekStart: weekStart, grade: hardest.colorGrade)
+            }
+            .sorted { $0.weekStart < $1.weekStart }
+    }
+
+    private static func sessionsByWeekStart(
+        _ sessions: [Session], calendar: Calendar
+    ) -> [Date: [Session]] {
+        Dictionary(grouping: sessions) { session in
+            calendar.dateInterval(of: .weekOfYear, for: session.startTime)?.start
+                ?? session.startTime
+        }
+    }
+
     private static func allProblems(in sessions: [Session]) -> [SessionProblem] {
         sessions.flatMap(\.problems)
     }

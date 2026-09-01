@@ -5,19 +5,20 @@ struct PersonalBestsSection: View {
     @Environment(\.gradeSystem) private var gradeSystem
     let sessions: [Session]
 
-    private var bests: [(label: String, value: String)] {
-        var entries: [(String, String)] = []
+    private var bests: [(label: String, value: String, grade: ColorGrade?)] {
+        let sessions = self.sessions.persisted
+        var entries: [(String, String, ColorGrade?)] = []
         if let flash = StatsAggregator.hardestFlash(of: sessions) {
-            entries.append(("Hardest flash", gradeLabel(flash.colorGrade)))
+            entries.append(("Hardest flash", gradeLabel(flash.colorGrade), flash.colorGrade))
         }
         if let send = StatsAggregator.hardestSend(of: sessions) {
-            entries.append(("Hardest send", gradeLabel(send.colorGrade)))
+            entries.append(("Hardest send", gradeLabel(send.colorGrade), send.colorGrade))
         }
         let streak = StatsAggregator.weeklyStreak(
             of: sessions, calendar: .current, referenceDate: .now
         )
         if streak > 0 {
-            entries.append(("Longest streak", streak == 1 ? "1 week" : "\(streak) weeks"))
+            entries.append(("Longest streak", streak == 1 ? "1 week" : "\(streak) weeks", nil))
         }
         return entries
     }
@@ -38,6 +39,9 @@ struct PersonalBestsSection: View {
                                 .font(.system(size: 14))
                                 .foregroundStyle(palette.textDim)
                             Spacer()
+                            if let grade = best.grade {
+                                GradeDot(grade: grade, size: 10)
+                            }
                             Text(best.value)
                                 .font(.system(size: 14, weight: .semibold))
                                 .foregroundStyle(palette.text)

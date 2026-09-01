@@ -37,6 +37,7 @@ struct ProfileView: View {
                 quickActions
                 GymListSection()
                 PartnerListSection()
+                ShoeListSection()
                 PreferencesSection()
                 versionFooter
             }
@@ -136,7 +137,7 @@ struct ProfileView: View {
     }
 
     private func exportSessions() {
-        let finished = sessions.filter { !$0.isLive }
+        let finished = sessions.filter { !$0.isLive && !$0.isSampleData }
         guard let url = try? SessionDataExport.writeJSONFile(for: finished) else { return }
         exportFile = ExportFile(url: url)
     }

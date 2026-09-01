@@ -10,7 +10,7 @@ struct BoulderTrackerApp: App {
         do {
             container = try ModelContainer(
                 for: Session.self, SessionProblem.self, Gym.self, Partner.self,
-                RoadmapProgress.self, Achievement.self
+                RoadmapProgress.self, Achievement.self, Shoe.self
             )
             try DefaultGymSeeder.seedIfNeeded(context: container.mainContext)
         } catch {

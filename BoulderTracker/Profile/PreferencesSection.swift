@@ -4,7 +4,7 @@ struct PreferencesSection: View {
     @Environment(\.palette) private var palette
     @AppStorage(AppPreferences.darkModeKey) private var darkModeEnabled = true
     @AppStorage(AppPreferences.healthKitSyncKey) private var healthKitSyncEnabled = true
-    @AppStorage(AppPreferences.gradeSystemKey) private var gradeSystem = GradeSystem.color
+    @AppStorage(AppPreferences.gradeSystemKey) private var gradeSystem = GradeSystem.default
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -19,17 +19,21 @@ struct PreferencesSection: View {
     }
 
     private var gradeSystemRow: some View {
-        Picker("Grade system", selection: $gradeSystem) {
-            ForEach(GradeSystem.allCases) { system in
-                Text(system.displayName).tag(system)
+        VStack(alignment: .leading, spacing: 9) {
+            Text("Grade system")
+                .font(.system(size: 15))
+                .foregroundStyle(palette.text)
+            Picker("Grade system", selection: $gradeSystem) {
+                ForEach(GradeSystem.allCases) { system in
+                    Text(system.displayName).tag(system)
+                }
             }
+            .pickerStyle(.segmented)
+            .labelsHidden()
+            .tint(ThemePalette.accent)
         }
-        .pickerStyle(.menu)
-        .font(.system(size: 15))
-        .foregroundStyle(palette.text)
-        .tint(ThemePalette.accent)
         .padding(.horizontal, 16)
-        .padding(.vertical, 8)
+        .padding(.vertical, 14)
     }
 
     private func preferenceRow(title: String, isOn: Binding<Bool>, isLast: Bool) -> some View {

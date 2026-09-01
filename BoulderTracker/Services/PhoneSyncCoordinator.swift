@@ -84,7 +84,7 @@ final class PhoneSyncCoordinator {
         outbox.send(.phoneCatalog(PhoneCatalogPayload(
             gyms: gyms.map { GymSnapshot(name: $0.name, isDefault: $0.isDefault) },
             healthKitSyncEnabled: healthKitSyncEnabled,
-            gradeSystem: storedSystem.flatMap(GradeSystem.init(rawValue:)) ?? .color
+            gradeSystem: storedSystem.flatMap(GradeSystem.init(rawValue:)) ?? .default
         )))
     }
 }

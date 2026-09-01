@@ -12,7 +12,7 @@ struct ActivitySection: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             header
-            ForEach(sessions.prefix(Self.recentLimit)) { session in
+            ForEach(sessions.persisted.prefix(Self.recentLimit)) { session in
                 Button {
                     detailSession = session
                 } label: {

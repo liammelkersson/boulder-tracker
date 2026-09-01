@@ -10,7 +10,7 @@ struct CurrentProjectCard: View {
 
     private var project: ProjectGroup? {
         ProjectAggregator.currentProject(
-            in: sessions,
+            in: sessions.persisted,
             preferredName: currentProjectName.isEmpty ? nil : currentProjectName
         )
     }

@@ -8,7 +8,7 @@ func makeInMemoryContainer() throws -> ModelContainer {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     return try ModelContainer(
         for: Session.self, SessionProblem.self, Gym.self, Partner.self,
-        RoadmapProgress.self, Achievement.self,
+        RoadmapProgress.self, Achievement.self, Shoe.self,
         configurations: config
     )
 }

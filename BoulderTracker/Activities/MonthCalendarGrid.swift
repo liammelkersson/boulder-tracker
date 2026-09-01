@@ -50,7 +50,9 @@ struct MonthCalendarGrid: View {
     }
 
     private func dayCell(_ day: Date) -> some View {
-        let daySessions = sessions.filter { calendar.isDate($0.startTime, inSameDayAs: day) }
+        let daySessions = sessions.persisted.filter {
+            calendar.isDate($0.startTime, inSameDayAs: day)
+        }
         let hasSessions = !daySessions.isEmpty
         let isToday = calendar.isDateInToday(day)
         let isFuture = day > Date.now && !isToday
