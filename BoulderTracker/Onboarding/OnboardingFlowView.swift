@@ -3,8 +3,19 @@ import SwiftUI
 
 struct OnboardingFlowView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.modelContext) private var modelContext
+    @Query(sort: \Gym.name) private var gyms: [Gym]
+
+    private let saver: any OnboardingSaving
+
     @State private var step = OnboardingStep.welcome
     @State private var draft = OnboardingDraft()
+    @State private var isSaving = false
+    @State private var saveError: String?
+
+    init(saver: any OnboardingSaving = OnboardingSaver.live) {
+        self.saver = saver
+    }
 
     var body: some View {
         ZStack {
@@ -28,12 +39,44 @@ struct OnboardingFlowView: View {
 
             VStack(spacing: 0) {
                 header
-                PlaceholderOnboardingStep(step: step)
+                stepContent
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                footer
+                if step != .ready { footer }
             }
             .padding(.horizontal, 22)
             .padding(.vertical, 10)
+        }
+    }
+
+    @ViewBuilder
+    private var stepContent: some View {
+        switch step {
+        case .welcome:
+            EmptyView()
+        case .name:
+            OnboardingNameStep(name: $draft.name) {
+                if draft.validationError(for: .name) == nil { moveForward() }
+            }
+        case .profile:
+            OnboardingProfileStep(
+                avatarData: $draft.avatarData,
+                climbingSinceYear: $draft.climbingSinceYear
+            )
+        case .gym:
+            OnboardingGymStep(draft: $draft, gyms: gyms)
+        case .gradeSystem:
+            OnboardingGradeSystemStep(selection: $draft.gradeSystem)
+        case .shoes:
+            OnboardingShoesStep(shoeName: $draft.shoeName)
+        case .ready:
+            OnboardingReadyView(
+                name: draft.trimmedName,
+                gymName: resolvedGymName,
+                shoeName: draft.trimmedShoeName,
+                isSaving: isSaving,
+                errorMessage: saveError,
+                onFinish: finishSetup
+            )
         }
     }
 
@@ -103,6 +146,7 @@ struct OnboardingFlowView: View {
     }
 
     private func moveForward() {
+        guard draft.validationError(for: step) == nil else { return }
         guard let next = OnboardingStep(rawValue: step.rawValue + 1) else { return }
         move(to: next)
     }
@@ -113,29 +157,34 @@ struct OnboardingFlowView: View {
     }
 
     private func move(to newStep: OnboardingStep) {
+        saveError = nil
         step = newStep
         UIAccessibility.post(notification: .screenChanged, argument: nil)
     }
-}
 
-private struct PlaceholderOnboardingStep: View {
-    let step: OnboardingStep
-
-    var body: some View {
-        Text(title)
-            .font(.system(size: 34, weight: .bold, design: .rounded))
-            .foregroundStyle(ThemePalette.light.text)
+    private var resolvedGymName: String {
+        switch draft.gymChoice {
+        case let .existing(identifier):
+            return gyms.first(where: { $0.persistentModelID == identifier })?.name ?? "Selected gym"
+        case .custom:
+            return draft.trimmedCustomGymName
+        case nil:
+            return ""
+        }
     }
 
-    private var title: String {
-        switch step {
-        case .welcome: "Welcome"
-        case .name: "What's your name?"
-        case .profile: "Make it yours"
-        case .gym: "Where do you climb?"
-        case .gradeSystem: "Choose your grades"
-        case .shoes: "What are you climbing in?"
-        case .ready: "Ready to climb"
+    private func finishSetup() {
+        guard !isSaving else { return }
+        isSaving = true
+        saveError = nil
+        Task { @MainActor in
+            await Task.yield()
+            do {
+                try saver.save(draft, gyms: gyms, context: modelContext)
+            } catch {
+                saveError = "Couldn’t finish setup. Please try again."
+            }
+            isSaving = false
         }
     }
 }
