@@ -192,6 +192,38 @@ struct SessionSyncInboxTests {
         #expect(adopted?.endTime == Date(timeIntervalSince1970: 5000))
     }
 
+    @Test func orphanBufferDropsOldestBeyondCapacity() throws {
+        let container = try makeInMemoryContainer()
+        let context = container.mainContext
+        let inbox = SessionSyncInbox(context: context)
+        let overflow = 10
+
+        for _ in 0..<(SessionSyncInbox.orphanCapacity + overflow) {
+            inbox.apply(SyncEnvelope(event: attemptEvent(.send)))
+        }
+        inbox.apply(SyncEnvelope(event: startEvent()))
+
+        let sendCount = try sessions(in: context).first?.problems.first?.sendCount
+        #expect(sendCount == SessionSyncInbox.orphanCapacity)
+    }
+
+    @Test func appliedEventIDsStayBounded() throws {
+        let container = try makeInMemoryContainer()
+        let context = container.mainContext
+        let inbox = SessionSyncInbox(context: context)
+        inbox.apply(SyncEnvelope(event: startEvent()))
+        let overflow = 8
+
+        for _ in 0..<(SessionSyncInbox.appliedEventCapacity + overflow) {
+            inbox.apply(SyncEnvelope(event: attemptEvent(.fall)))
+        }
+
+        let session = try sessions(in: context).first
+        #expect(session?.appliedEventIDs.count == SessionSyncInbox.appliedEventCapacity)
+        #expect(session?.problems.first?.fallCount
+            == SessionSyncInbox.appliedEventCapacity + overflow)
+    }
+
     @Test func unknownSessionEndIsIgnored() throws {
         let container = try makeInMemoryContainer()
         let context = container.mainContext

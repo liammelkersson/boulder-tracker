@@ -10,6 +10,8 @@ protocol SyncLinking: AnyObject {
     var onDelivered: ((UUID) -> Void)? { get set }
     /// Called for every envelope arriving from the peer, duplicates included.
     var onReceive: ((SyncEnvelope) -> Void)? { get set }
+    /// Called when the transport becomes usable (activation, peer reachable).
+    var onLinkReady: (() -> Void)? { get set }
 
     func activate()
     func sendImmediately(_ envelope: SyncEnvelope)

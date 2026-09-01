@@ -64,3 +64,20 @@ struct PendingEventQueueTests {
         #expect(PendingEventQueue(fileURL: fileURL).pending.isEmpty)
     }
 }
+
+@MainActor
+struct PendingEventQueueCapacityTests {
+    @Test func queueDropsOldestBeyondCapacity() {
+        let queue = PendingEventQueue(fileURL: FileManager.default.temporaryDirectory
+            .appendingPathComponent("queue-cap-\(UUID().uuidString).json"))
+        let first = SyncEnvelope(event: .liveSessionRequest)
+        queue.append(first)
+
+        for _ in 0..<PendingEventQueue.capacity {
+            queue.append(SyncEnvelope(event: .liveSessionRequest))
+        }
+
+        #expect(queue.pending.count == PendingEventQueue.capacity)
+        #expect(queue.pending.contains { $0.id == first.id } == false)
+    }
+}

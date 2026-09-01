@@ -6,6 +6,7 @@ final class FakeSyncLink: SyncLinking {
     var isPeerReachable = true
     var onDelivered: ((UUID) -> Void)?
     var onReceive: ((SyncEnvelope) -> Void)?
+    var onLinkReady: (() -> Void)?
     private(set) var immediate: [SyncEnvelope] = []
     private(set) var guaranteed: [SyncEnvelope] = []
     private(set) var isActivated = false

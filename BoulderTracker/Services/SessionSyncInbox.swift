@@ -1,4 +1,5 @@
 import Foundation
+import OSLog
 import SwiftData
 
 /// Applies sync events from the watch into the phone's store. Every event is
@@ -6,8 +7,13 @@ import SwiftData
 /// an unknown session are buffered and replayed when that session arrives.
 @MainActor
 final class SessionSyncInbox {
+    /// A `sessionStarted` that never arrives must not grow the buffer forever.
+    static let orphanCapacity = 256
+    /// Replay-guard ids kept per session; older deliveries are long confirmed.
+    static let appliedEventCapacity = 512
+
     private let context: ModelContext
-    private var orphansBySession: [UUID: [SyncEnvelope]] = [:]
+    private var orphanedAttempts: [(sessionSyncID: UUID, envelope: SyncEnvelope)] = []
 
     init(context: ModelContext) {
         self.context = context
@@ -61,7 +67,7 @@ final class SessionSyncInbox {
 
     private func recordAttempt(_ payload: AttemptLogPayload, from envelope: SyncEnvelope) {
         guard let session = session(with: payload.sessionSyncID) else {
-            orphansBySession[payload.sessionSyncID, default: []].append(envelope)
+            bufferOrphan(envelope, sessionSyncID: payload.sessionSyncID)
             return
         }
         guard !session.appliedEventIDs.contains(envelope.id) else { return }
@@ -69,7 +75,20 @@ final class SessionSyncInbox {
             ?? insertProblem(payload, into: session)
         problem.recordResult(payload.result)
         session.appliedEventIDs.append(envelope.id)
+        if session.appliedEventIDs.count > Self.appliedEventCapacity {
+            session.appliedEventIDs.removeFirst(
+                session.appliedEventIDs.count - Self.appliedEventCapacity
+            )
+        }
         session.isWatchTracked = true
+    }
+
+    private func bufferOrphan(_ envelope: SyncEnvelope, sessionSyncID: UUID) {
+        orphanedAttempts.append((sessionSyncID, envelope))
+        if orphanedAttempts.count > Self.orphanCapacity {
+            let dropped = orphanedAttempts.removeFirst()
+            Logger.sync.warning("Orphan buffer full, dropping envelope \(dropped.envelope.id)")
+        }
     }
 
     private func closeSession(_ payload: SessionEndPayload) {
@@ -87,10 +106,11 @@ final class SessionSyncInbox {
     }
 
     private func replayOrphans(of sessionSyncID: UUID) {
-        let buffered = orphansBySession.removeValue(forKey: sessionSyncID) ?? []
-        for envelope in buffered {
-            guard case .attemptLogged(let payload) = envelope.event else { continue }
-            recordAttempt(payload, from: envelope)
+        let buffered = orphanedAttempts.filter { $0.sessionSyncID == sessionSyncID }
+        orphanedAttempts.removeAll { $0.sessionSyncID == sessionSyncID }
+        for entry in buffered {
+            guard case .attemptLogged(let payload) = entry.envelope.event else { continue }
+            recordAttempt(payload, from: entry.envelope)
         }
     }
 

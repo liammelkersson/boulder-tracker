@@ -14,6 +14,11 @@ final class SessionSyncOutbox {
         link.onDelivered = { [weak queue] deliveredID in
             queue?.remove(deliveredID: deliveredID)
         }
+        // Anything still pending gets another try whenever the transport
+        // comes back (activation completes or the peer becomes reachable).
+        link.onLinkReady = { [weak self] in
+            self?.resendPending()
+        }
     }
 
     func send(_ event: SessionSyncEvent) {

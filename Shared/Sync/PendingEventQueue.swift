@@ -4,6 +4,9 @@ import OSLog
 /// Outbound envelopes held on disk until the peer confirms delivery, so a session
 /// logged with the phone out of range survives the app being terminated.
 final class PendingEventQueue {
+    /// A peer that never confirms must not grow the queue without bound.
+    static let capacity = 500
+
     private let fileURL: URL
     private var envelopes: [SyncEnvelope]
 
@@ -16,6 +19,10 @@ final class PendingEventQueue {
 
     func append(_ envelope: SyncEnvelope) {
         envelopes.append(envelope)
+        if envelopes.count > Self.capacity {
+            let dropped = envelopes.removeFirst()
+            Logger.sync.warning("Pending queue full, dropping oldest envelope \(dropped.id)")
+        }
         persist()
     }
 

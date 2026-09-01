@@ -35,6 +35,19 @@ struct SessionSyncOutboxTests {
         #expect(link.guaranteed.count == 1)
     }
 
+    @Test func linkBecomingReadyResendsPendingEvents() {
+        let link = FakeSyncLink()
+        link.isPeerReachable = false
+        let outbox = SessionSyncOutbox(queue: temporaryQueue(), link: link)
+        outbox.send(endedEvent())
+        #expect(link.guaranteed.count == 1)
+
+        link.onLinkReady?()
+
+        #expect(link.guaranteed.count == 2)
+        #expect(link.guaranteed[0].id == link.guaranteed[1].id)
+    }
+
     @Test func sentEventStaysPendingUntilDeliveryIsConfirmed() {
         let queue = temporaryQueue()
         let link = FakeSyncLink()

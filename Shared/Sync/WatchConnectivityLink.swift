@@ -9,6 +9,7 @@ import WatchConnectivity
 final class WatchConnectivityLink: NSObject, SyncLinking {
     var onDelivered: ((UUID) -> Void)?
     var onReceive: ((SyncEnvelope) -> Void)?
+    var onLinkReady: (() -> Void)?
 
     private let session = WCSession.default
     private var envelopeIDsByTransfer: [ObjectIdentifier: UUID] = [:]
@@ -50,10 +51,14 @@ final class WatchConnectivityLink: NSObject, SyncLinking {
     }
 
     fileprivate func completeTransfer(key: ObjectIdentifier, succeeded: Bool) {
-        guard succeeded, let envelopeID = envelopeIDsByTransfer.removeValue(forKey: key) else {
-            return
-        }
+        // Always forget the transfer — failed ones would otherwise accumulate.
+        guard let envelopeID = envelopeIDsByTransfer.removeValue(forKey: key) else { return }
+        guard succeeded else { return }
         onDelivered?(envelopeID)
+    }
+
+    fileprivate func announceLinkReady() {
+        onLinkReady?()
     }
 }
 
@@ -64,7 +69,15 @@ extension WatchConnectivityLink: @preconcurrency WCSessionDelegate {
     ) {
         if let error {
             Logger.sync.error("WCSession activation failed: \(error)")
+            return
         }
+        guard state == .activated else { return }
+        Task { @MainActor in self.announceLinkReady() }
+    }
+
+    nonisolated func sessionReachabilityDidChange(_ session: WCSession) {
+        guard session.isReachable else { return }
+        Task { @MainActor in self.announceLinkReady() }
     }
 
     nonisolated func session(_ session: WCSession, didReceiveUserInfo userInfo: [String: Any]) {
