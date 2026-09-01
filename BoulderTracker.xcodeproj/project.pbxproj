@@ -106,6 +106,7 @@
 		96ACA90B6F79970A004446FA /* SyncEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7332E27D5E782EFEB3BFEC90 /* SyncEnvelope.swift */; };
 		996367A9A191B8D4BD22E4BA /* PendingEventQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094902CCE96FE34ADBD1C12 /* PendingEventQueue.swift */; };
 		9B52844355C6568241524E3E /* SessionSummaryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAA3430657EDEE943FE253E /* SessionSummaryScreen.swift */; };
+		9EF988840F672DD84534A0D9 /* PhoneSyncCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957C9D7DFD7D67AE2338ED86 /* PhoneSyncCoordinatorTests.swift */; };
 		A0BDA36B1EE7CFFFDBF35FD4 /* FakeSyncLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1542C63A58F3E058E1895E /* FakeSyncLink.swift */; };
 		A31912701BB0382CD6B27CB9 /* ThemedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFB3EA8A8479714B9B4D162 /* ThemedCard.swift */; };
 		A3B56EF9A7FAB666499E9167 /* WorkoutMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1D729299ED77B95B237569 /* WorkoutMetrics.swift */; };
@@ -114,10 +115,12 @@
 		A5FAAF4559039D9A4A1F8711 /* GradeProgressionChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E2B7E92DA0E0EFCCF25DD /* GradeProgressionChart.swift */; };
 		A682F5DE47445988DA9CAA2E /* AccentButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A64287092BC5AF5641F78B /* AccentButtons.swift */; };
 		A71568EE6903A1FB1568D41C /* SessionCompletionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E0A981AF092D33D2D0F06 /* SessionCompletionTests.swift */; };
+		A8212AFE24C3390494219890 /* WatchSyncCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1739CD84A9422CED9643F574 /* WatchSyncCoordinatorTests.swift */; };
 		AC7943847CC733EEDC6A7B9E /* WatchLiveSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4F022189F5329D87C93124 /* WatchLiveSession.swift */; };
 		AE08D8FB93BF0E04F41DC42C /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2A74A5E6F90EA1705ECB2C /* Achievement.swift */; };
 		AEE9AE18693236418552EB4D /* PhotoStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D287E844A2853EACE12280D5 /* PhotoStoreTests.swift */; };
 		AEEB59A885E7146266C4398D /* LiveSessionSnapshotReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC8267A58E91D1CF1886259 /* LiveSessionSnapshotReaderTests.swift */; };
+		B033AAD026D6862FE524973A /* WatchFakeSyncLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A0BC807F5BA93CF2C080EA /* WatchFakeSyncLink.swift */; };
 		B0464F56722D076BCB0A528F /* AchievementEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B73A64F6A52FE45E78E22A /* AchievementEngineTests.swift */; };
 		B33A114221242A5E581B60EA /* QuickLogRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E232F698B7E6AA885651D127 /* QuickLogRow.swift */; };
 		B3C38872A0A0B6ED78B6EEBF /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFD3F1D3E32F9EF3A1EBDE8 /* StatsView.swift */; };
@@ -131,6 +134,7 @@
 		BBC77501044DAA171392BEB2 /* HeroTimeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6D61B1F7C5919B8CA54F6D /* HeroTimeCard.swift */; };
 		BC1D7AEAA3D445D57B0B6184 /* SyncEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7332E27D5E782EFEB3BFEC90 /* SyncEnvelope.swift */; };
 		BC52E7ADD20A5F1EB5DE6EF6 /* PendingEventQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094902CCE96FE34ADBD1C12 /* PendingEventQueue.swift */; };
+		BD7B44E63787B2B51F5FA69B /* PhoneWatchSyncIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D81CE89D8307909A0EAA29 /* PhoneWatchSyncIntegrationTests.swift */; };
 		BE7A8E0E11B65C17953C9F07 /* WallTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3114771B3243C5F78F083A /* WallTexture.swift */; };
 		C01BCA68B2C4B987309B5E0F /* SessionSyncCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD98120C088455DB39DCD2 /* SessionSyncCoding.swift */; };
 		C259B54B61F1E7B4556F3714 /* HoldBlobShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987777D699DF2E2744777308 /* HoldBlobShape.swift */; };
@@ -176,6 +180,13 @@
 			remoteGlobalIDString = 248356CD35F77919C7E8E9CA;
 			remoteInfo = BoulderTracker;
 		};
+		4556B019B688DD5B3315FEAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAD5039BDD6ABF8A3BE68E45 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FD8EF391D9A73F59C5A537B8;
+			remoteInfo = BoulderTrackerWatch;
+		};
 		B5B2045751E19C33A6C7AFC0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CAD5039BDD6ABF8A3BE68E45 /* Project object */;
@@ -214,12 +225,14 @@
 		1279D37D6B8E65AD6FF68F2C /* WatchConnectivityLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConnectivityLink.swift; sourceTree = "<group>"; };
 		148EDEF3B21B23EE863BEF49 /* AppliedEnvelopeRegistryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliedEnvelopeRegistryTests.swift; sourceTree = "<group>"; };
 		16C0D743A0331CB6D142FEFE /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
+		1739CD84A9422CED9643F574 /* WatchSyncCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSyncCoordinatorTests.swift; sourceTree = "<group>"; };
 		1CA62DE8D059648E169E5FC6 /* AchievementEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementEngine.swift; sourceTree = "<group>"; };
 		1CAA3430657EDEE943FE253E /* SessionSummaryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSummaryScreen.swift; sourceTree = "<group>"; };
 		1E2680B5600126CA916566B4 /* LiveWorkoutSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveWorkoutSession.swift; sourceTree = "<group>"; };
 		1F5F92BEBAFBA5F9E171A799 /* WatchRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchRootView.swift; sourceTree = "<group>"; };
 		21360B8DF59856908D8D6401 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22EA8CE50F2E1075BD92211A /* StyleRadialChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleRadialChart.swift; sourceTree = "<group>"; };
+		24A0BC807F5BA93CF2C080EA /* WatchFakeSyncLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchFakeSyncLink.swift; sourceTree = "<group>"; };
 		28281AD77D6392E05E3B4CBB /* ProblemTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemTile.swift; sourceTree = "<group>"; };
 		2BDFB9042326AD35AEBA48EF /* SessionSyncOutbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSyncOutbox.swift; sourceTree = "<group>"; };
 		2C1D729299ED77B95B237569 /* WorkoutMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutMetrics.swift; sourceTree = "<group>"; };
@@ -242,6 +255,7 @@
 		4B520B542390E42DD8D07575 /* AppTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTab.swift; sourceTree = "<group>"; };
 		4E4965E79EF0481D17DBBC55 /* AppliedEnvelopeRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppliedEnvelopeRegistry.swift; sourceTree = "<group>"; };
 		4E8118E16DED92BBAFCD0255 /* AppPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreferences.swift; sourceTree = "<group>"; };
+		4EFAC965A8ABB6200226C46B /* BoulderTrackerWatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoulderTrackerWatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EFD3F1D3E32F9EF3A1EBDE8 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		52B3345460DD06FDC9EEC9BD /* BoulderTrackerTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = BoulderTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52E4A95DEE8430BECD767778 /* WatchSyncCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSyncCoordinator.swift; sourceTree = "<group>"; };
@@ -283,6 +297,7 @@
 		90591DCA405BD257FF53891F /* AchievementsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsGridView.swift; sourceTree = "<group>"; };
 		9274251F172E42CE81A58FE0 /* GradeSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeSystemTests.swift; sourceTree = "<group>"; };
 		93E8762A7199C3A909DF2365 /* SessionFeeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionFeeling.swift; sourceTree = "<group>"; };
+		957C9D7DFD7D67AE2338ED86 /* PhoneSyncCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneSyncCoordinatorTests.swift; sourceTree = "<group>"; };
 		987777D699DF2E2744777308 /* HoldBlobShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldBlobShape.swift; sourceTree = "<group>"; };
 		995E0A981AF092D33D2D0F06 /* SessionCompletionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCompletionTests.swift; sourceTree = "<group>"; };
 		9AE77B76711A5F1D1A3ADA09 /* WatchStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStartView.swift; sourceTree = "<group>"; };
@@ -292,6 +307,7 @@
 		9F2A74A5E6F90EA1705ECB2C /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
 		A040F280FA42E4682569B784 /* WeeklyStatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStatsTests.swift; sourceTree = "<group>"; };
 		A2DC0FAF677478A47DF24914 /* PersistentModelInvalidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentModelInvalidation.swift; sourceTree = "<group>"; };
+		A5D81CE89D8307909A0EAA29 /* PhoneWatchSyncIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneWatchSyncIntegrationTests.swift; sourceTree = "<group>"; };
 		AA5DAF0EFBC171A4EC0E2EBB /* WatchLiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchLiveView.swift; sourceTree = "<group>"; };
 		AAABA3BB83BBEF62632A8232 /* SessionSyncInboxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSyncInboxTests.swift; sourceTree = "<group>"; };
 		AB6EEC9210916D326E5079D5 /* SessionDurationFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDurationFormat.swift; sourceTree = "<group>"; };
@@ -354,6 +370,7 @@
 				DD1C069C0CDE40F8EB3985C6 /* BoulderTracker.app */,
 				52B3345460DD06FDC9EEC9BD /* BoulderTrackerTests.xctest */,
 				33C7A0D436006D5F3EF1D95C /* BoulderTrackerWatch.app */,
+				4EFAC965A8ABB6200226C46B /* BoulderTrackerWatchTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -459,6 +476,8 @@
 				ECC8267A58E91D1CF1886259 /* LiveSessionSnapshotReaderTests.swift */,
 				F3F62563AF39F829E404C1E6 /* ModelRoundTripTests.swift */,
 				D68CBE61488C4DC44FD9D9A5 /* PendingEventQueueTests.swift */,
+				957C9D7DFD7D67AE2338ED86 /* PhoneSyncCoordinatorTests.swift */,
+				A5D81CE89D8307909A0EAA29 /* PhoneWatchSyncIntegrationTests.swift */,
 				D287E844A2853EACE12280D5 /* PhotoStoreTests.swift */,
 				30CABC44334A3CE1DC083CC4 /* SampleDataGeneratorTests.swift */,
 				995E0A981AF092D33D2D0F06 /* SessionCompletionTests.swift */,
@@ -536,6 +555,7 @@
 				2105670FA03B223E3BE19C89 /* BoulderTracker */,
 				3D49F7D43B825D6720C22896 /* BoulderTrackerTests */,
 				1FCC9D3D05E282824B398B08 /* BoulderTrackerWatch */,
+				DA4681B15D73BD33F7C15A98 /* BoulderTrackerWatchTests */,
 				E98F23996A7935531A6FD6DD /* Shared */,
 				06A387DBE671BD64E74AB998 /* Products */,
 			);
@@ -568,6 +588,15 @@
 				68CB7B0A7FFC9EC49B91066D /* SuggestedProblemsRow.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		DA4681B15D73BD33F7C15A98 /* BoulderTrackerWatchTests */ = {
+			isa = PBXGroup;
+			children = (
+				24A0BC807F5BA93CF2C080EA /* WatchFakeSyncLink.swift */,
+				1739CD84A9422CED9643F574 /* WatchSyncCoordinatorTests.swift */,
+			);
+			path = BoulderTrackerWatchTests;
 			sourceTree = "<group>";
 		};
 		E8AC8664F86038A625EC0171 /* Activities */ = {
@@ -652,6 +681,24 @@
 			productReference = 52B3345460DD06FDC9EEC9BD /* BoulderTrackerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		C8C37E52E6E7C9E19899763B /* BoulderTrackerWatchTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0AB9F4558EE8DEE29ACCACF /* Build configuration list for PBXNativeTarget "BoulderTrackerWatchTests" */;
+			buildPhases = (
+				F229AE1C133B7F8F03CE6F83 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A0FDB8E1F4F2723744C8A069 /* PBXTargetDependency */,
+			);
+			name = BoulderTrackerWatchTests;
+			packageProductDependencies = (
+			);
+			productName = BoulderTrackerWatchTests;
+			productReference = 4EFAC965A8ABB6200226C46B /* BoulderTrackerWatchTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		FD8EF391D9A73F59C5A537B8 /* BoulderTrackerWatch */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B00CE4402FEDBC03368ED95D /* Build configuration list for PBXNativeTarget "BoulderTrackerWatch" */;
@@ -705,6 +752,7 @@
 				248356CD35F77919C7E8E9CA /* BoulderTracker */,
 				FD8EF391D9A73F59C5A537B8 /* BoulderTrackerWatch */,
 				2F56ABFA5A57FEA83CEB0E2C /* BoulderTrackerTests */,
+				C8C37E52E6E7C9E19899763B /* BoulderTrackerWatchTests */,
 			);
 		};
 /* End PBXProject section */
@@ -849,6 +897,8 @@
 				AEEB59A885E7146266C4398D /* LiveSessionSnapshotReaderTests.swift in Sources */,
 				CCDC20398D732F4B61A352D8 /* ModelRoundTripTests.swift in Sources */,
 				F9C34241FAF5180B3B77FF08 /* PendingEventQueueTests.swift in Sources */,
+				9EF988840F672DD84534A0D9 /* PhoneSyncCoordinatorTests.swift in Sources */,
+				BD7B44E63787B2B51F5FA69B /* PhoneWatchSyncIntegrationTests.swift in Sources */,
 				AEE9AE18693236418552EB4D /* PhotoStoreTests.swift in Sources */,
 				787263986FFF268EC456C9DA /* SampleDataGeneratorTests.swift in Sources */,
 				A71568EE6903A1FB1568D41C /* SessionCompletionTests.swift in Sources */,
@@ -861,6 +911,15 @@
 				0569C982A88EBA94E9637E08 /* StatsAggregatorTests.swift in Sources */,
 				6D233D4F2623AC39C053C427 /* WatchLiveSessionTests.swift in Sources */,
 				E581C0471E9E23C2C37CA339 /* WeeklyStatsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F229AE1C133B7F8F03CE6F83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B033AAD026D6862FE524973A /* WatchFakeSyncLink.swift in Sources */,
+				A8212AFE24C3390494219890 /* WatchSyncCoordinatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -906,6 +965,11 @@
 			isa = PBXTargetDependency;
 			target = 248356CD35F77919C7E8E9CA /* BoulderTracker */;
 			targetProxy = 309FFBF25339C161F206DE6C /* PBXContainerItemProxy */;
+		};
+		A0FDB8E1F4F2723744C8A069 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FD8EF391D9A73F59C5A537B8 /* BoulderTrackerWatch */;
+			targetProxy = 4556B019B688DD5B3315FEAA /* PBXContainerItemProxy */;
 		};
 		E493A435DDF77B742B02709F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -976,6 +1040,24 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BoulderTracker.app/BoulderTracker";
+			};
+			name = Debug;
+		};
+		596FCE8CBE97179AD3B22FFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.liammelkersson.BoulderTrackerWatchTests;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BoulderTrackerWatch.app/BoulderTrackerWatch";
 			};
 			name = Debug;
 		};
@@ -1098,6 +1180,24 @@
 			};
 			name = Debug;
 		};
+		BAD860BBE0F3B8EBCE610A67 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.liammelkersson.BoulderTrackerWatchTests;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BoulderTrackerWatch.app/BoulderTrackerWatch";
+			};
+			name = Release;
+		};
 		C848FEF47B87BEBBDECDAB69 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1197,6 +1297,15 @@
 			buildConfigurations = (
 				3284E9DA8E8896D8374AE176 /* Debug */,
 				C9839662BD76B9CD1077A7B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D0AB9F4558EE8DEE29ACCACF /* Build configuration list for PBXNativeTarget "BoulderTrackerWatchTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				596FCE8CBE97179AD3B22FFE /* Debug */,
+				BAD860BBE0F3B8EBCE610A67 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

@@ -74,6 +74,15 @@ targets:
         GENERATE_INFOPLIST_FILE: true
     dependencies:
       - target: BoulderTracker
+  BoulderTrackerWatchTests:
+    type: bundle.unit-test
+    platform: watchOS
+    sources: [BoulderTrackerWatchTests]
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: true
+    dependencies:
+      - target: BoulderTrackerWatch
 schemes:
   BoulderTracker:
     build:
@@ -85,3 +94,5 @@ schemes:
     build:
       targets:
         BoulderTrackerWatch: all
+    test:
+      targets: [BoulderTrackerWatchTests]
