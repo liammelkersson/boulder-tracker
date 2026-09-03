@@ -6,6 +6,7 @@ struct LiveSessionView: View {
     @Environment(\.palette) private var palette
     @Environment(\.modelContext) private var modelContext
     @Environment(PhoneSyncCoordinator.self) private var syncCoordinator
+    @Environment(SessionActivityPresenter.self) private var activityPresenter
     @Query(sort: \Session.startTime) private var allSessions: [Session]
     let session: Session
     let onEnded: (Session) -> Void
@@ -111,6 +112,7 @@ struct LiveSessionView: View {
         session.endTime = .now
         modelContext.saveReportingFailure(operation: "session end")
         syncCoordinator.announceEnd(of: session)
+        activityPresenter.end(for: session)
         onEnded(session)
     }
 }

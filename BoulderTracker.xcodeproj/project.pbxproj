@@ -194,6 +194,7 @@
 		D7083B98189C7528CC37736B /* BoulderTracker.icon in Resources */ = {isa = PBXBuildFile; fileRef = 001BB8EBAC47BEE852B97434 /* BoulderTracker.icon */; };
 		D8B196AD7D9BB39D524F226F /* BoulderTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F98D93960086286608D189D /* BoulderTrackerApp.swift */; };
 		D8D0205CE41E1AC688BC1C89 /* StyleRadialChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EA8CE50F2E1075BD92211A /* StyleRadialChart.swift */; };
+		DB6D8D2143E117CB79761740 /* SessionActivityPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF425321FDB1E911FC5EE01C /* SessionActivityPresenter.swift */; };
 		DCECE4CB59729AE6FD2A2AD5 /* AppliedEnvelopeRegistryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148EDEF3B21B23EE863BEF49 /* AppliedEnvelopeRegistryTests.swift */; };
 		DDA5706FF30127C77797938C /* ProjectStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DADCBD8E3ABCF4C8760ECE8 /* ProjectStatus.swift */; };
 		DEA81D76FC6708369B767EEB /* RouteStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57016D08C534EC76E7876C4 /* RouteStyle.swift */; };
@@ -409,6 +410,7 @@
 		AC6B4B5C62C1A7FB8F82329C /* WorkoutWriting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutWriting.swift; sourceTree = "<group>"; };
 		ACC7B2C5F1B96951864FB8D7 /* FakeWorkoutWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeWorkoutWriter.swift; sourceTree = "<group>"; };
 		AE14E05FDA0C9443207F8A2B /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		AF425321FDB1E911FC5EE01C /* SessionActivityPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionActivityPresenter.swift; sourceTree = "<group>"; };
 		AFC3A8A796F90CEA6BDCD97C /* RetroSessionForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetroSessionForm.swift; sourceTree = "<group>"; };
 		B070312D993A61120736DFEE /* SessionSyncOutboxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSyncOutboxTests.swift; sourceTree = "<group>"; };
 		B3C043EA16DEFFD7A50DD9F6 /* SessionPhotoThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionPhotoThumbnail.swift; sourceTree = "<group>"; };
@@ -500,6 +502,7 @@
 				E29ECD1AAAB173E3B9539B74 /* ProjectLinking.swift */,
 				3637A0DF3831953D0D20124A /* ProjectSelection.swift */,
 				DA4AA9D71B3EB492E40C59FE /* SampleDataGenerator.swift */,
+				AF425321FDB1E911FC5EE01C /* SessionActivityPresenter.swift */,
 				6EEACE9B023CB7A7074E0E6B /* SessionCompletion.swift */,
 				717D0E6C482A99E504FF9711 /* SessionCompletionOutcome.swift */,
 				61747FAF0EC0F86FB5AC057E /* SessionLogWriter.swift */,
@@ -1081,6 +1084,7 @@
 				F766FC3F33449E8032845F6B /* ScaledFont.swift in Sources */,
 				6665B8C1C520E8C5548071C0 /* SectionHeading.swift in Sources */,
 				7FCBC26D392ED8541DAA2084 /* Session.swift in Sources */,
+				DB6D8D2143E117CB79761740 /* SessionActivityPresenter.swift in Sources */,
 				639548E7DDD07657FB623906 /* SessionCompletion.swift in Sources */,
 				C66A44C2D6867D812D1E1FF3 /* SessionCompletionOutcome.swift in Sources */,
 				5CF956B7287CEFA77C45CDF7 /* SessionDataExport.swift in Sources */,

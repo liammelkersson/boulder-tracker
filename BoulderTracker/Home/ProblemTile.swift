@@ -6,6 +6,7 @@ struct ProblemTile: View {
     @Environment(\.gradeSystem) private var gradeSystem
     @Environment(\.modelContext) private var modelContext
     @Environment(PhoneSyncCoordinator.self) private var syncCoordinator
+    @Environment(SessionActivityPresenter.self) private var activityPresenter
     let problem: SessionProblem
 
     @State private var confirmingDelete = false
@@ -139,6 +140,7 @@ struct ProblemTile: View {
             problem.recordResult(result)
             if let session = problem.session {
                 syncCoordinator.announceAttempt(on: problem, in: session, result: result)
+                activityPresenter.refresh(for: session)
             }
             modelContext.saveReportingFailure(operation: "attempt log")
         } label: {

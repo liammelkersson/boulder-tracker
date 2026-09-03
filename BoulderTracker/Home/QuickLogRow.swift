@@ -8,6 +8,7 @@ struct QuickLogRow: View {
     @Environment(\.gradeSystem) private var gradeSystem
     @Environment(\.modelContext) private var modelContext
     @Environment(PhoneSyncCoordinator.self) private var syncCoordinator
+    @Environment(SessionActivityPresenter.self) private var activityPresenter
     let session: Session
 
     @State private var pendingGrade: ColorGrade?
@@ -64,5 +65,6 @@ struct QuickLogRow: View {
         problem.recordResult(result)
         modelContext.saveReportingFailure(operation: "quick log")
         syncCoordinator.announceAttempt(on: problem, in: session, result: result)
+        activityPresenter.refresh(for: session)
     }
 }
