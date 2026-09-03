@@ -4,6 +4,7 @@ import SwiftData
 /// Log a past session that wasn't tracked live.
 struct RetroSessionForm: View {
     @Environment(\.palette) private var palette
+    @Environment(\.gradeSystem) private var gradeSystem
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     @Query(sort: \Gym.name) private var gyms: [Gym]
@@ -20,6 +21,8 @@ struct RetroSessionForm: View {
     @State private var feeling: SessionFeeling = .good
     @State private var selectedShoe: Shoe?
     @State private var notes = ""
+    @State private var problemDrafts: [ProblemDraft] = []
+    @State private var showingProblemForm = false
 
     var body: some View {
         ScrollView {
@@ -32,6 +35,7 @@ struct RetroSessionForm: View {
                 typeField
                 partnerField
                 shoeField
+                problemsField
                 notesField
                 Button(action: saveSession) {
                     AccentButtonLabel(title: "Save Session")
@@ -45,6 +49,10 @@ struct RetroSessionForm: View {
         }
         .presentationDetents([.large])
         .presentationDragIndicator(.visible)
+        .sheet(isPresented: $showingProblemForm) {
+            ProblemFormSheet(title: "Add Problem", actionTitle: "Add Problem",
+                             onSubmit: collectProblemDraft)
+        }
         .onAppear { selectedGym = gyms.first { $0.isDefault } ?? gyms.first }
     }
 
@@ -142,6 +150,57 @@ struct RetroSessionForm: View {
         }
     }
 
+    private var problemsField: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            SectionHeading(title: "Problems")
+            ForEach(problemDrafts) { draft in
+                draftRow(draft)
+            }
+            Button {
+                showingProblemForm = true
+            } label: {
+                SecondaryButtonLabel(title: "+ Add Problem")
+            }
+            .buttonStyle(.plain)
+        }
+    }
+
+    private func draftRow(_ draft: ProblemDraft) -> some View {
+        HStack(spacing: 12) {
+            HoldIcon(grade: draft.colorGrade, size: 34)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(draft.name.isEmpty ? "Quick log" : draft.name)
+                    .scaledFont(size: 15, weight: .semibold)
+                    .foregroundStyle(palette.text)
+                Text(draft.colorGrade.detailLabel(in: gradeSystem))
+                    .scaledFont(size: 12)
+                    .foregroundStyle(palette.textFaint)
+            }
+            Spacer()
+            Button {
+                removeDraft(draft)
+            } label: {
+                Image(systemName: "trash")
+                    .scaledFont(size: 13, weight: .semibold)
+                    .foregroundStyle(ThemePalette.danger)
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel("Remove \(draft.name.isEmpty ? "quick log" : draft.name)")
+        }
+        .padding(.horizontal, 14)
+        .padding(.vertical, 12)
+        .themedCard(cornerRadius: 16, sunken: true)
+    }
+
+    private func collectProblemDraft(_ draft: ProblemDraft) {
+        problemDrafts.append(draft)
+        showingProblemForm = false
+    }
+
+    private func removeDraft(_ draft: ProblemDraft) {
+        problemDrafts.removeAll { $0.id == draft.id }
+    }
+
     private var notesField: some View {
         VStack(alignment: .leading, spacing: 8) {
             SectionHeading(title: "Notes")
@@ -168,7 +227,21 @@ struct RetroSessionForm: View {
         session.shoe = selectedShoe
         if !notes.isEmpty { session.notes = notes }
         modelContext.insert(session)
+        attachProblems(to: session)
         modelContext.saveReportingFailure(operation: "retro session save")
         dismiss()
+    }
+
+    /// Drafts become rows only once the session they belong to exists, so an
+    /// abandoned form leaves nothing behind.
+    private func attachProblems(to session: Session) {
+        let photoStore = PhotoStore.makeDefault()
+        for draft in problemDrafts {
+            let problem = draft.makeProblem(savePhoto: photoStore.savePhoto)
+            session.problems.append(problem)
+            if draft.isProject {
+                ProjectLinking.linkProject(to: problem, in: modelContext)
+            }
+        }
     }
 }
