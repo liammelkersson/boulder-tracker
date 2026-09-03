@@ -88,12 +88,7 @@ final class PhoneSyncCoordinator {
     }
 
     private func answerLiveSessionRequest() {
-        var descriptor = FetchDescriptor<Session>(
-            predicate: #Predicate { $0.endTime == nil },
-            sortBy: [SortDescriptor(\.startTime, order: .reverse)]
-        )
-        descriptor.fetchLimit = 1
-        let live = (try? context.fetch(descriptor))?.first
+        let live = LiveSessionFetch.current(in: context)
         outbox.send(.sessionSnapshot(SessionSnapshotPayload(
             liveSession: LiveSessionSnapshotReader.snapshot(of: live)
         )))
