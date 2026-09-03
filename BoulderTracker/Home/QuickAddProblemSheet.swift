@@ -35,6 +35,7 @@ struct QuickAddProblemSheet: View {
                     .scaledFont(size: 15)
                     .foregroundStyle(palette.text)
                     .tint(ThemePalette.accent)
+                    .disabled(name.isEmpty)
                 field(label: "Photo") { photoPickerRow }
                 Button(action: saveProblem) {
                     AccentButtonLabel(title: "Add Problem")
@@ -120,14 +121,16 @@ struct QuickAddProblemSheet: View {
 
     private func saveProblem() {
         let problem = SessionProblem(
-            name: name, colorGrade: selectedGrade, styles: Array(selectedStyles),
-            isProject: isProject
+            name: name, colorGrade: selectedGrade, styles: Array(selectedStyles)
         )
         if !notes.isEmpty { problem.notes = notes }
         if let photoData {
             problem.photoFilename = try? photoStore.savePhoto(photoData)
         }
         session.problems.append(problem)
+        if isProject {
+            ProjectLinking.linkProject(to: problem, in: modelContext)
+        }
         modelContext.saveReportingFailure(operation: "problem add")
         dismiss()
     }

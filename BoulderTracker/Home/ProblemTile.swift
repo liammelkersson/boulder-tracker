@@ -34,14 +34,14 @@ struct ProblemTile: View {
         .themedCard(sunken: true)
         .contextMenu {
             Button {
-                problem.isProject.toggle()
-                modelContext.saveReportingFailure(operation: "project mark toggle")
+                toggleProjectLink()
             } label: {
                 Label(
-                    problem.isProject ? "Remove project mark" : "Mark as project",
-                    systemImage: problem.isProject ? "flag.slash" : "flag"
+                    problem.project == nil ? "Mark as project" : "Remove project mark",
+                    systemImage: problem.project == nil ? "flag" : "flag.slash"
                 )
             }
+            .disabled(problem.name.isEmpty)
             Button(role: .destructive) {
                 confirmingDelete = true
             } label: {
@@ -55,6 +55,17 @@ struct ProblemTile: View {
         } message: {
             Text("Removes the problem, its logs, and its photo. Cannot be undone.")
         }
+    }
+
+    /// A nameless quick log cannot become a project — there would be no way to
+    /// find it again — so the menu item is disabled for one.
+    private func toggleProjectLink() {
+        if problem.project == nil {
+            ProjectLinking.linkProject(to: problem, in: modelContext)
+        } else {
+            ProjectLinking.unlinkProject(from: problem)
+        }
+        modelContext.saveReportingFailure(operation: "project mark toggle")
     }
 
     private func deleteProblem() {
@@ -71,7 +82,7 @@ struct ProblemTile: View {
                 Text(problem.displayName)
                     .scaledFont(size: 15, weight: .semibold)
                     .foregroundStyle(palette.text)
-                if problem.isProject {
+                if problem.project != nil {
                     Image(systemName: "flag.fill")
                         .scaledFont(size: 10)
                         .foregroundStyle(palette.accentText)

@@ -22,15 +22,13 @@ final class SessionProblem {
     var project: Project?
 
     init(name: String, colorGrade: ColorGrade, styles: [RouteStyle],
-         flashCount: Int = 0, sendCount: Int = 0, fallCount: Int = 0,
-         isProject: Bool = false) {
+         flashCount: Int = 0, sendCount: Int = 0, fallCount: Int = 0) {
         self.name = name
         self.colorGrade = colorGrade
         self.styles = styles
         self.flashCount = flashCount
         self.sendCount = sendCount
         self.fallCount = fallCount
-        self.isProject = isProject
         self.syncID = UUID()
     }
 
