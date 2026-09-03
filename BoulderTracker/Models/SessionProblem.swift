@@ -49,6 +49,7 @@ final class SessionProblem {
         case .send: sendCount += 1
         case .fall: fallCount += 1
         }
+        if result.countsAsSend { project?.markSentIfActive() }
     }
 
     func logCount(for result: AttemptResult) -> Int {
