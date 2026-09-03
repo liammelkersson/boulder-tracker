@@ -1,30 +1,23 @@
 import SwiftUI
+import SwiftData
 
-/// All projects — marked problems plus recurring unsent ones.
+/// Every stored project, grouped by lifecycle, with add / edit / pin controls.
 struct ProjectsSheet: View {
     @Environment(\.palette) private var palette
-    @Environment(\.gradeSystem) private var gradeSystem
-    @AppStorage(AppPreferences.currentProjectNameKey) private var currentProjectName = ""
-    let sessions: [Session]
-
-    private var projects: [ProjectGroup] {
-        ProjectAggregator.groups(in: sessions.persisted)
-    }
+    @Environment(\.modelContext) private var modelContext
+    @Query private var projects: [Project]
+    @State private var editingProject: Project?
+    @State private var isAddingProject = false
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 14) {
-                Text("Projects")
-                    .scaledFont(size: 18, weight: .bold)
-                    .foregroundStyle(palette.text)
-                if projects.isEmpty {
-                    Text("No projects yet. Mark a problem as a project when adding it, or long-press a problem tile during a session.")
-                        .scaledFont(size: 14)
-                        .foregroundStyle(palette.textDim)
-                        .padding(.top, 8)
+            VStack(alignment: .leading, spacing: 18) {
+                header
+                if projects.persisted.isEmpty {
+                    emptyState
                 }
-                ForEach(projects) { project in
-                    projectRow(project)
+                ForEach(ProjectStatus.allCases) { status in
+                    section(for: status)
                 }
             }
             .padding(.horizontal, 20)
@@ -33,42 +26,91 @@ struct ProjectsSheet: View {
         }
         .presentationDetents([.medium, .large])
         .presentationDragIndicator(.visible)
-    }
-
-    private func projectRow(_ project: ProjectGroup) -> some View {
-        let isCurrent = !project.wasSent && project.name == currentProjectName
-        return HStack(spacing: 12) {
-            HoldIcon(grade: project.grade, size: 40)
-            VStack(alignment: .leading, spacing: 2) {
-                Text(project.name)
-                    .scaledFont(size: 15, weight: .semibold)
-                    .foregroundStyle(palette.text)
-                Text(projectSubtitle(project))
-                    .scaledFont(size: 12)
-                    .foregroundStyle(palette.textFaint)
-            }
-            Spacer()
-            trailingControl(project, isCurrent: isCurrent)
+        .sheet(item: $editingProject) { project in
+            ProjectEditorSheet(project: project)
         }
-        .padding(.horizontal, 14)
-        .padding(.vertical, 12)
-        .themedCard(cornerRadius: 16, sunken: true)
+        .sheet(isPresented: $isAddingProject) {
+            ProjectEditorSheet(project: nil)
+        }
     }
 
-    private func projectSubtitle(_ project: ProjectGroup) -> String {
-        let sessionsLabel = project.sessionCount == 1 ? "1 session" : "\(project.sessionCount) sessions"
-        return "\(project.grade.shortLabel(in: gradeSystem)) · \(project.gymName ?? "Unknown gym") · \(sessionsLabel)"
+    private var header: some View {
+        HStack {
+            Text("Projects")
+                .scaledFont(size: 18, weight: .bold)
+                .foregroundStyle(palette.text)
+            Spacer()
+            Button {
+                isAddingProject = true
+            } label: {
+                Text("+ Add")
+                    .scaledFont(size: 14, weight: .semibold)
+                    .foregroundStyle(palette.accentText)
+            }
+            .buttonStyle(.plain)
+        }
+    }
+
+    private var emptyState: some View {
+        Text("No projects yet. Add one here, or mark a problem as a project while logging a session.")
+            .scaledFont(size: 14)
+            .foregroundStyle(palette.textDim)
     }
 
     @ViewBuilder
-    private func trailingControl(_ project: ProjectGroup, isCurrent: Bool) -> some View {
-        if project.wasSent {
+    private func section(for status: ProjectStatus) -> some View {
+        let matching = projectsSorted(withStatus: status)
+        if !matching.isEmpty {
+            VStack(alignment: .leading, spacing: 10) {
+                SectionHeading(title: status.displayName)
+                ForEach(matching) { project in
+                    projectRow(project)
+                }
+            }
+        }
+    }
+
+    /// Most recently worked first; never-attempted projects sort by creation.
+    private func projectsSorted(withStatus status: ProjectStatus) -> [Project] {
+        projects.persisted
+            .filter { $0.status == status }
+            .sorted { lhs, rhs in
+                let lhsDate = ProjectStats(project: lhs).lastAttemptDate ?? lhs.createdDate
+                let rhsDate = ProjectStats(project: rhs).lastAttemptDate ?? rhs.createdDate
+                return lhsDate > rhsDate
+            }
+    }
+
+    private func projectRow(_ project: Project) -> some View {
+        Button {
+            editingProject = project
+        } label: {
+            HStack(spacing: 12) {
+                HoldIcon(grade: project.colorGrade, size: 40)
+                ProjectRowSummary(project: project)
+                Spacer()
+                trailingControl(project)
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 12)
+            .themedCard(cornerRadius: 16, sunken: true)
+        }
+        .buttonStyle(.plain)
+    }
+
+    @ViewBuilder
+    private func trailingControl(_ project: Project) -> some View {
+        switch project.status {
+        case .sent:
             statusChip(text: "Sent", color: ThemePalette.success)
-        } else if isCurrent {
+        case .archived:
+            statusChip(text: "Archived", color: palette.textFaint)
+        case .active where project.isCurrent:
             statusChip(text: "Current", color: palette.accentText)
-        } else {
+        case .active:
             Button {
-                currentProjectName = project.name
+                ProjectSelection.makeCurrent(project, in: modelContext)
+                modelContext.saveReportingFailure(operation: "set current project")
             } label: {
                 Text("Set current")
                     .scaledFont(size: 12, weight: .semibold)
@@ -90,5 +132,30 @@ struct ProjectsSheet: View {
             .padding(.vertical, 5)
             .background(color.opacity(0.16))
             .clipShape(.capsule)
+    }
+}
+
+/// Name plus the grade / gym / session-count line under it.
+private struct ProjectRowSummary: View {
+    @Environment(\.palette) private var palette
+    @Environment(\.gradeSystem) private var gradeSystem
+    let project: Project
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 2) {
+            Text(project.name)
+                .scaledFont(size: 15, weight: .semibold)
+                .foregroundStyle(palette.text)
+            Text(subtitle)
+                .scaledFont(size: 12)
+                .foregroundStyle(palette.textFaint)
+        }
+    }
+
+    private var subtitle: String {
+        let sessionCount = ProjectStats(project: project).sessionCount
+        let sessionsLabel = sessionCount == 1 ? "1 session" : "\(sessionCount) sessions"
+        let gymLabel = project.gym?.name ?? "Unknown gym"
+        return "\(project.colorGrade.shortLabel(in: gradeSystem)) · \(gymLabel) · \(sessionsLabel)"
     }
 }

@@ -47,7 +47,7 @@ struct CurrentProjectCard: View {
         }
         .buttonStyle(.plain)
         .sheet(isPresented: $showingProjects) {
-            ProjectsSheet(sessions: sessions)
+            ProjectsSheet()
         }
     }
 
