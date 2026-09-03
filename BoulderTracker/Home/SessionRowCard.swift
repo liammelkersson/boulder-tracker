@@ -38,6 +38,11 @@ struct SessionRowCard: View {
                     .scaledFont(size: 11)
             }
             .foregroundStyle(palette.textFaint)
+            // Both call sites wrap the row in a button that opens the session
+            // for editing; without this the row does not read as tappable.
+            Image(systemName: "chevron.right")
+                .scaledFont(size: 11, weight: .semibold)
+                .foregroundStyle(palette.textFaint)
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 10)
