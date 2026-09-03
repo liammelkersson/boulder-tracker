@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Outdoor counterpart to `HoldIcon`: a rock silhouette with the same
+/// Outdoor counterpart to `HoldIcon`: a mountain silhouette with the same
 /// lighting treatment but no bolt — real rock is not bolted to a wall.
 struct MountainIcon: View {
     @Environment(\.palette) private var palette
