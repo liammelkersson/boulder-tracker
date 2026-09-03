@@ -105,7 +105,6 @@
 		85A8EEAA9B37E4C2E2182FF2 /* SessionSyncEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8970B14FC314C74DC0148C8C /* SessionSyncEvent.swift */; };
 		86321775652B679C9EEE10DB /* ActivitySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC98480400E0FDCF98E889D /* ActivitySection.swift */; };
 		8C464DF668074A86E33FDC89 /* AchievementEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA62DE8D059648E169E5FC6 /* AchievementEngine.swift */; };
-		8D343A8ECB192E2988E65867 /* ProjectAggregator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1C397AD23F64B56B11408A /* ProjectAggregator.swift */; };
 		8D6202736A3576679C9E46DD /* AttemptResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF999BAFC8EA39365D0D9714 /* AttemptResult.swift */; };
 		8E493F4D79D2661ADE29F642 /* ThemePalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B6E832449D49CC10E1FD /* ThemePalette.swift */; };
 		8FD6E180E4F1902692A89158 /* PreferencesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FB9E9BEEDC612F405E8F32 /* PreferencesSection.swift */; };
@@ -384,7 +383,6 @@
 		B8144D8D53F246205075577C /* WeeklyHardestSend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyHardestSend.swift; sourceTree = "<group>"; };
 		B92DE567DF02DC6CF92267F1 /* ShoeListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeListSection.swift; sourceTree = "<group>"; };
 		B9DCA83599B9ADBA15E5882C /* AchievementIdentityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementIdentityTests.swift; sourceTree = "<group>"; };
-		BA1C397AD23F64B56B11408A /* ProjectAggregator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectAggregator.swift; sourceTree = "<group>"; };
 		BB7B6B82259C342DD1CC9FC3 /* BoulderTrackerUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = BoulderTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD02A29757F74D62FD5F02B /* EditProfileSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileSheet.swift; sourceTree = "<group>"; };
 		BF32B6E832449D49CC10E1FD /* ThemePalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePalette.swift; sourceTree = "<group>"; };
@@ -644,7 +642,6 @@
 				DD8E2B7E92DA0E0EFCCF25DD /* GradeProgressionChart.swift */,
 				F38E25F8AEA66C33EDFFA4A2 /* PersonalBestsSection.swift */,
 				4B0EFADF985A2379432C8C7D /* PetalWedgeShape.swift */,
-				BA1C397AD23F64B56B11408A /* ProjectAggregator.swift */,
 				7CFCAA7941AB3FC08E0C5CA3 /* ProjectStats.swift */,
 				37C7D62A093F50C7D75E9A52 /* SampleDataToggleRow.swift */,
 				755C6E6C165C3CEB58EBD3D8 /* StatsAggregator.swift */,
@@ -991,7 +988,6 @@
 				62C28E7D547641CF348AC665 /* ProblemTile.swift in Sources */,
 				B43C1D12CE854E40CC705908 /* ProfileView.swift in Sources */,
 				53FDB82CD57D7584D27979C9 /* Project.swift in Sources */,
-				8D343A8ECB192E2988E65867 /* ProjectAggregator.swift in Sources */,
 				156AD5662ABA54FB19F751CB /* ProjectBackfill.swift in Sources */,
 				A4BCF1F54E6A05F96F88532B /* ProjectEditorSheet.swift in Sources */,
 				60B244071D201AE812F5BD78 /* ProjectSelection.swift in Sources */,
