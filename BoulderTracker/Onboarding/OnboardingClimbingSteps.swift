@@ -14,7 +14,9 @@ struct OnboardingGymStep: View {
             subtitle: "We’ll preselect this gym whenever you start a session."
         ) {
             VStack(spacing: 10) {
-                ForEach(gyms) { gym in
+                // Explicit id: the macro-derived `Identifiable` conformance is not
+                // always visible across compile batches.
+                ForEach(gyms, id: \.persistentModelID) { gym in
                     gymButton(gym)
                 }
 
