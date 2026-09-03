@@ -41,12 +41,42 @@ targets:
         CODE_SIGN_ENTITLEMENTS: BoulderTracker/BoulderTracker.entitlements
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         ASSETCATALOG_COMPILER_APPICON_NAME: BoulderTracker
+        INFOPLIST_KEY_NSSupportsLiveActivities: true
     dependencies:
       - target: BoulderTrackerWatch
         embed: true
         copy:
           destination: productsDirectory
           subpath: "$(CONTENTS_FOLDER_PATH)/Watch"
+      - target: BoulderTrackerWidgets
+        embed: true
+        copy:
+          destination: productsDirectory
+          subpath: "$(CONTENTS_FOLDER_PATH)/PlugIns"
+  BoulderTrackerWidgets:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: BoulderTrackerWidgets
+      - path: Shared
+      - path: SharedActivity
+    # An app-extension needs `NSExtensionPointIdentifier` *inside* an
+    # `NSExtension` dict; the `INFOPLIST_KEY_` settings can only write it at the
+    # top level, which the simulator installer rejects. Hence a real plist.
+    info:
+      path: BoulderTrackerWidgets/Info.plist
+      properties:
+        CFBundleDisplayName: Boulder Tracker
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    settings:
+      base:
+        SWIFT_VERSION: "6.0"
+        DEVELOPMENT_TEAM: 6KKKY36H7B
+        CODE_SIGN_STYLE: Automatic
+        TARGETED_DEVICE_FAMILY: "1"
+        PRODUCT_BUNDLE_IDENTIFIER: com.liammelkersson.BoulderTracker.widgets
+        MARKETING_VERSION: 1.0.0
   BoulderTrackerWatch:
     type: application
     platform: watchOS

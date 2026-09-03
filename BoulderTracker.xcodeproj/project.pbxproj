@@ -12,6 +12,7 @@
 		01785976126F61ADF0AE6385 /* WatchSyncCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E4A95DEE8430BECD767778 /* WatchSyncCoordinator.swift */; };
 		018E190907BB9E244498369A /* WatchGradeDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCF5F057E7C8547B62B1505 /* WatchGradeDot.swift */; };
 		03B1A6535807F0689705D0A6 /* ClimbingSessionStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45A9CDCF1C2671208CEDD41 /* ClimbingSessionStateTests.swift */; };
+		03B9EAA1F51A69EC47C61E6D /* GradeSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85CCEB1F6DABDB1E13AC0C7 /* GradeSystem.swift */; };
 		03C89E46E265299B9FB53E2C /* OnboardingDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD7AF49D5D6E1178AB1331E /* OnboardingDraft.swift */; };
 		04B0C6D6BAD2B91D526765C7 /* MonthCalendarGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC94E761844AB02B2003A33 /* MonthCalendarGrid.swift */; };
 		04E39D99848CD52CBE32C099 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C82AF7951A8BD71065B2B3 /* HomeView.swift */; };
@@ -24,6 +25,7 @@
 		0A17F11119D1E5C3DCF4435C /* AppliedEnvelopeRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4965E79EF0481D17DBBC55 /* AppliedEnvelopeRegistry.swift */; };
 		0AD92F937C053F6FB1D158D9 /* ProblemDraftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B1225E18BFB22E6836D41F /* ProblemDraftTests.swift */; };
 		0BC57F864F630A3FDFC0C38A /* WeeklyVolume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080E9A30E5A8040A889AFDB9 /* WeeklyVolume.swift */; };
+		0C4FEDA9E64DE22D9B8AD510 /* SessionSyncOutbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDFB9042326AD35AEBA48EF /* SessionSyncOutbox.swift */; };
 		0EB7A7D906E0D6D43974AD62 /* QuickLogEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC2861E341CD380230879E5 /* QuickLogEntry.swift */; };
 		13E260131F0A0E45E2A3B61D /* RoadmapProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4766DD77F157342BE3D11558 /* RoadmapProgress.swift */; };
 		156AD5662ABA54FB19F751CB /* ProjectBackfill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E11E3FFE1771D6D481DD70C /* ProjectBackfill.swift */; };
@@ -34,7 +36,9 @@
 		1BA5DD077D22DD4EFD344839 /* ClimbingSessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668E794BDD80E0C5E4C8923A /* ClimbingSessionState.swift */; };
 		1F134743456CC24726BD06E0 /* PersistentModelInvalidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC0FAF677478A47DF24914 /* PersistentModelInvalidation.swift */; };
 		207D0EAFF1BACAB63A8FE7CE /* AttemptResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF999BAFC8EA39365D0D9714 /* AttemptResult.swift */; };
+		20E0700E8D0BD7DFCA359D3C /* WatchConnectivityLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1279D37D6B8E65AD6FF68F2C /* WatchConnectivityLink.swift */; };
 		211E573FCE66345AC93537F2 /* SyncLinking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B1C8783CFE8C373B25899 /* SyncLinking.swift */; };
+		23455CF1F638596F68760945 /* BoulderTrackerWidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA91DA4D2F9564D580A3748D /* BoulderTrackerWidgetsBundle.swift */; };
 		2352435CCBD83ED07CC63DA4 /* GradeBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81CF5C93705822AE6A875D2 /* GradeBadge.swift */; };
 		236F49E3A8F4D1C5027C0767 /* ClimbType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D9B4FF8FCAE0C8695F58AF /* ClimbType.swift */; };
 		23A65D23C3BBA35FEEC3FAA0 /* WorkoutWriting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6B4B5C62C1A7FB8F82329C /* WorkoutWriting.swift */; };
@@ -62,12 +66,15 @@
 		392B6FB50C642FB52046707D /* WatchRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F92BEBAFBA5F9E171A799 /* WatchRootView.swift */; };
 		39D2032F3C59BB7D93AC6B68 /* SessionFeeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E8762A7199C3A909DF2365 /* SessionFeeling.swift */; };
 		43F2007E8DBC3A9AB419231E /* HealthKitWorkoutWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F14A251EE96332C7B8FB225 /* HealthKitWorkoutWriter.swift */; };
+		46A63F06FFA2334F931F6E6E /* SessionSyncCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD98120C088455DB39DCD2 /* SessionSyncCoding.swift */; };
 		480EEAE3408603E1CE80FBFD /* WatchStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE77B76711A5F1D1A3ADA09 /* WatchStartView.swift */; };
+		484487DD6337A78EAD030854 /* ClimbingSessionActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D97D2873A9C103A40DB222 /* ClimbingSessionActivityWidget.swift */; };
 		48A1D4841D76E320E8C1831F /* SessionDurationFormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6609FDD69031DC2053A105 /* SessionDurationFormatTests.swift */; };
 		494683874F7F7509D5C8B304 /* GradeSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9274251F172E42CE81A58FE0 /* GradeSystemTests.swift */; };
 		49794A228933CEAF3A06D87A /* EditProfileSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD02A29757F74D62FD5F02B /* EditProfileSheet.swift */; };
 		4A41929544CC59552EE4C8D2 /* StatsSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C75C484DB145D3574725BA /* StatsSummary.swift */; };
 		4D76FE5F584FFAD4E1783043 /* GradeSystemEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7DA70CCA04996A414CFA21 /* GradeSystemEnvironment.swift */; };
+		50DA5EB5B49521D7AE328254 /* ColorGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA0494CD42B4C436DEA59E3 /* ColorGrade.swift */; };
 		526B2EFB15348ADAB481ABAB /* OnboardingWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1778B6E8FAE2A2E40C785499 /* OnboardingWelcomeView.swift */; };
 		52A415BAAB8D868673BD6996 /* ProjectStatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898945277D7FC5A6659B00A /* ProjectStatsTests.swift */; };
 		53FDB82CD57D7584D27979C9 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A54E313A2750683DD90D0C /* Project.swift */; };
@@ -99,6 +106,7 @@
 		6DF84C19412029B57F481C26 /* SessionExportRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B324E01BDC8440D3C8AF067 /* SessionExportRow.swift */; };
 		6FD1A73F0D794B17F36CDBD9 /* QuickLogEntryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95448B5D9E59BEC586BC6EE /* QuickLogEntryTests.swift */; };
 		729274AD4832F053ACC4FB8A /* SessionSyncCodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F3361DAA17F8D15C48AC86 /* SessionSyncCodingTests.swift */; };
+		737E9FDA2F8783EBF23594E0 /* GradeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE0685502F778A36121795E /* GradeLabel.swift */; };
 		74F2E51F4A0AB2BF47C2467F /* SessionLogWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61747FAF0EC0F86FB5AC057E /* SessionLogWriter.swift */; };
 		75D21BC7D1973295992F1BCD /* ThemedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCF4FCAA128879289CFFA7C /* ThemedTextField.swift */; };
 		76BD41BC9ABF92E9B8B2CEEA /* AttemptResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B4F1FB239B32F1AEDBAB1C /* AttemptResultTests.swift */; };
@@ -106,6 +114,7 @@
 		77CE49CE6E047AF79D23E274 /* ColorGradeTint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6194B2AED5F6C64A901EF /* ColorGradeTint.swift */; };
 		78453615E4297DA542323C12 /* WatchLiveSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4F022189F5329D87C93124 /* WatchLiveSession.swift */; };
 		787263986FFF268EC456C9DA /* SampleDataGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CABC44334A3CE1DC083CC4 /* SampleDataGeneratorTests.swift */; };
+		7BA2877D130447B8A807567A /* RouteStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57016D08C534EC76E7876C4 /* RouteStyle.swift */; };
 		7BB76E2D52384FCEE7806D94 /* StatsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A42EAC2B02BF2305A1CF846 /* StatsSection.swift */; };
 		7C2F007E8CF7916293BA8058 /* WatchLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5DAF0EFBC171A4EC0E2EBB /* WatchLiveView.swift */; };
 		7DD9D1FA5C08DE6D3C98C09E /* HomeBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEFF7D5837E3D50C48CDD18 /* HomeBanner.swift */; };
@@ -124,6 +133,7 @@
 		8E493F4D79D2661ADE29F642 /* ThemePalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF32B6E832449D49CC10E1FD /* ThemePalette.swift */; };
 		8FD6E180E4F1902692A89158 /* PreferencesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FB9E9BEEDC612F405E8F32 /* PreferencesSection.swift */; };
 		90BC722DE0025DC83A04799A /* GradesSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1ACC91664CFA09C71876F8 /* GradesSheet.swift */; };
+		9101F3FBAEF35CBA53270A1B /* WatchLiveSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4F022189F5329D87C93124 /* WatchLiveSession.swift */; };
 		914929FCD44F64FC735C4C57 /* HomeMetricsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676F3F95EE72F71F08BEC68A /* HomeMetricsRow.swift */; };
 		9180214DC76C15AB4CB79060 /* AppPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8118E16DED92BBAFCD0255 /* AppPreferences.swift */; };
 		91F3C419257A850EF0E92ABA /* SessionSampleFiltering.swift in Sources */ = {isa = PBXBuildFile; fileRef = B430BDFEDDBF68981A195580 /* SessionSampleFiltering.swift */; };
@@ -134,6 +144,7 @@
 		93B808B17AA5F679BBEE279F /* ClimbType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D9B4FF8FCAE0C8695F58AF /* ClimbType.swift */; };
 		943490F10161BB840A8E0937 /* SessionPhotoPickerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB08646B37DFA11E44ACD384 /* SessionPhotoPickerRow.swift */; };
 		96ACA90B6F79970A004446FA /* SyncEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7332E27D5E782EFEB3BFEC90 /* SyncEnvelope.swift */; };
+		98FA0285CD277D45F5A95518 /* ColorGradeTint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF6194B2AED5F6C64A901EF /* ColorGradeTint.swift */; };
 		996367A9A191B8D4BD22E4BA /* PendingEventQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094902CCE96FE34ADBD1C12 /* PendingEventQueue.swift */; };
 		9B52844355C6568241524E3E /* SessionSummaryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAA3430657EDEE943FE253E /* SessionSummaryScreen.swift */; };
 		9D0776317732D6C61BE9A254 /* ThemedNotesField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622988343F7300983B1A254A /* ThemedNotesField.swift */; };
@@ -145,6 +156,7 @@
 		A24114FCC9BF29A2B50EF79C /* ProblemDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349F6A6FB3D38657391F95CA /* ProblemDraft.swift */; };
 		A31912701BB0382CD6B27CB9 /* ThemedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFB3EA8A8479714B9B4D162 /* ThemedCard.swift */; };
 		A3B56EF9A7FAB666499E9167 /* WorkoutMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1D729299ED77B95B237569 /* WorkoutMetrics.swift */; };
+		A3D74CD2D43D608145543A92 /* SyncLinking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B1C8783CFE8C373B25899 /* SyncLinking.swift */; };
 		A434F557874DA131AED4B0DD /* CurrentProjectCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E71D6A19DF52AF162E10B07 /* CurrentProjectCard.swift */; };
 		A4BCF1F54E6A05F96F88532B /* ProjectEditorSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906985AF5EB5F1AD207F8DE /* ProjectEditorSheet.swift */; };
 		A56D8529A545EEBF6FF5CF5D /* SessionSyncEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8970B14FC314C74DC0148C8C /* SessionSyncEvent.swift */; };
@@ -153,6 +165,7 @@
 		A682F5DE47445988DA9CAA2E /* AccentButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A64287092BC5AF5641F78B /* AccentButtons.swift */; };
 		A71568EE6903A1FB1568D41C /* SessionCompletionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E0A981AF092D33D2D0F06 /* SessionCompletionTests.swift */; };
 		A8212AFE24C3390494219890 /* WatchSyncCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1739CD84A9422CED9643F574 /* WatchSyncCoordinatorTests.swift */; };
+		A833CBE48017F61BC42EA5DA /* SessionSyncEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8970B14FC314C74DC0148C8C /* SessionSyncEvent.swift */; };
 		AB989B3096110132D0F22C8A /* OnboardingProfileSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DCB6D899DBBF17D0A4C0DB /* OnboardingProfileSteps.swift */; };
 		AC7943847CC733EEDC6A7B9E /* WatchLiveSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4F022189F5329D87C93124 /* WatchLiveSession.swift */; };
 		AC7FAEFC9CEE0F14A7F3CB2C /* ShoePickList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476BDB0ED7DD1448BB2DD072 /* ShoePickList.swift */; };
@@ -162,6 +175,7 @@
 		AEEB59A885E7146266C4398D /* LiveSessionSnapshotReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC8267A58E91D1CF1886259 /* LiveSessionSnapshotReaderTests.swift */; };
 		B033AAD026D6862FE524973A /* WatchFakeSyncLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A0BC807F5BA93CF2C080EA /* WatchFakeSyncLink.swift */; };
 		B0464F56722D076BCB0A528F /* AchievementEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B73A64F6A52FE45E78E22A /* AchievementEngineTests.swift */; };
+		B18D5978812C213AE80C02B3 /* PendingEventQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094902CCE96FE34ADBD1C12 /* PendingEventQueue.swift */; };
 		B33A114221242A5E581B60EA /* QuickLogRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E232F698B7E6AA885651D127 /* QuickLogRow.swift */; };
 		B43C1D12CE854E40CC705908 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89085835C82E6A9E6482DFA5 /* ProfileView.swift */; };
 		B677F75EE8E77731016B61C6 /* RouteStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57016D08C534EC76E7876C4 /* RouteStyle.swift */; };
@@ -169,11 +183,15 @@
 		B70E79ED32B15D44BF3BFF1A /* SyncLinking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B1C8783CFE8C373B25899 /* SyncLinking.swift */; };
 		B758658FA92278448C6A612F /* StatsPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44AEB6C3C0E7CA06725D32B /* StatsPeriod.swift */; };
 		B879E8A1B2406DAEDC1D4C6A /* GradeLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03DFB2F41C46612906CA9C1 /* GradeLabelTests.swift */; };
+		BA63873EFD8DABEE10A0F679 /* ClimbingSessionAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CA147CC3DC4FE08B083101 /* ClimbingSessionAttributes.swift */; };
 		BB31B9F21181B7DF5B489ABF /* ShoeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9E152F6717C823659A2F2 /* ShoeTests.swift */; };
 		BBC77501044DAA171392BEB2 /* HeroTimeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6D61B1F7C5919B8CA54F6D /* HeroTimeCard.swift */; };
+		BC0CC49677C6E1DFD7F254E2 /* LogSendIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F27331070A21732FAC6A866 /* LogSendIntent.swift */; };
 		BC1D7AEAA3D445D57B0B6184 /* SyncEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7332E27D5E782EFEB3BFEC90 /* SyncEnvelope.swift */; };
 		BC52E7ADD20A5F1EB5DE6EF6 /* PendingEventQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4094902CCE96FE34ADBD1C12 /* PendingEventQueue.swift */; };
+		BD5210FA142B38F66B3AEB88 /* AppliedEnvelopeRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4965E79EF0481D17DBBC55 /* AppliedEnvelopeRegistry.swift */; };
 		BD7B44E63787B2B51F5FA69B /* PhoneWatchSyncIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D81CE89D8307909A0EAA29 /* PhoneWatchSyncIntegrationTests.swift */; };
+		BE34EAD6C6EF78624A9EC1EF /* AttemptResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF999BAFC8EA39365D0D9714 /* AttemptResult.swift */; };
 		BE7A8E0E11B65C17953C9F07 /* WallTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3114771B3243C5F78F083A /* WallTexture.swift */; };
 		C01BCA68B2C4B987309B5E0F /* SessionSyncCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66FD98120C088455DB39DCD2 /* SessionSyncCoding.swift */; };
 		C0D9A1FA4BF42E6D57ADC97E /* AchievementIconStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6119E0E524C6392F8DA0D6 /* AchievementIconStyle.swift */; };
@@ -186,15 +204,18 @@
 		C7D228D2B14E994C198867B5 /* GradeSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85CCEB1F6DABDB1E13AC0C7 /* GradeSystem.swift */; };
 		CB39D7E86D545E3D62355CFC /* HomeIdleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F823EA7826C18CE2392424 /* HomeIdleView.swift */; };
 		CCDC20398D732F4B61A352D8 /* ModelRoundTripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F62563AF39F829E404C1E6 /* ModelRoundTripTests.swift */; };
+		CCF14154E77A56D8D6C7411F /* ClimbType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D9B4FF8FCAE0C8695F58AF /* ClimbType.swift */; };
 		CD1D1A14DFAF90547893F5DE /* Partner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5B09640D0FA580EA358CD9 /* Partner.swift */; };
 		D14D098B34EA1EA738832481 /* SessionDurationFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6EEC9210916D326E5079D5 /* SessionDurationFormat.swift */; };
 		D16E804A3CC7092896EFD395 /* PhoneSyncCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A973F3DBD025A7E1E14F14F /* PhoneSyncCoordinator.swift */; };
 		D28F3BF722FBFD08E14C77B0 /* HoldIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD902D73B7EFAA3AE30656D /* HoldIcon.swift */; };
 		D46350D115F268D98C7D1EA4 /* VolumeTrendChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7BD9DB6D63B0EEAFA0BE58 /* VolumeTrendChart.swift */; };
+		D6051FDE2A5B3135D0A83423 /* AppLoggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091850DBF3F67E1C04DB611B /* AppLoggers.swift */; };
 		D7083B98189C7528CC37736B /* BoulderTracker.icon in Resources */ = {isa = PBXBuildFile; fileRef = 001BB8EBAC47BEE852B97434 /* BoulderTracker.icon */; };
 		D8B196AD7D9BB39D524F226F /* BoulderTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F98D93960086286608D189D /* BoulderTrackerApp.swift */; };
 		D8D0205CE41E1AC688BC1C89 /* StyleRadialChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EA8CE50F2E1075BD92211A /* StyleRadialChart.swift */; };
 		DB6D8D2143E117CB79761740 /* SessionActivityPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF425321FDB1E911FC5EE01C /* SessionActivityPresenter.swift */; };
+		DBB89B86F5B6072F32C8D9DC /* BoulderTrackerWidgets.appex in Embed Dependencies */ = {isa = PBXBuildFile; fileRef = ACE3E271092D47B9864728FE /* BoulderTrackerWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		DCECE4CB59729AE6FD2A2AD5 /* AppliedEnvelopeRegistryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148EDEF3B21B23EE863BEF49 /* AppliedEnvelopeRegistryTests.swift */; };
 		DDA5706FF30127C77797938C /* ProjectStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DADCBD8E3ABCF4C8760ECE8 /* ProjectStatus.swift */; };
 		DEA81D76FC6708369B767EEB /* RouteStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57016D08C534EC76E7876C4 /* RouteStyle.swift */; };
@@ -213,6 +234,9 @@
 		ECC55B7941BCED3A464DB0AB /* ColorGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA0494CD42B4C436DEA59E3 /* ColorGrade.swift */; };
 		ED4BCAF8D098F961C76D765D /* OnboardingClimbingSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87426C9806B9E67C1DD2EB59 /* OnboardingClimbingSteps.swift */; };
 		ED84D740682BB2BCF0B31499 /* SessionPhotoThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C043EA16DEFFD7A50DD9F6 /* SessionPhotoThumbnail.swift */; };
+		EDD1485B554B5988AC1EAA3D /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C449A2840B580D48AFC0CEB /* ColorHex.swift */; };
+		F1966F3DE8590526510AABD4 /* SyncEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7332E27D5E782EFEB3BFEC90 /* SyncEnvelope.swift */; };
+		F549613E155A2A177DEED8E0 /* SessionSendLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C31918AB307A21EA1DE4123 /* SessionSendLog.swift */; };
 		F6666B8955AE8C11E3DDD5C4 /* QuickAddProblemSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427EA41606057FE2C094908B /* QuickAddProblemSheet.swift */; };
 		F766FC3F33449E8032845F6B /* ScaledFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF10452FF7A2FE74E4B6BEB /* ScaledFont.swift */; };
 		F7A82AC0C1C5CFB192079727 /* GradeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE0685502F778A36121795E /* GradeLabel.swift */; };
@@ -251,10 +275,28 @@
 			remoteGlobalIDString = 248356CD35F77919C7E8E9CA;
 			remoteInfo = BoulderTracker;
 		};
+		F261022C8106F8F3DA91C39C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CAD5039BDD6ABF8A3BE68E45 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EBE9AE15DA5A87236E4718C6;
+			remoteInfo = BoulderTrackerWidgets;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		6B00CA47E287891FDF44CE43 /* Embed Dependencies */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/PlugIns";
+			dstSubfolderSpec = 16;
+			files = (
+				DBB89B86F5B6072F32C8D9DC /* BoulderTrackerWidgets.appex in Embed Dependencies */,
+			);
+			name = "Embed Dependencies";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CAAC0261873BA04C247F761 /* Embed Dependencies */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
@@ -373,6 +415,7 @@
 		7E3C58F6B8FDFFE7AF23B43B /* Gym.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gym.swift; sourceTree = "<group>"; };
 		7E71D6A19DF52AF162E10B07 /* CurrentProjectCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentProjectCard.swift; sourceTree = "<group>"; };
 		7F14A251EE96332C7B8FB225 /* HealthKitWorkoutWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitWorkoutWriter.swift; sourceTree = "<group>"; };
+		8294FAE90A7446539E1EE712 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		84B4587B5D69AAB6EEFF318F /* GymPickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymPickerSheet.swift; sourceTree = "<group>"; };
 		85BDFE8748BC3D981AA5AA4D /* GymListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GymListSection.swift; sourceTree = "<group>"; };
 		87426C9806B9E67C1DD2EB59 /* OnboardingClimbingSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingClimbingSteps.swift; sourceTree = "<group>"; };
@@ -409,6 +452,7 @@
 		ABE0ED137012B71B1F1E670E /* MountainIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainIcon.swift; sourceTree = "<group>"; };
 		AC6B4B5C62C1A7FB8F82329C /* WorkoutWriting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutWriting.swift; sourceTree = "<group>"; };
 		ACC7B2C5F1B96951864FB8D7 /* FakeWorkoutWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeWorkoutWriter.swift; sourceTree = "<group>"; };
+		ACE3E271092D47B9864728FE /* BoulderTrackerWidgets.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = BoulderTrackerWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE14E05FDA0C9443207F8A2B /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		AF425321FDB1E911FC5EE01C /* SessionActivityPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionActivityPresenter.swift; sourceTree = "<group>"; };
 		AFC3A8A796F90CEA6BDCD97C /* RetroSessionForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetroSessionForm.swift; sourceTree = "<group>"; };
@@ -416,9 +460,11 @@
 		B3C043EA16DEFFD7A50DD9F6 /* SessionPhotoThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionPhotoThumbnail.swift; sourceTree = "<group>"; };
 		B430BDFEDDBF68981A195580 /* SessionSampleFiltering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSampleFiltering.swift; sourceTree = "<group>"; };
 		B67025D3E0D6CE36434E29D4 /* LiveSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSessionView.swift; sourceTree = "<group>"; };
+		B7D97D2873A9C103A40DB222 /* ClimbingSessionActivityWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingSessionActivityWidget.swift; sourceTree = "<group>"; };
 		B8144D8D53F246205075577C /* WeeklyHardestSend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyHardestSend.swift; sourceTree = "<group>"; };
 		B92DE567DF02DC6CF92267F1 /* ShoeListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeListSection.swift; sourceTree = "<group>"; };
 		B9DCA83599B9ADBA15E5882C /* AchievementIdentityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementIdentityTests.swift; sourceTree = "<group>"; };
+		BA91DA4D2F9564D580A3748D /* BoulderTrackerWidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoulderTrackerWidgetsBundle.swift; sourceTree = "<group>"; };
 		BB7B6B82259C342DD1CC9FC3 /* BoulderTrackerUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = BoulderTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD02A29757F74D62FD5F02B /* EditProfileSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileSheet.swift; sourceTree = "<group>"; };
 		BF32B6E832449D49CC10E1FD /* ThemePalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePalette.swift; sourceTree = "<group>"; };
@@ -480,6 +526,7 @@
 				BB7B6B82259C342DD1CC9FC3 /* BoulderTrackerUITests.xctest */,
 				33C7A0D436006D5F3EF1D95C /* BoulderTrackerWatch.app */,
 				4EFAC965A8ABB6200226C46B /* BoulderTrackerWatchTests.xctest */,
+				ACE3E271092D47B9864728FE /* BoulderTrackerWidgets.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -581,6 +628,16 @@
 				BF32B6E832449D49CC10E1FD /* ThemePalette.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		38EAB45AB642DEA17BE60F8B /* BoulderTrackerWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				BA91DA4D2F9564D580A3748D /* BoulderTrackerWidgetsBundle.swift */,
+				B7D97D2873A9C103A40DB222 /* ClimbingSessionActivityWidget.swift */,
+				8294FAE90A7446539E1EE712 /* Info.plist */,
+			);
+			path = BoulderTrackerWidgets;
 			sourceTree = "<group>";
 		};
 		3D49F7D43B825D6720C22896 /* BoulderTrackerTests */ = {
@@ -728,6 +785,7 @@
 				62C516E4798D0EF7A91BFF97 /* BoulderTrackerUITests */,
 				1FCC9D3D05E282824B398B08 /* BoulderTrackerWatch */,
 				DA4681B15D73BD33F7C15A98 /* BoulderTrackerWatchTests */,
+				38EAB45AB642DEA17BE60F8B /* BoulderTrackerWidgets */,
 				E98F23996A7935531A6FD6DD /* Shared */,
 				8999C60005A1EB5DA7B676DE /* SharedActivity */,
 				06A387DBE671BD64E74AB998 /* Products */,
@@ -833,11 +891,13 @@
 				A6AE988074532AAECD407AF4 /* Sources */,
 				A8E2986A18221E511FA94DFC /* Resources */,
 				6B00CA47E287891FDF44CE43 /* Embed Dependencies */,
+				9CAAC0261873BA04C247F761 /* Embed Dependencies */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				E493A435DDF77B742B02709F /* PBXTargetDependency */,
+				4110C8EACED29125C64A0A4F /* PBXTargetDependency */,
 			);
 			name = BoulderTracker;
 			packageProductDependencies = (
@@ -900,6 +960,23 @@
 			productReference = 4EFAC965A8ABB6200226C46B /* BoulderTrackerWatchTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		EBE9AE15DA5A87236E4718C6 /* BoulderTrackerWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 585A5F5D03B31F12CE37F694 /* Build configuration list for PBXNativeTarget "BoulderTrackerWidgets" */;
+			buildPhases = (
+				46E384778A77809D5BF41756 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BoulderTrackerWidgets;
+			packageProductDependencies = (
+			);
+			productName = BoulderTrackerWidgets;
+			productReference = ACE3E271092D47B9864728FE /* BoulderTrackerWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		FD8EF391D9A73F59C5A537B8 /* BoulderTrackerWatch */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B00CE4402FEDBC03368ED95D /* Build configuration list for PBXNativeTarget "BoulderTrackerWatch" */;
@@ -933,6 +1010,10 @@
 					6B7F7CE0BDEE9250179CF354 = {
 						TestTargetID = 248356CD35F77919C7E8E9CA;
 					};
+					EBE9AE15DA5A87236E4718C6 = {
+						DevelopmentTeam = 6KKKY36H7B;
+						ProvisioningStyle = Automatic;
+					};
 					FD8EF391D9A73F59C5A537B8 = {
 						DevelopmentTeam = 6KKKY36H7B;
 						ProvisioningStyle = Automatic;
@@ -954,6 +1035,7 @@
 			projectRoot = "";
 			targets = (
 				248356CD35F77919C7E8E9CA /* BoulderTracker */,
+				EBE9AE15DA5A87236E4718C6 /* BoulderTrackerWidgets */,
 				FD8EF391D9A73F59C5A537B8 /* BoulderTrackerWatch */,
 				2F56ABFA5A57FEA83CEB0E2C /* BoulderTrackerTests */,
 				C8C37E52E6E7C9E19899763B /* BoulderTrackerWatchTests */,
@@ -980,6 +1062,36 @@
 			buildActionMask = 2147483647;
 			files = (
 				367E7ECB732E760FF4399E3E /* OnboardingFlowUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46E384778A77809D5BF41756 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6051FDE2A5B3135D0A83423 /* AppLoggers.swift in Sources */,
+				BD5210FA142B38F66B3AEB88 /* AppliedEnvelopeRegistry.swift in Sources */,
+				BE34EAD6C6EF78624A9EC1EF /* AttemptResult.swift in Sources */,
+				23455CF1F638596F68760945 /* BoulderTrackerWidgetsBundle.swift in Sources */,
+				CCF14154E77A56D8D6C7411F /* ClimbType.swift in Sources */,
+				484487DD6337A78EAD030854 /* ClimbingSessionActivityWidget.swift in Sources */,
+				BA63873EFD8DABEE10A0F679 /* ClimbingSessionAttributes.swift in Sources */,
+				50DA5EB5B49521D7AE328254 /* ColorGrade.swift in Sources */,
+				98FA0285CD277D45F5A95518 /* ColorGradeTint.swift in Sources */,
+				EDD1485B554B5988AC1EAA3D /* ColorHex.swift in Sources */,
+				737E9FDA2F8783EBF23594E0 /* GradeLabel.swift in Sources */,
+				03B9EAA1F51A69EC47C61E6D /* GradeSystem.swift in Sources */,
+				BC0CC49677C6E1DFD7F254E2 /* LogSendIntent.swift in Sources */,
+				B18D5978812C213AE80C02B3 /* PendingEventQueue.swift in Sources */,
+				7BA2877D130447B8A807567A /* RouteStyle.swift in Sources */,
+				F549613E155A2A177DEED8E0 /* SessionSendLog.swift in Sources */,
+				46A63F06FFA2334F931F6E6E /* SessionSyncCoding.swift in Sources */,
+				A833CBE48017F61BC42EA5DA /* SessionSyncEvent.swift in Sources */,
+				0C4FEDA9E64DE22D9B8AD510 /* SessionSyncOutbox.swift in Sources */,
+				F1966F3DE8590526510AABD4 /* SyncEnvelope.swift in Sources */,
+				A3D74CD2D43D608145543A92 /* SyncLinking.swift in Sources */,
+				20E0700E8D0BD7DFCA359D3C /* WatchConnectivityLink.swift in Sources */,
+				9101F3FBAEF35CBA53270A1B /* WatchLiveSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1228,6 +1340,11 @@
 			target = 248356CD35F77919C7E8E9CA /* BoulderTracker */;
 			targetProxy = 309FFBF25339C161F206DE6C /* PBXContainerItemProxy */;
 		};
+		4110C8EACED29125C64A0A4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EBE9AE15DA5A87236E4718C6 /* BoulderTrackerWidgets */;
+			targetProxy = F261022C8106F8F3DA91C39C /* PBXContainerItemProxy */;
+		};
 		A0FDB8E1F4F2723744C8A069 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FD8EF391D9A73F59C5A537B8 /* BoulderTrackerWatch */;
@@ -1260,6 +1377,7 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Not used for reading; required by HealthKit entitlement.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Save climbing sessions as workouts in Apple Health.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save route photos you take.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1267,6 +1385,25 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.liammelkersson.BoulderTracker;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		1ADFBBAB1E776CDE4D4A2876 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6KKKY36H7B;
+				INFOPLIST_FILE = BoulderTrackerWidgets/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.liammelkersson.BoulderTracker.widgets;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1482,6 +1619,25 @@
 			};
 			name = Debug;
 		};
+		B78C68D286A0CA6B2756601E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6KKKY36H7B;
+				INFOPLIST_FILE = BoulderTrackerWidgets/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.liammelkersson.BoulderTracker.widgets;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
 		BAD860BBE0F3B8EBCE610A67 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1552,6 +1708,7 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Not used for reading; required by HealthKit entitlement.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Save climbing sessions as workouts in Apple Health.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save route photos you take.";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1573,6 +1730,15 @@
 			buildConfigurations = (
 				944340573FB0A72E6E98EACE /* Debug */,
 				7FA801855626BAC6211AE8D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		585A5F5D03B31F12CE37F694 /* Build configuration list for PBXNativeTarget "BoulderTrackerWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B78C68D286A0CA6B2756601E /* Debug */,
+				1ADFBBAB1E776CDE4D4A2876 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
