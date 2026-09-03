@@ -190,6 +190,7 @@
 		E3EC322C96FE32D14D059841 /* ProjectStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFCAA7941AB3FC08E0C5CA3 /* ProjectStats.swift */; };
 		E581C0471E9E23C2C37CA339 /* WeeklyStatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A040F280FA42E4682569B784 /* WeeklyStatsTests.swift */; };
 		E60BE443A1E1C56D7DE15182 /* StatsAggregator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C6E6C165C3CEB58EBD3D8 /* StatsAggregator.swift */; };
+		E7A709611C2CA7213E41FCB4 /* GradePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788E9CA1B43E4619D96B9220 /* GradePicker.swift */; };
 		EB9680061DC8848569F5CF4B /* PersonalBestsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38E25F8AEA66C33EDFFA4A2 /* PersonalBestsSection.swift */; };
 		ECC55B7941BCED3A464DB0AB /* ColorGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA0494CD42B4C436DEA59E3 /* ColorGrade.swift */; };
 		ED4BCAF8D098F961C76D765D /* OnboardingClimbingSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87426C9806B9E67C1DD2EB59 /* OnboardingClimbingSteps.swift */; };
@@ -329,6 +330,7 @@
 		74C330E9F55845DB41396E07 /* OnboardingFlowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowUITests.swift; sourceTree = "<group>"; };
 		755C6E6C165C3CEB58EBD3D8 /* StatsAggregator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsAggregator.swift; sourceTree = "<group>"; };
 		76C82AF7951A8BD71065B2B3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		788E9CA1B43E4619D96B9220 /* GradePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradePicker.swift; sourceTree = "<group>"; };
 		794B6890351EF2B4D6D45964 /* ClimbTypeDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbTypeDisplay.swift; sourceTree = "<group>"; };
 		7A7BD9DB6D63B0EEAFA0BE58 /* VolumeTrendChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeTrendChart.swift; sourceTree = "<group>"; };
 		7CA59ECA983557C4012E265A /* GradeDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeDot.swift; sourceTree = "<group>"; };
@@ -738,6 +740,7 @@
 			children = (
 				43A64287092BC5AF5641F78B /* AccentButtons.swift */,
 				7CA59ECA983557C4012E265A /* GradeDot.swift */,
+				788E9CA1B43E4619D96B9220 /* GradePicker.swift */,
 				FFD902D73B7EFAA3AE30656D /* HoldIcon.swift */,
 				EEE3B4DAE32759D402BD4362 /* RockHoldShape.swift */,
 				FCD0B0A1643DE2A614C28952 /* RockIcon.swift */,
@@ -945,6 +948,7 @@
 				6A8E36132E7052890B1C3E36 /* GradeDistributionCard.swift in Sources */,
 				B6DD97BFD976B48F4C84514F /* GradeDot.swift in Sources */,
 				68E2AA3ECA2DA09D69B7E61D /* GradeLabel.swift in Sources */,
+				E7A709611C2CA7213E41FCB4 /* GradePicker.swift in Sources */,
 				A5FAAF4559039D9A4A1F8711 /* GradeProgressionChart.swift in Sources */,
 				2B656D2F1E947FBD694F6884 /* GradeSystem.swift in Sources */,
 				4D76FE5F584FFAD4E1783043 /* GradeSystemEnvironment.swift in Sources */,

@@ -4,7 +4,6 @@ import PhotosUI
 
 struct QuickAddProblemSheet: View {
     @Environment(\.palette) private var palette
-    @Environment(\.gradeSystem) private var gradeSystem
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     let session: Session
@@ -27,7 +26,7 @@ struct QuickAddProblemSheet: View {
                 field(label: "Name") {
                     ThemedTextField(placeholder: "e.g. Elektra", text: $name)
                 }
-                field(label: "Grade") { gradePills }
+                field(label: "Grade") { GradePicker(selection: $selectedGrade) }
                 field(label: "Style") { styleChips }
                 field(label: "Notes") {
                     ThemedNotesField(placeholder: "Optional notes", text: $notes)
@@ -59,39 +58,6 @@ struct QuickAddProblemSheet: View {
                 .scaledFont(size: 12, weight: .semibold)
             content()
         }
-    }
-
-    private var gradePills: some View {
-        FlowLayout(spacing: 8) {
-            ForEach(ColorGrade.displayOrder) { grade in
-                gradePill(grade)
-            }
-        }
-    }
-
-    private func gradePill(_ grade: ColorGrade) -> some View {
-        let isSelected = selectedGrade == grade
-        return Button {
-            selectedGrade = grade
-        } label: {
-            HStack(spacing: 7) {
-                GradeDot(grade: grade, size: 11)
-                Text(grade.shortLabel(in: gradeSystem))
-                    .scaledFont(size: 13, weight: .semibold)
-                    .foregroundStyle(isSelected ? palette.text : palette.textDim)
-            }
-            .padding(.horizontal, 14)
-            .padding(.vertical, 9)
-            .background(isSelected ? palette.pillActive : palette.pill)
-            .clipShape(.capsule)
-            .overlay {
-                if isSelected {
-                    Capsule().strokeBorder(ThemePalette.accent, lineWidth: 2)
-                }
-            }
-        }
-        .buttonStyle(.plain)
-        .accessibilityLabel(grade.shortLabel(in: gradeSystem))
     }
 
     private var styleChips: some View {
