@@ -45,6 +45,7 @@
 		2D3FF2569AA778FA7972D6E7 /* PhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9720EF636B8867B5B65677 /* PhotoStore.swift */; };
 		2D8901E9CFC3F9BF5DEE689E /* SessionRowCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E508219F5B9235B9A71097 /* SessionRowCard.swift */; };
 		2F4BB9DCFFA7CE916F57752E /* BoulderTrackerWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA5F8BBAF1A411A59FE20C7 /* BoulderTrackerWatchApp.swift */; };
+		2F55EAC9A0E8F03B666FE5CB /* MountainShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2E353B71B0279D433AAD92 /* MountainShape.swift */; };
 		30B4CEE16553F5BDFED5056E /* AchievementDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538DDB353BD9CC14703811B5 /* AchievementDefinition.swift */; };
 		3228B2FE16266A873D6CC884 /* SessionProblem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41558BBC79FF5803DAC986B /* SessionProblem.swift */; };
 		3530C35864CC2F7542A37A7D /* AppLoggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091850DBF3F67E1C04DB611B /* AppLoggers.swift */; };
@@ -124,6 +125,7 @@
 		9B52844355C6568241524E3E /* SessionSummaryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAA3430657EDEE943FE253E /* SessionSummaryScreen.swift */; };
 		9D0776317732D6C61BE9A254 /* ThemedNotesField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622988343F7300983B1A254A /* ThemedNotesField.swift */; };
 		9EF988840F672DD84534A0D9 /* PhoneSyncCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957C9D7DFD7D67AE2338ED86 /* PhoneSyncCoordinatorTests.swift */; };
+		9F00B5F8C3FE086504B61A4A /* MountainIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE0ED137012B71B1F1E670E /* MountainIcon.swift */; };
 		A0BDA36B1EE7CFFFDBF35FD4 /* FakeSyncLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1542C63A58F3E058E1895E /* FakeSyncLink.swift */; };
 		A31912701BB0382CD6B27CB9 /* ThemedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFB3EA8A8479714B9B4D162 /* ThemedCard.swift */; };
 		A3B56EF9A7FAB666499E9167 /* WorkoutMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1D729299ED77B95B237569 /* WorkoutMetrics.swift */; };
@@ -151,7 +153,6 @@
 		B6DD97BFD976B48F4C84514F /* GradeDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA59ECA983557C4012E265A /* GradeDot.swift */; };
 		B70E79ED32B15D44BF3BFF1A /* SyncLinking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B1C8783CFE8C373B25899 /* SyncLinking.swift */; };
 		B758658FA92278448C6A612F /* StatsPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44AEB6C3C0E7CA06725D32B /* StatsPeriod.swift */; };
-		B7BA55CE0254448801D21F90 /* RockIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCD0B0A1643DE2A614C28952 /* RockIcon.swift */; };
 		B879E8A1B2406DAEDC1D4C6A /* GradeLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03DFB2F41C46612906CA9C1 /* GradeLabelTests.swift */; };
 		BB31B9F21181B7DF5B489ABF /* ShoeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9E152F6717C823659A2F2 /* ShoeTests.swift */; };
 		BBC77501044DAA171392BEB2 /* HeroTimeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6D61B1F7C5919B8CA54F6D /* HeroTimeCard.swift */; };
@@ -175,7 +176,6 @@
 		D16E804A3CC7092896EFD395 /* PhoneSyncCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A973F3DBD025A7E1E14F14F /* PhoneSyncCoordinator.swift */; };
 		D28F3BF722FBFD08E14C77B0 /* HoldIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD902D73B7EFAA3AE30656D /* HoldIcon.swift */; };
 		D46350D115F268D98C7D1EA4 /* VolumeTrendChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7BD9DB6D63B0EEAFA0BE58 /* VolumeTrendChart.swift */; };
-		D5B1426CE6CBEC6D8C3BF8EA /* RockHoldShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE3B4DAE32759D402BD4362 /* RockHoldShape.swift */; };
 		D7083B98189C7528CC37736B /* BoulderTracker.icon in Resources */ = {isa = PBXBuildFile; fileRef = 001BB8EBAC47BEE852B97434 /* BoulderTracker.icon */; };
 		D8B196AD7D9BB39D524F226F /* BoulderTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F98D93960086286608D189D /* BoulderTrackerApp.swift */; };
 		D8D0205CE41E1AC688BC1C89 /* StyleRadialChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EA8CE50F2E1075BD92211A /* StyleRadialChart.swift */; };
@@ -375,6 +375,7 @@
 		AAABA3BB83BBEF62632A8232 /* SessionSyncInboxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSyncInboxTests.swift; sourceTree = "<group>"; };
 		AB6EEC9210916D326E5079D5 /* SessionDurationFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDurationFormat.swift; sourceTree = "<group>"; };
 		ABD7AF49D5D6E1178AB1331E /* OnboardingDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDraft.swift; sourceTree = "<group>"; };
+		ABE0ED137012B71B1F1E670E /* MountainIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainIcon.swift; sourceTree = "<group>"; };
 		AC6B4B5C62C1A7FB8F82329C /* WorkoutWriting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutWriting.swift; sourceTree = "<group>"; };
 		ACC7B2C5F1B96951864FB8D7 /* FakeWorkoutWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeWorkoutWriter.swift; sourceTree = "<group>"; };
 		AE14E05FDA0C9443207F8A2B /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -408,6 +409,7 @@
 		D81CF5C93705822AE6A875D2 /* GradeBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeBadge.swift; sourceTree = "<group>"; };
 		D85CCEB1F6DABDB1E13AC0C7 /* GradeSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeSystem.swift; sourceTree = "<group>"; };
 		DA4AA9D71B3EB492E40C59FE /* SampleDataGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDataGenerator.swift; sourceTree = "<group>"; };
+		DB2E353B71B0279D433AAD92 /* MountainShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MountainShape.swift; sourceTree = "<group>"; };
 		DB3114771B3243C5F78F083A /* WallTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallTexture.swift; sourceTree = "<group>"; };
 		DD1C069C0CDE40F8EB3985C6 /* BoulderTracker.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BoulderTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD8E2B7E92DA0E0EFCCF25DD /* GradeProgressionChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeProgressionChart.swift; sourceTree = "<group>"; };
@@ -421,7 +423,6 @@
 		ECC8267A58E91D1CF1886259 /* LiveSessionSnapshotReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveSessionSnapshotReaderTests.swift; sourceTree = "<group>"; };
 		ECEFF7D5837E3D50C48CDD18 /* HomeBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBanner.swift; sourceTree = "<group>"; };
 		ED63873B7195C1470E2E1C2B /* GradeDistributionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeDistributionCard.swift; sourceTree = "<group>"; };
-		EEE3B4DAE32759D402BD4362 /* RockHoldShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockHoldShape.swift; sourceTree = "<group>"; };
 		EF999BAFC8EA39365D0D9714 /* AttemptResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttemptResult.swift; sourceTree = "<group>"; };
 		F38E25F8AEA66C33EDFFA4A2 /* PersonalBestsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalBestsSection.swift; sourceTree = "<group>"; };
 		F3F62563AF39F829E404C1E6 /* ModelRoundTripTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelRoundTripTests.swift; sourceTree = "<group>"; };
@@ -429,7 +430,6 @@
 		F50DF977C9A487D046B2A41A /* StatsAggregatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsAggregatorTests.swift; sourceTree = "<group>"; };
 		F7CA928332D9F1572CAB6EC3 /* ProjectsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsSheet.swift; sourceTree = "<group>"; };
 		FB08646B37DFA11E44ACD384 /* SessionPhotoPickerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionPhotoPickerRow.swift; sourceTree = "<group>"; };
-		FCD0B0A1643DE2A614C28952 /* RockIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockIcon.swift; sourceTree = "<group>"; };
 		FCF6194B2AED5F6C64A901EF /* ColorGradeTint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGradeTint.swift; sourceTree = "<group>"; };
 		FDA5F8BBAF1A411A59FE20C7 /* BoulderTrackerWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoulderTrackerWatchApp.swift; sourceTree = "<group>"; };
 		FFD902D73B7EFAA3AE30656D /* HoldIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoldIcon.swift; sourceTree = "<group>"; };
@@ -748,8 +748,8 @@
 				7CA59ECA983557C4012E265A /* GradeDot.swift */,
 				788E9CA1B43E4619D96B9220 /* GradePicker.swift */,
 				FFD902D73B7EFAA3AE30656D /* HoldIcon.swift */,
-				EEE3B4DAE32759D402BD4362 /* RockHoldShape.swift */,
-				FCD0B0A1643DE2A614C28952 /* RockIcon.swift */,
+				ABE0ED137012B71B1F1E670E /* MountainIcon.swift */,
+				DB2E353B71B0279D433AAD92 /* MountainShape.swift */,
 				BFF10452FF7A2FE74E4B6BEB /* ScaledFont.swift */,
 				5AE81A0F277E2B6ABC8CFE8D /* SectionHeading.swift */,
 				7D170B0F89A44AA88F76D40C /* StatTile.swift */,
@@ -974,6 +974,8 @@
 				252BE2397440B829DF7FDEF1 /* LiveSessionView.swift in Sources */,
 				07204B5187B526F7A14A1B13 /* ModelContextSaveReporting.swift in Sources */,
 				04B0C6D6BAD2B91D526765C7 /* MonthCalendarGrid.swift in Sources */,
+				9F00B5F8C3FE086504B61A4A /* MountainIcon.swift in Sources */,
+				2F55EAC9A0E8F03B666FE5CB /* MountainShape.swift in Sources */,
 				ED4BCAF8D098F961C76D765D /* OnboardingClimbingSteps.swift in Sources */,
 				03C89E46E265299B9FB53E2C /* OnboardingDraft.swift in Sources */,
 				05E6E807A5B949F519D6FB75 /* OnboardingFlowView.swift in Sources */,
@@ -1005,8 +1007,6 @@
 				B33A114221242A5E581B60EA /* QuickLogRow.swift in Sources */,
 				05FBE2CF018A672BDEB4A5D7 /* RetroSessionForm.swift in Sources */,
 				13E260131F0A0E45E2A3B61D /* RoadmapProgress.swift in Sources */,
-				D5B1426CE6CBEC6D8C3BF8EA /* RockHoldShape.swift in Sources */,
-				B7BA55CE0254448801D21F90 /* RockIcon.swift in Sources */,
 				920793DED37DCD28C994E59B /* RootTabView.swift in Sources */,
 				B677F75EE8E77731016B61C6 /* RouteStyle.swift in Sources */,
 				542397830B381807178AD979 /* SampleDataGenerator.swift in Sources */,

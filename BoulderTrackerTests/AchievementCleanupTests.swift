@@ -98,12 +98,12 @@ struct OutdoorAchievementTests {
         #expect(!unlocked.contains { $0.id.hasPrefix("outdoor") })
     }
 
-    @Test func outdoorAchievementsUseTheRockIcon() {
+    @Test func outdoorAchievementsUseTheMountainIcon() {
         let outdoorStyles = AchievementEngine.definitions
             .filter { $0.id.hasPrefix("outdoor") }
             .map(\.iconStyle)
 
         #expect(outdoorStyles.count == 2)
-        #expect(outdoorStyles.allSatisfy { $0 == .outdoorRock })
+        #expect(outdoorStyles.allSatisfy { $0 == .outdoorMountain })
     }
 }

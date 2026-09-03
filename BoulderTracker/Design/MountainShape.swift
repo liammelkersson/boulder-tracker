@@ -2,7 +2,7 @@ import SwiftUI
 
 /// Faceted boulder silhouette for outdoor artwork: an irregular polygon with
 /// softened vertices, unlike the smooth plastic blobs of `HoldBlobShape`.
-struct RockHoldShape: Shape {
+struct MountainShape: Shape {
     /// Normalized outline vertices, clockwise from the left face.
     private static let vertices: [CGPoint] = [
         CGPoint(x: 0.10, y: 0.66),

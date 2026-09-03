@@ -167,13 +167,13 @@ enum AchievementEngine {
             AchievementDefinition(
                 id: "outdoor-first", title: "Rock On",
                 detail: "Log your first outdoor session", symbolName: "mountain.2.fill",
-                target: 1, iconStyle: .outdoorRock, currentCount: outdoorSessionCount
+                target: 1, iconStyle: .outdoorMountain, currentCount: outdoorSessionCount
             ),
             AchievementDefinition(
                 id: "outdoor-\(outdoorSessionTarget)", title: "Weathered",
                 detail: "Log \(outdoorSessionTarget) outdoor sessions",
                 symbolName: "mountain.2.fill",
-                target: outdoorSessionTarget, iconStyle: .outdoorRock,
+                target: outdoorSessionTarget, iconStyle: .outdoorMountain,
                 currentCount: outdoorSessionCount
             ),
         ]
