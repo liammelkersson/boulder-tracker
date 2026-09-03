@@ -24,6 +24,7 @@ targets:
       - path: BoulderTracker/BoulderTracker.icon
         type: folder
       - path: Shared
+      - path: SharedActivity
     settings:
       base:
         SWIFT_VERSION: "6.0"

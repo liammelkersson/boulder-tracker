@@ -11,6 +11,7 @@
 		01165853430EE5DE9141301A /* AppTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B520B542390E42DD8D07575 /* AppTab.swift */; };
 		01785976126F61ADF0AE6385 /* WatchSyncCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E4A95DEE8430BECD767778 /* WatchSyncCoordinator.swift */; };
 		018E190907BB9E244498369A /* WatchGradeDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCF5F057E7C8547B62B1505 /* WatchGradeDot.swift */; };
+		03B1A6535807F0689705D0A6 /* ClimbingSessionStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45A9CDCF1C2671208CEDD41 /* ClimbingSessionStateTests.swift */; };
 		03C89E46E265299B9FB53E2C /* OnboardingDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD7AF49D5D6E1178AB1331E /* OnboardingDraft.swift */; };
 		04B0C6D6BAD2B91D526765C7 /* MonthCalendarGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC94E761844AB02B2003A33 /* MonthCalendarGrid.swift */; };
 		04E39D99848CD52CBE32C099 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C82AF7951A8BD71065B2B3 /* HomeView.swift */; };
@@ -30,6 +31,7 @@
 		19194377B988985AF9135811 /* WatchLogSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009E720D310AE79A037ACB13 /* WatchLogSheet.swift */; };
 		195D6B5B62395F0CD3A91FE0 /* ProjectBackfillTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFE2C500A689FC8288D89A0 /* ProjectBackfillTests.swift */; };
 		1A835E2E8F84D928C6F7DD2B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA6FD3BC4658808282791AF /* SettingsView.swift */; };
+		1BA5DD077D22DD4EFD344839 /* ClimbingSessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668E794BDD80E0C5E4C8923A /* ClimbingSessionState.swift */; };
 		1F134743456CC24726BD06E0 /* PersistentModelInvalidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DC0FAF677478A47DF24914 /* PersistentModelInvalidation.swift */; };
 		207D0EAFF1BACAB63A8FE7CE /* AttemptResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF999BAFC8EA39365D0D9714 /* AttemptResult.swift */; };
 		211E573FCE66345AC93537F2 /* SyncLinking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B1C8783CFE8C373B25899 /* SyncLinking.swift */; };
@@ -46,6 +48,7 @@
 		2B656D2F1E947FBD694F6884 /* GradeSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85CCEB1F6DABDB1E13AC0C7 /* GradeSystem.swift */; };
 		2B725C3434CC92E36465EAA7 /* LiveSessionSnapshotReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2575C570F5D92C5A89AEDB /* LiveSessionSnapshotReader.swift */; };
 		2D3FF2569AA778FA7972D6E7 /* PhotoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9720EF636B8867B5B65677 /* PhotoStore.swift */; };
+		2D4045FD57E95A2AA80892FB /* LogSendIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F27331070A21732FAC6A866 /* LogSendIntent.swift */; };
 		2D8901E9CFC3F9BF5DEE689E /* SessionRowCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E508219F5B9235B9A71097 /* SessionRowCard.swift */; };
 		2F4BB9DCFFA7CE916F57752E /* BoulderTrackerWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA5F8BBAF1A411A59FE20C7 /* BoulderTrackerWatchApp.swift */; };
 		2F55EAC9A0E8F03B666FE5CB /* MountainShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2E353B71B0279D433AAD92 /* MountainShape.swift */; };
@@ -72,6 +75,7 @@
 		55F8CD4D1234F94A2C76DCDA /* ActivitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3D9B35FA526E21D013DBF7 /* ActivitiesView.swift */; };
 		5719D085E75B8DAC739FCE1F /* AchievementCleanup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA34A243CD28AB327F2C1D4 /* AchievementCleanup.swift */; };
 		586E5882BB84A72691217344 /* SuggestedProblemsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CB7B0A7FFC9EC49B91066D /* SuggestedProblemsRow.swift */; };
+		58807937FCC2F00C8CFB25A1 /* SessionSendLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C31918AB307A21EA1DE4123 /* SessionSendLog.swift */; };
 		5C2080BF3089501A997EDF37 /* ShoeListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92DE567DF02DC6CF92267F1 /* ShoeListSection.swift */; };
 		5CDA8578297401E5663868CD /* AppLoggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091850DBF3F67E1C04DB611B /* AppLoggers.swift */; };
 		5CF956B7287CEFA77C45CDF7 /* SessionDataExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E58180D832B7890BC041328 /* SessionDataExport.swift */; };
@@ -210,6 +214,7 @@
 		F766FC3F33449E8032845F6B /* ScaledFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF10452FF7A2FE74E4B6BEB /* ScaledFont.swift */; };
 		F7A82AC0C1C5CFB192079727 /* GradeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE0685502F778A36121795E /* GradeLabel.swift */; };
 		F9C34241FAF5180B3B77FF08 /* PendingEventQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68CBE61488C4DC44FD9D9A5 /* PendingEventQueueTests.swift */; };
+		FC9D9B9037C3EB79A231A88F /* ClimbingSessionAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CA147CC3DC4FE08B083101 /* ClimbingSessionAttributes.swift */; };
 		FEF0427E435C410135C4FEF4 /* Shoe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D1E25D7AF4FB0B107FA22E /* Shoe.swift */; };
 /* End PBXBuildFile section */
 
@@ -283,9 +288,11 @@
 		1778B6E8FAE2A2E40C785499 /* OnboardingWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWelcomeView.swift; sourceTree = "<group>"; };
 		1898945277D7FC5A6659B00A /* ProjectStatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectStatsTests.swift; sourceTree = "<group>"; };
 		1906985AF5EB5F1AD207F8DE /* ProjectEditorSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectEditorSheet.swift; sourceTree = "<group>"; };
+		1C31918AB307A21EA1DE4123 /* SessionSendLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSendLog.swift; sourceTree = "<group>"; };
 		1CA62DE8D059648E169E5FC6 /* AchievementEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementEngine.swift; sourceTree = "<group>"; };
 		1CAA3430657EDEE943FE253E /* SessionSummaryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSummaryScreen.swift; sourceTree = "<group>"; };
 		1E2680B5600126CA916566B4 /* LiveWorkoutSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveWorkoutSession.swift; sourceTree = "<group>"; };
+		1F27331070A21732FAC6A866 /* LogSendIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSendIntent.swift; sourceTree = "<group>"; };
 		1F5F92BEBAFBA5F9E171A799 /* WatchRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchRootView.swift; sourceTree = "<group>"; };
 		21360B8DF59856908D8D6401 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22EA8CE50F2E1075BD92211A /* StyleRadialChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleRadialChart.swift; sourceTree = "<group>"; };
@@ -335,6 +342,7 @@
 		60C75C484DB145D3574725BA /* StatsSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsSummary.swift; sourceTree = "<group>"; };
 		60F07A31CEE8B29094FE0D1D /* ModelContextSaveReporting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContextSaveReporting.swift; sourceTree = "<group>"; };
 		622988343F7300983B1A254A /* ThemedNotesField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedNotesField.swift; sourceTree = "<group>"; };
+		668E794BDD80E0C5E4C8923A /* ClimbingSessionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingSessionState.swift; sourceTree = "<group>"; };
 		66FD98120C088455DB39DCD2 /* SessionSyncCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSyncCoding.swift; sourceTree = "<group>"; };
 		676F3F95EE72F71F08BEC68A /* HomeMetricsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMetricsRow.swift; sourceTree = "<group>"; };
 		68CB7B0A7FFC9EC49B91066D /* SuggestedProblemsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedProblemsRow.swift; sourceTree = "<group>"; };
@@ -430,10 +438,12 @@
 		DB3114771B3243C5F78F083A /* WallTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallTexture.swift; sourceTree = "<group>"; };
 		DD1C069C0CDE40F8EB3985C6 /* BoulderTracker.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BoulderTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD8E2B7E92DA0E0EFCCF25DD /* GradeProgressionChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeProgressionChart.swift; sourceTree = "<group>"; };
+		E0CA147CC3DC4FE08B083101 /* ClimbingSessionAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingSessionAttributes.swift; sourceTree = "<group>"; };
 		E232F698B7E6AA885651D127 /* QuickLogRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLogRow.swift; sourceTree = "<group>"; };
 		E29ECD1AAAB173E3B9539B74 /* ProjectLinking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectLinking.swift; sourceTree = "<group>"; };
 		E2F9E152F6717C823659A2F2 /* ShoeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeTests.swift; sourceTree = "<group>"; };
 		E41558BBC79FF5803DAC986B /* SessionProblem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionProblem.swift; sourceTree = "<group>"; };
+		E45A9CDCF1C2671208CEDD41 /* ClimbingSessionStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbingSessionStateTests.swift; sourceTree = "<group>"; };
 		E89BFB5A9BB5923A5E4268C8 /* WatchSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSummaryView.swift; sourceTree = "<group>"; };
 		EA6D61B1F7C5919B8CA54F6D /* HeroTimeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroTimeCard.swift; sourceTree = "<group>"; };
 		EA9720EF636B8867B5B65677 /* PhotoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStore.swift; sourceTree = "<group>"; };
@@ -473,6 +483,7 @@
 				538DDB353BD9CC14703811B5 /* AchievementDefinition.swift */,
 				1CA62DE8D059648E169E5FC6 /* AchievementEngine.swift */,
 				0B6119E0E524C6392F8DA0D6 /* AchievementIconStyle.swift */,
+				668E794BDD80E0C5E4C8923A /* ClimbingSessionState.swift */,
 				6C71E5E5AD9C9BCE4A10838B /* DefaultGymSeeder.swift */,
 				7F14A251EE96332C7B8FB225 /* HealthKitWorkoutWriter.swift */,
 				CC2575C570F5D92C5A89AEDB /* LiveSessionSnapshotReader.swift */,
@@ -569,6 +580,7 @@
 				B9DCA83599B9ADBA15E5882C /* AchievementIdentityTests.swift */,
 				148EDEF3B21B23EE863BEF49 /* AppliedEnvelopeRegistryTests.swift */,
 				00B4F1FB239B32F1AEDBAB1C /* AttemptResultTests.swift */,
+				E45A9CDCF1C2671208CEDD41 /* ClimbingSessionStateTests.swift */,
 				566ECD974130DAB642022B71 /* ColorGradeTests.swift */,
 				0C1542C63A58F3E058E1895E /* FakeSyncLink.swift */,
 				ACC7B2C5F1B96951864FB8D7 /* FakeWorkoutWriter.swift */,
@@ -664,6 +676,16 @@
 			path = Sync;
 			sourceTree = "<group>";
 		};
+		8999C60005A1EB5DA7B676DE /* SharedActivity */ = {
+			isa = PBXGroup;
+			children = (
+				E0CA147CC3DC4FE08B083101 /* ClimbingSessionAttributes.swift */,
+				1F27331070A21732FAC6A866 /* LogSendIntent.swift */,
+				1C31918AB307A21EA1DE4123 /* SessionSendLog.swift */,
+			);
+			path = SharedActivity;
+			sourceTree = "<group>";
+		};
 		93D957E03EE4A76BA152A4BB /* Stats */ = {
 			isa = PBXGroup;
 			children = (
@@ -695,6 +717,7 @@
 				1FCC9D3D05E282824B398B08 /* BoulderTrackerWatch */,
 				DA4681B15D73BD33F7C15A98 /* BoulderTrackerWatchTests */,
 				E98F23996A7935531A6FD6DD /* Shared */,
+				8999C60005A1EB5DA7B676DE /* SharedActivity */,
 				06A387DBE671BD64E74AB998 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -970,6 +993,8 @@
 				D8B196AD7D9BB39D524F226F /* BoulderTrackerApp.swift in Sources */,
 				236F49E3A8F4D1C5027C0767 /* ClimbType.swift in Sources */,
 				82DD79CF326783260565337C /* ClimbTypeDisplay.swift in Sources */,
+				FC9D9B9037C3EB79A231A88F /* ClimbingSessionAttributes.swift in Sources */,
+				1BA5DD077D22DD4EFD344839 /* ClimbingSessionState.swift in Sources */,
 				5F4E23262A8798821213E209 /* ColorGrade.swift in Sources */,
 				7E0903944FEA7BA55A3A2419 /* ColorGradeDisplay.swift in Sources */,
 				77CE49CE6E047AF79D23E274 /* ColorGradeTint.swift in Sources */,
@@ -999,6 +1024,7 @@
 				04E39D99848CD52CBE32C099 /* HomeView.swift in Sources */,
 				2B725C3434CC92E36465EAA7 /* LiveSessionSnapshotReader.swift in Sources */,
 				252BE2397440B829DF7FDEF1 /* LiveSessionView.swift in Sources */,
+				2D4045FD57E95A2AA80892FB /* LogSendIntent.swift in Sources */,
 				07204B5187B526F7A14A1B13 /* ModelContextSaveReporting.swift in Sources */,
 				04B0C6D6BAD2B91D526765C7 /* MonthCalendarGrid.swift in Sources */,
 				9F00B5F8C3FE086504B61A4A /* MountainIcon.swift in Sources */,
@@ -1057,6 +1083,7 @@
 				3228B2FE16266A873D6CC884 /* SessionProblem.swift in Sources */,
 				2D8901E9CFC3F9BF5DEE689E /* SessionRowCard.swift in Sources */,
 				91F3C419257A850EF0E92ABA /* SessionSampleFiltering.swift in Sources */,
+				58807937FCC2F00C8CFB25A1 /* SessionSendLog.swift in Sources */,
 				9B52844355C6568241524E3E /* SessionSummaryScreen.swift in Sources */,
 				C4B66BF59C956939CE59322E /* SessionSyncCoding.swift in Sources */,
 				85A8EEAA9B37E4C2E2182FF2 /* SessionSyncEvent.swift in Sources */,
@@ -1098,6 +1125,7 @@
 				28056C5492FF471CC679243F /* AchievementIdentityTests.swift in Sources */,
 				DCECE4CB59729AE6FD2A2AD5 /* AppliedEnvelopeRegistryTests.swift in Sources */,
 				76BD41BC9ABF92E9B8B2CEEA /* AttemptResultTests.swift in Sources */,
+				03B1A6535807F0689705D0A6 /* ClimbingSessionStateTests.swift in Sources */,
 				8028DB6B9B23C3C0F967644D /* ColorGradeTests.swift in Sources */,
 				A0BDA36B1EE7CFFFDBF35FD4 /* FakeSyncLink.swift in Sources */,
 				6CE4E35638431ED81A87C9E8 /* FakeWorkoutWriter.swift in Sources */,
