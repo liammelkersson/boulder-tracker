@@ -12,10 +12,14 @@ final class SessionProblem {
     var fallCount: Int = 0
     var notes: String?
     var photoFilename: String?
+    /// Legacy flag, read only by `ProjectBackfill`. Kept in the schema until
+    /// every device has migrated to `project`; deleting an attribute while
+    /// older peers still sync the old CloudKit schema drops their writes.
     var isProject: Bool = false
     /// Stable identity across devices; see the note on `Session.syncID`.
     var syncID: UUID?
     var session: Session?
+    var project: Project?
 
     init(name: String, colorGrade: ColorGrade, styles: [RouteStyle],
          flashCount: Int = 0, sendCount: Int = 0, fallCount: Int = 0,

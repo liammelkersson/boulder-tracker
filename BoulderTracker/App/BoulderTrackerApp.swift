@@ -36,7 +36,7 @@ struct BoulderTrackerApp: App {
     private static func makeContainer() throws -> ModelContainer {
         let schema = Schema([
             Session.self, SessionProblem.self, Gym.self, Partner.self,
-            RoadmapProgress.self, Achievement.self, Shoe.self,
+            RoadmapProgress.self, Achievement.self, Shoe.self, Project.self,
         ])
         do {
             return try ModelContainer(
