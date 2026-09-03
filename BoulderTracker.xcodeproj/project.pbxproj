@@ -59,6 +59,7 @@
 		4A41929544CC59552EE4C8D2 /* StatsSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C75C484DB145D3574725BA /* StatsSummary.swift */; };
 		4D76FE5F584FFAD4E1783043 /* GradeSystemEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7DA70CCA04996A414CFA21 /* GradeSystemEnvironment.swift */; };
 		526B2EFB15348ADAB481ABAB /* OnboardingWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1778B6E8FAE2A2E40C785499 /* OnboardingWelcomeView.swift */; };
+		52A415BAAB8D868673BD6996 /* ProjectStatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898945277D7FC5A6659B00A /* ProjectStatsTests.swift */; };
 		53FDB82CD57D7584D27979C9 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A54E313A2750683DD90D0C /* Project.swift */; };
 		542397830B381807178AD979 /* SampleDataGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4AA9D71B3EB492E40C59FE /* SampleDataGenerator.swift */; };
 		55F8CD4D1234F94A2C76DCDA /* ActivitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3D9B35FA526E21D013DBF7 /* ActivitiesView.swift */; };
@@ -182,6 +183,7 @@
 		E28487E8D08D56160AC8CC89 /* DefaultGymSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C71E5E5AD9C9BCE4A10838B /* DefaultGymSeeder.swift */; };
 		E397CEB4CEF66A9BD4114AD5 /* SessionSyncOutboxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B070312D993A61120736DFEE /* SessionSyncOutboxTests.swift */; };
 		E399CE8504DC792F1D213131 /* SessionSyncOutbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDFB9042326AD35AEBA48EF /* SessionSyncOutbox.swift */; };
+		E3EC322C96FE32D14D059841 /* ProjectStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFCAA7941AB3FC08E0C5CA3 /* ProjectStats.swift */; };
 		E581C0471E9E23C2C37CA339 /* WeeklyStatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A040F280FA42E4682569B784 /* WeeklyStatsTests.swift */; };
 		E60BE443A1E1C56D7DE15182 /* StatsAggregator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755C6E6C165C3CEB58EBD3D8 /* StatsAggregator.swift */; };
 		EB9680061DC8848569F5CF4B /* PersonalBestsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38E25F8AEA66C33EDFFA4A2 /* PersonalBestsSection.swift */; };
@@ -260,6 +262,7 @@
 		16C0D743A0331CB6D142FEFE /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
 		1739CD84A9422CED9643F574 /* WatchSyncCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSyncCoordinatorTests.swift; sourceTree = "<group>"; };
 		1778B6E8FAE2A2E40C785499 /* OnboardingWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingWelcomeView.swift; sourceTree = "<group>"; };
+		1898945277D7FC5A6659B00A /* ProjectStatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectStatsTests.swift; sourceTree = "<group>"; };
 		1CA62DE8D059648E169E5FC6 /* AchievementEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementEngine.swift; sourceTree = "<group>"; };
 		1CAA3430657EDEE943FE253E /* SessionSummaryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSummaryScreen.swift; sourceTree = "<group>"; };
 		1E2680B5600126CA916566B4 /* LiveWorkoutSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveWorkoutSession.swift; sourceTree = "<group>"; };
@@ -323,6 +326,7 @@
 		794B6890351EF2B4D6D45964 /* ClimbTypeDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimbTypeDisplay.swift; sourceTree = "<group>"; };
 		7A7BD9DB6D63B0EEAFA0BE58 /* VolumeTrendChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeTrendChart.swift; sourceTree = "<group>"; };
 		7CA59ECA983557C4012E265A /* GradeDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeDot.swift; sourceTree = "<group>"; };
+		7CFCAA7941AB3FC08E0C5CA3 /* ProjectStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectStats.swift; sourceTree = "<group>"; };
 		7D170B0F89A44AA88F76D40C /* StatTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatTile.swift; sourceTree = "<group>"; };
 		7E3C58F6B8FDFFE7AF23B43B /* Gym.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gym.swift; sourceTree = "<group>"; };
 		7E71D6A19DF52AF162E10B07 /* CurrentProjectCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentProjectCard.swift; sourceTree = "<group>"; };
@@ -541,6 +545,7 @@
 				957C9D7DFD7D67AE2338ED86 /* PhoneSyncCoordinatorTests.swift */,
 				A5D81CE89D8307909A0EAA29 /* PhoneWatchSyncIntegrationTests.swift */,
 				D287E844A2853EACE12280D5 /* PhotoStoreTests.swift */,
+				1898945277D7FC5A6659B00A /* ProjectStatsTests.swift */,
 				30CABC44334A3CE1DC083CC4 /* SampleDataGeneratorTests.swift */,
 				995E0A981AF092D33D2D0F06 /* SessionCompletionTests.swift */,
 				9D6609FDD69031DC2053A105 /* SessionDurationFormatTests.swift */,
@@ -624,6 +629,7 @@
 				F38E25F8AEA66C33EDFFA4A2 /* PersonalBestsSection.swift */,
 				4B0EFADF985A2379432C8C7D /* PetalWedgeShape.swift */,
 				BA1C397AD23F64B56B11408A /* ProjectAggregator.swift */,
+				7CFCAA7941AB3FC08E0C5CA3 /* ProjectStats.swift */,
 				37C7D62A093F50C7D75E9A52 /* SampleDataToggleRow.swift */,
 				755C6E6C165C3CEB58EBD3D8 /* StatsAggregator.swift */,
 				F44AEB6C3C0E7CA06725D32B /* StatsPeriod.swift */,
@@ -967,6 +973,7 @@
 				B43C1D12CE854E40CC705908 /* ProfileView.swift in Sources */,
 				53FDB82CD57D7584D27979C9 /* Project.swift in Sources */,
 				8D343A8ECB192E2988E65867 /* ProjectAggregator.swift in Sources */,
+				E3EC322C96FE32D14D059841 /* ProjectStats.swift in Sources */,
 				DDA5706FF30127C77797938C /* ProjectStatus.swift in Sources */,
 				E074CC9402720B1A1301C113 /* ProjectsSheet.swift in Sources */,
 				F6666B8955AE8C11E3DDD5C4 /* QuickAddProblemSheet.swift in Sources */,
@@ -1046,6 +1053,7 @@
 				9EF988840F672DD84534A0D9 /* PhoneSyncCoordinatorTests.swift in Sources */,
 				BD7B44E63787B2B51F5FA69B /* PhoneWatchSyncIntegrationTests.swift in Sources */,
 				AEE9AE18693236418552EB4D /* PhotoStoreTests.swift in Sources */,
+				52A415BAAB8D868673BD6996 /* ProjectStatsTests.swift in Sources */,
 				787263986FFF268EC456C9DA /* SampleDataGeneratorTests.swift in Sources */,
 				A71568EE6903A1FB1568D41C /* SessionCompletionTests.swift in Sources */,
 				48A1D4841D76E320E8C1831F /* SessionDurationFormatTests.swift in Sources */,
