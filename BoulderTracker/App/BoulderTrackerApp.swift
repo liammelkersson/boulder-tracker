@@ -20,6 +20,7 @@ struct BoulderTrackerApp: App {
             Logger.persistence.error("Default gym seeding failed: \(error)")
         }
         AchievementCleanup.removeUnearnedOnce(context: container.mainContext, defaults: .standard)
+        ProjectBackfill.runIfNeeded(context: container.mainContext, defaults: .standard)
         Self.resetOnboardingForUITestingIfRequested(defaults: .standard)
         syncCoordinator = PhoneSyncCoordinator(context: container.mainContext)
     }

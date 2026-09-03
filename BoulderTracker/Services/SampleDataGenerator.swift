@@ -51,6 +51,12 @@ enum SampleDataGenerator {
         for shoe in sampleShoes {
             context.delete(shoe)
         }
+        let sampleProjects = try context.fetch(
+            FetchDescriptor<Project>(predicate: #Predicate { $0.isSampleData })
+        )
+        for project in sampleProjects {
+            context.delete(project)
+        }
         try context.save()
     }
 
