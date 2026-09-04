@@ -10,6 +10,7 @@ struct ProblemTile: View {
     let problem: SessionProblem
 
     @State private var confirmingDelete = false
+    @State private var isEditing = false
 
     var body: some View {
         // Delete Problem removes this row's model; the final body evaluation
@@ -35,6 +36,11 @@ struct ProblemTile: View {
         .themedCard(sunken: true)
         .contextMenu {
             Button {
+                isEditing = true
+            } label: {
+                Label("Edit Problem", systemImage: "pencil")
+            }
+            Button {
                 toggleProjectLink()
             } label: {
                 Label(
@@ -55,6 +61,9 @@ struct ProblemTile: View {
             Button("Delete Problem", role: .destructive, action: deleteProblem)
         } message: {
             Text("Removes the problem, its logs, and its photo. Cannot be undone.")
+        }
+        .sheet(isPresented: $isEditing) {
+            EditProblemSheet(problem: problem)
         }
     }
 

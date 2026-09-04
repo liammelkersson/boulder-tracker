@@ -7,6 +7,7 @@ import SwiftData
 final class Project {
     var name: String = ""
     var colorGrade: ColorGrade = ColorGrade.unknown
+    var styles: [RouteStyle] = []
     var status: ProjectStatus = ProjectStatus.active
     var notes: String?
     var createdDate: Date = Date.now
@@ -21,10 +22,11 @@ final class Project {
     @Relationship(deleteRule: .nullify, inverse: \SessionProblem.project)
     var problems: [SessionProblem]? = []
 
-    init(name: String, colorGrade: ColorGrade = .unknown, gym: Gym? = nil,
-         status: ProjectStatus = .active, createdDate: Date = .now) {
+    init(name: String, colorGrade: ColorGrade = .unknown, styles: [RouteStyle] = [],
+         gym: Gym? = nil, status: ProjectStatus = .active, createdDate: Date = .now) {
         self.name = name
         self.colorGrade = colorGrade
+        self.styles = styles
         self.gym = gym
         self.status = status
         self.createdDate = createdDate

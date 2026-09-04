@@ -29,6 +29,7 @@ struct ModelRoundTripTests {
             name: "The Roof", colorGrade: .red, styles: [.overhang, .sloper],
             flashCount: 0, sendCount: 1, fallCount: 3
         )
+        problem.skills = [.tensionCarry, .hipRotation]
         session.problems.append(problem)
         context.insert(session)
         try context.save()
@@ -37,6 +38,7 @@ struct ModelRoundTripTests {
         #expect(fetched.count == 1)
         #expect(fetched.first?.problems.count == 1)
         #expect(fetched.first?.problems.first?.styles == [.overhang, .sloper])
+        #expect(fetched.first?.problems.first?.skills == [.tensionCarry, .hipRotation])
         #expect(fetched.first?.problems.first?.name == "The Roof")
         #expect(fetched.first?.climbType == .topRope)
         #expect(fetched.first?.gym?.name == "Klättervigören Jönköping")
@@ -131,6 +133,17 @@ struct ModelRoundTripTests {
         #expect(stored.first?.isCurrent == false)
         #expect(stored.first?.problems?.first?.name == "Elektra")
         #expect(problem.project?.gym?.name == "Klätterverket")
+    }
+
+    @Test func projectRoundTripsWithItsOwnStyles() throws {
+        let container = try makeInMemoryContainer()
+        let context = ModelContext(container)
+        let project = Project(name: "Elektra", colorGrade: .red, styles: [.crimp, .overhang])
+        context.insert(project)
+        try context.save()
+
+        let stored = try context.fetch(FetchDescriptor<Project>())
+        #expect(stored.first?.styles == [.crimp, .overhang])
     }
 
     @Test func markSentIfActiveOnlyMovesActiveProjects() {

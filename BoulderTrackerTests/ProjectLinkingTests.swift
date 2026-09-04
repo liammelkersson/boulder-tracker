@@ -6,10 +6,11 @@ import SwiftData
 @MainActor
 struct ProjectLinkingTests {
     private func makeProblem(named name: String, gym: Gym?,
+                             styles: [RouteStyle] = [],
                              context: ModelContext) -> SessionProblem {
         let session = Session(startTime: .now, gym: gym, partners: [])
         context.insert(session)
-        let problem = SessionProblem(name: name, colorGrade: .red, styles: [])
+        let problem = SessionProblem(name: name, colorGrade: .red, styles: styles)
         session.problems.append(problem)
         return problem
     }
@@ -60,6 +61,28 @@ struct ProjectLinkingTests {
 
         #expect(ProjectLinking.linkProject(to: problem, in: context) == nil)
         #expect(problem.project == nil)
+    }
+
+    @Test func createdProjectInheritsTheProblemStyles() throws {
+        let context = ModelContext(try makeInMemoryContainer())
+        let problem = makeProblem(
+            named: "Elektra", gym: nil, styles: [.crimp, .overhang], context: context
+        )
+
+        let project = ProjectLinking.linkProject(to: problem, in: context)
+
+        #expect(project?.styles == [.crimp, .overhang])
+    }
+
+    @Test func reusedProjectKeepsItsOwnStyles() throws {
+        let context = ModelContext(try makeInMemoryContainer())
+        let existing = Project(name: "Elektra", colorGrade: .red, styles: [.slab])
+        context.insert(existing)
+        let problem = makeProblem(named: "Elektra", gym: nil, styles: [.dyno], context: context)
+
+        ProjectLinking.linkProject(to: problem, in: context)
+
+        #expect(existing.styles == [.slab])
     }
 
     @Test func unlinkClearsTheProject() throws {

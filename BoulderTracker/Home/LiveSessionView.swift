@@ -32,6 +32,7 @@ struct LiveSessionView: View {
                 timerHeader
                 LiveGradeTally(problems: session.problems)
                     .padding(.top, 22)
+                FlashGoalCard(session: session, recentSessions: finishedSessions)
                 QuickLogRow(session: session)
                     .padding(.top, 24)
                 problemsSection
@@ -68,6 +69,12 @@ struct LiveSessionView: View {
                 .padding(.top, 6)
         }
         .padding(.top, 40)
+    }
+
+    /// Ended sessions only: the live one is the thing being measured, and demo
+    /// rows must not set a flash target.
+    private var finishedSessions: [Session] {
+        allSessions.persisted.withoutSampleData.filter { !$0.isLive }
     }
 
     private var sessionContextLabel: String {

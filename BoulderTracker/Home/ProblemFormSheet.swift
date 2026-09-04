@@ -1,17 +1,25 @@
 import SwiftUI
 import PhotosUI
 
-/// The problem entry form, shared by the live-session sheet and the past
-/// session form. It owns no store access: it hands back a finished draft and
-/// the caller decides where the problem lands.
+/// The problem entry form, shared by the live-session sheet, the past session
+/// form, and the editor for a stored problem. It owns no store access: it hands
+/// back a finished draft and the caller decides where the problem lands.
 struct ProblemFormSheet: View {
     @Environment(\.palette) private var palette
     let title: String
     let actionTitle: String
     let onSubmit: (ProblemDraft) -> Void
 
-    @State private var draft = ProblemDraft()
+    @State private var draft: ProblemDraft
     @State private var selectedPhotoItem: PhotosPickerItem?
+
+    init(title: String, actionTitle: String, initialDraft: ProblemDraft = ProblemDraft(),
+         onSubmit: @escaping (ProblemDraft) -> Void) {
+        self.title = title
+        self.actionTitle = actionTitle
+        self.onSubmit = onSubmit
+        _draft = State(initialValue: initialDraft)
+    }
 
     var body: some View {
         ScrollView {
@@ -23,7 +31,8 @@ struct ProblemFormSheet: View {
                     ThemedTextField(placeholder: "e.g. Elektra", text: $draft.name)
                 }
                 field(label: "Grade") { GradePicker(selection: $draft.colorGrade) }
-                field(label: "Style") { styleChips }
+                field(label: "Style") { StyleChipsPicker(selection: $draft.styles) }
+                field(label: "Fundamentals") { SkillChipsPicker(selection: $draft.skills) }
                 field(label: "Notes") {
                     ThemedNotesField(placeholder: "Optional notes", text: $draft.notes)
                 }
@@ -56,27 +65,6 @@ struct ProblemFormSheet: View {
             SectionHeading(title: label)
                 .scaledFont(size: 12, weight: .semibold)
             content()
-        }
-    }
-
-    private var styleChips: some View {
-        FlowLayout(spacing: 8) {
-            ForEach(RouteStyle.allCases) { style in
-                SelectablePill(
-                    title: style.displayName,
-                    isSelected: draft.styles.contains(style)
-                ) {
-                    toggleStyle(style)
-                }
-            }
-        }
-    }
-
-    private func toggleStyle(_ style: RouteStyle) {
-        if draft.styles.contains(style) {
-            draft.styles.remove(style)
-        } else {
-            draft.styles.insert(style)
         }
     }
 

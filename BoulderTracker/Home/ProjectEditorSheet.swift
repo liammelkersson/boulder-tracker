@@ -11,6 +11,7 @@ struct ProjectEditorSheet: View {
 
     @State private var name = ""
     @State private var selectedGrade: ColorGrade = .green
+    @State private var selectedStyles: Set<RouteStyle> = []
     @State private var selectedGym: Gym?
     @State private var status: ProjectStatus = .active
     @State private var notes = ""
@@ -31,6 +32,7 @@ struct ProjectEditorSheet: View {
                     ThemedTextField(placeholder: "e.g. Elektra", text: $name)
                 }
                 field(label: "Grade") { GradePicker(selection: $selectedGrade) }
+                field(label: "Style") { StyleChipsPicker(selection: $selectedStyles) }
                 field(label: "Gym") { gymPills }
                 field(label: "Status") { statusPills }
                 field(label: "Notes") {
@@ -105,6 +107,7 @@ struct ProjectEditorSheet: View {
         guard let project, !project.isInvalidated else { return }
         name = project.name
         selectedGrade = project.colorGrade
+        selectedStyles = Set(project.styles)
         selectedGym = project.gym
         status = project.status
         notes = project.notes ?? ""
@@ -118,6 +121,7 @@ struct ProjectEditorSheet: View {
         }()
         target.name = name
         target.colorGrade = selectedGrade
+        target.styles = Array(selectedStyles)
         target.gym = selectedGym
         target.status = status
         target.notes = notes.isEmpty ? nil : notes

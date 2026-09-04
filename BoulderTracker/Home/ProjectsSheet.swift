@@ -149,6 +149,11 @@ private struct ProjectRowSummary: View {
             Text(subtitle)
                 .scaledFont(size: 12)
                 .foregroundStyle(palette.textFaint)
+            if !project.styles.isEmpty {
+                Text(project.styles.map(\.displayName).joined(separator: ", "))
+                    .scaledFont(size: 12)
+                    .foregroundStyle(palette.textFaint)
+            }
         }
     }
 

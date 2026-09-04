@@ -21,7 +21,9 @@ struct StatsSection: View {
             GradeProgressionChart(sessions: periodSessions)
             VolumeTrendChart(sessions: periodSessions)
             GradeDistributionCard(sessions: periodSessions)
+            PyramidCard(sessions: periodSessions)
             StyleRadialChart(sessions: periodSessions)
+            SkillCoverageCard(sessions: periodSessions)
             PersonalBestsSection(sessions: periodSessions)
             SampleDataToggleRow()
         }

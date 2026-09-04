@@ -31,6 +31,7 @@ enum ProjectLinking {
         let project = Project(
             name: problem.name,
             colorGrade: problem.colorGrade,
+            styles: problem.styles,
             gym: problem.session?.gym,
             status: problem.wasSent ? .sent : .active
         )

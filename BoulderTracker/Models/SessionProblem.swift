@@ -7,6 +7,9 @@ final class SessionProblem {
     var name: String = ""
     var colorGrade: ColorGrade = ColorGrade.unknown
     var styles: [RouteStyle] = []
+    /// Fundamentals this problem taught. Empty on quick logs and on every row
+    /// written before skill tagging existed.
+    var skills: [MovementSkill] = []
     var flashCount: Int = 0
     var sendCount: Int = 0
     var fallCount: Int = 0
