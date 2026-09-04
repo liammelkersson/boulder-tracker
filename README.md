@@ -1,5 +1,7 @@
 # Boulder Tracker
 
+<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcG40NWQzcHJtemh5c3R2MG04YmVoamhycXkxbHpqazVxZnJ0ZTFqdCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/5nqwsSMu5mKeieCaJ5/giphy.gif" alt="Bouldering" width="320" />
+
 Personal bouldering tracker for iOS and watchOS. Log gym sessions live or after the
 fact, track progression through a colour-based grade scale, and stay motivated with
 stats and achievements.
@@ -10,10 +12,15 @@ SwiftUI + SwiftData, no third-party packages.
 
 - **Live sessions** — start a timer at the gym and quick-add problems as you send
   them, or enter a session retroactively.
-- **Per-problem logging** — colour grade, route styles, attempt count, result
-  (flash / send / project), optional photo, notes.
-- **Projects** — track unsent problems across sessions until they go.
-- **Calendar & stats** — month grid of sessions, charts, personal bests.
+- **Per-problem logging** — colour grade, route styles, movement-skill tags,
+  attempt count, result (flash / send / project), optional photo, notes. Logged
+  problems can be edited afterwards from the tile's context menu.
+- **Projects** — track unsent problems across sessions until they go, with their
+  own route styles inherited when a problem is promoted.
+- **Calendar & stats** — month grid of sessions, charts, personal bests, a grade
+  pyramid over distinct sends, and a per-session flash goal.
+- **Variety coverage** — wall-angle, hold-type, and movement-skill coverage over a
+  period, naming what you haven't touched ("go find a roof").
 - **Achievements** — ~20 achievements, unlocked automatically on session save.
 - **Apple Watch app** — start and log a session from the wrist, with heart rate and
   active energy from a live `HKWorkoutSession`, synced back to the phone.
