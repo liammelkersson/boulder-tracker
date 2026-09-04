@@ -1,8 +1,37 @@
+# macOS
 .DS_Store
+Icon?
+
+# Xcode — user-specific state
 xcuserdata/
 *.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+*.xccheckout
+
+# Xcode — build products
 build/
 DerivedData/
+*.ipa
+*.dSYM
+*.dSYM.zip
+*.hmap
+*.moved-aside
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Packages/
+Package.resolved
+
+# Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Tooling
 .worktrees/
-Icon?
+.claude/settings.local.json
+.superpowers/
+
+# Local screenshots from `xcrun simctl io ... screenshot`
 /boulder-tracker-iOS-Default-*.png
