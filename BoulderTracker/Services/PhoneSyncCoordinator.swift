@@ -11,6 +11,9 @@ final class PhoneSyncCoordinator {
     private let inbox: SessionSyncInbox
     private let outbox: SessionSyncOutbox
     private let link: any SyncLinking
+    /// Called after an inbound event lands, so the Lock Screen follows a log
+    /// made on the watch — the case the Live Activity exists for.
+    var onInboundEventApplied: (() -> Void)?
 
     init(context: ModelContext, link: any SyncLinking, queue: PendingEventQueue) {
         self.context = context
@@ -85,15 +88,11 @@ final class PhoneSyncCoordinator {
             return
         }
         inbox.apply(envelope)
+        onInboundEventApplied?()
     }
 
     private func answerLiveSessionRequest() {
-        var descriptor = FetchDescriptor<Session>(
-            predicate: #Predicate { $0.endTime == nil },
-            sortBy: [SortDescriptor(\.startTime, order: .reverse)]
-        )
-        descriptor.fetchLimit = 1
-        let live = (try? context.fetch(descriptor))?.first
+        let live = LiveSessionFetch.current(in: context)
         outbox.send(.sessionSnapshot(SessionSnapshotPayload(
             liveSession: LiveSessionSnapshotReader.snapshot(of: live)
         )))

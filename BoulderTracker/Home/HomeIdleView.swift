@@ -28,7 +28,7 @@ struct HomeIdleView: View {
     private var scrolledContent: some View {
         VStack(alignment: .leading, spacing: 22) {
             HeroTimeCard(sessions: recentPeriodSessions)
-            CurrentProjectCard(sessions: sessions)
+            CurrentProjectCard()
             HomeMetricsRow(sessions: recentPeriodSessions)
             ActivitySection(sessions: sessions)
         }

@@ -6,9 +6,11 @@ struct ProblemTile: View {
     @Environment(\.gradeSystem) private var gradeSystem
     @Environment(\.modelContext) private var modelContext
     @Environment(PhoneSyncCoordinator.self) private var syncCoordinator
+    @Environment(SessionActivityPresenter.self) private var activityPresenter
     let problem: SessionProblem
 
     @State private var confirmingDelete = false
+    @State private var isEditing = false
 
     var body: some View {
         // Delete Problem removes this row's model; the final body evaluation
@@ -34,14 +36,19 @@ struct ProblemTile: View {
         .themedCard(sunken: true)
         .contextMenu {
             Button {
-                problem.isProject.toggle()
-                modelContext.saveReportingFailure(operation: "project mark toggle")
+                isEditing = true
+            } label: {
+                Label("Edit Problem", systemImage: "pencil")
+            }
+            Button {
+                toggleProjectLink()
             } label: {
                 Label(
-                    problem.isProject ? "Remove project mark" : "Mark as project",
-                    systemImage: problem.isProject ? "flag.slash" : "flag"
+                    problem.project == nil ? "Mark as project" : "Remove project mark",
+                    systemImage: problem.project == nil ? "flag" : "flag.slash"
                 )
             }
+            .disabled(problem.name.isEmpty)
             Button(role: .destructive) {
                 confirmingDelete = true
             } label: {
@@ -55,6 +62,20 @@ struct ProblemTile: View {
         } message: {
             Text("Removes the problem, its logs, and its photo. Cannot be undone.")
         }
+        .sheet(isPresented: $isEditing) {
+            EditProblemSheet(problem: problem)
+        }
+    }
+
+    /// A nameless quick log cannot become a project — there would be no way to
+    /// find it again — so the menu item is disabled for one.
+    private func toggleProjectLink() {
+        if problem.project == nil {
+            ProjectLinking.linkProject(to: problem, in: modelContext)
+        } else {
+            ProjectLinking.unlinkProject(from: problem)
+        }
+        modelContext.saveReportingFailure(operation: "project mark toggle")
     }
 
     private func deleteProblem() {
@@ -71,7 +92,7 @@ struct ProblemTile: View {
                 Text(problem.displayName)
                     .scaledFont(size: 15, weight: .semibold)
                     .foregroundStyle(palette.text)
-                if problem.isProject {
+                if problem.project != nil {
                     Image(systemName: "flag.fill")
                         .scaledFont(size: 10)
                         .foregroundStyle(palette.accentText)
@@ -128,6 +149,7 @@ struct ProblemTile: View {
             problem.recordResult(result)
             if let session = problem.session {
                 syncCoordinator.announceAttempt(on: problem, in: session, result: result)
+                activityPresenter.refresh(for: session)
             }
             modelContext.saveReportingFailure(operation: "attempt log")
         } label: {

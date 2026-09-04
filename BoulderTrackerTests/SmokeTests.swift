@@ -3,8 +3,9 @@ import Foundation
 @testable import BoulderTracker
 
 struct SmokeTests {
-    @Test func appTabHasFourCases() {
-        #expect(AppTab.allCases.count == 4)
+    @Test func tabBarCarriesTheStartSessionAction() {
+        #expect(AppTab.allCases == [.climb, .activities, .startSession, .profile])
+        #expect(AppTab.allCases.filter(\.isAction) == [.startSession])
     }
 
     @Test func exportProducesJSONForEmptySessionList() throws {

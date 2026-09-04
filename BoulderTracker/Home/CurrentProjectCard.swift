@@ -1,18 +1,15 @@
 import SwiftUI
+import SwiftData
 
 struct CurrentProjectCard: View {
     @Environment(\.palette) private var palette
     @Environment(\.gradeSystem) private var gradeSystem
-    @AppStorage(AppPreferences.currentProjectNameKey) private var currentProjectName = ""
-    let sessions: [Session]
+    @Query private var projects: [Project]
 
     @State private var showingProjects = false
 
-    private var project: ProjectGroup? {
-        ProjectAggregator.currentProject(
-            in: sessions.persisted,
-            preferredName: currentProjectName.isEmpty ? nil : currentProjectName
-        )
+    private var project: Project? {
+        ProjectSelection.current(from: projects)
     }
 
     var body: some View {
@@ -31,11 +28,11 @@ struct CurrentProjectCard: View {
                 }
                 if let project {
                     HStack(spacing: 12) {
-                        HoldIcon(grade: project.grade, size: 44)
+                        HoldIcon(grade: project.colorGrade, size: 44)
                         projectDescription(project)
                     }
                 } else {
-                    Text("No active project — long-press a problem to mark one")
+                    Text("No active project — tap to add one")
                         .scaledFont(size: 13)
                         .foregroundStyle(palette.textDim)
                 }
@@ -47,19 +44,20 @@ struct CurrentProjectCard: View {
         }
         .buttonStyle(.plain)
         .sheet(isPresented: $showingProjects) {
-            ProjectsSheet(sessions: sessions)
+            ProjectsSheet()
         }
     }
 
-    private func projectDescription(_ project: ProjectGroup) -> some View {
-        let sessionsLabel = project.sessionCount == 1
+    private func projectDescription(_ project: Project) -> some View {
+        let sessionCount = ProjectStats(project: project).sessionCount
+        let sessionsLabel = sessionCount == 1
             ? "1 session on this problem"
-            : "\(project.sessionCount) sessions on this problem"
+            : "\(sessionCount) sessions on this problem"
         return VStack(alignment: .leading, spacing: 2) {
-            Text("\(project.grade.detailLabel(in: gradeSystem)) · \u{201C}\(project.name)\u{201D}")
+            Text("\(project.colorGrade.detailLabel(in: gradeSystem)) · \u{201C}\(project.name)\u{201D}")
                 .scaledFont(size: 16, weight: .semibold)
                 .foregroundStyle(palette.text)
-            Text("\(project.gymName ?? "Unknown gym") · \(sessionsLabel)")
+            Text("\(project.gym?.name ?? "Unknown gym") · \(sessionsLabel)")
                 .scaledFont(size: 13)
                 .foregroundStyle(palette.textDim)
         }

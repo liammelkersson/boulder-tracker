@@ -20,6 +20,7 @@ struct SessionSummaryScreen: View {
     @State private var unlockedTitles: [String]?
     @State private var isSaving = false
     @State private var confirmingDiscard = false
+    @State private var showingAddProblem = false
 
     var body: some View {
         // Discard deletes the session; the final body evaluation after that
@@ -50,6 +51,9 @@ struct SessionSummaryScreen: View {
         .onAppear {
             partnerNames = session.partners.map(\.name).joined(separator: ", ")
             selectedShoe = session.shoe
+        }
+        .sheet(isPresented: $showingAddProblem) {
+            QuickAddProblemSheet(session: session)
         }
         .alert("Achievements unlocked", isPresented: achievementAlertBinding) {
             Button("Nice") { onFinished() }
@@ -92,28 +96,40 @@ struct SessionSummaryScreen: View {
         }
     }
 
-    @ViewBuilder
     private var problemList: some View {
-        if !session.problems.isEmpty {
-            VStack(alignment: .leading, spacing: 8) {
-                SectionHeading(title: "Problems")
-                ForEach(session.problems) { problem in
-                    HStack(spacing: 10) {
-                        GradeDot(grade: problem.colorGrade)
-                        Text(problem.displayName)
-                            .scaledFont(size: 14, weight: .semibold)
-                            .foregroundStyle(palette.text)
-                        Spacer()
-                        Text("\(problem.flashCount)F · \(problem.sendCount)S · \(problem.fallCount)X")
-                            .scaledFont(size: 12)
-                            .foregroundStyle(palette.textFaint)
-                    }
-                    .padding(.horizontal, 14)
-                    .padding(.vertical, 12)
-                    .themedCard(cornerRadius: 14)
-                }
+        VStack(alignment: .leading, spacing: 8) {
+            SectionHeading(title: "Problems")
+            if session.problems.isEmpty {
+                Text("Nothing logged this session — add anything you forgot.")
+                    .scaledFont(size: 13)
+                    .foregroundStyle(palette.textFaint)
             }
+            ForEach(session.problems) { problem in
+                problemRow(problem)
+            }
+            Button {
+                showingAddProblem = true
+            } label: {
+                SecondaryButtonLabel(title: "+ Add Problem")
+            }
+            .buttonStyle(.plain)
         }
+    }
+
+    private func problemRow(_ problem: SessionProblem) -> some View {
+        HStack(spacing: 10) {
+            GradeDot(grade: problem.colorGrade)
+            Text(problem.displayName)
+                .scaledFont(size: 14, weight: .semibold)
+                .foregroundStyle(palette.text)
+            Spacer()
+            Text("\(problem.flashCount)F · \(problem.sendCount)S · \(problem.fallCount)X")
+                .scaledFont(size: 12)
+                .foregroundStyle(palette.textFaint)
+        }
+        .padding(.horizontal, 14)
+        .padding(.vertical, 12)
+        .themedCard(cornerRadius: 14)
     }
 
     private var partnerField: some View {

@@ -30,6 +30,16 @@ enum StatsAggregator {
         return counts
     }
 
+    /// Distinct problems sent per grade. Unlike `sendCountPerGrade` a repeat
+    /// ascent adds nothing: a pyramid counts climbs, not laps.
+    static func sentProblemCountPerGrade(of sessions: [Session]) -> [ColorGrade: Int] {
+        var counts: [ColorGrade: Int] = [:]
+        for problem in allProblems(in: sessions) where problem.wasSent {
+            counts[problem.colorGrade, default: 0] += 1
+        }
+        return counts
+    }
+
     static func sendRatePerStyle(of sessions: [Session]) -> [RouteStyle: Double] {
         var totals: [RouteStyle: Int] = [:]
         var sends: [RouteStyle: Int] = [:]

@@ -1,8 +1,8 @@
 import SwiftUI
 
-/// Outdoor counterpart to `HoldIcon`: a rock silhouette with the same
+/// Outdoor counterpart to `HoldIcon`: a mountain silhouette with the same
 /// lighting treatment but no bolt — real rock is not bolted to a wall.
-struct RockIcon: View {
+struct MountainIcon: View {
     @Environment(\.palette) private var palette
     var size: CGFloat = 34
     var baseColorOverride: Color?
@@ -13,10 +13,10 @@ struct RockIcon: View {
     private var baseColor: Color { baseColorOverride ?? Self.graniteColor }
 
     var body: some View {
-        RockHoldShape()
+        MountainShape()
             .fill(baseColor)
             .overlay {
-                RockHoldShape()
+                MountainShape()
                     .fill(
                         LinearGradient(
                             colors: [palette.border.opacity(0.28), .clear, .black.opacity(0.30)],
@@ -25,7 +25,7 @@ struct RockIcon: View {
                     )
             }
             .overlay {
-                RockHoldShape().stroke(palette.border.opacity(0.25), lineWidth: 1)
+                MountainShape().stroke(palette.border.opacity(0.25), lineWidth: 1)
             }
             .frame(width: size, height: size)
     }

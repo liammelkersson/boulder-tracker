@@ -107,8 +107,8 @@ struct AchievementsGridView: View {
         switch definition.iconStyle {
         case .plasticHold:
             HoldIcon(grade: shapeGrade, size: Self.holdIconSize, baseColorOverride: baseColor)
-        case .outdoorRock:
-            RockIcon(size: Self.holdIconSize, baseColorOverride: baseColor)
+        case .outdoorMountain:
+            MountainIcon(size: Self.holdIconSize, baseColorOverride: baseColor)
         }
     }
 

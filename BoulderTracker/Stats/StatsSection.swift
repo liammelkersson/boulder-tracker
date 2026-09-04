@@ -1,7 +1,9 @@
 import SwiftUI
 import SwiftData
 
-struct StatsView: View {
+/// The stats body: period picker, summary tiles, charts, personal bests. Owns
+/// its own period selection so any screen can drop it in.
+struct StatsSection: View {
     @Environment(\.palette) private var palette
     @Query(sort: \Session.startTime, order: .reverse) private var sessions: [Session]
     @State private var period: StatsPeriod = .threeMonths
@@ -13,23 +15,18 @@ struct StatsView: View {
     }
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 28) {
-                Text("Stats")
-                    .scaledFont(size: 30, weight: .bold)
-                    .foregroundStyle(palette.text)
-                periodSelector
-                summaryGrid
-                GradeProgressionChart(sessions: periodSessions)
-                VolumeTrendChart(sessions: periodSessions)
-                GradeDistributionCard(sessions: periodSessions)
-                StyleRadialChart(sessions: periodSessions)
-                PersonalBestsSection(sessions: periodSessions)
-                SampleDataToggleRow()
-            }
-            .padding(.horizontal, 20)
-            .padding(.top, 40)
-            .padding(.bottom, 24)
+        VStack(alignment: .leading, spacing: 28) {
+            periodSelector
+            summaryGrid
+            GradeProgressionChart(sessions: periodSessions)
+            VolumeTrendChart(sessions: periodSessions)
+            GradeDistributionCard(sessions: periodSessions)
+            PyramidCard(sessions: periodSessions)
+            StyleRadialChart(sessions: periodSessions)
+            StyleCoverageCard(sessions: periodSessions)
+            SkillCoverageCard(sessions: periodSessions)
+            PersonalBestsSection(sessions: periodSessions)
+            SampleDataToggleRow()
         }
     }
 

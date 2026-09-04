@@ -6,6 +6,7 @@ struct GymPickerSheet: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     @Environment(PhoneSyncCoordinator.self) private var syncCoordinator
+    @Environment(SessionActivityPresenter.self) private var activityPresenter
     @Query(sort: \Gym.name) private var gyms: [Gym]
     @Query private var allShoes: [Shoe]
     @State private var selectedClimbType: ClimbType = .bouldering
@@ -93,6 +94,7 @@ struct GymPickerSheet: View {
         modelContext.insert(session)
         modelContext.saveReportingFailure(operation: "session start")
         syncCoordinator.announceStart(of: session)
+        activityPresenter.start(for: session)
         dismiss()
     }
 }

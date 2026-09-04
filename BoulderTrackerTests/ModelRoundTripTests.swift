@@ -9,7 +9,7 @@ func makeInMemoryContainer() throws -> ModelContainer {
     // CloudKit; tests must stay on a plain in-memory store.
     let schema = Schema([
         Session.self, SessionProblem.self, Gym.self, Partner.self,
-        RoadmapProgress.self, Achievement.self, Shoe.self,
+        RoadmapProgress.self, Achievement.self, Shoe.self, Project.self,
     ])
     let config = ModelConfiguration(
         schema: schema, isStoredInMemoryOnly: true, cloudKitDatabase: .none
@@ -29,6 +29,7 @@ struct ModelRoundTripTests {
             name: "The Roof", colorGrade: .red, styles: [.overhang, .sloper],
             flashCount: 0, sendCount: 1, fallCount: 3
         )
+        problem.skills = [.tensionCarry, .hipRotation]
         session.problems.append(problem)
         context.insert(session)
         try context.save()
@@ -37,6 +38,7 @@ struct ModelRoundTripTests {
         #expect(fetched.count == 1)
         #expect(fetched.first?.problems.count == 1)
         #expect(fetched.first?.problems.first?.styles == [.overhang, .sloper])
+        #expect(fetched.first?.problems.first?.skills == [.tensionCarry, .hipRotation])
         #expect(fetched.first?.problems.first?.name == "The Roof")
         #expect(fetched.first?.climbType == .topRope)
         #expect(fetched.first?.gym?.name == "Klättervigören Jönköping")
@@ -109,5 +111,48 @@ struct ModelRoundTripTests {
         #expect(session.isLive)
         session.endTime = .now
         #expect(!session.isLive)
+    }
+
+    @Test func projectRoundTripsWithLinkedProblem() throws {
+        let container = try makeInMemoryContainer()
+        let context = ModelContext(container)
+        let gym = Gym(name: "Klätterverket")
+        context.insert(gym)
+        let session = Session(startTime: .now, gym: gym, partners: [])
+        let problem = SessionProblem(name: "Elektra", colorGrade: .red, styles: [.crimp])
+        session.problems = [problem]
+        context.insert(session)
+        let project = Project(name: "Elektra", colorGrade: .red, gym: gym)
+        context.insert(project)
+        problem.project = project
+        try context.save()
+
+        let stored = try context.fetch(FetchDescriptor<Project>())
+        #expect(stored.count == 1)
+        #expect(stored.first?.status == .active)
+        #expect(stored.first?.isCurrent == false)
+        #expect(stored.first?.problems?.first?.name == "Elektra")
+        #expect(problem.project?.gym?.name == "Klätterverket")
+    }
+
+    @Test func projectRoundTripsWithItsOwnStyles() throws {
+        let container = try makeInMemoryContainer()
+        let context = ModelContext(container)
+        let project = Project(name: "Elektra", colorGrade: .red, styles: [.crimp, .overhang])
+        context.insert(project)
+        try context.save()
+
+        let stored = try context.fetch(FetchDescriptor<Project>())
+        #expect(stored.first?.styles == [.crimp, .overhang])
+    }
+
+    @Test func markSentIfActiveOnlyMovesActiveProjects() {
+        let active = Project(name: "Elektra")
+        active.markSentIfActive()
+        #expect(active.status == .sent)
+
+        let archived = Project(name: "Old Wall", status: .archived)
+        archived.markSentIfActive()
+        #expect(archived.status == .archived)
     }
 }

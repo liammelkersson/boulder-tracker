@@ -191,6 +191,11 @@ struct SessionDetailSheet: View {
             Text("Problems worked on")
                 .scaledFont(size: 14, weight: .semibold)
                 .foregroundStyle(palette.text)
+            if session.problems.isEmpty {
+                Text("Nothing logged for this session yet — add problems below.")
+                    .scaledFont(size: 13)
+                    .foregroundStyle(palette.textFaint)
+            }
             ForEach(session.problems) { problem in
                 ProblemTile(problem: problem)
             }

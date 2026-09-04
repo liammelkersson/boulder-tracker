@@ -6,6 +6,7 @@ struct LiveSessionView: View {
     @Environment(\.palette) private var palette
     @Environment(\.modelContext) private var modelContext
     @Environment(PhoneSyncCoordinator.self) private var syncCoordinator
+    @Environment(SessionActivityPresenter.self) private var activityPresenter
     @Query(sort: \Session.startTime) private var allSessions: [Session]
     let session: Session
     let onEnded: (Session) -> Void
@@ -31,6 +32,7 @@ struct LiveSessionView: View {
                 timerHeader
                 LiveGradeTally(problems: session.problems)
                     .padding(.top, 22)
+                FlashGoalCard(session: session, recentSessions: finishedSessions)
                 QuickLogRow(session: session)
                     .padding(.top, 24)
                 problemsSection
@@ -67,6 +69,12 @@ struct LiveSessionView: View {
                 .padding(.top, 6)
         }
         .padding(.top, 40)
+    }
+
+    /// Ended sessions only: the live one is the thing being measured, and demo
+    /// rows must not set a flash target.
+    private var finishedSessions: [Session] {
+        allSessions.persisted.withoutSampleData.filter { !$0.isLive }
     }
 
     private var sessionContextLabel: String {
@@ -111,6 +119,7 @@ struct LiveSessionView: View {
         session.endTime = .now
         modelContext.saveReportingFailure(operation: "session end")
         syncCoordinator.announceEnd(of: session)
+        activityPresenter.end(for: session)
         onEnded(session)
     }
 }

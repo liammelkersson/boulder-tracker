@@ -8,14 +8,12 @@ struct ProfileView: View {
     @AppStorage(AppPreferences.climbingSinceYearKey)
     private var climbingSinceYear = AppPreferences.defaultClimbingSinceYear
     @AppStorage(AppPreferences.avatarFilenameKey) private var avatarFilename = ""
-    @Query(sort: \Session.startTime, order: .reverse) private var sessions: [Session]
 
     private static let photoStore = PhotoStore.makeDefault()
 
     @State private var showingAchievements = false
-    @State private var showingGrades = false
     @State private var showingEditProfile = false
-    @State private var exportFile: ExportFile?
+    @State private var showingSettings = false
 
     var body: some View {
         Group {
@@ -25,21 +23,16 @@ struct ProfileView: View {
                 mainContent
             }
         }
-        .sheet(isPresented: $showingGrades) { GradesSheet() }
         .sheet(isPresented: $showingEditProfile) { EditProfileSheet() }
-        .sheet(item: $exportFile) { file in ShareSheetView(url: file.url) }
+        .sheet(isPresented: $showingSettings) { SettingsView() }
     }
 
     private var mainContent: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 22) {
                 profileHeader
-                quickActions
-                GymListSection()
-                PartnerListSection()
-                ShoeListSection()
-                PreferencesSection()
-                versionFooter
+                achievementsRow
+                StatsSection()
             }
             .padding(.horizontal, 20)
             .padding(.top, 40)
@@ -59,17 +52,29 @@ struct ProfileView: View {
                     .foregroundStyle(palette.textDim)
             }
             Spacer()
+            headerActions
+        }
+    }
+
+    private var headerActions: some View {
+        HStack(spacing: 14) {
             Button {
                 showingEditProfile = true
             } label: {
-                HStack(spacing: 2) {
-                    Text("Edit")
-                    Image(systemName: "chevron.right").scaledFont(size: 11, weight: .semibold)
-                }
-                .scaledFont(size: 14, weight: .medium)
-                .foregroundStyle(palette.textDim)
+                Text("Edit")
+                    .scaledFont(size: 14, weight: .medium)
+                    .foregroundStyle(palette.textDim)
             }
             .buttonStyle(.plain)
+            Button {
+                showingSettings = true
+            } label: {
+                Image(systemName: "gearshape")
+                    .scaledFont(size: 18, weight: .semibold)
+                    .foregroundStyle(palette.textDim)
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel("Settings")
         }
     }
 
@@ -97,67 +102,25 @@ struct ProfileView: View {
         return UIImage(data: data)
     }
 
-    private var quickActions: some View {
-        HStack(spacing: 10) {
-            quickAction(title: "Achievements", systemName: "medal") {
-                showingAchievements = true
-            }
-            quickAction(title: "Export Data", systemName: "square.and.arrow.up") {
-                exportSessions()
-            }
-            quickAction(title: "Grades", systemName: "link") {
-                showingGrades = true
-            }
-        }
-    }
-
-    private func quickAction(title: String, systemName: String,
-                             onTap: @escaping () -> Void) -> some View {
-        Button(action: onTap) {
-            VStack(spacing: 7) {
-                Image(systemName: systemName)
+    private var achievementsRow: some View {
+        Button {
+            showingAchievements = true
+        } label: {
+            HStack(spacing: 10) {
+                Image(systemName: "medal")
                     .scaledFont(size: 17, weight: .semibold)
-                Text(title)
+                Text("Achievements")
+                    .scaledFont(size: 15, weight: .semibold)
+                Spacer()
+                Image(systemName: "chevron.right")
                     .scaledFont(size: 12, weight: .semibold)
+                    .foregroundStyle(palette.textFaint)
             }
             .foregroundStyle(palette.text)
-            .frame(maxWidth: .infinity)
+            .padding(.horizontal, 16)
             .padding(.vertical, 14)
             .themedCard()
         }
         .buttonStyle(.plain)
     }
-
-    private var appVersion: String {
-        Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "—"
-    }
-
-    private var versionFooter: some View {
-        Text("Boulder Tracker v\(appVersion)")
-            .scaledFont(size: 12)
-            .foregroundStyle(palette.textFaint)
-            .frame(maxWidth: .infinity)
-            .padding(.top, 8)
-    }
-
-    private func exportSessions() {
-        let finished = sessions.persisted.withoutSampleData.filter { !$0.isLive }
-        guard let url = try? SessionDataExport.writeJSONFile(for: finished) else { return }
-        exportFile = ExportFile(url: url)
-    }
-}
-
-struct ExportFile: Identifiable {
-    let id = UUID()
-    let url: URL
-}
-
-struct ShareSheetView: UIViewControllerRepresentable {
-    let url: URL
-
-    func makeUIViewController(context: Context) -> UIActivityViewController {
-        UIActivityViewController(activityItems: [url], applicationActivities: nil)
-    }
-
-    func updateUIViewController(_ controller: UIActivityViewController, context: Context) {}
 }

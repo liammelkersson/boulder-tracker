@@ -29,4 +29,34 @@ struct AttemptResultTests {
         #expect(!problem.wasSent)
         #expect(!problem.wasFlashed)
     }
+
+    @Test func loggingASendCompletesTheLinkedProject() {
+        let project = Project(name: "Elektra")
+        let problem = SessionProblem(name: "Elektra", colorGrade: .red, styles: [])
+        problem.project = project
+
+        problem.recordResult(.send)
+
+        #expect(project.status == .sent)
+    }
+
+    @Test func loggingAFallLeavesTheProjectActive() {
+        let project = Project(name: "Elektra")
+        let problem = SessionProblem(name: "Elektra", colorGrade: .red, styles: [])
+        problem.project = project
+
+        problem.recordResult(.fall)
+
+        #expect(project.status == .active)
+    }
+
+    @Test func loggingASendLeavesAnArchivedProjectArchived() {
+        let project = Project(name: "Elektra", status: .archived)
+        let problem = SessionProblem(name: "Elektra", colorGrade: .red, styles: [])
+        problem.project = project
+
+        problem.recordResult(.flash)
+
+        #expect(project.status == .archived)
+    }
 }

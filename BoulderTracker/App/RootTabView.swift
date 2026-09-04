@@ -1,11 +1,18 @@
 import SwiftUI
+import SwiftData
 
 struct RootTabView: View {
     @AppStorage(AppPreferences.darkModeKey) private var darkModeEnabled = true
     @AppStorage(AppPreferences.gradeSystemKey) private var gradeSystem = GradeSystem.default
+    @Query private var sessions: [Session]
     @State private var selectedTab: AppTab = .climb
+    @State private var showingGymPicker = false
 
     private var palette: ThemePalette { darkModeEnabled ? .dark : .light }
+
+    private var hasLiveSession: Bool {
+        sessions.persisted.contains { $0.isLive }
+    }
 
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -20,6 +27,22 @@ struct RootTabView: View {
         .environment(\.gradeSystem, gradeSystem)
         .preferredColorScheme(darkModeEnabled ? .dark : .light)
         .tint(palette.accentText)
+        .onChange(of: selectedTab) { previousTab, newTab in
+            guard newTab.isAction else { return }
+            selectedTab = previousTab.isAction ? .climb : previousTab
+            startOrResumeSession()
+        }
+        .sheet(isPresented: $showingGymPicker) { GymPickerSheet() }
+    }
+
+    /// The live session lives on the Climb tab, so an in-progress session just
+    /// switches there instead of asking for a gym again.
+    private func startOrResumeSession() {
+        if hasLiveSession {
+            selectedTab = .climb
+        } else {
+            showingGymPicker = true
+        }
     }
 
     @ViewBuilder
@@ -30,7 +53,8 @@ struct RootTabView: View {
             switch tab {
             case .climb: HomeView()
             case .activities: ActivitiesView()
-            case .stats: StatsView()
+            // Never shown: selecting it bounces back to the previous tab.
+            case .startSession: Color.clear
             case .profile: ProfileView()
             }
         }

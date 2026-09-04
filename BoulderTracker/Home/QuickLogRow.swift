@@ -8,6 +8,7 @@ struct QuickLogRow: View {
     @Environment(\.gradeSystem) private var gradeSystem
     @Environment(\.modelContext) private var modelContext
     @Environment(PhoneSyncCoordinator.self) private var syncCoordinator
+    @Environment(SessionActivityPresenter.self) private var activityPresenter
     let session: Session
 
     @State private var pendingGrade: ColorGrade?
@@ -60,16 +61,10 @@ struct QuickLogRow: View {
     }
 
     private func log(grade: ColorGrade, result: AttemptResult) {
-        let problem = session.problems.first { $0.name.isEmpty && $0.colorGrade == grade }
-            ?? createQuickLogProblem(grade: grade)
+        let problem = QuickLogEntry.problem(for: grade, in: session)
         problem.recordResult(result)
         modelContext.saveReportingFailure(operation: "quick log")
         syncCoordinator.announceAttempt(on: problem, in: session, result: result)
-    }
-
-    private func createQuickLogProblem(grade: ColorGrade) -> SessionProblem {
-        let problem = SessionProblem(name: "", colorGrade: grade, styles: [])
-        session.problems.append(problem)
-        return problem
+        activityPresenter.refresh(for: session)
     }
 }

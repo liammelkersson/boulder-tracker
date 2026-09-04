@@ -18,6 +18,13 @@ enum SampleDataGenerator {
         [.jug, .overhang], [.slab, .mantle], [.pinch, .arete],
         [.pocket, .roof], [.dyno], [.crimp, .overhang], [.traverse],
     ]
+    /// One entry short of every skill, so the coverage card has a neglected
+    /// fundamental to point at in demo mode.
+    private static let skillRotation: [[MovementSkill]] = [
+        [.footSwap, .smear], [.deadpoint], [.tensionCarry, .hipRotation],
+        [.flagging], [.smear, .footSwap], [.hipRotation],
+        [.tensionCarry], [.deadpoint, .flagging], [.footSwap], [.smear],
+    ]
     private static let gradeRotation: [ColorGrade] = [
         .green, .blue, .blue, .red, .red, .black, .green, .blue, .red, .yellow,
     ]
@@ -50,6 +57,12 @@ enum SampleDataGenerator {
         )
         for shoe in sampleShoes {
             context.delete(shoe)
+        }
+        let sampleProjects = try context.fetch(
+            FetchDescriptor<Project>(predicate: #Predicate { $0.isSampleData })
+        )
+        for project in sampleProjects {
+            context.delete(project)
         }
         try context.save()
     }
@@ -94,6 +107,7 @@ enum SampleDataGenerator {
                 sendCount: problemIndex % 3 == 1 ? 1 : 0,
                 fallCount: (sessionIndex + problemIndex) % 4
             )
+            problem.skills = skillRotation[rotationIndex]
             return problem
         }
     }

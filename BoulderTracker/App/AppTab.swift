@@ -1,13 +1,13 @@
 import Foundation
 
 enum AppTab: Hashable, CaseIterable {
-    case climb, activities, stats, profile
+    case climb, activities, startSession, profile
 
     var label: String {
         switch self {
         case .climb: "Climb"
         case .activities: "Activities"
-        case .stats: "Stats"
+        case .startSession: "Start"
         case .profile: "Profile"
         }
     }
@@ -16,8 +16,12 @@ enum AppTab: Hashable, CaseIterable {
         switch self {
         case .climb: "figure.climbing"
         case .activities: "calendar"
-        case .stats: "chart.bar.xaxis"
+        case .startSession: "plus.circle.fill"
         case .profile: "person.crop.circle"
         }
     }
+
+    /// Selecting this tab runs an action instead of showing a screen, so it
+    /// never stays selected.
+    var isAction: Bool { self == .startSession }
 }
