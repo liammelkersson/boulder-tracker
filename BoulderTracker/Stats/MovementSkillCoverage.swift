@@ -29,6 +29,13 @@ enum MovementSkillCoverage {
         return tallies(of: sessions).min { $0.taggedCount < $1.taggedCount }?.skill
     }
 
+    /// Problems carrying no skill at all. Quick logs never pass through the
+    /// form, so a low tally can mean untagged rather than unpractised — the
+    /// card says which.
+    static func untaggedProblemCount(of sessions: [Session]) -> Int {
+        sessions.flatMap(\.problems).count { $0.skills.isEmpty }
+    }
+
     private static func taggedCounts(in sessions: [Session]) -> [MovementSkill: Int] {
         var counts: [MovementSkill: Int] = [:]
         for problem in sessions.flatMap(\.problems) {

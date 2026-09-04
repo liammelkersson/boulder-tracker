@@ -23,6 +23,7 @@ struct StatsSection: View {
             GradeDistributionCard(sessions: periodSessions)
             PyramidCard(sessions: periodSessions)
             StyleRadialChart(sessions: periodSessions)
+            StyleCoverageCard(sessions: periodSessions)
             SkillCoverageCard(sessions: periodSessions)
             PersonalBestsSection(sessions: periodSessions)
             SampleDataToggleRow()

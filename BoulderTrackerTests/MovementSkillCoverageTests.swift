@@ -71,4 +71,29 @@ struct MovementSkillCoverageTests {
 
         #expect(MovementSkillCoverage.weakestSkill(of: [session]) == nil)
     }
+
+    @Test func untaggedProblemsAreCounted() {
+        let session = makeSession()
+        addProblem(session, skills: [.cross])
+        addProblem(session, skills: [])
+        addProblem(session, skills: [])
+
+        #expect(MovementSkillCoverage.untaggedProblemCount(of: [session]) == 2)
+    }
+
+    @Test func nothingIsUntaggedWhenEveryProblemCarriesASkill() {
+        let session = makeSession()
+        addProblem(session, skills: [.smear])
+
+        #expect(MovementSkillCoverage.untaggedProblemCount(of: [session]) == 0)
+    }
+
+    @Test func untaggedProblemsAccumulateAcrossSessions() {
+        let first = makeSession()
+        let second = makeSession()
+        addProblem(first, skills: [])
+        addProblem(second, skills: [])
+
+        #expect(MovementSkillCoverage.untaggedProblemCount(of: [first, second]) == 2)
+    }
 }

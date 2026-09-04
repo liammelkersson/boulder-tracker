@@ -21,10 +21,17 @@ struct SkillCoverageCard: View {
                     ForEach(tallies) { tally in
                         skillRow(tally, isWeakest: tally.skill == weakestSkill)
                     }
-                    Text("Least practised: \(weakestSkill.displayName)")
-                        .scaledFont(size: 13)
-                        .foregroundStyle(palette.textDim)
-                        .padding(.top, 2)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Least practised: \(weakestSkill.displayName)")
+                            .scaledFont(size: 13)
+                            .foregroundStyle(palette.textDim)
+                        if let untaggedNote {
+                            Text(untaggedNote)
+                                .scaledFont(size: 12)
+                                .foregroundStyle(palette.textFaint)
+                        }
+                    }
+                    .padding(.top, 2)
                 } else {
                     emptyState
                 }
@@ -33,6 +40,15 @@ struct SkillCoverageCard: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .themedCard(cornerRadius: 20)
         }
+    }
+
+    /// Names the missing data so a thin tally is not read as thin practice.
+    /// Quick logs carry no tags, so most sessions leave some problems bare.
+    private var untaggedNote: String? {
+        let untaggedCount = MovementSkillCoverage.untaggedProblemCount(of: sessions.persisted)
+        guard untaggedCount > 0 else { return nil }
+        let problemCount = StatsAggregator.summary(of: sessions.persisted).problemCount
+        return "\(untaggedCount) of \(problemCount) problems untagged"
     }
 
     private var emptyState: some View {
