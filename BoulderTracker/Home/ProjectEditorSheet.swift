@@ -32,7 +32,12 @@ struct ProjectEditorSheet: View {
                     ThemedTextField(placeholder: "e.g. Elektra", text: $name)
                 }
                 field(label: "Grade") { GradePicker(selection: $selectedGrade) }
-                field(label: "Style") { StyleChipsPicker(selection: $selectedStyles) }
+                field(label: "Style") {
+                    SelectableChipsPicker(
+                        options: RouteStyle.allCases, title: \.displayName,
+                        selection: $selectedStyles
+                    )
+                }
                 field(label: "Gym") { gymPills }
                 field(label: "Status") { statusPills }
                 field(label: "Notes") {

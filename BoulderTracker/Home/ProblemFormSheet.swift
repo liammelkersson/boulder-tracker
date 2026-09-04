@@ -31,8 +31,18 @@ struct ProblemFormSheet: View {
                     ThemedTextField(placeholder: "e.g. Elektra", text: $draft.name)
                 }
                 field(label: "Grade") { GradePicker(selection: $draft.colorGrade) }
-                field(label: "Style") { StyleChipsPicker(selection: $draft.styles) }
-                field(label: "Fundamentals") { SkillChipsPicker(selection: $draft.skills) }
+                field(label: "Style") {
+                    SelectableChipsPicker(
+                        options: RouteStyle.allCases, title: \.displayName,
+                        selection: $draft.styles
+                    )
+                }
+                field(label: "Fundamentals") {
+                    SelectableChipsPicker(
+                        options: MovementSkill.allCases, title: \.displayName,
+                        selection: $draft.skills
+                    )
+                }
                 field(label: "Notes") {
                     ThemedNotesField(placeholder: "Optional notes", text: $draft.notes)
                 }
